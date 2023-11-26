@@ -99,11 +99,6 @@ export class Element404{
 
 
     render(target){
-        let not_inside_targets = this.targets.includes(target) ===false
-        if(not_inside_targets){
-            this.targets.push(target)
-        }
-
         target.innerHTML = ''
         target.appendChild(this.root)
     }
