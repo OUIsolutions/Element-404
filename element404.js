@@ -117,6 +117,9 @@ export class Element404{
     div(props,content){
         this.create('div',props,content)
     }
+    button(props,content){
+        this.create('button',props,content)
+    }
 
     br(){
         this.create('br')

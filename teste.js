@@ -8,12 +8,8 @@ let e = new Element404()
 
 e.div({'test':'aa'},()=>{
     e.div(null,  "the value is" + value)
-
-    e.div({'click': ()=>{value = value+1 }},'adiconar')
-
-    e.br()
-    e.br()
-
+    e.button({'click': ()=> value-=1 },'adiconar')
+    e.button({'click': ()=>value+=1 },'remover')
 })
 
 
