@@ -12,7 +12,7 @@ export class Element404{
     }
 
 
-
+    
     
     private_set_prop(element,key,value){
 
@@ -54,6 +54,13 @@ export class Element404{
 
 
     private_sub_component(tag,props,content){
+
+        if(tag === null){
+            let node = document.createTextNode(content)
+            this.root.appendChild(node)
+            return
+        }
+
         let element = document.createElement(tag)
 
         this.root.appendChild(element)
@@ -78,15 +85,15 @@ export class Element404{
         }
     }
 
+
+
     create(tag,props,content){
-   
-        if(typeof(tag) !== 'string'){
-            throw TypeError(tag +"its not an string")
-        }
 
         if (this.started === false){
 
             this.generator = () => {
+
+         
                 let element = document.createElement(tag)
                 this.root = element
                 this.private_set_props(element,props)
@@ -121,6 +128,11 @@ export class Element404{
     div(props,content){
         this.create('div',props,content)
     }
+
+    text(message){
+        this.create(null,null,message)
+    }
+
     button(props,content){
         this.create('button',props,content)
     }
@@ -131,12 +143,9 @@ export class Element404{
 
 
     render(target){
-        if(target){
-            this.target = target
-
-        }
-        this.target.innerHTML = ''
+        this.target = target
+        target.innerHTML = ''
         this.generator()
-        this.target.appendChild(this.root)
+        target.appendChild(this.root)
     }
 }
