@@ -8,6 +8,13 @@ export class Element404{
         this.root = undefined
     }
 
+    private_set_prop(key,value){
+        if(typeof(value) === 'function'){
+            this.root.addEventListener(key,value)
+            return
+        }
+        this.root.setAttribute(key,value)
+    }
 
     private_set_props(props){
         if(props === null || props === undefined){
@@ -18,7 +25,7 @@ export class Element404{
         }
 
         for (const key in props){
-            this.root.setAttribute(key,props[key])
+            this.private_set_prop(key,props[key])
         }
 
     }
