@@ -31,8 +31,9 @@ export class Element404{
         if(props === null || props === undefined){
             return
         }    
+
         if(typeof(props) !== 'object'){
-            throw TypeError("props of element:"+ this.root +"should be an object")
+            throw TypeError("props of element: "+ this.root +" should be an object")
         }
 
         for (const key in props){
@@ -81,6 +82,9 @@ export class Element404{
         this.create('div',props,content)
     }
 
+    br(){
+        this.create('br')
+    }
 
 
     render(target){

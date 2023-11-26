@@ -10,9 +10,9 @@ e.div({'test':'aa'},()=>{
         {'focusout':(v)=>{console.log(v.value)}}    
     )
 
-    
-    e.create('br')
-    e.create('br')
+
+    e.br()
+    e.br()
 
     e.div({'click':()=>{alert("foda se")}},'aaaaaaaaaaa')
 })
