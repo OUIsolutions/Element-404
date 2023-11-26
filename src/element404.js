@@ -44,7 +44,7 @@ class Element404{
 
         this.root.appendChild(element)
 
-        Element404Internal.set_props(this,element,props)
+        this.private_generate_component_reference(element,props,content)
         
     }
 

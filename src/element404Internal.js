@@ -16,9 +16,9 @@ let  Element404Internal ={
 
             let callback = ()=>{
                 value(element)            
-                this.generator()
-                this.target.innerHTML= ''
-                this.target.appendChild(this.root)
+                element.generator()
+                element.target.innerHTML= ''
+                element.target.appendChild(element.root)
             }
 
             domElement.addEventListener(key,callback)
@@ -41,7 +41,7 @@ let  Element404Internal ={
         }    
 
         if(typeof(props) !== 'object'){
-            throw TypeError("props of element: "+ this.root +" should be an object")
+            throw TypeError("props of element: "+ element.root +" should be an object")
         }
 
         for (const key in props){
