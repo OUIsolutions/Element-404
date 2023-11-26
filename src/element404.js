@@ -87,7 +87,7 @@ class Element404{
 
     /**
      * @param {string} tag - The tag of the element
-     * @param {Object} props -The props of elemment
+     * @param {{}} props -The props of elemment
      * @param {function | string} content - The content of the element
      */
     create(tag,props,content){
@@ -118,7 +118,7 @@ class Element404{
 
 
     /**
-     * @param {Object} props -The props of elemment
+     * @param {{}} props -The props of elemment
      * @param {function | string} content - The content of the element
      */
     div(props,content){
@@ -134,7 +134,7 @@ class Element404{
     }
 
     /**
-     * @param {Object} props -The props of elemment
+     * @param {{'click':function}} props -The props of elemment
      * @param {function | string} content - The content of the element
      */
     button(props,content){
