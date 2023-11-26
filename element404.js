@@ -8,6 +8,8 @@ export class Element404{
         this.root = undefined      
         this.started = false  
         this.targets = []
+
+        this.onClick = 'click'
     }
 
 
