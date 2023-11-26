@@ -16,7 +16,7 @@ export class Element404{
 
         })
     }
-    
+
     
     private_set_prop(element,key,value){
 
@@ -62,13 +62,33 @@ export class Element404{
         }
 
 
+
         let element = document.createElement(tag)
 
         let first_call = this.root === undefined
 
         if (first_call){
             this.root = element
+            this.generate_callback = ()=>{
+
+                    let is_a_function = typeof(content) === 'function'
+                    
+                    if(is_a_function){
+                    let generated_content = content()
+                    if(generated_content){
+                            let node = document.createTextNode(generated_content)
+                            element.appendChild(node)
+                    }
+                    }
+
+                    
+                    if(is_a_function === false && content){
+                        let node = document.createTextNode(content)
+                        element.appendChild(node)
+                    }
+            }
         }
+
 
         if(first_call ==false){
             this.root.appendChild(element)
