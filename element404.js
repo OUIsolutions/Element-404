@@ -7,23 +7,21 @@ export class Element404{
         this.root = undefined
     }
 
-    create(tag,props,caller){
+    create(tag,props,content){
         let element = document.createElement(tag)
         
         if (this.root == undefined){
             this.root = element
         }
-
-        for (const key in props){
-            let value = props[key]
-            element.setAttribute(key,value)
-        } 
-        
+        if(typeof(content) === 'string'){
+            let node = document.createTextNode(content)
+            element.appendChild(node)
+        }
             
     }   
 
     render(target){
 
-        target.innerHTML = this.root
+        console.log(this.root)
     }
 }
