@@ -18,7 +18,9 @@ export class Element404{
         if(typeof(value) === 'function'){
 
             let callback = ()=>{
-                    value(element)            
+                value(element)            
+                this.generator()
+                this.target.appendChild(this.root)
             }
 
             element.addEventListener(key,callback)
@@ -82,11 +84,10 @@ export class Element404{
         if (this.root === undefined){
             let element = document.createElement(tag)
             this.root = element
-            this.generator = () => this.private_first_creation(tag,props,content) 
+            this.generator = () => this.private_sub_component(tag,props,content) 
             return
         }
 
-        
         this.private_sub_component(tag,props,content)
         
     }   
@@ -101,7 +102,9 @@ export class Element404{
 
 
     render(target){
+        this.target = target
         target.innerHTML = ''
+        this.generator()
         target.appendChild(this.root)
     }
 }
