@@ -1,6 +1,5 @@
 
 
-import { Element404 } from './element404.js'
 
 let value = 0;
 let input_value = ''

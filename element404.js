@@ -3,7 +3,7 @@
 
 
 
-export class Element404{
+class Element404{
     constructor(){
         this.root = undefined      
         this.started = false  
@@ -90,7 +90,7 @@ export class Element404{
     create(tag,props,content){
 
         if (this.started === false){
-            
+
             this.generator = () => {         
                 
                 let element = document.createElement(tag)
@@ -108,8 +108,9 @@ export class Element404{
 
     input(props){
         this.create('input',props,null)
-
     }
+
+
     div(props,content){
         this.create('div',props,content)
     }
