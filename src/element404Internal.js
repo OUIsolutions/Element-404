@@ -27,7 +27,27 @@ let  Element404Internal ={
 
         
         domElement.setAttribute(key,value)
-    }
+    },
 
     
+    /**
+     * @param {Element404} element - The this object 
+     * @param {Element} domElement -The dom element
+     * @param {{}} props - The props of element
+     */
+    set_props(element,domElement,props){
+        if(props === null || props === undefined){
+            return
+        }    
+
+        if(typeof(props) !== 'object'){
+            throw TypeError("props of element: "+ this.root +" should be an object")
+        }
+
+        for (const key in props){
+            this.set_prop(element,domElement, key,props[key])
+        }
+
+    }
+
 }
