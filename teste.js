@@ -11,8 +11,9 @@ e.div({'test':'aa'},()=>{
     console.log('chamou')
 
      e.input({'focusout':(input)=> input_value  =input.value })
+     
      e.br()
-
+ 
      e.text('the value of the input its'+input_value)
      e.br()
      e.br()

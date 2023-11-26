@@ -10,9 +10,6 @@ export class Element404{
         this.targets = []
 
     }
-
-
-    
     
     private_set_prop(element,key,value){
 
@@ -52,19 +49,7 @@ export class Element404{
     }
  
 
-
-    private_sub_component(tag,props,content){
-
-        if(tag === null){
-            let node = document.createTextNode(content)
-            this.root.appendChild(node)
-            return
-        }
-
-        let element = document.createElement(tag)
-
-        this.root.appendChild(element)
-
+    private_generate_component_reference(element,props,content){
         this.private_set_props(element,props)
 
 
@@ -85,33 +70,32 @@ export class Element404{
         }
     }
 
+    private_sub_component(tag,props,content){
+
+        if(tag === null){
+            let node = document.createTextNode(content)
+            this.root.appendChild(node)
+            return
+        }
+
+        let element = document.createElement(tag)
+
+        this.root.appendChild(element)
+
+        this.private_generate_component_reference(element,props,content)
+    }
+
 
 
     create(tag,props,content){
 
         if (this.started === false){
 
-            this.generator = () => {
+            this.generator = () => {         
 
-         
                 let element = document.createElement(tag)
                 this.root = element
-                this.private_set_props(element,props)
-                let is_a_function = typeof(content) === 'function'
-                
-                if(is_a_function){
-                   let generated_content = content()
-                   if(generated_content){
-                        let node = document.createTextNode(generated_content)
-                        element.appendChild(node)
-                   }
-                }
-        
-                
-                if(is_a_function === false && content){
-                    let node = document.createTextNode(content)
-                    element.appendChild(node)
-                }
+                this.private_generate_component_reference(element,props,content)
             } 
             this.started = true
             return
@@ -121,6 +105,7 @@ export class Element404{
         this.private_sub_component(tag,props,content)
         
     }   
+
     input(props){
         this.create('input',props,null)
 
