@@ -8,17 +8,26 @@ export class Element404{
         this.root = undefined        
     }
 
-    private_set_prop(key,value){
+    private_set_prop(element,key,value){
+
+        
         if(typeof(value) === 'function'){
-            this.root.addEventListener(key,value)
+
+            function callback(){
+                    value(element)
+            }
+
+            element.addEventListener(key,callback)
             return
         }
+
+
         this.root.setAttribute(key,value)
     }
 
 
     
-    private_set_props(props){
+    private_set_props(element,props){
         if(props === null || props === undefined){
             return
         }    
@@ -27,7 +36,7 @@ export class Element404{
         }
 
         for (const key in props){
-            this.private_set_prop(key,props[key])
+            this.private_set_prop(element,key,props[key])
         }
 
     }
@@ -51,7 +60,7 @@ export class Element404{
             this.root.appendChild(element)
         }
         
-        this.private_set_props(props)
+        this.private_set_props(element,props)
 
 
         let is_a_function = typeof(content) === 'function'
@@ -68,9 +77,9 @@ export class Element404{
     }   
 
     div(props,content){
-        this.create(props,content)
+        this.create('div',props,content)
     }
-    
+
 
 
     render(target){
