@@ -5,7 +5,8 @@
 
 export class Element404{
     constructor(){
-        this.root = undefined        
+        this.root = undefined      
+        this.started = false  
         this.targets = []
     }
 
@@ -20,6 +21,7 @@ export class Element404{
             let callback = ()=>{
                 value(element)            
                 this.generator()
+                this.target.innerHTML= ''
                 this.target.appendChild(this.root)
             }
 
@@ -81,13 +83,16 @@ export class Element404{
             throw TypeError(tag +"its not an string")
         }
 
-        if (this.root === undefined){
-            let element = document.createElement(tag)
-            this.root = element
-            this.generator = () => this.private_sub_component(tag,props,content) 
-            return
+        if (this.started === false){
+
+            this.generator = () => {
+                let element = document.createElement(tag)
+                this.root = element
+                this.private_sub_component(tag,props,content)
+            } 
         }
 
+        
         this.private_sub_component(tag,props,content)
         
     }   
