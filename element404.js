@@ -9,13 +9,7 @@ export class Element404{
         this.targets = []
     }
 
-    private_render_targets(){
-        this.targets.forEach(target=>{
-            target.innerHTML = ''
-            target.appendChild(this.root)
 
-        })
-    }
 
     
     private_set_prop(element,key,value){
@@ -24,9 +18,7 @@ export class Element404{
         if(typeof(value) === 'function'){
 
             let callback = ()=>{
-                    value(element)
-            
-                    this.private_render_targets()
+                    value(element)            
             }
 
             element.addEventListener(key,callback)
@@ -54,7 +46,7 @@ export class Element404{
 
     }
     
-
+    
     create(tag,props,content){
         
         if(typeof(tag) !== 'string'){
@@ -69,24 +61,6 @@ export class Element404{
 
         if (first_call){
             this.root = element
-            this.generate_callback = ()=>{
-
-                    let is_a_function = typeof(content) === 'function'
-                    
-                    if(is_a_function){
-                    let generated_content = content()
-                    if(generated_content){
-                            let node = document.createTextNode(generated_content)
-                            element.appendChild(node)
-                    }
-                    }
-
-                    
-                    if(is_a_function === false && content){
-                        let node = document.createTextNode(content)
-                        element.appendChild(node)
-                    }
-            }
         }
 
 
