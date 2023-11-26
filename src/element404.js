@@ -129,9 +129,7 @@ class Element404{
 
 
     /**
-     *.
-     * @constructor
-     * @param {object} target - The target you want to render
+     * @param {string} target - The target you want to render
      */
     render(target){
         this.target = target
