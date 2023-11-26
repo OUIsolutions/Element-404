@@ -9,29 +9,8 @@ class Element404{
         this.started = false  
 
     }
-    
-    private_set_prop(element,key,value){
 
         
-        if(typeof(value) === 'function'){
-
-            let callback = ()=>{
-                value(element)            
-                this.generator()
-                this.target.innerHTML= ''
-                this.target.appendChild(this.root)
-            }
-
-            element.addEventListener(key,callback)
-            return
-        }
-
-        
-        element.setAttribute(key,value)
-    }
-
-    
-    
     private_set_props(element,props){
         if(props === null || props === undefined){
             return
@@ -42,7 +21,7 @@ class Element404{
         }
 
         for (const key in props){
-            this.private_set_prop(element,key,props[key])
+            Element404Internal.set_prop(element,key,props[key])
         }
 
     }
