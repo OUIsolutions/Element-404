@@ -10,10 +10,11 @@ export class Element404{
 
 
     private_set_props(element,props){
-        if(props == null){
+        if(props === null || props === undefined){
             return
         }    
         
+
     }
     
 
