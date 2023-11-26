@@ -9,16 +9,28 @@ export class Element404{
     }
 
 
-    private_set_props(element,props){
+    private_set_props(props){
         if(props === null || props === undefined){
             return
         }    
-        
+        if(typeof(props) !== 'object'){
+            throw TypeError("props of element:"+ this.root +"should be an object")
+        }
+
+        for (const key in props){
+            this.root.setAttribute(key,props[key])
+        }
 
     }
     
 
     create(tag,props,content){
+        
+        if(typeof(tag) !== 'string'){
+            throw TypeError(tag +"its not an string")
+        }
+
+
         let element = document.createElement(tag)
 
         let first_call = this.root === undefined
@@ -47,7 +59,6 @@ export class Element404{
 
 
     render(target){
-
-        console.log(this.root)
+        target.appendChild(this.root)
     }
 }
