@@ -12,11 +12,8 @@ class Element404{
 
         
 
- 
-
     private_generate_component_reference(element,props,content){
-        this.private_set_props(element,props)
-
+        Element404Internal.set_props(this,element,props)
 
         let is_a_function = typeof(content) === 'function'
         
@@ -47,7 +44,8 @@ class Element404{
 
         this.root.appendChild(element)
 
-        Element404Internal.set_props(this,element,props,content)
+        Element404Internal.set_props(this,element,props)
+        
     }
 
 
