@@ -16,7 +16,7 @@ export class Element404{
         this.root.setAttribute(key,value)
     }
 
-
+    
     private_set_props(props){
         if(props === null || props === undefined){
             return
@@ -46,21 +46,20 @@ export class Element404{
         if (first_call){
             this.root = element
         }
-        
         if(first_call ==false){
             this.root.appendChild(element)
         }
-
-        
         
         this.private_set_props(props)
 
 
-        if(typeof(content) === 'function'){
+        let is_a_function = typeof(content) === 'function'
+        
+        if(is_a_function){
             content()
         }
 
-        if(callable === false){
+        if(is_a_function === false){
             let node = document.createTextNode(content)
             element.appendChild(node)
         }
