@@ -45,29 +45,14 @@ export class Element404{
         }
 
     }
-    
-    
-    create(tag,props,content){
-        
-        if(typeof(tag) !== 'string'){
-            throw TypeError(tag +"its not an string")
-        }
+ 
 
 
-
+    private_sub_component(tag,props,content){
         let element = document.createElement(tag)
 
-        let first_call = this.root === undefined
+        this.root.appendChild(element)
 
-        if (first_call){
-            this.root = element
-        }
-
-
-        if(first_call ==false){
-            this.root.appendChild(element)
-        }
-        
         this.private_set_props(element,props)
 
 
@@ -86,6 +71,23 @@ export class Element404{
             let node = document.createTextNode(content)
             element.appendChild(node)
         }
+    }
+
+    create(tag,props,content){
+   
+        if(typeof(tag) !== 'string'){
+            throw TypeError(tag +"its not an string")
+        }
+
+        if (this.root === undefined){
+            let element = document.createElement(tag)
+            this.root = element
+            this.generator = () => this.private_first_creation(tag,props,content) 
+            return
+        }
+
+        
+        this.private_sub_component(tag,props,content)
         
     }   
 
