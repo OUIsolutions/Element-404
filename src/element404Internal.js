@@ -6,10 +6,14 @@ let  Element404Internal ={
     * @param {{}} value - The value of the style tag to iterate
     */
     create_object_style(domElement,style_value){
+        let style_string = ""
         for (const key in style_value){
-            domElement.style+= `${key}=${style_value[key]};`
+            style_string+= `${key}=${style_value[key]};`
         }
+        console.log(style_string)
+        domElement.style.cssText = style_string
     },
+
     
     
     /**
@@ -33,8 +37,10 @@ let  Element404Internal ={
             return
         }
 
-        if(key === 'style' && typeof(value) == 'Object'){
-            this.create_object_style(element,value)
+        if(key === 'style' && typeof(value) == 'object'){
+
+            this.create_object_style(domElement,value)
+            return
         }
 
         
