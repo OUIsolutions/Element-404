@@ -110,7 +110,7 @@ class Element404{
     }   
 
     /**
-     * @param {Object} props -The props of elemment
+     * @param {{'click':function, 'focusout':function}} props -The props of elemment
      */
     input(props){
         this.create('input',props,null)
@@ -118,7 +118,7 @@ class Element404{
 
 
     /**
-     * @param {{}} props -The props of elemment
+     * @param {{'click':function}} props -The props of elemment
      * @param {function | string} content - The content of the element
      */
     div(props,content){

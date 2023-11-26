@@ -9,7 +9,7 @@ e.div({'test':'aa'},()=>{
      e.div(null,  "the value is" + value)
      console.log('chamou')
 
-     e.input({'focusout':(input)=> input_value  =input.value })
+     e.input({focusout:(input)=> input_value  =input.value })
      
      e.br()
  
@@ -17,8 +17,8 @@ e.div({'test':'aa'},()=>{
      e.br()
      e.br()
 
-     e.button({'click': ()=> value-=1 },'remover')
-     e.button({'click': ()=>value+=1 },'adionar')
+     e.button({click: ()=> value-=1 },'remover')
+     e.button({click: ()=>value+=1 },'adionar')
 })
 
 
