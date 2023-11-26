@@ -67,6 +67,11 @@ export class Element404{
         
     }   
 
+    div(props,content){
+        this.create(props,content)
+    }
+    
+
 
     render(target){
         target.appendChild(this.root)
