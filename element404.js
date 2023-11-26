@@ -114,7 +114,10 @@ export class Element404{
         this.private_sub_component(tag,props,content)
         
     }   
+    input(props){
+        this.create('input',props,null)
 
+    }
     div(props,content){
         this.create('div',props,content)
     }
@@ -128,9 +131,12 @@ export class Element404{
 
 
     render(target){
-        this.target = target
-        target.innerHTML = ''
+        if(target){
+            this.target = target
+
+        }
+        this.target.innerHTML = ''
         this.generator()
-        target.appendChild(this.root)
+        this.target.appendChild(this.root)
     }
 }
