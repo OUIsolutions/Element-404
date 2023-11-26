@@ -90,9 +90,9 @@ export class Element404{
     create(tag,props,content){
 
         if (this.started === false){
-
+            
             this.generator = () => {         
-
+                
                 let element = document.createElement(tag)
                 this.root = element
                 this.private_generate_component_reference(element,props,content)
