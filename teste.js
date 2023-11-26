@@ -7,7 +7,7 @@ let e = new Element404()
 
 e.div({'test':'aa'},()=>{
      e.div(null,  "the value is" + value)
-    console.log('chamou')
+     console.log('chamou')
 
      e.input({'focusout':(input)=> input_value  =input.value })
      
