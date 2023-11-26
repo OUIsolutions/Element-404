@@ -85,7 +85,11 @@ class Element404{
     }
 
 
-
+    /**
+     * @param {string} tag - The tag of the element
+     * @param {object} props -The props of elemment
+     * @param {function} content - The content of the element
+     */
     create(tag,props,content){
 
         if (this.started === false){
@@ -110,6 +114,10 @@ class Element404{
     }
 
 
+    /**
+     * @param {object} props -The props of elemment
+     * @param {function} content - The content of the element
+     */
     div(props,content){
         this.create('div',props,content)
     }
@@ -129,7 +137,7 @@ class Element404{
 
 
     /**
-     * @param {string} target - The target you want to render
+     * @param {Element} target - The target you want to render
      */
     render(target){
         this.target = target
