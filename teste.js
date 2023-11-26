@@ -6,7 +6,8 @@ let input_value = ''
 let e = new Element404()
 
 e.div({'test':'aa'},()=>{
-     e.div({style:{color:'red'}},  "the value is" + value)
+
+     e.h1({style:{color:'red'}},  "the value is" + value)
      console.log('chamou')
 
      e.input({focusout:(input)=> input_value  =input.value })

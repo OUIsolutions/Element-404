@@ -89,6 +89,44 @@ class Element404{
         this.create('div',props,content)
     }
 
+    /**
+     * @param {{'click':function}} props -The props of elemment
+     * @param {function | string} content - The content of the element
+     */
+    p(props,content){
+        this.create('p',props,content)
+    }
+
+
+
+    /**
+     * @param {{'click':function}} props -The props of elemment
+     * @param {function | string} content - The content of the element
+     */
+    h1(props,content){
+        this.create('h1',props,content)
+    }
+
+
+
+    /**
+     * @param {{'click':function}} props -The props of elemment
+     * @param {function | string} content - The content of the element
+     */
+    h2(props,content){
+        this.create('h2',props,content)
+    }
+
+
+    /**
+     * @param {{'click':function}} props -The props of elemment
+     * @param {function | string} content - The content of the element
+     */
+    h3(props,content){
+        this.create('h3',props,content)
+    }
+
+
 
     /**
      * @param {function | string | number} content - The content of the element
