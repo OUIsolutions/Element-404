@@ -11,7 +11,7 @@ let  Element404Internal ={
             style_string+= `${key}=${style_value[key]};`
         }
         console.log(style_string)
-        domElement.style.cssText = style_string
+        domElement.setAttribute('style',style_string)
     },
 
     
