@@ -2,10 +2,20 @@
 
 
 
+
 export class Element404{
     constructor(){
         this.root = undefined
     }
+
+
+    private_set_props(element,props){
+        if(props == null){
+            return
+        }    
+        
+    }
+    
 
     create(tag,props,content){
         let element = document.createElement(tag)
@@ -18,8 +28,10 @@ export class Element404{
         if(first_call ==false){
             this.root.appendChild(element)
         }
-    
         
+        this.private_set_props(props)
+
+
         let callable = typeof(content) === 'function'
         if(callable){
             content()
@@ -31,6 +43,7 @@ export class Element404{
         }
         
     }   
+
 
     render(target){
 
