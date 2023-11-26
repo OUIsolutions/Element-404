@@ -5,7 +5,7 @@
 
 export class Element404{
     constructor(){
-        this.root = undefined
+        this.root = undefined        
     }
 
     private_set_prop(key,value){
@@ -15,6 +15,7 @@ export class Element404{
         }
         this.root.setAttribute(key,value)
     }
+
 
     
     private_set_props(props){
