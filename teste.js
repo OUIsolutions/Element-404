@@ -6,8 +6,11 @@ import { Element404 } from './element404.js'
 
 let e = new Element404()
 e.div({'test':'aa'},()=>{
-    e.create('input',{'focusout':(v)=>{console.log(v)}})
+    e.create('input',
+        {'focusout':(v)=>{console.log(v.value)}}    
+    )
 
+    
     e.create('br')
     e.create('br')
 

@@ -21,7 +21,7 @@ export class Element404{
             return
         }
 
-
+        
         element.setAttribute(key,value)
     }
 
@@ -36,7 +36,7 @@ export class Element404{
         }
 
         for (const key in props){
-            this.private_set_prop(key,props[key])
+            this.private_set_prop(element,key,props[key])
         }
 
     }
