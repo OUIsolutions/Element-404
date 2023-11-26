@@ -7,7 +7,6 @@ class Element404{
     constructor(){
         this.root = undefined      
         this.started = false  
-        this.targets = []
 
     }
     
@@ -130,7 +129,7 @@ class Element404{
 
     render(target){
         this.target = target
-        target.innerHTML = ''
+        this.target.innerHTML = ''
         this.generator()
         target.appendChild(this.root)
     }
