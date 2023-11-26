@@ -88,11 +88,28 @@ export class Element404{
             this.generator = () => {
                 let element = document.createElement(tag)
                 this.root = element
-                this.private_sub_component(tag,props,content)
+                this.private_set_props(element,props)
+                let is_a_function = typeof(content) === 'function'
+                
+                if(is_a_function){
+                   let generated_content = content()
+                   if(generated_content){
+                        let node = document.createTextNode(generated_content)
+                        element.appendChild(node)
+                   }
+                }
+        
+                
+                if(is_a_function === false && content){
+                    let node = document.createTextNode(content)
+                    element.appendChild(node)
+                }
             } 
+            this.started = true
+            return
         }
 
-        
+
         this.private_sub_component(tag,props,content)
         
     }   
