@@ -11,20 +11,7 @@ class Element404{
     }
 
         
-    private_set_props(element,props){
-        if(props === null || props === undefined){
-            return
-        }    
 
-        if(typeof(props) !== 'object'){
-            throw TypeError("props of element: "+ this.root +" should be an object")
-        }
-
-        for (const key in props){
-            Element404Internal.set_prop(element,key,props[key])
-        }
-
-    }
  
 
     private_generate_component_reference(element,props,content){
@@ -60,7 +47,7 @@ class Element404{
 
         this.root.appendChild(element)
 
-        this.private_generate_component_reference(element,props,content)
+        Element404Internal.set_props(this,element,props,content)
     }
 
 
