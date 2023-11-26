@@ -17,6 +17,7 @@ export class Element404{
         })
     }
     
+    
     private_set_prop(element,key,value){
 
         
@@ -24,6 +25,7 @@ export class Element404{
 
             let callback = ()=>{
                     value(element)
+            
                     this.private_render_targets()
             }
 
@@ -78,7 +80,11 @@ export class Element404{
         let is_a_function = typeof(content) === 'function'
         
         if(is_a_function){
-            content()
+           let generated_content = content()
+           if(generated_content){
+                let node = document.createTextNode(generated_content)
+                element.appendChild(node)
+           }
         }
 
         
@@ -99,7 +105,11 @@ export class Element404{
 
 
     render(target){
-        this.targets.push(target)
+        let not_inside_targets = this.targets.includes(target) ===false
+        if(not_inside_targets){
+            this.targets.push(target)
+        }
+
         target.innerHTML = ''
         target.appendChild(this.root)
     }
