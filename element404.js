@@ -6,15 +6,25 @@
 export class Element404{
     constructor(){
         this.root = undefined        
+        this.targets = []
     }
 
+    private_render_targets(){
+        this.targets.forEach(target=>{
+            target.innerHTML = ''
+            target.appendChild(this.root)
+
+        })
+    }
+    
     private_set_prop(element,key,value){
 
         
         if(typeof(value) === 'function'){
 
-            function callback(){
+            let callback = ()=>{
                     value(element)
+                    this.private_render_targets()
             }
 
             element.addEventListener(key,callback)
@@ -25,7 +35,7 @@ export class Element404{
         element.setAttribute(key,value)
     }
 
-
+    
     
     private_set_props(element,props){
         if(props === null || props === undefined){
@@ -57,6 +67,7 @@ export class Element404{
         if (first_call){
             this.root = element
         }
+
         if(first_call ==false){
             this.root.appendChild(element)
         }
@@ -88,6 +99,8 @@ export class Element404{
 
 
     render(target){
+        this.targets.push(target)
+        target.innerHTML = ''
         target.appendChild(this.root)
     }
 }
