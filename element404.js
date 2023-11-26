@@ -9,7 +9,6 @@ export class Element404{
         this.started = false  
         this.targets = []
 
-        this.onClick = 'click'
     }
 
 
