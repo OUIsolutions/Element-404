@@ -22,7 +22,7 @@ export class Element404{
         }
 
 
-        this.root.setAttribute(key,value)
+        element.setAttribute(key,value)
     }
 
 
@@ -36,7 +36,7 @@ export class Element404{
         }
 
         for (const key in props){
-            this.private_set_prop(element,key,props[key])
+            this.private_set_prop(key,props[key])
         }
 
     }
@@ -69,7 +69,8 @@ export class Element404{
             content()
         }
 
-        if(is_a_function === false){
+        
+        if(is_a_function === false && content){
             let node = document.createTextNode(content)
             element.appendChild(node)
         }
