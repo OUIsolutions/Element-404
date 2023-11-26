@@ -87,7 +87,7 @@ class Element404{
 
     /**
      * @param {string} tag - The tag of the element
-     * @param {object} props -The props of elemment
+     * @param {Object} props -The props of elemment
      * @param {function} content - The content of the element
      */
     create(tag,props,content){
@@ -109,23 +109,34 @@ class Element404{
         
     }   
 
+    /**
+     * @param {Object} props -The props of elemment
+     */
     input(props){
         this.create('input',props,null)
     }
 
 
     /**
-     * @param {object} props -The props of elemment
+     * @param {Object} props -The props of elemment
      * @param {function} content - The content of the element
      */
     div(props,content){
         this.create('div',props,content)
     }
 
+
+    /**
+     * @param {string} message -The props of elemment
+     */
     text(message){
         this.create(null,null,message)
     }
 
+    /**
+     * @param {Object} props -The props of elemment
+     * @param {function} content - The content of the element
+     */
     button(props,content){
         this.create('button',props,content)
     }
