@@ -9,15 +9,27 @@ export class Element404{
 
     create(tag,props,content){
         let element = document.createElement(tag)
-        
-        if (this.root == undefined){
+
+        let first_call = this.root === undefined
+
+        if (first_call){
             this.root = element
         }
-        if(typeof(content) === 'string'){
+        if(first_call ==false){
+            this.root.appendChild(element)
+        }
+    
+        
+        let callable = typeof(content) === 'function'
+        if(callable){
+            content()
+        }
+
+        if(callable === false){
             let node = document.createTextNode(content)
             element.appendChild(node)
         }
-            
+        
     }   
 
     render(target){
