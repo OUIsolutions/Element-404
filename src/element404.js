@@ -137,9 +137,9 @@ class Element404{
         if(target){
             this.target = target
         }
-        
+
         this.target.innerHTML = ''
         this.generator()
-        target.appendChild(this.root)
+        this.target.appendChild(this.root)
     }
 }
