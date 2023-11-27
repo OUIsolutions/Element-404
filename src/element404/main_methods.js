@@ -14,14 +14,14 @@ Element404.prototype.create=function(tag,props,content){
             
             let element = document.createElement(tag)
             this.root = element
-            this.generate_component_reference(this,element,props,content)
+            this.generate_component_reference(element,props,content)
         } 
         this.started = true
         return
     }
 
 
-    this.sub_component(this,tag,props,content)
+    this.sub_component(tag,props,content)
     
 }   
 

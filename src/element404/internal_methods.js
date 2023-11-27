@@ -40,7 +40,6 @@ Element404.prototype.set_prop = function(domElement,key,value){
         return
     }
 
-    
     domElement.setAttribute(key,value)
 }
 
