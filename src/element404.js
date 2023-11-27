@@ -12,41 +12,7 @@ class Element404{
 
         
 
-    private_generate_component_reference(element,props,content){
-        Element404Internal.set_props(this,element,props)
 
-        let is_a_function = typeof(content) === 'function'
-        
-        if(is_a_function){
-           let generated_content = content()
-           if(generated_content){
-                let node = document.createTextNode(generated_content)
-                element.appendChild(node)
-           }
-        }
-
-        
-        if(is_a_function === false && content){
-            let node = document.createTextNode(content)
-            element.appendChild(node)
-        }
-    }
-
-    private_sub_component(tag,props,content){
-
-        if(tag === null){
-            let node = document.createTextNode(content)
-            this.root.appendChild(node)
-            return
-        }
-
-        let element = document.createElement(tag)
-
-        this.root.appendChild(element)
-
-        this.private_generate_component_reference(element,props,content)
-        
-    }
 
 
     /**
