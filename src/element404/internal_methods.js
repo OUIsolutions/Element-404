@@ -2,7 +2,7 @@
 
 
 /**
- * @param {Element} domElement -The dom element
+* @param {Element} domElement -The dom element
 * @param {{}} value - The value of the style tag to iterate
 */
 Element404.prototype.create_object_style = function(domElement,style_value){
