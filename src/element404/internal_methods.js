@@ -99,7 +99,7 @@ Element404.prototype.sub_component=function( tag,props,content){
 
     if(tag === null){
         let node = document.createTextNode(content)
-        Element404.prototype.root.appendChild(node)
+        this.root.appendChild(node)
         return
     }
 
