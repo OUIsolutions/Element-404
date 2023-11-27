@@ -128,6 +128,22 @@ class Element404{
     }
 
 
+    /**
+     * @param {{'click':function}} props -The props of elemment
+     * @param {function | string} content - The content of the element
+     */
+    h4(props,content){
+        this.create('h4',props,content)
+    }
+
+    /**
+     * @param {{'click':function}} props -The props of elemment
+     * @param {function | string} content - The content of the element
+     */
+    h5(props,content){
+        this.create('h5',props,content)
+    }
+
 
     /**
      * @param {function | string | number} content - The content of the element
