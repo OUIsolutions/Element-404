@@ -31,9 +31,9 @@ let  Element404Internal ={
 
             let callback = ()=>{
                 value(element404)            
-                element.generator()
-                element.target.innerHTML= ''
-                element.target.appendChild(element.root)
+                element404.generator()
+                element404.target.innerHTML= ''
+                element404.target.appendChild(domElement.root)
             }
 
             domElement.addEventListener(key,callback)
@@ -115,7 +115,7 @@ let  Element404Internal ={
 
         let domElement = document.createElement(tag)
 
-        element404.root.appendChild(element)
+        element404.root.appendChild(domElement)
 
         this.generate_component_reference(element404,domElement,props,content)
         
