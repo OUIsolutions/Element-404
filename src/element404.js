@@ -12,9 +12,6 @@ class Element404{
 
         
 
-
-
-
     /**
      * @param {string} tag - The tag of the element
      * @param {{}} props -The props of elemment
@@ -22,20 +19,21 @@ class Element404{
      */
     create(tag,props,content){
 
+
         if (this.started === false){
 
             this.generator = () => {         
                 
                 let element = document.createElement(tag)
                 this.root = element
-                this.private_generate_component_reference(element,props,content)
+                Element404Internal.generate_component_reference(this,element,props,content)
             } 
             this.started = true
             return
         }
 
 
-        this.private_sub_component(tag,props,content)
+        Element404Internal.sub_component(this,tag,props,content)
         
     }   
 
