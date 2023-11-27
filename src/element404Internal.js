@@ -20,17 +20,17 @@ let  Element404Internal ={
     
     
     /**
-     * @param {Element404} element - The this object 
+     * @param {Element404} element404 - The this object 
      * @param {Element} domElement -The dom element
      * @param {string} key - The key of the prop
      * @param {function | string | {}} value - The value of the element (objects are only vallid for stye tag)
      */
-    set_prop(element, domElement,key,value){
+    set_prop(element404, domElement,key,value){
          
         if(typeof(value) === 'function'){
 
             let callback = ()=>{
-                value(element)            
+                value(element404)            
                 element.generator()
                 element.target.innerHTML= ''
                 element.target.appendChild(element.root)
@@ -52,34 +52,34 @@ let  Element404Internal ={
 
     
     /**
-     * @param {Element404} element - The this object 
+     * @param {Element404} element404 - The this object 
      * @param {Element} domElement -The dom element
      * @param {{}} props - The props of element
      */
-    set_props(element,domElement,props){
+    set_props(element404,domElement,props){
         if(props === null || props === undefined){
             return
         }    
 
         if(typeof(props) !== 'object'){
-            throw TypeError("props of element: "+ element.root +" should be an object")
+            throw TypeError("props of element: "+ element404.root +" should be an object")
         }
 
         for (const key in props){
-            this.set_prop(element,domElement, key,props[key])
+            this.set_prop(element404,domElement, key,props[key])
         }
 
     },
     
 
     /**
-     * @param {Element404} element - The this object 
+     * @param {Element404} element404 - The this object 
      * @param {Element} domElement -The dom element
      * @param {{}} props - The props of element
      * @param {function | any} content - the content to render
      */
-    generate_component_reference(element,domElement,props,content){
-        Element404Internal.set_props(this,element,props)
+    generate_component_reference(element404,domElement,props,content){
+        this.set_props(element404,domElement,props)
 
         let is_a_function = typeof(content) === 'function'
         
@@ -98,28 +98,26 @@ let  Element404Internal ={
         }
     },
 
-
-
     /**
-     * @param {Element404} element - The this object 
+     * @param {Element404} element404 - The this object 
      * @param {string} tag - The tag of the element
      * @param {{}} props -The props of elemment
      * @param {function | string} content - The content of the element
      */
 
-    sub_component(element, tag,props,content){
+    sub_component(element404, tag,props,content){
 
         if(tag === null){
             let node = document.createTextNode(content)
-            element.root.appendChild(node)
+            element404.root.appendChild(node)
             return
         }
 
         let domElement = document.createElement(tag)
 
-        element.root.appendChild(element)
+        element404.root.appendChild(element)
 
-        this.generate_component_reference(element,domElement,props,content)
+        this.generate_component_reference(element404,domElement,props,content)
         
     }
 }
