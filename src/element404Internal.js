@@ -30,10 +30,10 @@ let  Element404Internal ={
         if(typeof(value) === 'function'){
 
             let callback = ()=>{
-                value(element404)            
+                value(domElement)            
                 element404.generator()
                 element404.target.innerHTML= ''
-                element404.target.appendChild(domElement.root)
+                element404.target.appendChild(domElement)
             }
 
             domElement.addEventListener(key,callback)
