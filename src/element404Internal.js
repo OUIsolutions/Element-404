@@ -31,9 +31,7 @@ let  Element404Internal ={
 
             let callback = ()=>{
                 value(domElement)            
-                element404.generator()
-                element404.target.innerHTML= ''
-                element404.target.appendChild(domElement)
+                element404.render()
             }
 
             domElement.addEventListener(key,callback)

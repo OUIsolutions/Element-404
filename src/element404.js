@@ -134,7 +134,10 @@ class Element404{
      * @param {Element} target - The target you want to render
      */
     render(target){
-        this.target = target
+        if(target){
+            this.target = target
+        }
+        
         this.target.innerHTML = ''
         this.generator()
         target.appendChild(this.root)
