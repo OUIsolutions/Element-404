@@ -8,7 +8,7 @@ let  Element404Internal ={
     create_object_style(domElement,style_value){
         let style_string = ""
         for (const key in style_value){
-            style_string+= `${key}=${style_value[key]};`
+            style_string+= `${key}:${style_value[key]};`
         }
         console.log(style_string)
         domElement.setAttribute('style',style_string)

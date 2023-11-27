@@ -7,13 +7,13 @@ let e = new Element404()
 
 e.div({'test':'aa'},()=>{
 
-     e.h1({style:{collor:'red'}},  "the value is" + value)
+     e.h1({style:{color:'red'}},  "the value is" + value)
      console.log('chamou')
 
      e.input({focusout:(input)=> input_value  =input.value })
-     
+
+
      e.br()
- 
      e.text('the value of the input its'+input_value)
      e.br()
      e.br()
