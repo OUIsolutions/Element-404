@@ -1,10 +1,6 @@
 
 
-/**
- * @param {string} tag - The tag of the element
- * @param {{}} props -The props of elemment
- * @param {function | string} content - The content of the element
- */
+
 Element404.prototype.create=function(tag,props,content){
 
 
@@ -26,10 +22,6 @@ Element404.prototype.create=function(tag,props,content){
 }   
 
 
-
-/**
- * @param {Element} target - The target you want to render
-*/
 Element404.prototype.render= function(target){
     if(target){
         this.target = target

@@ -5,6 +5,7 @@ let value = 0;
 let input_value = ''
 let e = new Element404()
 
+
 e.div({'test':'aa'},()=>{
 
      e.h1({style:{color:'red','font-size':'30px'}},  "the value is" + value)

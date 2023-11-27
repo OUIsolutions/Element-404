@@ -1,10 +1,7 @@
 
 
 
-/**
-* @param {Element} domElement -The dom element
-* @param {{}} value - The value of the style tag to iterate
-*/
+
 Element404.prototype.create_object_style = function(domElement,style_value){
     let style_string = ""
     for (const key in style_value){
@@ -16,11 +13,7 @@ Element404.prototype.create_object_style = function(domElement,style_value){
 
 
 
-/**
- * @param {Element} domElement -The dom element
- * @param {string} key - The key of the prop
- * @param {function | string | {}} value - The value of the element (objects are only vallid for stye tag)
- */
+
 Element404.prototype.set_prop = function(domElement,key,value){
         
     if(typeof(value) === 'function'){
@@ -44,10 +37,7 @@ Element404.prototype.set_prop = function(domElement,key,value){
 }
 
 
-/**
- * @param {Element} domElement -The dom element
- * @param {{}} props - The props of element
- */
+
 Element404.prototype.set_props = function(domElement,props){
     if(props === null || props === undefined){
         return
@@ -63,12 +53,6 @@ Element404.prototype.set_props = function(domElement,props){
 
 }
 
-
-/**
- * @param {Element} domElement -The dom element
- * @param {{}} props - The props of element
- * @param {function | any} content - the content to render
- */
 Element404.prototype.generate_component_reference=function(domElement,props,content){
     this.set_props(domElement,props)
 
@@ -89,11 +73,6 @@ Element404.prototype.generate_component_reference=function(domElement,props,cont
     }
 }
 
-/**
- * @param {string} tag - The tag of the element
- * @param {{}} props -The props of elemment
- * @param {function | string} content - The content of the element
- */
 
 Element404.prototype.sub_component=function( tag,props,content){
 
