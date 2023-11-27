@@ -1,9 +1,6 @@
 
 let  Element404Internal ={
     
-
-
-
     /**
      * @param {Element} domElement -The dom element
     * @param {{}} value - The value of the style tag to iterate

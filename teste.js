@@ -1,6 +1,6 @@
 
 
-
+/*
 let value = 0;
 let input_value = ''
 let e = new Element404()
@@ -26,3 +26,19 @@ e.div({'test':'aa'},()=>{
 
 
 e.render(document.body)
+*/
+
+
+function Teste(){
+    this.value = 20
+}
+
+Teste.prototype.metodo = function(){
+     this.value = 40
+}
+
+
+r = new Teste()
+r.metodo()
+console.log(r.value)
+
