@@ -3,7 +3,7 @@
 class StateInput{
     constructor(element404,name, props){
         this.element404 = element404
-        this.value = null =this.element404.state[name]
+        this.value =this.element404.state[name]
         this.name = name
         this.props = props
     }
