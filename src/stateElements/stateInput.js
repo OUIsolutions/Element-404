@@ -16,15 +16,16 @@ class StateInput{
     }
 
     implement(){
-        let element404 = this.element404
-        let name = this.name
-        
-        let formated_props = {
-            focusout: function(input){
-                element404.state[name] = input.value
-            }
-        }    
 
+        
+        let state_modifier = (input)=>{
+            this.element404.state[this.name] = input.value
+
+        }
+
+        let formated_props = {
+            focusout: state_modifier
+        }    
         
         if(this.value != null){
             formated_props[value] = this.value
@@ -32,6 +33,6 @@ class StateInput{
         for (const key in this.props){
             formated_props[key] = this.props[key]
         }
-        element404.input(formated_props)
+        this.element404.input(formated_props)
     }
 }
