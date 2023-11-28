@@ -12,7 +12,7 @@ class StateInput{
         }
 
         this.name = name
-        this.props = props
+        this.props = props ? props:{}
     }
 
     implement(){
@@ -30,9 +30,13 @@ class StateInput{
         if(this.value != null){
             formated_props[value] = this.value
         }
+        console.log("props formatadas" ,formated_props)
+
         for (const key in this.props){
             formated_props[key] = this.props[key]
         }
+
+
         this.element404.input(formated_props)
     }
 }
