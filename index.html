@@ -8,13 +8,13 @@
     <script src="src/element404/internal_methods.js"></script>
     <script src="src/element404/main_methods.js"></script>
     <script src="src/element404/tags.js"></script>
+    <script src="src/stateElements/stateInput.js"></script>
 
 </head>
 <body>
     <script>
 
             let value = 0;
-            let input_value = ''
             let e = new Element404()
 
             
@@ -23,11 +23,11 @@
                 e.h1({style:{color:'red','font-size':'30px'}},  "the value is" + value)
                 console.log('chamou')
 
-                e.input( {focusout:(input)=> input_value  =input.value,'value':input_value})
+                let x = e.StateInput('aaaaa')
 
-                
+            
                 e.br()
-                e.text('the value of the input its'+input_value)
+                e.text('the value of the input its',x.value)
                 e.br()
                 e.br()
 

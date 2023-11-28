@@ -7,9 +7,9 @@ class StateInput{
         this.name = name
         this.props = props
     }
-    
+
     implement(){
-        formated_props = {
+        let formated_props = {
             value:this.value,
             focusout: (input)=>{element404.state[this.name] = input.value}
         }    

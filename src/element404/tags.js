@@ -8,6 +8,10 @@ Element404.prototype.input=function(props){
 }
 
 
+Element404.prototype.stateInput=function(name,props){
+    return StateInput(this,name,props)
+}
+
 Element404.prototype.div=function(props,content){
     this.create('div',props,content)
 }
