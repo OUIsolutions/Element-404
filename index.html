@@ -20,12 +20,10 @@
             
             e.div({'test':'aa'},()=>{
 
-                e.h1({style:{color:'red','font-size':'30px'}},  "the value is" + value)
-                console.log('chamou')
-
                 let x = e.StateInput('aaaaa')
 
-            
+                e.h1({style:{color:'red','font-size':'30px'}},  "the value is" + value)
+                x.implement()
                 e.br()
                 e.text('the value of the input its',x.value)
                 e.br()
