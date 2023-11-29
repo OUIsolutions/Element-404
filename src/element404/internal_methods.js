@@ -32,9 +32,9 @@ Element404.prototype.set_prop = function(domElement,key,value){
         this.create_object_style(domElement,value)
         return
     }
-
     domElement.setAttribute(key,value)
 }
+
 
 
 

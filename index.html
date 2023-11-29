@@ -14,7 +14,7 @@
 <body>
     <script>
 
-            let value = 0;
+            let num_value = 0;
             let e = new Element404()
 
             
@@ -22,15 +22,15 @@
 
                 let x = e.StateInput('aaaaa',{placeholder:'aaaa'})
 
-                e.h1({style:{color:'red','font-size':'30px'}},  "the value is" + value)
+                e.h1({style:{color:'red','font-size':'30px'}},  "the value is" + num_value)
                 x.implement()
                 e.br()
                 e.text('the value of the input its',x.value)
                 e.br()
                 e.br()
 
-                e.button({click: ()=> value-=1 },'remover')
-                e.button({click: ()=>value+=1 },'adionar')
+                e.button({click: ()=> num_value-=1 },'remover')
+                e.button({click: ()=>num_value+=1 },'adionar')
             })
             e.render(document.body)
 

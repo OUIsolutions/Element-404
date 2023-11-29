@@ -16,7 +16,6 @@ class StateInput{
     }
 
     implement(){
-
         
         let state_modifier = (input)=>{
             this.element404.state[this.name] = input.value
@@ -28,9 +27,8 @@ class StateInput{
         }    
         
         if(this.value != null){
-            formated_props[value] = this.value
+            formated_props['value'] = this.value
         }
-        console.log("props formatadas" ,formated_props)
 
         for (const key in this.props){
             formated_props[key] = this.props[key]
