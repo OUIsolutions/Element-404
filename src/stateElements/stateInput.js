@@ -27,7 +27,7 @@ class StateInput{
         }    
         
         if(this.value != null){
-            formated_props['value'] = this.value
+            formated_props.value  = this.value
         }
 
         for (const key in this.props){
