@@ -10,7 +10,6 @@ class StateInput{
         if(old_answer){
             this.value = old_answer
         }
-
         this.name = name
         this.props = props ? props:{}
     }

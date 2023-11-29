@@ -7,7 +7,6 @@ Element404.prototype.create_object_style = function(domElement,style_value){
     for (const key in style_value){
         style_string+= `${key}:${style_value[key]};`
     }
-    console.log(style_string)
     domElement.setAttribute('style',style_string)
 }
 
