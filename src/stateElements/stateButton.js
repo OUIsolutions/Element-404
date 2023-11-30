@@ -11,7 +11,7 @@ class StateButton{
     
         let old_answer =this.element404.state[name]
         
-        if(old_answer){
+        if(old_answer != null){
             this.value = old_answer
         }
         
