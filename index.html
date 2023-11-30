@@ -33,15 +33,21 @@
                 }
 
 
-                
                 let abrir = e.StateButton('popUp',true,"abrir")
+                abrir.implement()
+
+
                 let fechar = e.StateButton('popUp',false,"fechar")
-                
+                fechar.implement()
+
+
+
                 if(abrir.value == true){
                     e.text("PopPup abriu ")
                 }
 
-                if(abrir.value == false){
+
+                if(fechar.value == false){
                     e.text("PopPup fechou ")
 
                 }
