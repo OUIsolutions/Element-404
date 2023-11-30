@@ -14,8 +14,39 @@
             let e = new Element404()
 
             
-            e.div(null,()=>{
+            e.div({'test':'aa'},()=>{
 
+                let x = e.StateInput('aaaaa',null)
+                
+
+                e.h1({style:{color:'red','font-size':'30px'}},  "the value is" + num_value)
+                x.implement()
+                e.br()
+            
+                if(x.value == 'Mateus'){
+                    e.text('Eai mateus suave')
+                }
+                
+                let abrir = e.StateButton('popUp',true,"abrir")
+                abrir.implement()
+                let fechar = e.StateButton('popUp',false,"fechar")
+                fechar.implement()
+
+                console.log(fechar)
+
+
+                if(abrir.value == true){
+                    e.text("PopPup abriu ")
+                }
+
+                
+                if(fechar.value == false){
+                    
+                    e.text("PopPup fechou ")
+
+                }
+                e.br()
+                e.br()
 
             })
             e.render(document.body)
