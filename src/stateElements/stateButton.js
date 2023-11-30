@@ -1,10 +1,14 @@
 
 
-class StateInput{
-    constructor(element404,name, props){
+class StateButton{
+    constructor(element404,name,value, content, props){
         
         this.element404 = element404
+        this.setter_value = value
+        this.content = content
+
         this.value = null
+    
         let old_answer =this.element404.state[name]
         
         if(old_answer){
@@ -17,13 +21,13 @@ class StateInput{
 
     implement(){
         
-        let state_modifier = (input)=>{
-            this.element404.state[this.name] = input.value
+        let state_modifier = ()=>{
+            this.element404.state[this.name] = this.setter_value
 
         }
 
         let formated_props = {
-            focusout: state_modifier
+            click: state_modifier
         }    
         
         if(this.value != null){
@@ -35,6 +39,6 @@ class StateInput{
         }
 
 
-        this.element404.input(formated_props)
+        this.element404.button(formated_props,this.content)
     }
 }
