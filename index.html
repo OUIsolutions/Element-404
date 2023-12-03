@@ -20,13 +20,15 @@
             
             e.div(null,()=>{
             
-                let nome = e.getState("nome")
+                let nome = e.getState("nome","")
+
+
                 e.input({
                     focusout:(valor)=>{nome.setValue(valor)},
                     placeholder:"digiteo nome"
-                
                 })
                 
+
                 e.br()
                 
                 e.text("o valor do estado é"+nome.getValue())

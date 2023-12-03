@@ -2,10 +2,13 @@
 
 class State{
     
-    constructor(element404,name){
+    constructor(element404,name,defaultValue){
         this.name = name
         this.element404 = element404
-    
+        if(!this.getValue()&& defaultValue !== undefined){
+            this.setValue(defaultValue)
+        }
+
 
     }
     getValue(){
@@ -18,10 +21,10 @@ class State{
             this.element404.state[this.name] = value.value
             return
         }
-
-
         this.element404.state[this.name] = value
     }
+
+
 
 
 }
