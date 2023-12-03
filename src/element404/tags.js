@@ -8,13 +8,6 @@ Element404.prototype.input=function(props){
 }
 
 
-Element404.prototype.StateInput=function(name,props){
-    return new StateInput(this,name,props)
-}
-
-Element404.prototype.StateButton=function(name,value,content,props){
-    return new StateButton(this,name,value,content,props)
-}
 
 Element404.prototype.div=function(props,content){
     this.create('div',props,content)

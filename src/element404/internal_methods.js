@@ -11,6 +11,10 @@ Element404.prototype.create_object_style = function(domElement,style_value){
 }
 
 
+Element404.prototype.getState = function(name){
+    return new State(this,name)
+}
+
 
 
 Element404.prototype.set_prop = function(domElement,key,value){
