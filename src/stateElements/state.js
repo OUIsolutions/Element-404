@@ -9,9 +9,9 @@ class State{
 
     }
     getValue(){
-        return  element404.state[this.name]
+        return  this.element404.state[this.name]
     }
-    
+
     setValue(value){
 
         if(value.value != undefined){

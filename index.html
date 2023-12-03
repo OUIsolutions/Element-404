@@ -22,14 +22,14 @@
             
                 let nome = e.getState("nome")
                 e.input({
-                    focusout:(valor)=>{console.log(valor)},
+                    focusout:(valor)=>{nome.setValue(valor)},
                     placeholder:"digiteo nome"
                 
                 })
                 
                 e.br()
                 
-                e.text("o valor do estado é"+nome.value)
+                e.text("o valor do estado é"+nome.getValue())
             })
 
 
