@@ -9,7 +9,13 @@ class State{
 
     }
     set(value){
-        
+
+        if(value.value != undefined){
+            this.element404.state[this.name] = value
+            this.value   = value
+            return
+        }
+
         this.element404.state[this.name] = value
         this.value   = value
     }
