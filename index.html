@@ -22,7 +22,7 @@
             
                 let nome = e.getState("nome")
                 e.input({
-                    focusout:(input)=>{nome.set(input)},
+                    focusout:(valor)=>{console.log(valor)},
                     placeholder:"digiteo nome"
                 
                 })
