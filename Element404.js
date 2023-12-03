@@ -8,9 +8,6 @@ function Element404(){
 
 
 
-
-
-
 Element404.prototype.create_object_style = function(domElement,style_value){
     let style_string = ""
     for (const key in style_value){
