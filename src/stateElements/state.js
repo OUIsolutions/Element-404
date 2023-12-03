@@ -15,9 +15,10 @@ class State{
     setValue(value){
 
         if(value.value != undefined){
-            this.element404.state[this.name] = value
+            this.element404.state[this.name] = value.value
             return
         }
+
 
         this.element404.state[this.name] = value
     }
