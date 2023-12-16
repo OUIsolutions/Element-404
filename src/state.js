@@ -98,7 +98,7 @@ Element404.prototype.stateDecrease = function(state, name, value, content,  tag=
 /**
 * @param {object} state
 * @param {string} name
-* @param {Array | Object} options
+* @param {Array<string> | Object} options
 * @param {object} props
 */
 Element404.prototype.stateSelect = function(state,name,options,props=null){
@@ -151,10 +151,9 @@ Element404.prototype.stateSetter = function(
     state,
     name,
     value,
-    props_if_true,
-    props_if_false,
-    content,
-    tag='button'){
+    selected_value,
+    unselected_value
+    ){
 
 
     let old_value = state[name];
@@ -166,19 +165,20 @@ Element404.prototype.stateSetter = function(
             this.render();
         }
     }
-    
-    if(old_value === value){
-        for(let key in props_if_true){
-            formatted_props[key] = props_if_true[key];
-        }
+    let is_selected = old_value === value;
+    /**@type {object}*/
+    let corresponded_value= is_selected ? selected_value: unselected_value;
+    let props = corresponded_value.props;
+
+    /**@type {string}*/
+    let tag = corresponded_value.tag ? corresponded_value.tag: "button";
+    let content = corresponded_value.content;
+
+    for(let key in props){
+        formatted_props[key] = props[key];
     }
-    
-    if (old_value !== value){
-        for(let key in props_if_false){
-            formatted_props[key] = props_if_false[key];
-        }
-    }
-    
+
     this.create(tag,content,formatted_props);
+
 
 }
