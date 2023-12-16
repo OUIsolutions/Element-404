@@ -146,7 +146,7 @@ Element404.prototype.stateSetter = function(
     tag='button'){
 
 
-    let old_value = Number(state[name]);
+    let old_value = state[name];
 
     let formated_props = {
         render_click:()=>{
@@ -155,6 +155,7 @@ Element404.prototype.stateSetter = function(
             this.render();
         }
     }
+    
     if(old_value === value){
         for(let key in seted_props){
             formated_props[key] = seted_props[key];
