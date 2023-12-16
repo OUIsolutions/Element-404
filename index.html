@@ -14,6 +14,8 @@
         let target = document.body;
         let element = createElement404((main_interface)=>{
                 
+            main_interface.stateSelect(data,"gender",["Man","Woman"]);
+            main_interface.br()
 
             main_interface.stateInput(data,"num",{placeholder:"num"})
             main_interface.stateDecreaser(data,"num",1,{},"-")
