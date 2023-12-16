@@ -8,9 +8,10 @@
 </head>
 <body>
     <script>
-        let user_data = {
+        var user_data = {
      
         }
+
         let target = document.body;
         let element = createElement404((main_interface)=>{
 
@@ -21,8 +22,9 @@
 
             main_interface.stateInput(user_data,"password",{placeholder:"password"})
             
-
-            main_interface.button({click:()=>{console.log(user_data)}},"veiw")
+            main_interface.p({},`name: ${user_data.name}`)
+            main_interface.p({},`email: ${user_data.email}`)
+            main_interface.p({},`password: ${user_data.password}`)
         
         },target)
         element.render()
