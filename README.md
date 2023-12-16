@@ -228,4 +228,53 @@ you just need to pass the container and the props you want to  pass
 ```
 
 ## State Setter 
-With State Setters you can generate an button that w
+With State Setters you can generate an button that will define an especific state 
+predetermined 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Element404.js"></script>
+</head>
+<body>
+    <script>
+        var data = {}
+
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+            let seted_props = {
+                style:{
+                    color:"red"
+                }
+            }
+            let unseted_props = {
+                style:{
+                    color:"blue"
+                }
+            }
+            main_interface.stateSetter(data,"page","home",seted_props,unseted_props,"Home");
+            main_interface.stateSetter(data,"page","about",seted_props,unseted_props,"About");
+
+            if(data.page == "home"){
+                main_interface.h1({},"you are in home page")
+            }
+            else if(data.page == "about"){
+                main_interface.h1({},"you are in about page")
+            }
+
+            else{
+                main_interface.h1({},"404")
+            }
+        },target)
+        element.render()
+           
+
+
+    </script>
+
+</body>
+</html>
+```
