@@ -360,6 +360,7 @@ Element404.prototype.stateInput= function(state,name,props) {
     }
 
     this.input(formated_props);
+
 }
 
 
@@ -387,6 +388,7 @@ Element404.prototype.stateIncreaser = function(state,name,value,props,content,ta
         formated_props[key] = props[key];
     }
     this.create(tag,formated_props,content);
+
 }
 
 /**
@@ -413,9 +415,16 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,content,ta
         formated_props[key] = props[key];
     }
     this.create(tag,formated_props,content);
+
+
 }
 
-
+/**
+* @param {object} state
+* @param {string} name
+* @param {Array | Object} options
+* @param {object} props
+*/
 Element404.prototype.stateSelect = function(state,name,options,props){
 
     let formated_props = {
@@ -456,5 +465,6 @@ Element404.prototype.stateSelect = function(state,name,options,props){
             });
         });        
     }
+
 }
 
