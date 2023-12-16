@@ -1,10 +1,10 @@
 
 targets = [
-    'Element404.js',
-    'internal_methods.js',
-    'main_methods.js',
-    'tags.js',
-    'state.js',
+    'Element404/Element404.js',
+    'Element404/internal_methods.js',
+    'Element404/main_methods.js',
+    'Element404/tags.js',
+    'Element404/state.js',
 
 ]
 
