@@ -150,27 +150,27 @@ var user_data = {
 let target = document.body;
 let element = createElement404((main_interface)=>{
 
+
     main_interface.stateInput(user_data,"name",{placeholder:"name"})
     main_interface.br()
     main_interface.stateInput(user_data,"email",{placeholder:"email"})
     main_interface.br()
     main_interface.stateInput(user_data,"age",{placeholder:"age"})
-    main_interface.stateDecreaser(user_data,"age",1,{},"-")
-    main_interface.stateIncreaser(user_data,"age",1,{},"+")
+    main_interface.stateDecrease(user_data,"age",1,"-")
+    main_interface.stateIncrease(user_data,"age",1,"+")
     main_interface.br()
     main_interface.stateSelect(user_data,"gender",["Man","Woman"])
     main_interface.br()
 
-    main_interface.stateInput(user_data,"password",{placeholder:"password"})
-    main_interface.p({},`name: ${user_data.name}`)
-    main_interface.p({},`email: ${user_data.email}`)
-    main_interface.p({},`password: ${user_data.password}`)
-    main_interface.p({},`age: ${user_data.age}`)
-    main_interface.p({},`gender ${user_data.gender}`)
+    main_interface.stateInput(user_data,"password",{placeholder:"password",type:"password"})
+    main_interface.p(`name: ${user_data.name}`)
+    main_interface.p(`email: ${user_data.email}`)
+    main_interface.p(`password: ${user_data.password}`)
+    main_interface.p(`age: ${user_data.age}`)
+    main_interface.p(`gender ${user_data.gender}`)
 
 },target)
 element.render()
-    
 
 
 

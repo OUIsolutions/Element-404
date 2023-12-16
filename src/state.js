@@ -142,7 +142,7 @@ Element404.prototype.stateSelect = function(state,name,options,props=null){
 
             }
         }
-        
+
     ,formatted_props);
 }
 
