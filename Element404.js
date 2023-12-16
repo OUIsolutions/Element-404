@@ -320,7 +320,6 @@ Element404.prototype.br=function(){
  */
 Element404.prototype.stateInput= function(state,name,props) {
 
-
     let old_value = state[name];
 
     let formated_props = {
@@ -342,6 +341,23 @@ Element404.prototype.stateInput= function(state,name,props) {
     }
 
     this.input(formated_props);
-    return old_value;
 }
 
+
+Element404.prototype.stateIncreaser = function(state,name,value,props,text){
+
+    let formated_props = {
+        render_click:()=>{
+            let old_value = Number(state[name]);
+            if(!old_value){
+                old_value = 0;
+            }
+            state[name] = old_value+value;
+            this.render();
+        }
+    }
+    for(let key in props){
+        formated_props[key] = props[key];
+    }
+    this.button(formated_props,text);
+}

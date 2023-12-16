@@ -201,7 +201,9 @@ you just need to pass the container and the props you want to  pass
             main_interface.br()
             main_interface.stateInput(user_data,"email",{placeholder:"email"})
             main_interface.br()
-
+            main_interface.stateInput(user_data,"age",{placeholder:"age"})
+            main_interface.stateIncreaser(user_data,"age","add age");
+            
             main_interface.stateInput(user_data,"password",{placeholder:"password"})
             
             main_interface.p({},`name: ${user_data.name}`)
