@@ -13,7 +13,7 @@ Element404.prototype.input=function(props=null){
 
 
 /**
- * Creates an function
+ * Creates a function
  * @param {function || string || null} content the internal content
  * @param {object || null} props The object props
  * @returns {Element404}
@@ -142,7 +142,7 @@ Element404.prototype.tr=function(content,props=null){
 
 
 /**
- * Creates an th
+ * Creates a th
  * @param {function | string} content the internal content
  * @param {object} props The object props
  * @returns {Element404}

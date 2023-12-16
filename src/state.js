@@ -63,7 +63,7 @@ Element404.prototype.stateIncrease = function(state, name, value, props, content
     for(let key in props){
         formatted_props[key] = props[key];
     }
-    this.create(tag,formatted_props,content);
+    this.create(tag,content,formatted_props);
 
 }
 
@@ -90,7 +90,7 @@ Element404.prototype.stateDecrease = function(state, name, value, props, content
     for(let key in props){
         formatted_props[key] = props[key];
     }
-    this.create(tag,formatted_props,content);
+    this.create(tag,content,formatted_props);
 
 
 }
@@ -120,27 +120,27 @@ Element404.prototype.stateSelect = function(state,name,options,props){
 
     
     if(options.constructor.name === 'Object'){
-        this.select(formatted_props,()=>{
+        this.select(()=>{
             for(let key in options){
                 if(key === state[name]){
-                    this.option({value:key,selected:true},options[key]);
+                    this.option(options[key],{"value":key,"selected":true});
                     continue;
                 }
-                this.option({value:key},options[key]);
+                this.option(options[key],{"value":key});
             }
-        });        
+        },formatted_props);
     }
     
 
     if(options.constructor.name === 'Array'){
-        this.select(formatted_props,()=>{
+        this.select(()=>{
             options.forEach((option)=>{
                 if(option === state[name]){
-                    this.option({value:option,selected:true},option);
+                    this.option(option,{"value":option,"selected":true});
                     return;
                 }
-                this.option({value:option},option);
-            });
+                this.option(option,{"value":option});
+            },formatted_props);
         });        
     }
 
@@ -179,6 +179,6 @@ Element404.prototype.stateSetter = function(
         }
     }
     
-    this.create(tag,formatted_props,content);
+    this.create(tag,content,formatted_props);
 
 }
