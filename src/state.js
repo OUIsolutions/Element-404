@@ -7,7 +7,6 @@
  */
 Element404.prototype.stateInput= function(state,name,props) {
 
-
     let old_value = state[name];
 
     let formated_props = {
