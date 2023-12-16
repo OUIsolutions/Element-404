@@ -5,6 +5,9 @@ An Extremely simple JS library to create Reactive UIS.
 These Lib it's not production ready yet, and if you want to use into your application
 make sure to save the current release, and be ready for bugs.
 
+## Contributions
+If you want to contribute, just read the TODO.md and then, implement the required feature.
+
 ## Install
 Just download the **Element404.js** file into your project and then reference into your html
 
