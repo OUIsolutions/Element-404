@@ -7,8 +7,6 @@
         this.root = document.createDocumentFragment();
         /** @type {function} */
         this.generator = ()=>{generator(this)}
-        /** @type {boolean} */ 
-        this.locked = false
         /** @type {HTMLElement} */  
         this.target = target;
  }
@@ -53,9 +51,6 @@ Element404.prototype.set_prop = function(domElement,key,value){
     if(typeof(value) === 'function'){
 
         let callback = ()=>{
-            if(this.locked){
-                return;
-            }
 
             value(domElement)
             if(key.startsWith('render_')){
@@ -171,20 +166,6 @@ Element404.prototype.render= function(){
 }
 
 
-
-
-Element404.prototype.lock=function( ){
-    this.locked = true
-}
-
-
-Element404.prototype.waitLock=function( ){
-    while (this.locked){}
-}
-
-Element404.prototype.unlock=function( ){
-    this.locked = false
-}
 
 
 

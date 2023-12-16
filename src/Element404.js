@@ -7,8 +7,6 @@
         this.root = document.createDocumentFragment();
         /** @type {function} */
         this.generator = ()=>{generator(this)}
-        /** @type {boolean} */ 
-        this.locked = false
         /** @type {HTMLElement} */  
         this.target = target;
  }
