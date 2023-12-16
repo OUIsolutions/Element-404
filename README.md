@@ -1,6 +1,9 @@
 # Element-404
 An Extremely simple JS library to create Reactive UIS.
 
+## Disclaimers
+These Lib it's not production ready yet, and if you want to use into your application
+make sure to save the current release, and be ready for bugs.
 
 ## Install
 Just download the **Element404.js** file into your project and then reference into your html
