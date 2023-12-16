@@ -68,9 +68,7 @@ Element404.prototype.set_props = function(domElement,props){
         return
     }    
 
-    if(typeof(props) !== 'object'){
-        throw TypeError("props of element: "+ this.root +" should be an object")
-    }
+
 
     for (const key in props){
         this.set_prop(domElement, key,props[key])
