@@ -1,9 +1,9 @@
 # Element-404
-An extremaly simple js framework to create Reactive UIS
+An Extremely simple JS library to create Reactive UIS.
 
-## Install 
 
-Just download the **Element404.js** file into your project an than reference into your html
+## Install
+Just download the **Element404.js** file into your project and then reference into your html
 
 ```html
 <!DOCTYPE html>
@@ -35,8 +35,8 @@ Just download the **Element404.js** file into your project an than reference int
 </html>
 ```
 ## Triggers
-for defining an trigger, you just need to pass, the trigger with the prefix "render_" if you want to update the ui
-
+for defining a trigger, you just need to pass, the trigger with the prefix "render_" if you want to update the ui
+otherwise just pass the trigger,but the ui will not be updated.
 ```js
 
 
@@ -61,8 +61,7 @@ element.render()
 
 
 ## Dealing with Inputs 
-
-
+If you don't want to use States, you can handle inputs, by using the normal input implementation
 ```js
 
 
@@ -93,7 +92,7 @@ element.render()
 ```
 
 ### Styling Elements
-You alson can aplly style to elements by using the **style** tag 
+You also can apply style to elements by using the **style** tag 
 
 ```js
     let target = document.body;
@@ -139,7 +138,7 @@ element.render()
 ```
 
 ## States  
-with The States system,you can generate interactive forms easly
+with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 ```js
 
@@ -177,10 +176,10 @@ element.render()
 ```
 
 ## State Setter 
-With State Setters you can generate an button that will define an especific state 
+With State Setters you can generate a button that will define a specific state 
 predetermined 
 ```js
-    var data = {}
+var data = {}
 
 let target = document.body;
 let element = createElement404((main_interface)=>{
