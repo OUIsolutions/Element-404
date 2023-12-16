@@ -48,8 +48,8 @@ Element404.prototype.h1=function(content,props=null){
 
 /**
  * Creates a h2
- * @param {function || string } content the internal content
- * @param {object } props The object props
+ * @param {function || string} content the internal content
+ * @param {object} props The object props
  * @returns {Element404}
  */
 Element404.prototype.h2=function(content,props=null){
@@ -132,10 +132,9 @@ Element404.prototype.td=function(content,props=null){
 /**
  * Creates a tr
  * @param {function | string} content the internal content
- * @param {object } props The object props
+ * @param {object} props The object props
  * @returns {Element404}
  */
-
 Element404.prototype.tr=function(content,props=null){
     return this.create('tr',content,props)
 }
@@ -163,7 +162,7 @@ Element404.prototype.text=function(message){
 /**
  * Creates a button
  * @param {function | string} content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 Element404.prototype.button=function(content,props=null){
