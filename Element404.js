@@ -250,6 +250,25 @@ Element404.prototype.h5=function(props,content){
 }
 
 /**
+ * Creates an select
+ * @param {object} props The object props
+ * @param {function | string} content the internal content
+ */
+Element404.prototype.select=function(props,content){
+    this.create('select',props,content)
+}
+
+/**
+ * Creates an option
+ * @param {object} props The object props
+ * @param {function | string} content the internal content
+ */
+Element404.prototype.option=function(props,content){
+    this.create('option',props,content)
+}
+
+
+/**
  * Creates an table
  * @param {object} props The object props
  * @param {function | string} content the internal content
@@ -396,4 +415,46 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,content,ta
     this.create(tag,formated_props,content);
 }
 
+
+Element404.prototype.stateSelect = function(state,name,options,props){
+
+    let formated_props = {
+        render_change:(select)=>{
+            
+            state[name] = select.value;
+           
+        }
+
+    }
+    
+    for(let key in props){
+        formated_props[key] = props[key];
+    }
+
+    
+    if(options.constructor.name === 'Object'){
+        this.select(formated_props,()=>{
+            for(let key in options){
+                if(key === state[name]){
+                    this.option({value:key,selected:true},options[key]);
+                    continue;
+                }
+                this.option({value:key},options[key]);
+            }
+        });        
+    }
+    
+
+    if(options.constructor.name === 'Array'){
+        this.select(formated_props,()=>{
+            options.forEach((option)=>{
+                if(option === state[name]){
+                    this.option({value:option,selected:true},option);
+                    return;
+                }
+                this.option({value:option},option);
+            });
+        });        
+    }
+}
 

@@ -80,10 +80,24 @@ Element404.prototype.h5=function(props,content){
     this.create('h5',props,content)
 }
 
-
+/**
+ * Creates an select
+ * @param {object} props The object props
+ * @param {function | string} content the internal content
+ */
 Element404.prototype.select=function(props,content){
     this.create('select',props,content)
 }
+
+/**
+ * Creates an option
+ * @param {object} props The object props
+ * @param {function | string} content the internal content
+ */
+Element404.prototype.option=function(props,content){
+    this.create('option',props,content)
+}
+
 
 /**
  * Creates an table
