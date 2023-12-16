@@ -18,7 +18,7 @@
  * @param {function} generator
  * @param {HTMLElement} target
  */
-export function  createElement404(generator,target){
+function  createElement404(generator,target){
      return new Element404(generator,target)
 }
 
