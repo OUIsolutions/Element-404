@@ -344,7 +344,15 @@ Element404.prototype.stateInput= function(state,name,props) {
 }
 
 
-Element404.prototype.stateIncreaser = function(state,name,value,props,text,tag='button'){
+/**
+ * @param {object} state
+ * @param {string} name
+ * @param {number} value
+ * @param {object} props
+ * @param {string} content
+ * @param {string} tag
+ */
+Element404.prototype.stateIncreaser = function(state,name,value,props,content,tag='button'){
 
     let formated_props = {
         render_click:()=>{
@@ -359,11 +367,18 @@ Element404.prototype.stateIncreaser = function(state,name,value,props,text,tag='
     for(let key in props){
         formated_props[key] = props[key];
     }
-    this.create(tag,formated_props,text);
+    this.create(tag,formated_props,content);
 }
 
-
-Element404.prototype.stateDecreaser = function(state,name,value,props,text,tag='button'){
+/**
+ * @param {object} state
+ * @param {string} name
+ * @param {number} value
+ * @param {object} props
+ * @param {string} content
+ * @param {string} tag
+ */
+Element404.prototype.stateDecreaser = function(state,name,value,props,content,tag='button'){
 
     let formated_props = {
         render_click:()=>{
@@ -378,7 +393,7 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,text,tag='
     for(let key in props){
         formated_props[key] = props[key];
     }
-    this.create(tag,formated_props,text);
+    this.create(tag,formated_props,content);
 }
 
 
