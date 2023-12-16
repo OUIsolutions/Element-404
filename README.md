@@ -40,19 +40,22 @@ for defining an trigger, you just need to pass, the trigger with the prefix "ren
 
 ```js
 
+
 var num =0;
 
 let target = document.body;
 let element = createElement404((main_interface)=>{
-    main_interface.div({},()=>{
-        main_interface.h1({},`the value of num is ${num}`)
-        main_interface.button({render_click:()=> num--},`remove 1 from num`)
-        main_interface.button({render_click:()=> num++},`add 1 to num`)
+    main_interface.div(()=>{
+        main_interface.h1(`the value of num is ${num}`)
+        main_interface.button(`remove 1 from num`,{render_click:()=> num--},)
+        main_interface.button(`add 1 to num`,{render_click:()=> num++})
+
     })
 
 },target)
 
 element.render()
+
     
 
 ```
