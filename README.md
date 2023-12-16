@@ -255,6 +255,7 @@ predetermined
                     color:"blue"
                 }
             }
+
             main_interface.stateSetter(data,"page","home",seted_props,unseted_props,"Home");
             main_interface.stateSetter(data,"page","about",seted_props,unseted_props,"About");
 
@@ -268,6 +269,70 @@ predetermined
             else{
                 main_interface.h1({},"404")
             }
+        },target)
+        element.render()
+           
+
+
+    </script>
+
+</body>
+</html>
+```
+
+## Locker 
+With Lockers , you can lock the entire UI, to avoid concurrency problems 
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Element404.js"></script>
+</head>
+<body>
+    <script>
+
+        var data = {}
+
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+                
+            main_interface.stateSelect(data,"gender",["Man","Woman"]);
+            main_interface.br()
+
+            main_interface.stateInput(data,"num",{placeholder:"num"})
+            main_interface.stateDecreaser(data,"num",1,{},"-")
+            main_interface.stateIncreaser(data,"num",1,{},"+")
+            main_interface.br()
+            
+            
+            if(main_interface.locked){
+                    main_interface.button({
+                    style:{color: "red"},
+                    unlockable_render_click:()=>{
+                        main_interface.unlock();
+                    }
+                    },"unlock")
+            }
+
+            if(!main_interface.locked){
+                main_interface.button({
+                    style:{color: "blue"},
+                    render_click:()=>{
+                        main_interface.lock();
+                        main_interface.render()
+                    }
+
+                },"lock")
+            }
+
+
+
+          
+         
         },target)
         element.render()
            
