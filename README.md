@@ -217,7 +217,6 @@ element.render()
 With Lockers , you can lock the entire UI, to avoid concurrency problems 
 ```js
 
-
 var data = {}
 
 let target = document.body;
