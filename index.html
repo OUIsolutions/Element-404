@@ -24,17 +24,16 @@
             if(main_interface.locked){
                     main_interface.button({
                     style:{color: "red"},
-                    unlockable_click:()=>{
+                    unlockable_render_click:()=>{
                         main_interface.unlock();
-                        main_interface.render()
                     }
                     },"unlock")
             }
-            
+
             if(!main_interface.locked){
                 main_interface.button({
                     style:{color: "blue"},
-                    click:()=>{
+                    render_click:()=>{
                         main_interface.lock();
                         main_interface.render()
                     }

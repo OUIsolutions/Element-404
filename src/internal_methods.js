@@ -28,13 +28,13 @@ Element404.prototype.set_prop = function(domElement,key,value){
     if(typeof(value) === 'function'){
 
         let callback = ()=>{
-            
+
             if(this.locked && key.includes('unlockable_') === false){
                 return;
             }
             
             value(domElement)
-            if(key.startsWith('render_')){
+            if(key.includes('render_')){
                 this.render()
             }
 
