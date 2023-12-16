@@ -175,3 +175,47 @@ You alson can aplly style to elements by using the **style** tag
 </body>
 </html>
 ```
+
+## States  
+with The States system,you can generate interactive forms easly
+you just need to pass the container and the props you want to  pass 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Element404.js"></script>
+</head>
+<body>
+    <script>
+        var user_data = {
+     
+        }
+
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+
+            main_interface.stateInput(user_data,"name",{placeholder:"name"})
+            main_interface.br()
+            main_interface.stateInput(user_data,"email",{placeholder:"email"})
+            main_interface.br()
+
+            main_interface.stateInput(user_data,"password",{placeholder:"password"})
+            
+            main_interface.p({},`name: ${user_data.name}`)
+            main_interface.p({},`email: ${user_data.email}`)
+            main_interface.p({},`password: ${user_data.password}`)
+        
+        },target)
+        element.render()
+           
+
+
+    </script>
+
+</body>
+</html>
+
+```
