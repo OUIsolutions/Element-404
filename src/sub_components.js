@@ -109,6 +109,7 @@ Element404.prototype.generate_component_reference=function(domElement,props,cont
  * @param {string} tag
  * @param {object} props
  * @param {string|function} content
+ * @returns {Element404}
  * */
 Element404.prototype.sub_component=function( tag,props,content){
 
@@ -124,6 +125,9 @@ Element404.prototype.sub_component=function( tag,props,content){
     this.generate_component_reference(domElement,props,content)
     this.root = old_root
 
+    let sub_element = new Element404();
+    sub_element.sub_element(this,domElement);
+    return sub_element
 }
 
 /**
