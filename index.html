@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,38 +8,20 @@
 </head>
 <body>
     <script>
+        let input_text =  ''
 
         let target = document.body;
         let element = createElement404((main_interface)=>{
-                let div_props = {
-                    style:{
-                        position:"absolute",
-                        top:"50vh",
-                        left:"50vw",
-                        transform:"translate(-50%,-50%)",
-                        width:"100%",
-                        "text-align":"center"
-                    }
+            
+            main_interface.input({
+                placeholder:'Type something',
+                value:input_text,
+                render_focusout:(input)=>{
+                    input_text = input.value
                 }
-                main_interface.div(div_props,()=>{
-                    let h1_props = {
-                        style:{
-                            "font-size":"10rem",
-                            "font-weight":"bold",
-                            color:"red"
-                        }
-                    }
-                    main_interface.h1(h1_props,"404")
+            })
 
-                    let h2_props = {
-                        style:{
-                            "font-size":"2rem",
-                            "font-weight":"bold",
-                            color:"red"
-                        }
-                    }
-                    main_interface.h2(h2_props,"Page Not Found")
-                })
+            main_interface.p({},`You typed: ${input_text}`)
 
 
         },target)
