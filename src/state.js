@@ -15,6 +15,7 @@ Element404.prototype.stateInput= function(state,name,props) {
             state[name] = input.value
         }
         
+        
     }
 
     if(old_value){

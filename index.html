@@ -8,24 +8,23 @@
 </head>
 <body>
     <script>
-        let input_text =  ''
-
+        let user_data = {
+     
+        }
         let target = document.body;
         let element = createElement404((main_interface)=>{
+
+            main_interface.stateInput(user_data,"name",{placeholder:"name"})
+            main_interface.br()
+            main_interface.stateInput(user_data,"email",{placeholder:"email"})
+            main_interface.br()
+
+            main_interface.stateInput(user_data,"password",{placeholder:"password"})
             
-            main_interface.input({
-                placeholder:'Type something',
-                value:input_text,
-                render_focusout:(input)=>{
-                    input_text = input.value
-                }
-            })
 
-            main_interface.p({},`You typed: ${input_text}`)
-
-
+            main_interface.button({click:()=>{console.log(user_data)}},"veiw")
+        
         },target)
-
         element.render()
            
 
