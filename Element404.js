@@ -468,3 +468,38 @@ Element404.prototype.stateSelect = function(state,name,options,props){
 
 }
 
+Element404.prototype.stateSeter = function(
+    state,
+    name,
+    value,
+    seted_props,
+    unseted_props,
+    content,
+    tag='button'){
+
+
+    let old_value = Number(state[name]);
+
+    let formated_props = {
+        render_click:()=>{
+            
+            state[name] = value;
+            this.render();
+        }
+    }
+    if(old_value === value){
+        for(let key in seted_props){
+            formated_props[key] = seted_props[key];
+        }
+    }
+    
+    if (old_value !== value){
+        for(let key in unseted_props){
+            formated_props[key] = unseted_props[key];
+        }
+    }
+    
+
+    this.create(tag,formated_props,content);
+}
+
