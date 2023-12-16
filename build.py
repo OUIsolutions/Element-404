@@ -1,8 +1,8 @@
 
 targets = [
-    'Element404.js',
-    'internal_methods.js',
-    'main_methods.js',
+    'constructors.js',
+    'sub_components.js',
+    'render.js',
     'locker.js',
     'tags.js',
     'state.js',

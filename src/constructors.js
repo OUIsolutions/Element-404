@@ -36,7 +36,7 @@ Element404.prototype.rootConstructor = function(generator,target){
      this.target = target;
 }
 
-Element404.prototype.sub_component = function(father,root){
+Element404.prototype.sub_element = function(father,root){
      this.father = father;
      this.root = root;
      this.child = true;     

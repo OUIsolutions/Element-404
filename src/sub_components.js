@@ -125,3 +125,15 @@ Element404.prototype.sub_component=function( tag,props,content){
     this.root = old_root
 
 }
+
+/**
+ * 
+ * @param {string } tag The tag of element
+ * @param {object} props The object props
+ * @param {fuction | string} content the internal content
+ */
+Element404.prototype.create=function(tag,props,content){
+
+   return  this.sub_component(tag,props,content)
+    
+}
