@@ -80,6 +80,11 @@ Element404.prototype.h5=function(props,content){
     this.create('h5',props,content)
 }
 
+
+Element404.prototype.select=function(props,content){
+    this.create('select',props,content)
+}
+
 /**
  * Creates an table
  * @param {object} props The object props

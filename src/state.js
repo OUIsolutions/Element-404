@@ -83,3 +83,21 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,content,ta
     this.create(tag,formated_props,content);
 }
 
+
+Element404.prototype.stateSelect = function(state,name,options,props){
+
+    let formated_props = {
+        change:(select)=>{
+            state[name] = select.value;
+            this.render();
+        }
+    }
+    for(let key in props){
+        formated_props[key] = props[key];
+    }
+    this.select(formated_props,()=>{
+        for(let option of options){
+            this.option({value:option},option);
+        }
+    });
+}
