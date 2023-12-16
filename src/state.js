@@ -12,10 +12,7 @@ Element404.prototype.stateInput= function(state,name,props) {
     let formated_props = {
 
         unlockable_keyup:(input)=>{
-            let old_value = state[name];
-            //avoiding to change the state if the input is locked
             if(this.locked){
-                state[name] = old_value;
                 this.render();
                 return;
             }
@@ -107,8 +104,10 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,content,ta
 Element404.prototype.stateSelect = function(state,name,options,props){
 
     let formated_props = {
-        render_change:(select)=>{
-            
+        unlockable_render_change:(select)=>{
+            if(this.locked){
+                return;
+            }
             state[name] = select.value;
            
         }
