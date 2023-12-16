@@ -5,7 +5,7 @@ An extremaly simple js framework to create Reactive UIS
 
 Just download the **Element404.js** file into your project an than reference into your html
 
-~~~html
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +34,5 @@ Just download the **Element404.js** file into your project an than reference int
 
 </body>
 </html>
-~~~
-
+```
 ## dd
