@@ -226,3 +226,6 @@ you just need to pass the container and the props you want to  pass
 </html>
 
 ```
+
+## State Setter 
+With State Setters you can generate an button that w

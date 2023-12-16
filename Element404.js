@@ -468,6 +468,7 @@ Element404.prototype.stateSelect = function(state,name,options,props){
 
 }
 
+
 Element404.prototype.stateSetter = function(
     state,
     name,
@@ -487,7 +488,6 @@ Element404.prototype.stateSetter = function(
             this.render();
         }
     }
-    console.log(old_value);
     
     if(old_value === value){
         for(let key in seted_props){
@@ -501,7 +501,7 @@ Element404.prototype.stateSetter = function(
         }
     }
     
-
     this.create(tag,formated_props,content);
+
 }
 

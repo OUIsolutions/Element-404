@@ -136,6 +136,7 @@ Element404.prototype.stateSelect = function(state,name,options,props){
 
 }
 
+
 Element404.prototype.stateSetter = function(
     state,
     name,
@@ -168,6 +169,6 @@ Element404.prototype.stateSetter = function(
         }
     }
     
-
     this.create(tag,formated_props,content);
+
 }
