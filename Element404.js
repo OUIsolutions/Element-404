@@ -5,6 +5,10 @@
  function Element404(generator,target){
         /** @type {DocumentFragment} */
         this.root = document.createDocumentFragment();
+
+        /** @type {boolean} */
+        this.locked = false;
+        
         /** @type {function} */
         this.generator = ()=>{generator(this)}
         /** @type {HTMLElement} */  
@@ -51,7 +55,10 @@ Element404.prototype.set_prop = function(domElement,key,value){
     if(typeof(value) === 'function'){
 
         let callback = ()=>{
-
+            if(this.locked){
+                return;
+            }
+            
             value(domElement)
             if(key.startsWith('render_')){
                 this.render()
@@ -164,6 +171,21 @@ Element404.prototype.render= function(){
     this.generator()
     this.target.appendChild(this.root)
 }
+
+
+
+
+Element404.prototype.lock=function(){
+
+    this.locked = true;
+    
+}
+
+Element404.prototype.unlock=function(){
+        this.locked = false;        
+}
+
+
 
 
 

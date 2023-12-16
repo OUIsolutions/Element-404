@@ -5,6 +5,10 @@
  function Element404(generator,target){
         /** @type {DocumentFragment} */
         this.root = document.createDocumentFragment();
+
+        /** @type {boolean} */
+        this.locked = false;
+        
         /** @type {function} */
         this.generator = ()=>{generator(this)}
         /** @type {HTMLElement} */  

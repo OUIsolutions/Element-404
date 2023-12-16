@@ -8,33 +8,27 @@
 </head>
 <body>
     <script>
-        var data = {}
+
+        var user_data = {}
 
         let target = document.body;
         let element = createElement404((main_interface)=>{
-            let seted_props = {
-                style:{
-                    color:"red"
-                }
-            }
-            let unseted_props = {
-                style:{
-                    color:"blue"
-                }
-            }
-            main_interface.stateSetter(data,"page","home",seted_props,unseted_props,"Home");
-            main_interface.stateSetter(data,"page","about",seted_props,unseted_props,"About");
 
-            if(data.page == "home"){
-                main_interface.h1({},"you are in home page")
-            }
-            else if(data.page == "about"){
-                main_interface.h1({},"you are in about page")
-            }
+            main_interface.stateInput(user_data,"num",{placeholder:"num"})
+            main_interface.stateDecreaser(user_data,"num",1,{},"-")
+            main_interface.stateIncreaser(user_data,"num",1,{},"+")
+            main_interface.br()
+            main_interface.button({
+                click:()=>{
+                    main_interface.lock();
+                    setTimeout(()=>{
+                        main_interface.unlock();
+                    },10000)
+                    
+                }
 
-            else{
-                main_interface.h1({},"404")
-            }
+            },"lock for 10s")
+         
         },target)
         element.render()
            
