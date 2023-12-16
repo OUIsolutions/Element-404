@@ -20,7 +20,7 @@
  * @param {HTMLElement} target
  */
 Element404.prototype.rootConstructor = function(generator,target){
-    /** @type {DocumentFragment} */
+    /** @type {DocumentFragment || HTMLElement} */
     this.root = document.createDocumentFragment();
     /** @type {function} */
     this.generator = ()=>{generator(this)}
@@ -28,10 +28,14 @@ Element404.prototype.rootConstructor = function(generator,target){
     this.target = target;
 }
 
+ /**
+  * @param {Element404} father
+  * @param {DocumentFragment || HTMLElement} root
+  */
 Element404.prototype.sub_element = function(father,root){
     /** @type {Element404} */
     this.father = father;
-    /** @type {DocumentFragment} */
+    /** @type {DocumentFragment || HTMLElement} */
     this.root = root;
 
      this.child = true;     
