@@ -9,7 +9,7 @@
 <body>
     <script>
         var user_data = {
-            age:0
+            age:18
         }
 
         let target = document.body;
@@ -20,7 +20,9 @@
             main_interface.stateInput(user_data,"email",{placeholder:"email"})
             main_interface.br()
             main_interface.stateInput(user_data,"age",{placeholder:"age"})
+            main_interface.stateDecreaser(user_data,"age",1,{},"-")
             main_interface.stateIncreaser(user_data,"age",1,{},"+")
+
             main_interface.br()
 
             main_interface.stateInput(user_data,"password",{placeholder:"password"})
