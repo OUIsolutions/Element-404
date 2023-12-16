@@ -18,6 +18,7 @@
 /**
  * @param {function} generator 
  * @param {HTMLElement} target
+ * @returns {Element404}
  */
 Element404.prototype.rootConstructor = function(generator,target){
     /** @type {DocumentFragment || HTMLElement} */
@@ -26,25 +27,28 @@ Element404.prototype.rootConstructor = function(generator,target){
     this.generator = ()=>{generator(this)}
     /** @type {HTMLElement} */
     this.target = target;
+    return this;
 }
 
  /**
   * @param {Element404} father
   * @param {DocumentFragment || HTMLElement ||  Text} root
+  * @returns {Element404}
   */
 Element404.prototype.sub_element = function(father,root){
     /** @type {Element404} */
     this.father = father;
     /** @type {DocumentFragment || HTMLElement ||  Text} */
     this.root = root;
-
-     this.child = true;     
+     this.child = true;
+     return this;
 } 
 
 
 /**
  * @param {function} generator
  * @param {HTMLElement} target
+ * @returns {Element404}
  */
 function  createElement404(generator,target){
      let created =  new Element404();

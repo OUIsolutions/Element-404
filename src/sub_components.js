@@ -60,7 +60,7 @@ Element404.prototype.set_prop = function(domElement,key,value){
 
 /**
  * @param {HTMLElement} domElement
- * @param {object || null} props
+ * @param {object } props
  *  */
 Element404.prototype.set_props = function(domElement,props){
     if(props === null || props === undefined){
@@ -79,8 +79,8 @@ Element404.prototype.set_props = function(domElement,props){
 
 /**
  * @param {HTMLElement} domElement
- * @param {string || function || null} content
- * @param {object || null} props
+ * @param {string || function } content
+ * @param {object } props
  * */
 Element404.prototype.generate_component_reference=function(domElement,content,props){
     this.set_props(domElement,props)
@@ -132,7 +132,7 @@ Element404.prototype.sub_component=function( tag,content,props){
 
 /**
  * 
- * @param {string || null } tag The tag of element
+ * @param {string || null} tag The tag of element
  * @param {function || string} content the internal content
  * @param {object} props The object props
  * @returns {Element404}

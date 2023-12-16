@@ -5,7 +5,7 @@
  * @param {string} name
  * @param {object} props
  */
-Element404.prototype.stateInput= function(state,name,props) {
+Element404.prototype.stateInput= function(state,name,props=null) {
 
     let old_value = state[name];
 
@@ -44,11 +44,11 @@ Element404.prototype.stateInput= function(state,name,props) {
  * @param {object} state
  * @param {string} name
  * @param {number} value
- * @param {object} props
  * @param {string} content
  * @param {string} tag
+ * @param {object} props
  */
-Element404.prototype.stateIncrease = function(state, name, value, props, content, tag='button'){
+Element404.prototype.stateIncrease = function(state, name, value, content, tag='button',props=null){
 
     let formatted_props = {
         render_click:()=>{
@@ -71,11 +71,11 @@ Element404.prototype.stateIncrease = function(state, name, value, props, content
  * @param {object} state
  * @param {string} name
  * @param {number} value
- * @param {object} props
  * @param {string} content
  * @param {string} tag
+ * @param {object} props
  */
-Element404.prototype.stateDecrease = function(state, name, value, props, content, tag='button'){
+Element404.prototype.stateDecrease = function(state, name, value, content,  tag='button',props=null){
 
     let formatted_props = {
         render_click:()=>{
@@ -101,7 +101,7 @@ Element404.prototype.stateDecrease = function(state, name, value, props, content
 * @param {Array | Object} options
 * @param {object} props
 */
-Element404.prototype.stateSelect = function(state,name,options,props){
+Element404.prototype.stateSelect = function(state,name,options,props=null){
 
     let formatted_props = {
         "not_lock_render_change":(select)=>{

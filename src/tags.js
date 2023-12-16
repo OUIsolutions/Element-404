@@ -4,7 +4,7 @@
 
 /**
  * Creates a form
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  * */
 Element404.prototype.input=function(props=null){
@@ -15,7 +15,7 @@ Element404.prototype.input=function(props=null){
 /**
  * Creates a function
  * @param {function || string || null} content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 Element404.prototype.div=function(content=null,props=null){
@@ -26,7 +26,7 @@ Element404.prototype.div=function(content=null,props=null){
 /**
  * Creates an paragraph
  * @param {function || string } content the internal content
- * @param {object || null} props The object props
+ * @param {object} props The object props
  * @returns {Element404}
  */
 Element404.prototype.p=function(content,props=null){
@@ -37,7 +37,7 @@ Element404.prototype.p=function(content,props=null){
 /**
  * Creates a h1
  * @param {function || string } content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 Element404.prototype.h1=function(content,props=null){
@@ -49,7 +49,7 @@ Element404.prototype.h1=function(content,props=null){
 /**
  * Creates a h2
  * @param {function || string } content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 Element404.prototype.h2=function(content,props=null){
@@ -61,7 +61,7 @@ Element404.prototype.h2=function(content,props=null){
 /**
  * Creates an H3
  * @param {function | string} content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 Element404.prototype.h3=function(content,props=null){
@@ -70,7 +70,7 @@ Element404.prototype.h3=function(content,props=null){
 /**
  * Creates an H4
  * @param {function | string} content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 Element404.prototype.h4=function(content,props=null){
@@ -80,7 +80,7 @@ Element404.prototype.h4=function(content,props=null){
 
 /**
  * Creates a H5
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @param {function | string} content the internal content
  * @returns {Element404}
  */
@@ -90,7 +90,7 @@ Element404.prototype.h5=function(content,props=null){
 
 /**
  * Creates an select
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @param {function} content the internal content
  * @returns {Element404}
  */
@@ -101,7 +101,7 @@ Element404.prototype.select=function(content,props=null){
 /**
  * Creates an option
  * @param {function || string} content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 Element404.prototype.option=function(content,props=null){
@@ -112,7 +112,7 @@ Element404.prototype.option=function(content,props=null){
 /**
  * Creates a table
  * @param {function | string} content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 Element404.prototype.table=function(content,props){
@@ -121,7 +121,7 @@ Element404.prototype.table=function(content,props){
 
 /**
  * Creates a td
- * @param {object || null} props The object props
+ * @param {object} props The object props
  * @param {function | string} content the internal content
  * @returns {Element404}
  */
@@ -132,7 +132,7 @@ Element404.prototype.td=function(content,props=null){
 /**
  * Creates a tr
  * @param {function | string} content the internal content
- * @param {object || null} props The object props
+ * @param {object } props The object props
  * @returns {Element404}
  */
 
