@@ -28,7 +28,8 @@ Element404.prototype.set_prop = function(domElement,key,value){
     if(typeof(value) === 'function'){
 
         let callback = ()=>{
-            if(this.locked){
+            
+            if(this.locked && key.includes('unlockable_') === false){
                 return;
             }
             
@@ -38,7 +39,12 @@ Element404.prototype.set_prop = function(domElement,key,value){
             }
 
         }
-        domElement.addEventListener(key.replace('render_',''),callback)
+        let tags  = ['render_','unlockable_'];
+        let formated_key = key
+        for (let tag of tags){
+            formated_key = formated_key.replace(tag,'')
+        }
+        domElement.addEventListener(formated_key,callback)
         return
     }
 

@@ -9,25 +9,35 @@
 <body>
     <script>
 
-        var user_data = {}
+        var data = {}
 
         let target = document.body;
         let element = createElement404((main_interface)=>{
+                
 
-            main_interface.stateInput(user_data,"num",{placeholder:"num"})
-            main_interface.stateDecreaser(user_data,"num",1,{},"-")
-            main_interface.stateIncreaser(user_data,"num",1,{},"+")
+            main_interface.stateInput(data,"num",{placeholder:"num"})
+            main_interface.stateDecreaser(data,"num",1,{},"-")
+            main_interface.stateIncreaser(data,"num",1,{},"+")
             main_interface.br()
             main_interface.button({
                 click:()=>{
                     main_interface.lock();
-                    setTimeout(()=>{
-                        main_interface.unlock();
-                    },10000)
-                    
+                    main_interface.render()
                 }
 
-            },"lock for 10s")
+            },"lock")
+
+            main_interface.button({
+                unlockable_click:()=>{
+                    main_interface.unlock();
+                    main_interface.render()
+                }
+
+            },"unlock")
+
+            if(main_interface.locked){
+                main_interface.h1({},"locked")
+            }
          
         },target)
         element.render()
