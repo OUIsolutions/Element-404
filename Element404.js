@@ -370,12 +370,23 @@ Element404.prototype.stateInput= function(state,name,props) {
     let old_value = state[name];
 
     let formated_props = {
-        keyup:(input)=>{
+
+        unlockable_keyup:(input)=>{
+            let old_value = state[name];
+            //avoiding to change the state if the input is locked
+            if(this.locked){
+                state[name] = old_value;
+                this.render();
+                return;
+            }
+
             state[name] = input.value
         },
+
         focusout:(input)=>{
             this.render();
         }
+
         
         
     }
