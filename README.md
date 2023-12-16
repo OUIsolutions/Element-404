@@ -114,3 +114,64 @@ for defining an trigger, you just need to pass, the trigger with the prefix "ren
 </body>
 </html>
 ```
+
+### Styling Elements
+You alson can aplly style to elements by using the **style** tag 
+
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Element404.js"></script>
+</head>
+<body>
+    <script>
+
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+                let div_props = {
+                    style:{
+                        position:"absolute",
+                        top:"50%",
+                        left:"50%",
+                        transform:"translate(-50%,-50%)",
+                        width:"100%",
+                        textAlign:"center"
+                    }
+                }
+                main_interface.div(div_props,()=>{
+                    let h1_props = {
+                        style:{
+                            fontSize:"10rem",
+                            fontWeight:"bold",
+                            color:"red"
+                        }
+                    }
+                    main_interface.h1(h1_props,"404")
+
+                    let h2_props = {
+                        style:{
+                            fontSize:"2rem",
+                            fontWeight:"bold",
+                            color:"red"
+                        }
+                    }
+                    main_interface.h2(h2_props,"Page Not Found")
+                })
+
+
+        },target)
+
+        element.render()
+           
+
+
+    </script>
+
+</body>
+</html>
+```
