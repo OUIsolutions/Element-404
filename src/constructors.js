@@ -1,9 +1,6 @@
 
  function Element404(){
 
-
-        /** @type {Element404} */
-        this.father = null;
         
         /** @type {boolean} */
         this.child = false;
@@ -13,14 +10,6 @@
         this.locked = false;
 
 
-        /** @type {DocumentFragment} */
-        this.root;
-        
-        /** @type {function} */
-        this.generator;
-
-        /** @type {HTMLElement} */  
-        this.target;
  }
 
 
@@ -31,14 +20,20 @@
  * @param {HTMLElement} target
  */
 Element404.prototype.rootConstructor = function(generator,target){
-     this.root = document.createDocumentFragment();
-     this.generator = ()=>{generator(this)}
-     this.target = target;
+    /** @type {DocumentFragment} */
+    this.root = document.createDocumentFragment();
+    /** @type {function} */
+    this.generator = ()=>{generator(this)}
+    /** @type {HTMLElement} */
+    this.target = target;
 }
 
 Element404.prototype.sub_element = function(father,root){
-     this.father = father;
-     this.root = root;
+    /** @type {Element404} */
+    this.father = father;
+    /** @type {DocumentFragment} */
+    this.root = root;
+
      this.child = true;     
 } 
 
@@ -48,8 +43,8 @@ Element404.prototype.sub_element = function(father,root){
  * @param {HTMLElement} target
  */
 function  createElement404(generator,target){
-     let createdd =  new Element404();
-     createdd.rootConstructor(generator,target);
-     return createdd;
+     let created =  new Element404();
+     created.rootConstructor(generator,target);
+     return created;
 }
 

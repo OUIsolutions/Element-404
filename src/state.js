@@ -9,9 +9,9 @@ Element404.prototype.stateInput= function(state,name,props) {
 
     let old_value = state[name];
 
-    let formated_props = {
+    let formatted_props = {
 
-        unlockable_keyup:(input)=>{
+        "notLock_keyup":(input)=>{
             if(this.locked){
                 this.render();
                 return;
@@ -20,7 +20,7 @@ Element404.prototype.stateInput= function(state,name,props) {
             state[name] = input.value
         },
 
-        focusout:(input)=>{
+        "focusout":()=>{
             this.render();
         }
 
@@ -29,13 +29,13 @@ Element404.prototype.stateInput= function(state,name,props) {
     }
 
     if(old_value){
-        formated_props.value = old_value
+        formatted_props.value = old_value
     }
     for(let key in props){
-            formated_props[key] = props[key];
+            formatted_props[key] = props[key];
     }
 
-    this.input(formated_props);
+    this.input(formatted_props);
 
 }
 
@@ -48,9 +48,9 @@ Element404.prototype.stateInput= function(state,name,props) {
  * @param {string} content
  * @param {string} tag
  */
-Element404.prototype.stateIncreaser = function(state,name,value,props,content,tag='button'){
+Element404.prototype.stateIncrease = function(state, name, value, props, content, tag='button'){
 
-    let formated_props = {
+    let formatted_props = {
         render_click:()=>{
             let old_value = Number(state[name]);
             if(!old_value){
@@ -61,9 +61,9 @@ Element404.prototype.stateIncreaser = function(state,name,value,props,content,ta
         }
     }
     for(let key in props){
-        formated_props[key] = props[key];
+        formatted_props[key] = props[key];
     }
-    this.create(tag,formated_props,content);
+    this.create(tag,formatted_props,content);
 
 }
 
@@ -75,9 +75,9 @@ Element404.prototype.stateIncreaser = function(state,name,value,props,content,ta
  * @param {string} content
  * @param {string} tag
  */
-Element404.prototype.stateDecreaser = function(state,name,value,props,content,tag='button'){
+Element404.prototype.stateDecrease = function(state, name, value, props, content, tag='button'){
 
-    let formated_props = {
+    let formatted_props = {
         render_click:()=>{
             let old_value = Number(state[name]);
             if(!old_value){
@@ -88,9 +88,9 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,content,ta
         }
     }
     for(let key in props){
-        formated_props[key] = props[key];
+        formatted_props[key] = props[key];
     }
-    this.create(tag,formated_props,content);
+    this.create(tag,formatted_props,content);
 
 
 }
@@ -103,8 +103,8 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,content,ta
 */
 Element404.prototype.stateSelect = function(state,name,options,props){
 
-    let formated_props = {
-        unlockable_render_change:(select)=>{
+    let formatted_props = {
+        "not_lock_render_change":(select)=>{
             if(this.locked){
                 return;
             }
@@ -115,12 +115,12 @@ Element404.prototype.stateSelect = function(state,name,options,props){
     }
     
     for(let key in props){
-        formated_props[key] = props[key];
+        formatted_props[key] = props[key];
     }
 
     
     if(options.constructor.name === 'Object'){
-        this.select(formated_props,()=>{
+        this.select(formatted_props,()=>{
             for(let key in options){
                 if(key === state[name]){
                     this.option({value:key,selected:true},options[key]);
@@ -133,7 +133,7 @@ Element404.prototype.stateSelect = function(state,name,options,props){
     
 
     if(options.constructor.name === 'Array'){
-        this.select(formated_props,()=>{
+        this.select(formatted_props,()=>{
             options.forEach((option)=>{
                 if(option === state[name]){
                     this.option({value:option,selected:true},option);
@@ -151,15 +151,15 @@ Element404.prototype.stateSetter = function(
     state,
     name,
     value,
-    seted_props,
-    unseted_props,
+    props_if_true,
+    props_if_false,
     content,
     tag='button'){
 
 
     let old_value = state[name];
 
-    let formated_props = {
+    let formatted_props = {
         render_click:()=>{
             
             state[name] = value;
@@ -168,17 +168,17 @@ Element404.prototype.stateSetter = function(
     }
     
     if(old_value === value){
-        for(let key in seted_props){
-            formated_props[key] = seted_props[key];
+        for(let key in props_if_true){
+            formatted_props[key] = props_if_true[key];
         }
     }
     
     if (old_value !== value){
-        for(let key in unseted_props){
-            formated_props[key] = unseted_props[key];
+        for(let key in props_if_false){
+            formatted_props[key] = props_if_false[key];
         }
     }
     
-    this.create(tag,formated_props,content);
+    this.create(tag,formatted_props,content);
 
 }

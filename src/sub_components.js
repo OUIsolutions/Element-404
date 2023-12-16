@@ -29,7 +29,7 @@ Element404.prototype.set_prop = function(domElement,key,value){
 
         let callback = ()=>{
 
-            if(this.locked && key.includes('unlockable_') === false){
+            if(this.locked && key.includes('notLock_') === false){
                 return;
             }
             
@@ -39,7 +39,7 @@ Element404.prototype.set_prop = function(domElement,key,value){
             }
 
         }
-        let tags  = ['render_','unlockable_'];
+        let tags  = ['render_','notLock_'];
         let formated_key = key
         for (let tag of tags){
             formated_key = formated_key.replace(tag,'')
@@ -112,12 +112,15 @@ Element404.prototype.generate_component_reference=function(domElement,props,cont
  * @returns {Element404}
  * */
 Element404.prototype.sub_component=function( tag,props,content){
+    let sub_element = new Element404();
 
     if(tag === null){
         let node = document.createTextNode(content)
-        this.root.appendChild(node)
-        return
+        this.root.appendChild(node);
+        sub_element.sub_element(this,node);
+        return sub_element;
     }
+
     let domElement = document.createElement(tag)
     this.root.appendChild(domElement)
     let old_root =this.root
@@ -125,7 +128,7 @@ Element404.prototype.sub_component=function( tag,props,content){
     this.generate_component_reference(domElement,props,content)
     this.root = old_root
 
-    let sub_element = new Element404();
+
     sub_element.sub_element(this,domElement);
     return sub_element
 }
@@ -134,7 +137,7 @@ Element404.prototype.sub_component=function( tag,props,content){
  * 
  * @param {string } tag The tag of element
  * @param {object} props The object props
- * @param {fuction | string} content the internal content
+ * @param {function || string} content the internal content
  */
 Element404.prototype.create=function(tag,props,content){
 
