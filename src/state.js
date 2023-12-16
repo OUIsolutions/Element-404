@@ -48,6 +48,8 @@ Element404.prototype.stateIncreaser = function(state,name,value,props,text){
     }
     this.button(formated_props,text);
 }
+
+
 Element404.prototype.stateDecreaser = function(state,name,value,props,text){
 
     let formated_props = {
@@ -65,3 +67,4 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,text){
     }
     this.button(formated_props,text);
 }
+
