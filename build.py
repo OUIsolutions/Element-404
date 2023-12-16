@@ -1,12 +1,11 @@
 
 targets = [
-    'element404/Element404.js',
-    'element404/internal_methods.js',
-    'element404/main_methods.js',
-    'element404/tags.js',
-
-     'stateElements/stateButton.js',
-    'stateElements/stateInput.js',
+    'Element404.js',
+    'internal_methods.js',
+    'main_methods.js',
+    'locker.js',
+    'tags.js',
+    'state.js',
 
 ]
 
