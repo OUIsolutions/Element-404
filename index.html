@@ -8,15 +8,21 @@
 </head>
 <body>
     <script>
-        var num =0;
+        let input_text =  ''
 
         let target = document.body;
         let element = createElement404((main_interface)=>{
-            main_interface.div({},()=>{
-                main_interface.h1({},`the value of num is ${num}`)
-                main_interface.button({render_click:()=> num--},`remove 1 from num`)
-                main_interface.button({render_click:()=> num++},`add 1 to num`)
+            
+            main_interface.input({
+                placeholder:'Type something',
+                value:input_text,
+                render_focusout:(input)=>{
+                    input_text = input.value
+                }
             })
+
+            main_interface.p({},`You typed: ${input_text}`)
+
 
         },target)
 

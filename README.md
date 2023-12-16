@@ -71,3 +71,46 @@ for defining an trigger, you just need to pass, the trigger with the prefix "ren
 </html>
 
 ```
+
+
+## Dealing with Inputs 
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Element404.js"></script>
+</head>
+<body>
+    <script>
+        let input_text =  ''
+
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+            
+            main_interface.input({
+                placeholder:'Type something',
+                value:input_text,
+                render_focusout:(input)=>{
+                    input_text = input.value
+                }
+            })
+
+            main_interface.p({},`You typed: ${input_text}`)
+
+
+        },target)
+
+        element.render()
+           
+
+
+    </script>
+
+</body>
+</html>
+```
