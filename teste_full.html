@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="src/constructors.js"></script>
+    <script src="src/locker.js"></script>
+    <script src="src/render.js"></script>
+    <script src="src/sub_components.js"></script>
+    <script src="src/tags.js"></script>
+</head>
+<body>
+
+
+<script>
+
+
+
+    var num =0;
+
+    let target = document.body;
+    let element = createElement404((main_interface)=>{
+        main_interface.div(()=>{
+            main_interface.h1(`the value of num is ${num}`)
+            main_interface.button(`remove 1 from num`,{render_click:()=> num--},)
+            main_interface.button(`add 1 to num`,{render_click:()=> num++})
+       
+        })
+
+    },target)
+
+    element.render()
+
+</script>
+
+</body>
+</html>
