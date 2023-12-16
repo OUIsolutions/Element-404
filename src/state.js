@@ -104,10 +104,11 @@ Element404.prototype.stateDecrease = function(state, name, value, content,  tag=
 Element404.prototype.stateSelect = function(state,name,options,props=null){
 
     let formatted_props = {
-        "not_lock_render_change":(select)=>{
+        "notLock_render_change":(select)=>{
             if(this.locked){
                 return;
             }
+
             state[name] = select.value;
            
         }
@@ -118,32 +119,31 @@ Element404.prototype.stateSelect = function(state,name,options,props=null){
         formatted_props[key] = props[key];
     }
 
-    
-    if(options.constructor.name === 'Object'){
-        this.select(()=>{
-            for(let key in options){
-                if(key === state[name]){
-                    this.option(options[key],{"value":key,"selected":true});
-                    continue;
+    this.select(()=> {
+            if (options.constructor.name === 'Object') {
+
+                for (let key in options) {
+                    if (key === state[name]) {
+                        this.option(options[key], {"value": key, "selected": true});
+                        continue;
+                    }
+                    this.option(options[key], {"value": key});
                 }
-                this.option(options[key],{"value":key});
             }
-        },formatted_props);
-    }
-    
 
-    if(options.constructor.name === 'Array'){
-        this.select(()=>{
-            options.forEach((option)=>{
-                if(option === state[name]){
-                    this.option(option,{"value":option,"selected":true});
-                    return;
-                }
-                this.option(option,{"value":option});
-            },formatted_props);
-        });        
-    }
+            if (options.constructor.name === 'Array') {
+                options.forEach((option) => {
+                    if (option === state[name]) {
+                        this.option(option, {"value": option, "selected": true});
+                        return;
+                    }
+                    this.option(option, {"value": option});
+                }, formatted_props);
 
+            }
+        }
+        
+    ,formatted_props);
 }
 
 

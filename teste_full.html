@@ -9,28 +9,43 @@
     <script src="src/render.js"></script>
     <script src="src/sub_components.js"></script>
     <script src="src/tags.js"></script>
+    <script src="src/state.js"></script>
+
 </head>
 <body>
 
 
 <script>
 
-
-
-    var num =0;
+    var user_data = {
+        age:18
+    }
 
     let target = document.body;
     let element = createElement404((main_interface)=>{
-        main_interface.div(()=>{
-            main_interface.h1(`the value of num is ${num}`)
-            main_interface.button(`remove 1 from num`,{render_click:()=> num--},)
-            main_interface.button(`add 1 to num`,{render_click:()=> num++})
 
-        })
+
+        main_interface.stateInput(user_data,"name",{placeholder:"name"})
+        main_interface.br()
+        main_interface.stateInput(user_data,"email",{placeholder:"email"})
+        main_interface.br()
+        main_interface.stateInput(user_data,"age",{placeholder:"age"})
+        main_interface.stateDecrease(user_data,"age",1,"-")
+        main_interface.stateIncrease(user_data,"age",1,"+")
+        main_interface.br()
+        main_interface.stateSelect(user_data,"gender",["Man","Woman"])
+        main_interface.br()
+
+        main_interface.stateInput(user_data,"password",{placeholder:"password",type:"password"})
+        main_interface.p(`name: ${user_data.name}`)
+        main_interface.p(`email: ${user_data.email}`)
+        main_interface.p(`password: ${user_data.password}`)
+        main_interface.p(`age: ${user_data.age}`)
+        main_interface.p(`gender ${user_data.gender}`)
 
     },target)
-
     element.render()
+
 
 </script>
 

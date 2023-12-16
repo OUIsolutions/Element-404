@@ -15,22 +15,21 @@ Just download the **Element404.js** file into your project an than reference int
     <script src="Element404.js"></script>
 </head>
 <body>
-    <script>
-        
-        let target = document.body;
-        let element = createElement404((main_interface)=>{
-            main_interface.div({},()=>{
-                main_interface.h1({style:{color:'red'}},"Hello World")
+<script>
 
-            })
+    let target = document.body;
+    let element = createElement404((main_interface)=>{
+        main_interface.div(()=>{
+            main_interface.h1("Hello World",{style:{color:'red'}})
+        })
 
-        },target)
+    },target)
 
-        element.render()
-           
+    element.render()
 
 
-    </script>
+
+</script>
 
 </body>
 </html>
@@ -66,11 +65,12 @@ element.render()
 
 ```js
 
+
 let input_text =  ''
 
 let target = document.body;
 let element = createElement404((main_interface)=>{
-    
+
     main_interface.input({
         placeholder:'Type something',
         value:input_text,
@@ -79,12 +79,14 @@ let element = createElement404((main_interface)=>{
         }
     })
 
-    main_interface.p({},`You typed: ${input_text}`)
+    main_interface.p(`You typed: ${input_text}`)
 
 },target)
 
 element.render()
-    
+
+
+
 
 
 
@@ -94,44 +96,43 @@ element.render()
 You alson can aplly style to elements by using the **style** tag 
 
 ```js
-
-let target = document.body;
+    let target = document.body;
 let element = createElement404((main_interface)=>{
-        let div_props = {
+    let div_props = {
+        style:{
+            position:"absolute",
+            top:"50vh",
+            left:"50vw",
+            transform:"translate(-50%,-50%)",
+            width:"100%",
+            "text-align":"center"
+        }
+    }
+    main_interface.div(()=>{
+        let h1_props = {
             style:{
-                position:"absolute",
-                top:"50vh",
-                left:"50vw",
-                transform:"translate(-50%,-50%)",
-                width:"100%",
-                "text-align":"center"
+                "font-size":"10rem",
+                "font-weight":"bold",
+                color:"red"
             }
         }
-        main_interface.div(div_props,()=>{
-            let h1_props = {
-                style:{
-                    "font-size":"10rem",
-                    "font-weight":"bold",
-                    color:"red"
-                }
-            }
-            main_interface.h1(h1_props,"404")
+        main_interface.h1("404",h1_props)
 
-            let h2_props = {
-                style:{
-                    "font-size":"2rem",
-                    "font-weight":"bold",
-                    color:"red"
-                }
+        let h2_props = {
+            style:{
+                "font-size":"2rem",
+                "font-weight":"bold",
+                color:"red"
             }
-            main_interface.h2(h2_props,"Page Not Found")
-        })
+        }
+        main_interface.h2("Page Not Found",h2_props)
+    },div_props)
 
 
 },target)
 
 element.render()
-    
+
 
 
 

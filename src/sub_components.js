@@ -38,11 +38,13 @@ Element404.prototype.set_prop = function(domElement,key,value){
             }
 
         }
+
         let tags  = ['render_','notLock_'];
         let formatted_key = key
         for (let tag of tags){
             formatted_key = formatted_key.replace(tag,'')
         }
+        console.log(formatted_key)
         domElement.addEventListener(formatted_key,callback)
         return
     }
