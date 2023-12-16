@@ -165,6 +165,7 @@ Element404.prototype.generate_component_reference=function(domElement,props,cont
  * @param {string} tag
  * @param {object} props
  * @param {string|function} content
+ * @returns {Element404}
  * */
 Element404.prototype.sub_component=function( tag,props,content){
 
@@ -180,6 +181,9 @@ Element404.prototype.sub_component=function( tag,props,content){
     this.generate_component_reference(domElement,props,content)
     this.root = old_root
 
+    let sub_element = new Element404();
+    sub_element.sub_element(this,domElement);
+    return sub_element
 }
 
 /**
@@ -232,9 +236,11 @@ Element404.prototype.unlock=function(){
 /**
  * Creates a form
  * @param {object} props The object props
+ * @returns {Element404}
+
  * */
 Element404.prototype.input=function(props){
-    this.create('input',props,null)
+    return this.create('input',props,null)
 }
 
 
@@ -242,9 +248,10 @@ Element404.prototype.input=function(props){
  * Creates a Div
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.div=function(props,content){
-    this.create('div',props,content)
+    return this.create('div',props,content)
 }
 
 
@@ -252,9 +259,10 @@ Element404.prototype.div=function(props,content){
  * Creates an paragraph
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}    
  */
 Element404.prototype.p=function(props,content){
-    this.create('p',props,content)
+    return this.create('p',props,content)
 }
 
 
@@ -262,9 +270,10 @@ Element404.prototype.p=function(props,content){
  * Creates a h1
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}s
  */
 Element404.prototype.h1=function(props,content){
-    this.create('h1',props,content)
+    return this.create('h1',props,content)
 }
 
 
@@ -273,9 +282,10 @@ Element404.prototype.h1=function(props,content){
  * Creates a g2
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.h2=function(props,content){
-    this.create('h2',props,content)
+    return this.create('h2',props,content)
 }
 
 
@@ -284,17 +294,19 @@ Element404.prototype.h2=function(props,content){
  * Creates a H3
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.h3=function(props,content){
-    this.create('h3',props,content)
+   return  this.create('h3',props,content)
 }
 /**
  * Creates an H4
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.h4=function(props,content){
-    this.create('h4',props,content)
+   return  this.create('h4',props,content)
 }
 
 
@@ -302,27 +314,30 @@ Element404.prototype.h4=function(props,content){
  * Creates an H5
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.h5=function(props,content){
-    this.create('h5',props,content)
+    return this.create('h5',props,content)
 }
 
 /**
  * Creates an select
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.select=function(props,content){
-    this.create('select',props,content)
+   return  this.create('select',props,content)
 }
 
 /**
  * Creates an option
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.option=function(props,content){
-    this.create('option',props,content)
+  return   this.create('option',props,content)
 }
 
 
@@ -330,28 +345,31 @@ Element404.prototype.option=function(props,content){
  * Creates an table
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.table=function(props,content){
-    this.create('table',props,content)
+   return  this.create('table',props,content)
 }
 
 /**
  * Creates an td
  * @param {object} props The object props
  * @param {boolean} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.td=function(props,content){
-    this.create('td',props,content)
+   return  this.create('td',props,content)
 }
 
 /**
  * Creates an tr
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 
 Element404.prototype.tr=function(props,content){
-    this.create('tr',props,content)
+    return this.create('tr',props,content)
 }
 
 
@@ -359,33 +377,37 @@ Element404.prototype.tr=function(props,content){
  * Creates an th
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 
 Element404.prototype.th=function(props,content){
-    this.create('th',props,content)
+    return this.create('th',props,content)
 }
 
 /**
  * Creates an H3
  * @param {string} message The object props
+ * @returns {Element404}
  */
 Element404.prototype.text=function(message){
-    this.create('text',null,message)
+   return  this.create('text',null,message)
 }
 
 /**
  * Creates a button
  * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @returns {Element404}
  */
 Element404.prototype.button=function(props,content){
-    this.create('button',props,content)
+    return this.create('button',props,content)
 }
 /**
  * Creates a br
+ * @returns {Element404}
  */
 Element404.prototype.br=function(){
-    this.create('br',null,null);
+  return this.create('br',null,null);
 }
 
 

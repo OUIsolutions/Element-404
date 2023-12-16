@@ -14,36 +14,18 @@
 
         let target = document.body;
         let element = createElement404((main_interface)=>{
-                
-            main_interface.stateSelect(data,"gender",["Man","Woman"]);
-            main_interface.br()
-
-            main_interface.stateInput(data,"num",{placeholder:"num"})
-            main_interface.stateDecreaser(data,"num",1,{},"-")
-            main_interface.stateIncreaser(data,"num",1,{},"+")
-            main_interface.br()
             
+            let sub_div = main_interface.div({},()=>{
+                main_interface.text("first text");
+            })
+            main_interface.div({},()=>{
+                main_interface.text("second text");
+            })
+
+            sub_div.text("third text");
+            sub_div.br();
+
             
-            if(main_interface.locked){
-                    main_interface.button({
-                    style:{color: "red"},
-                    unlockable_render_click:()=>{
-                        main_interface.unlock();
-                    }
-                    },"unlock")
-            }
-
-            if(!main_interface.locked){
-                main_interface.button({
-                    style:{color: "blue"},
-                    render_click:()=>{
-                        main_interface.lock();
-                        main_interface.render()
-                    }
-
-                },"lock")
-            }
-
 
 
           
