@@ -8,31 +8,30 @@
 </head>
 <body>
     <script>
-        var user_data = {
-            age:18
-        }
+        var data = {}
 
         let target = document.body;
         let element = createElement404((main_interface)=>{
+                main_interface.stateSetter(data,"page","home",
+                {style:{color:"red"}},
+                {style:{color:"blue"}},
+                "go to home"
+                )
+                main_interface.stateSetter(data,"page","about",
+                {style:{color:"red"}},
+                {style:{color:"blue"}},
+                "go to about"
+                )
+                main_interface.div({},()=>{
 
-            main_interface.stateInput(user_data,"name",{placeholder:"name"})
-            main_interface.br()
-            main_interface.stateInput(user_data,"email",{placeholder:"email"})
-            main_interface.br()
-            main_interface.stateInput(user_data,"age",{placeholder:"age"})
-            main_interface.stateDecreaser(user_data,"age",1,{},"-")
-            main_interface.stateIncreaser(user_data,"age",1,{},"+")
-            main_interface.br()
-            main_interface.stateSelect(user_data,"gender",["Man","Woman"])
-            main_interface.br()
+                    if(data.page ===  "home"){
+                            main_interface.h1({},"you are in home page")
+                    }
+                    if(data.page ===  "about"){
+                            main_interface.h1({},"you are in about page")
+                    }
+                })
 
-            main_interface.stateInput(user_data,"password",{placeholder:"password"})
-            main_interface.p({},`name: ${user_data.name}`)
-            main_interface.p({},`email: ${user_data.email}`)
-            main_interface.p({},`password: ${user_data.password}`)
-            main_interface.p({},`age: ${user_data.age}`)
-            main_interface.p({},`gender ${user_data.gender}`)
-        
         },target)
         element.render()
            

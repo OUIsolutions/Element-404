@@ -468,7 +468,7 @@ Element404.prototype.stateSelect = function(state,name,options,props){
 
 }
 
-Element404.prototype.stateSeter = function(
+Element404.prototype.stateSetter = function(
     state,
     name,
     value,
