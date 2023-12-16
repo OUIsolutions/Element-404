@@ -136,18 +136,18 @@ You alson can aplly style to elements by using the **style** tag
                 let div_props = {
                     style:{
                         position:"absolute",
-                        top:"50%",
-                        left:"50%",
+                        top:"50vh",
+                        left:"50vw",
                         transform:"translate(-50%,-50%)",
                         width:"100%",
-                        textAlign:"center"
+                        'text-align':"center"
                     }
                 }
                 main_interface.div(div_props,()=>{
                     let h1_props = {
                         style:{
-                            fontSize:"10rem",
-                            fontWeight:"bold",
+                            'font-size':"10rem",
+                            'font-weight':"bold",
                             color:"red"
                         }
                     }
@@ -155,8 +155,8 @@ You alson can aplly style to elements by using the **style** tag
 
                     let h2_props = {
                         style:{
-                            fontSize:"2rem",
-                            fontWeight:"bold",
+                            'font-size':"2rem",
+                            'font-weight':"bold",
                             color:"red"
                         }
                     }
