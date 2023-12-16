@@ -4,153 +4,151 @@
 
 /**
  * Creates a form
- * @param {object} props The object props
+ * @param {object || null} props The object props
  * @returns {Element404}
-
  * */
-Element404.prototype.input=function(props){
-    return this.create('input',props,null)
+Element404.prototype.input=function(props=null){
+    return this.create('input',null,props)
 }
 
 
 /**
- * Creates a Div
- * @param {object} props The object props
- * @param {function | string} content the internal content
+ * Creates an function
+ * @param {function || string || null} content the internal content
+ * @param {object || null} props The object props
  * @returns {Element404}
  */
-Element404.prototype.div=function(props,content){
-    return this.create('div',props,content)
+Element404.prototype.div=function(content=null,props=null){
+    return this.create('div',content,props)
 }
 
 
 /**
  * Creates an paragraph
- * @param {object} props The object props
- * @param {function | string} content the internal content
- * @returns {Element404}    
+ * @param {function || string } content the internal content
+ * @param {object || null} props The object props
+ * @returns {Element404}
  */
-Element404.prototype.p=function(props,content){
-    return this.create('p',props,content)
+Element404.prototype.p=function(content,props=null){
+    return this.create('p',content,props)
 }
 
 
 /**
  * Creates a h1
- * @param {object} props The object props
- * @param {function | string} content the internal content
- * @returns {Element404}s
+ * @param {function || string } content the internal content
+ * @param {object || null} props The object props
+ * @returns {Element404}
  */
-Element404.prototype.h1=function(props,content){
-    return this.create('h1',props,content)
+Element404.prototype.h1=function(content,props=null){
+    return this.create('h1',content,props)
 }
 
 
 
 /**
- * Creates a g2
- * @param {object} props The object props
- * @param {function | string} content the internal content
+ * Creates a h2
+ * @param {function || string } content the internal content
+ * @param {object || null} props The object props
  * @returns {Element404}
  */
-Element404.prototype.h2=function(props,content){
-    return this.create('h2',props,content)
+Element404.prototype.h2=function(content,props=null){
+    return this.create('h2',content,props)
 }
 
 
 
 /**
- * Creates a H3
- * @param {object} props The object props
+ * Creates an H3
  * @param {function | string} content the internal content
+ * @param {object || null} props The object props
  * @returns {Element404}
  */
-Element404.prototype.h3=function(props,content){
-   return  this.create('h3',props,content)
+Element404.prototype.h3=function(content,props=null){
+   return  this.create('h3',content,props)
 }
 /**
  * Creates an H4
- * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @param {object || null} props The object props
  * @returns {Element404}
  */
-Element404.prototype.h4=function(props,content){
-   return  this.create('h4',props,content)
+Element404.prototype.h4=function(content,props=null){
+   return  this.create('h4',content,props)
 }
 
 
 /**
- * Creates an H5
- * @param {object} props The object props
+ * Creates a H5
+ * @param {object || null} props The object props
  * @param {function | string} content the internal content
  * @returns {Element404}
  */
-Element404.prototype.h5=function(props,content){
-    return this.create('h5',props,content)
+Element404.prototype.h5=function(content,props=null){
+    return this.create('h5',content,props)
 }
 
 /**
  * Creates an select
- * @param {object} props The object props
- * @param {function | string} content the internal content
+ * @param {object || null} props The object props
+ * @param {function} content the internal content
  * @returns {Element404}
  */
-Element404.prototype.select=function(props,content){
-   return  this.create('select',props,content)
+Element404.prototype.select=function(content,props=null){
+   return  this.create('select',content,props)
 }
 
 /**
  * Creates an option
- * @param {object} props The object props
- * @param {function | string} content the internal content
+ * @param {function || string} content the internal content
+ * @param {object || null} props The object props
  * @returns {Element404}
  */
-Element404.prototype.option=function(props,content){
-  return   this.create('option',props,content)
+Element404.prototype.option=function(content,props=null){
+  return  this.create('option',content,props)
 }
 
 
 /**
- * Creates an table
- * @param {object} props The object props
+ * Creates a table
  * @param {function | string} content the internal content
+ * @param {object || null} props The object props
  * @returns {Element404}
  */
-Element404.prototype.table=function(props,content){
-   return  this.create('table',props,content)
+Element404.prototype.table=function(content,props){
+   return  this.create('table',content,props)
 }
 
 /**
- * Creates an td
- * @param {object} props The object props
- * @param {boolean} content the internal content
- * @returns {Element404}
- */
-Element404.prototype.td=function(props,content){
-   return  this.create('td',props,content)
-}
-
-/**
- * Creates an tr
- * @param {object} props The object props
+ * Creates a td
+ * @param {object || null} props The object props
  * @param {function | string} content the internal content
  * @returns {Element404}
  */
+Element404.prototype.td=function(content,props=null){
+   return  this.create('td',content,props)
+}
 
-Element404.prototype.tr=function(props,content){
-    return this.create('tr',props,content)
+/**
+ * Creates a tr
+ * @param {function | string} content the internal content
+ * @param {object || null} props The object props
+ * @returns {Element404}
+ */
+
+Element404.prototype.tr=function(content,props=null){
+    return this.create('tr',content,props)
 }
 
 
 /**
  * Creates an th
- * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @param {object} props The object props
  * @returns {Element404}
  */
-
-Element404.prototype.th=function(props,content){
-    return this.create('th',props,content)
+Element404.prototype.th=function(content,props=null){
+    return this.create('th',content,props)
 }
 
 /**
@@ -159,22 +157,22 @@ Element404.prototype.th=function(props,content){
  * @returns {Element404}
  */
 Element404.prototype.text=function(message){
-   return  this.create('text',null,message)
+   return  this.create('text',message)
 }
 
 /**
  * Creates a button
- * @param {object} props The object props
  * @param {function | string} content the internal content
+ * @param {object || null} props The object props
  * @returns {Element404}
  */
-Element404.prototype.button=function(props,content){
-    return this.create('button',props,content)
+Element404.prototype.button=function(content,props=null){
+    return this.create('button',content,props)
 }
 /**
  * Creates a br
  * @returns {Element404}
  */
 Element404.prototype.br=function(){
-  return this.create('br',null,null);
+  return this.create('br');
 }

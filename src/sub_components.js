@@ -22,7 +22,6 @@ Element404.prototype.create_object_style = function(domElement,style_value){
  * @param {string} key
  * @param {string|function} value
 */
-
 Element404.prototype.set_prop = function(domElement,key,value){
         
     if(typeof(value) === 'function'){
@@ -40,11 +39,11 @@ Element404.prototype.set_prop = function(domElement,key,value){
 
         }
         let tags  = ['render_','notLock_'];
-        let formated_key = key
+        let formatted_key = key
         for (let tag of tags){
-            formated_key = formated_key.replace(tag,'')
+            formatted_key = formatted_key.replace(tag,'')
         }
-        domElement.addEventListener(formated_key,callback)
+        domElement.addEventListener(formatted_key,callback)
         return
     }
 
@@ -61,9 +60,8 @@ Element404.prototype.set_prop = function(domElement,key,value){
 
 /**
  * @param {HTMLElement} domElement
- * @param {object} props
+ * @param {object || null} props
  *  */
-
 Element404.prototype.set_props = function(domElement,props){
     if(props === null || props === undefined){
         return
@@ -81,11 +79,10 @@ Element404.prototype.set_props = function(domElement,props){
 
 /**
  * @param {HTMLElement} domElement
- * @param {object} props
- * @param {string|function} content
+ * @param {string || function || null} content
+ * @param {object || null} props
  * */
-
-Element404.prototype.generate_component_reference=function(domElement,props,content){
+Element404.prototype.generate_component_reference=function(domElement,content,props){
     this.set_props(domElement,props)
 
     let is_a_function = typeof(content) === 'function'
@@ -106,12 +103,12 @@ Element404.prototype.generate_component_reference=function(domElement,props,cont
 }
 
 /**
- * @param {string} tag
- * @param {object} props
- * @param {string|function} content
+ * @param {string || null} tag
+ * @param {string || function || null} content
+ * @param {object || null} props
  * @returns {Element404}
  * */
-Element404.prototype.sub_component=function( tag,props,content){
+Element404.prototype.sub_component=function( tag,content,props){
     let sub_element = new Element404();
 
     if(tag === null){
@@ -125,7 +122,7 @@ Element404.prototype.sub_component=function( tag,props,content){
     this.root.appendChild(domElement)
     let old_root =this.root
     this.root = domElement
-    this.generate_component_reference(domElement,props,content)
+    this.generate_component_reference(domElement,content,props)
     this.root = old_root
 
 
@@ -135,12 +132,13 @@ Element404.prototype.sub_component=function( tag,props,content){
 
 /**
  * 
- * @param {string } tag The tag of element
- * @param {object} props The object props
+ * @param {string || null } tag The tag of element
  * @param {function || string} content the internal content
+ * @param {object} props The object props
+ * @returns {Element404}
  */
-Element404.prototype.create=function(tag,props,content){
+Element404.prototype.create=function(tag =null,content =null,props=null){
 
-   return  this.sub_component(tag,props,content)
+   return  this.sub_component(tag,content,props)
     
 }

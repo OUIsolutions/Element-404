@@ -30,12 +30,12 @@ Element404.prototype.rootConstructor = function(generator,target){
 
  /**
   * @param {Element404} father
-  * @param {DocumentFragment || HTMLElement} root
+  * @param {DocumentFragment || HTMLElement ||  Text} root
   */
 Element404.prototype.sub_element = function(father,root){
     /** @type {Element404} */
     this.father = father;
-    /** @type {DocumentFragment || HTMLElement} */
+    /** @type {DocumentFragment || HTMLElement ||  Text} */
     this.root = root;
 
      this.child = true;     
