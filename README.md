@@ -38,37 +38,22 @@ Just download the **Element404.js** file into your project an than reference int
 ## Triggers
 for defining an trigger, you just need to pass, the trigger with the prefix "render_" if you want to update the ui
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="Element404.js"></script>
-</head>
-<body>
-    <script>
-        var num =0;
+```js
 
-        let target = document.body;
-        let element = createElement404((main_interface)=>{
-            main_interface.div({},()=>{
-                main_interface.h1({},`the value of num is ${num}`)
-                main_interface.button({render_click:()=> num--},`remove 1 from num`)
-                main_interface.button({render_click:()=> num++},`add 1 to num`)
-            })
+var num =0;
 
-        },target)
+let target = document.body;
+let element = createElement404((main_interface)=>{
+    main_interface.div({},()=>{
+        main_interface.h1({},`the value of num is ${num}`)
+        main_interface.button({render_click:()=> num--},`remove 1 from num`)
+        main_interface.button({render_click:()=> num++},`add 1 to num`)
+    })
 
-        element.render()
-           
+},target)
 
-
-    </script>
-
-</body>
-</html>
+element.render()
+    
 
 ```
 
@@ -76,270 +61,204 @@ for defining an trigger, you just need to pass, the trigger with the prefix "ren
 ## Dealing with Inputs 
 
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="Element404.js"></script>
-</head>
-<body>
-    <script>
-        let input_text =  ''
+```js
 
-        let target = document.body;
-        let element = createElement404((main_interface)=>{
-            
-            main_interface.input({
-                placeholder:'Type something',
-                value:input_text,
-                render_focusout:(input)=>{
-                    input_text = input.value
-                }
-            })
+let input_text =  ''
 
-            main_interface.p({},`You typed: ${input_text}`)
+let target = document.body;
+let element = createElement404((main_interface)=>{
+    
+    main_interface.input({
+        placeholder:'Type something',
+        value:input_text,
+        render_focusout:(input)=>{
+            input_text = input.value
+        }
+    })
+
+    main_interface.p({},`You typed: ${input_text}`)
+
+},target)
+
+element.render()
+    
 
 
-        },target)
 
-        element.render()
-           
-
-
-    </script>
-
-</body>
-</html>
 ```
 
 ### Styling Elements
 You alson can aplly style to elements by using the **style** tag 
 
-```html
+```js
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="Element404.js"></script>
-</head>
-<body>
-    <script>
-
-        let target = document.body;
-        let element = createElement404((main_interface)=>{
-                let div_props = {
-                    style:{
-                        position:"absolute",
-                        top:"50vh",
-                        left:"50vw",
-                        transform:"translate(-50%,-50%)",
-                        width:"100%",
-                        "text-align":"center"
-                    }
+let target = document.body;
+let element = createElement404((main_interface)=>{
+        let div_props = {
+            style:{
+                position:"absolute",
+                top:"50vh",
+                left:"50vw",
+                transform:"translate(-50%,-50%)",
+                width:"100%",
+                "text-align":"center"
+            }
+        }
+        main_interface.div(div_props,()=>{
+            let h1_props = {
+                style:{
+                    "font-size":"10rem",
+                    "font-weight":"bold",
+                    color:"red"
                 }
-                main_interface.div(div_props,()=>{
-                    let h1_props = {
-                        style:{
-                            "font-size":"10rem",
-                            "font-weight":"bold",
-                            color:"red"
-                        }
-                    }
-                    main_interface.h1(h1_props,"404")
+            }
+            main_interface.h1(h1_props,"404")
 
-                    let h2_props = {
-                        style:{
-                            "font-size":"2rem",
-                            "font-weight":"bold",
-                            color:"red"
-                        }
-                    }
-                    main_interface.h2(h2_props,"Page Not Found")
-                })
+            let h2_props = {
+                style:{
+                    "font-size":"2rem",
+                    "font-weight":"bold",
+                    color:"red"
+                }
+            }
+            main_interface.h2(h2_props,"Page Not Found")
+        })
 
 
-        },target)
+},target)
 
-        element.render()
-           
+element.render()
+    
 
 
-    </script>
 
-</body>
-</html>
 ```
 
 ## States  
 with The States system,you can generate interactive forms easly
 you just need to pass the container and the props you want to  pass 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="Element404.js"></script>
-</head>
-<body>
-    <script>
-        var user_data = {
-            age:18
-        }
+```js
 
-        let target = document.body;
-        let element = createElement404((main_interface)=>{
+var user_data = {
+    age:18
+}
 
-            main_interface.stateInput(user_data,"name",{placeholder:"name"})
-            main_interface.br()
-            main_interface.stateInput(user_data,"email",{placeholder:"email"})
-            main_interface.br()
-            main_interface.stateInput(user_data,"age",{placeholder:"age"})
-            main_interface.stateDecreaser(user_data,"age",1,{},"-")
-            main_interface.stateIncreaser(user_data,"age",1,{},"+")
-            main_interface.br()
-            main_interface.stateSelect(user_data,"gender",["Man","Woman"])
-            main_interface.br()
+let target = document.body;
+let element = createElement404((main_interface)=>{
 
-            main_interface.stateInput(user_data,"password",{placeholder:"password"})
-            main_interface.p({},`name: ${user_data.name}`)
-            main_interface.p({},`email: ${user_data.email}`)
-            main_interface.p({},`password: ${user_data.password}`)
-            main_interface.p({},`age: ${user_data.age}`)
-            main_interface.p({},`gender ${user_data.gender}`)
-        
-        },target)
-        element.render()
-           
+    main_interface.stateInput(user_data,"name",{placeholder:"name"})
+    main_interface.br()
+    main_interface.stateInput(user_data,"email",{placeholder:"email"})
+    main_interface.br()
+    main_interface.stateInput(user_data,"age",{placeholder:"age"})
+    main_interface.stateDecreaser(user_data,"age",1,{},"-")
+    main_interface.stateIncreaser(user_data,"age",1,{},"+")
+    main_interface.br()
+    main_interface.stateSelect(user_data,"gender",["Man","Woman"])
+    main_interface.br()
+
+    main_interface.stateInput(user_data,"password",{placeholder:"password"})
+    main_interface.p({},`name: ${user_data.name}`)
+    main_interface.p({},`email: ${user_data.email}`)
+    main_interface.p({},`password: ${user_data.password}`)
+    main_interface.p({},`age: ${user_data.age}`)
+    main_interface.p({},`gender ${user_data.gender}`)
+
+},target)
+element.render()
+    
 
 
-    </script>
-
-</body>
-</html>
 
 ```
 
 ## State Setter 
 With State Setters you can generate an button that will define an especific state 
 predetermined 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="Element404.js"></script>
-</head>
-<body>
-    <script>
-        var data = {}
+```js
 
-        let target = document.body;
-        let element = createElement404((main_interface)=>{
-            let seted_props = {
-                style:{
-                    color:"red"
-                }
-            }
-            let unseted_props = {
-                style:{
-                    color:"blue"
-                }
-            }
+var data = {}
 
-            main_interface.stateSetter(data,"page","home",seted_props,unseted_props,"Home");
-            main_interface.stateSetter(data,"page","about",seted_props,unseted_props,"About");
+let target = document.body;
+let element = createElement404((main_interface)=>{
+    let seted_props = {
+        style:{
+            color:"red"
+        }
+    }
+    let unseted_props = {
+        style:{
+            color:"blue"
+        }
+    }
 
-            if(data.page == "home"){
-                main_interface.h1({},"you are in home page")
-            }
-            else if(data.page == "about"){
-                main_interface.h1({},"you are in about page")
-            }
+    main_interface.stateSetter(data,"page","home",seted_props,unseted_props,"Home");
+    main_interface.stateSetter(data,"page","about",seted_props,unseted_props,"About");
 
-            else{
-                main_interface.h1({},"404")
-            }
-        },target)
-        element.render()
-           
+    if(data.page == "home"){
+        main_interface.h1({},"you are in home page")
+    }
+    else if(data.page == "about"){
+        main_interface.h1({},"you are in about page")
+    }
+
+    else{
+        main_interface.h1({},"404")
+    }
+},target)
+element.render()
+    
 
 
-    </script>
 
-</body>
-</html>
 ```
 
 ## Locker 
 With Lockers , you can lock the entire UI, to avoid concurrency problems 
-```html
+```js
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="Element404.js"></script>
-</head>
-<body>
-    <script>
 
-        var data = {}
+var data = {}
 
-        let target = document.body;
-        let element = createElement404((main_interface)=>{
-                
-            main_interface.stateSelect(data,"gender",["Man","Woman"]);
-            main_interface.br()
+let target = document.body;
+let element = createElement404((main_interface)=>{
+        
+    main_interface.stateSelect(data,"gender",["Man","Woman"]);
+    main_interface.br()
 
-            main_interface.stateInput(data,"num",{placeholder:"num"})
-            main_interface.stateDecreaser(data,"num",1,{},"-")
-            main_interface.stateIncreaser(data,"num",1,{},"+")
-            main_interface.br()
-            
-            
-            if(main_interface.locked){
-                    main_interface.button({
-                    style:{color: "red"},
-                    unlockable_render_click:()=>{
-                        main_interface.unlock();
-                    }
-                    },"unlock")
+    main_interface.stateInput(data,"num",{placeholder:"num"})
+    main_interface.stateDecreaser(data,"num",1,{},"-")
+    main_interface.stateIncreaser(data,"num",1,{},"+")
+    main_interface.br()
+    
+    
+    if(main_interface.locked){
+            main_interface.button({
+            style:{color: "red"},
+            unlockable_render_click:()=>{
+                main_interface.unlock();
+            }
+            },"unlock")
+    }
+
+    if(!main_interface.locked){
+        main_interface.button({
+            style:{color: "blue"},
+            render_click:()=>{
+                main_interface.lock();
+                main_interface.render()
             }
 
-            if(!main_interface.locked){
-                main_interface.button({
-                    style:{color: "blue"},
-                    render_click:()=>{
-                        main_interface.lock();
-                        main_interface.render()
-                    }
-
-                },"lock")
-            }
+        },"lock")
+    }
 
 
 
-          
-         
-        },target)
-        element.render()
-           
+    
+    
+},target)
+element.render()
+    
 
 
-    </script>
-
-</body>
-</html>
 ```
