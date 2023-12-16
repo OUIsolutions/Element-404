@@ -83,7 +83,12 @@ Element404.prototype.stateDecreaser = function(state,name,value,props,content,ta
     this.create(tag,formated_props,content);
 }
 
-
+/**
+* @param {object} state
+* @param {string} name
+* @param {Array | Object} options
+* @param {object} props
+*/
 Element404.prototype.stateSelect = function(state,name,options,props){
 
     let formated_props = {
