@@ -19,25 +19,32 @@
             main_interface.stateDecreaser(data,"num",1,{},"-")
             main_interface.stateIncreaser(data,"num",1,{},"+")
             main_interface.br()
-            main_interface.button({
-                click:()=>{
-                    main_interface.lock();
-                    main_interface.render()
-                }
-
-            },"lock")
-
-            main_interface.button({
-                unlockable_click:()=>{
-                    main_interface.unlock();
-                    main_interface.render()
-                }
-
-            },"unlock")
-
+            
+            
             if(main_interface.locked){
-                main_interface.h1({},"locked")
+                    main_interface.button({
+                    style:{color: "red"},
+                    unlockable_click:()=>{
+                        main_interface.unlock();
+                        main_interface.render()
+                    }
+                    },"unlock")
             }
+            
+            if(!main_interface.locked){
+                main_interface.button({
+                    style:{color: "blue"},
+                    click:()=>{
+                        main_interface.lock();
+                        main_interface.render()
+                    }
+
+                },"lock")
+            }
+
+
+
+          
          
         },target)
         element.render()
