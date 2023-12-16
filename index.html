@@ -15,17 +15,20 @@
         let target = document.body;
         let element = createElement404((main_interface)=>{
             
-            let sub_div = main_interface.div({},()=>{
-                main_interface.text("first text");
-            })
             main_interface.div({},()=>{
-                main_interface.text("second text");
+                    let sub_div = main_interface.div({},()=>{
+                        main_interface.text("first text");
+
+                    })
+                    
+                    main_interface.div({},()=>{
+                        main_interface.text("second text");
+                    })
+                    
+                    sub_div.p({},"third text");
+                    sub_div.div({},"aaaaaaaa")
+
             })
-
-            sub_div.text("third text");
-            sub_div.br();
-
-            
 
 
           
