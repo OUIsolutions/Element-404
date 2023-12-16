@@ -180,39 +180,59 @@ element.render()
 With State Setters you can generate an button that will define an especific state 
 predetermined 
 ```js
-
-var data = {}
+    var data = {}
 
 let target = document.body;
 let element = createElement404((main_interface)=>{
-    let seted_props = {
-        style:{
-            color:"red"
-        }
+    let selected_style = {
+        color:"red"
     }
-    let unseted_props = {
-        style:{
-            color:"blue"
-        }
+    let unselected_style= {
+        color:"blue"
     }
 
-    main_interface.stateSetter(data,"page","home",seted_props,unseted_props,"Home");
-    main_interface.stateSetter(data,"page","about",seted_props,unseted_props,"About");
 
-    if(data.page == "home"){
-        main_interface.h1({},"you are in home page")
+
+    let selected_home = {
+        content:"Home Selected",
+        props:{
+            style:selected_style
+        }
     }
-    else if(data.page == "about"){
-        main_interface.h1({},"you are in about page")
+    let unselected_home = {
+        content:"Home",
+        props:{
+            style:unselected_style
+        }
+    }
+    main_interface.stateSetter(data,"page","home",selected_home,unselected_home);
+
+    let selected_about = {
+        content:"About Selected",
+        props:{
+            style:selected_style
+        }
+    }
+    let unselected_about = {
+        content:"About",
+        props:{
+            style:unselected_style
+        }
+    }
+    main_interface.stateSetter(data,"page","about",selected_about,unselected_about);
+
+    if(data.page === "home"){
+        main_interface.h1("you are in home page")
+    }
+    else if(data.page === "about"){
+        main_interface.h1("you are in about page")
     }
 
     else{
-        main_interface.h1({},"404")
+        main_interface.h1("404")
     }
 },target)
 element.render()
-    
-
 
 
 ```
@@ -225,43 +245,45 @@ var data = {}
 
 let target = document.body;
 let element = createElement404((main_interface)=>{
-        
+
     main_interface.stateSelect(data,"gender",["Man","Woman"]);
     main_interface.br()
 
     main_interface.stateInput(data,"num",{placeholder:"num"})
-    main_interface.stateDecreaser(data,"num",1,{},"-")
-    main_interface.stateIncreaser(data,"num",1,{},"+")
+    main_interface.stateDecrease(data,"num",1,"-")
+    main_interface.stateIncrease(data,"num",1,"+")
     main_interface.br()
-    
-    
+
+
     if(main_interface.locked){
-            main_interface.button({
+
+        main_interface.button("unlock",{
             style:{color: "red"},
-            unlockable_render_click:()=>{
+            notLock_render_click:()=>{
                 main_interface.unlock();
             }
-            },"unlock")
+        })
     }
 
     if(!main_interface.locked){
-        main_interface.button({
+        main_interface.button("lock",{
             style:{color: "blue"},
             render_click:()=>{
                 main_interface.lock();
                 main_interface.render()
             }
 
-        },"lock")
+        })
     }
 
 
 
-    
-    
+
+
 },target)
 element.render()
-    
+
+
 
 
 ```
