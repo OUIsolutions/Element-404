@@ -31,10 +31,15 @@ Element404.prototype.stateInput= function(name,props=null,render_props={render_k
                 return;
             }
 
-
             this.stored_state[name] = input.value
             if(render_keyup){
-                this.father.last_input = new LastInput(this.stored_state,name,input.selectionStart);
+                let created_last_input =  new LastInput(this.stored_state,name,input.selectionStart);
+                if(this.child){
+                    this.father.last_input =created_last_input
+                }
+                if(!this.child){
+                    this.last_input  = created_last_input;
+                }
                 this.render();
             }
 
@@ -58,7 +63,13 @@ Element404.prototype.stateInput= function(name,props=null,render_props={render_k
         formatted_props[key] = props[key];
     }
     let created =this.input(formatted_props);
-    let last_input = this.father.last_input;
+
+    let last_input = this.last_input;
+
+    if(this.child){
+        last_input = this.father.last_input;
+    }
+
     if(last_input && render_keyup){
         if(this.stored_state === last_input.state && name === last_input.name){
             last_input.input = created.root;
