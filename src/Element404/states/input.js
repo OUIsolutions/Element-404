@@ -15,7 +15,7 @@
  */
 Element404.prototype.stateInput= function(name,props=null,render_props={render_keyup:true,render_focusout:false,prevent_locker:true}) {
 
-    let old_value = this.stored_state[name];
+    let old_value = this.getStateValue(name);
 
     let formatted_args = new Element404Args(render_props,{});
 
@@ -31,7 +31,7 @@ Element404.prototype.stateInput= function(name,props=null,render_props={render_k
                 return;
             }
 
-            this.stored_state[name] = input.value
+            this.setStateValue(name, input.value);
             if(render_keyup){
                 let created_last_input =  new LastInput(this.stored_state,name,input.selectionStart);
                 if(this.child){

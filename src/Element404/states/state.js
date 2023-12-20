@@ -19,3 +19,24 @@ Element404.prototype.subStateObject = function(key_or_index) {
     return sub_element
 }
 
+
+Element404.prototype.setStateValue = function(key_or_index,value) {
+    this.stored_state[key_or_index] = value;
+}
+
+
+Element404.prototype.getStateValue = function(key_or_index,default_value) {
+  let existent = this.stored_state[key_or_index];
+  if(existent === undefined){
+      this.setStateValue(key_or_index,default_value);
+      return default_value;
+  }
+  return existent;
+}
+
+
+
+
+
+
+
