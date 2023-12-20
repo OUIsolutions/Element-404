@@ -1,13 +1,20 @@
 
 targets = [
-    'constructors.js',
-    'sub_components.js',
-    'render.js',
-    'locker.js',
-    'tags.js',
-    'point_state.js',
-
+    "LastInput.js",
+    "args.js",
+    "Element404/constructors.js",
+    "Element404/locker.js",
+    "Element404/render.js",
+    "Element404/states/state.js",
+    "Element404/states/input.js",
+    "Element404/states/increase.js",
+    "Element404/states/decrease.js",
+    "Element404/states/select.js",
+    "Element404/states/setter.js",
+    "Element404/sub_components.js",
+    "Element404/tags.js"
 ]
+
 
 
 output = 'Element404.js'

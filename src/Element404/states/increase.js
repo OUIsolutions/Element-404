@@ -15,7 +15,7 @@
  * @param {string} name
  * @param {number} value
  * @param {string} content
- * @param {NumbericalStateProps } state_props
+ * @param {NumbericalStateProps=} state_props
  * @returns {number}
  */
 Element404.prototype.stateIncrease = function(
