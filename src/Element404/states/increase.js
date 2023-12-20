@@ -4,10 +4,10 @@
 
 /**
  @typedef {object} NumbericalStateProps
- @property {boolean} render_change
+ @property {boolean=} render_change
  @property {number=null} default_value
- @property {object} props
- @property {string}tag
+ @property {object=} props
+ @property {string=}tag
  */
 
 
