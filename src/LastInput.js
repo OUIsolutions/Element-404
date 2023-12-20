@@ -1,7 +1,7 @@
 
 class LastInput{
 
-    /** @type {HTMLElement} */
+    /** @type {HTMLInputElement} */
     input  =  undefined;
 
     constructor(state,state_name,position) {

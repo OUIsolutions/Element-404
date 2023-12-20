@@ -16,9 +16,6 @@ Element404.prototype.create_object_style = function(domElement,style_value){
 
 
 
-Element404.prototype.handle_special = function(domElement,key,value) {
-
-}
 
 /** @param {HTMLElement} domElement 
  * @param {string} key

@@ -39,6 +39,7 @@ Element404.prototype.rootConstructor = function(generator,target){
  /**
   * @param {Element404} father
   * @param {DocumentFragment || HTMLElement ||  Text} root
+
   * @returns {Element404}
   */
 Element404.prototype.sub_element = function(father,root){
@@ -46,7 +47,9 @@ Element404.prototype.sub_element = function(father,root){
     this.father = father;
     /** @type {DocumentFragment || HTMLElement ||  Text} */
     this.root = root;
-     this.child = true;
+    this.child = true;
+    this.last_input = this.father.last_input;
+    this.stored_state = this.father.stored_state;
      return this;
 } 
 

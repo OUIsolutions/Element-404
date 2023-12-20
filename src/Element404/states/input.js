@@ -1,9 +1,9 @@
 
 /**
  @typedef {object} InputRenderProps
- @property {boolean} render_keyup
- @property {boolean} render_focusout
- @property {boolean} prevent_locker
+ @property {boolean=true} render_keyup
+ @property {boolean=false} render_focusout
+ @property {boolean=true} prevent_locker
  */
 
 
@@ -11,7 +11,7 @@
  * @param {string} name
  * @param {object} props
  * @param {InputRenderProps} render_props
- * @returns {any}
+ * @returns {string}
  */
 Element404.prototype.stateInput= function(name,props=null,render_props={render_keyup:true,render_focusout:false,prevent_locker:true}) {
 
