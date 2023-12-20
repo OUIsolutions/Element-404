@@ -147,7 +147,7 @@ element.render()
 with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 ```js
-      let target = document.body;
+let target = document.body;
 let element = createElement404((main_interface)=>{
 
     let name = main_interface.stateInput("name",{placeholder:"name"})

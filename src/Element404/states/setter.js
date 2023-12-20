@@ -12,22 +12,26 @@
  * @param {any} value
  * @param {SetterState} selected_value
  * @param {SetterState} unselected_value
+ * @param {boolean} render
  * */
 Element404.prototype.stateSetter = function(
     name,
     value,
     selected_value,
-    unselected_value
+    unselected_value,
+    render=true
 ){
 
 
-    let old_value = this.stored_state[name];
+    let old_value = this.getStateValue(name);
 
     let formatted_props = {
-        render_click:()=>{
+        click:()=>{
 
-            this.stored_state[name] = value;
-            this.render();
+            this.setStateValue(name,value)
+            if(render){
+                this.render();
+            }
         }
     }
     let is_selected = old_value === value;
@@ -42,6 +46,6 @@ Element404.prototype.stateSetter = function(
     }
 
     this.create(tag,content,formatted_props);
-
+    return old_value
 
 }
