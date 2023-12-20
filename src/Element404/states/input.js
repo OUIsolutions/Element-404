@@ -16,9 +16,7 @@
  */
 Element404.prototype.stateInput= function(name,props=null,render_props={render_keyup:true,render_focusout:false,prevent_locker:true}) {
 
-
     let formatted_args = new Element404Args(render_props,{});
-
     let prevent_locker =formatted_args.get('prevent_locker',true);
     let render_keyup = formatted_args.get('render_keyup',true);
     let render_focusout = formatted_args.get('render_focusout',false);
