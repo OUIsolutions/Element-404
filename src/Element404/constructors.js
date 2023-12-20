@@ -10,7 +10,7 @@
         this.last_input = undefined;
 
         /** @type {object} */
-        this.stored_state = undefined;
+        this.stored_state = {};
 
         /** @type {boolean} */
         this.locked = false;
