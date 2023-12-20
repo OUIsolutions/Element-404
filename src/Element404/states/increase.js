@@ -16,14 +16,14 @@
  * @param {string} name
  * @param {number} value
  * @param {string} content
- * @param {NumbericalStateProps || null} state_props
+ * @param {NumbericalStateProps } state_props
  * @returns {number}
  */
 Element404.prototype.stateIncrease = function(
     name,
     value,
     content,
-    state_props=null
+    state_props
     ){
 
     let formatted_args = new Element404Args(state_props,{});
