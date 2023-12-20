@@ -11,10 +11,11 @@ class Element404Args{
     }
 
     get(key_or_index,default_value){
-        let value = this.element[key_or_index];
-        if(!value){
-            return default_value;
+        if(!this.element.hasOwnProperty(key_or_index)){
+            return  default_value;
         }
+        return this.element[key_or_index];
+
     }
 
 }

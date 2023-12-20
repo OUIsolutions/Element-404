@@ -1,9 +1,9 @@
 
 /**
  @typedef {object} InputRenderProps
- @property {boolean=true} render_keyup
- @property {boolean=false} render_focusout
- @property {boolean=true} prevent_locker
+ @property {boolean} render_keyup
+ @property {boolean} render_focusout
+ @property {boolean} prevent_locker
  */
 
 
@@ -16,11 +16,12 @@
 Element404.prototype.stateInput= function(name,props=null,render_props={render_keyup:true,render_focusout:false,prevent_locker:true}) {
 
     let old_value = this.stored_state[name];
-    let formatted_render_props = new Element404Args(render_props,{});
-    let prevent_locker =formatted_render_props.get('prevent_locker',true);
-    let render_keyup = formatted_render_props.get('render_keyup',true);
-    let render_focusout = formatted_render_props.get('render_focusout',false);
 
+    let formatted_args = new Element404Args(render_props,{});
+
+    let prevent_locker =formatted_args.get('prevent_locker',true);
+    let render_keyup = formatted_args.get('render_keyup',true);
+    let render_focusout = formatted_args.get('render_focusout',false);
 
     let formatted_props = {
 
