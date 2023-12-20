@@ -200,60 +200,55 @@ element.render()
 With State Setters you can generate a button that will define a specific point_state 
 predetermined 
 ```js
-var data = {}
+     let target = document.body;
+        let element = createElement404((main_interface)=>{
+            let selected_style = {
+                color:"red"
+            }
+            let unselected_style= {
+                color:"blue"
+            }
 
-let target = document.body;
-let element = createElement404((main_interface)=>{
-    let selected_style = {
-        color:"red"
-    }
-    let unselected_style= {
-        color:"blue"
-    }
+            let selected_home = {
+                content:"Home Selected",
+                props:{
+                    style:selected_style
+                }
+            }
+            let unselected_home = {
+                content:"Home",
+                props:{
+                    style:unselected_style
+                }
+            }
+            main_interface.stateSetter("page","home",selected_home,unselected_home);
 
+            let selected_about = {
+                content:"About Selected",
+                props:{
+                    style:selected_style
+                }
+            }
+            let unselected_about = {
+                content:"About",
+                props:{
+                    style:unselected_style
+                }
+            }
+             let page = main_interface.stateSetter("page","about",selected_about,unselected_about);
 
+            if(page === "home"){
+                main_interface.h1("you are in home page")
+            }
+            else if(page === "about"){
+                main_interface.h1("you are in about page")
+            }
 
-    let selected_home = {
-        content:"Home Selected",
-        props:{
-            style:selected_style
-        }
-    }
-    let unselected_home = {
-        content:"Home",
-        props:{
-            style:unselected_style
-        }
-    }
-    main_interface.stateSetter(data,"page","home",selected_home,unselected_home);
-
-    let selected_about = {
-        content:"About Selected",
-        props:{
-            style:selected_style
-        }
-    }
-    let unselected_about = {
-        content:"About",
-        props:{
-            style:unselected_style
-        }
-    }
-    main_interface.stateSetter(data,"page","about",selected_about,unselected_about);
-
-    if(data.page === "home"){
-        main_interface.h1("you are in home page")
-    }
-    else if(data.page === "about"){
-        main_interface.h1("you are in about page")
-    }
-
-    else{
-        main_interface.h1("404")
-    }
-},target)
-element.render()
-
+            else{
+                main_interface.h1("404")
+            }
+        },target)
+        element.render()
 
 ```
 
