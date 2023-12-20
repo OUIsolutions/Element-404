@@ -9,6 +9,9 @@
         /** @type {LastInput} */
         this.last_input = undefined;
 
+        /** @type {object} */
+        this.stored_state = undefined;
+
         /** @type {boolean} */
         this.locked = false;
 
