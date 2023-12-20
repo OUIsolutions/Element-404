@@ -1,8 +1,9 @@
 /**
- @typedef {object} SelectRenderProps
+ @typedef {object} SelectStateProps
  @property {boolean=true} prevent_locker
  @property {boolean} render_change
  @property {string=null} default_value
+
  */
 
 
@@ -10,24 +11,21 @@
 /**
  * @param {string} name
  * @param {Array<string> | Object} options
- * @param {SelectRenderProps} render_props
- * @param {object} props
+ * @param {SelectStateProps=} state_props
  * @returns {string}
  */
 Element404.prototype.stateSelect = function(
     name,
     options,
-    render_props={prevent_locker:true,render_change:true},
-    props=null,
-
+    state_props
 ){
 
 
-    let formatted_args = new Element404Args(render_props,{});
+    let formatted_args = new Element404Args(state_props,{});
     let prevent_locker =formatted_args.get('prevent_locker',true);
     let render_change =  formatted_args.get("render_change",true);
     let default_value = formatted_args.get('default_value');
-
+    let props = formatted_args.get_no_listed();
 
     let formatted_props = {
         "notLock_change":(select)=>{

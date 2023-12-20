@@ -16,8 +16,8 @@ Element404.prototype.stateDecrease = function(
     let formatted_args = new Element404Args(state_props,{});
     let render_change =  formatted_args.get("render_change",true);
     let default_value = formatted_args.get('default_value',0);
-    let props= formatted_args.get("props",{});
     let tag = formatted_args.get("tag","button");
+    let props = formatted_args.get_no_listed();
 
     let old_value = this.getStateValue(name,default_value);
 
