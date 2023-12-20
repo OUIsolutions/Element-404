@@ -8,6 +8,9 @@ make sure to save the current release, and be ready for bugs.
 ## Contributions
 If you want to contribute, just read the TODO.md and then, implement the required feature.
 
+## Runable Example to start 
+https://codesandbox.io/p/sandbox/element404-2w7clv
+
 ## Install
 Just download the **Element404.js** file into your project and then reference into your html
 
@@ -149,12 +152,18 @@ you just need to pass the container and the props you want to  pass
 ```js
 let target = document.body;
 let element = createElement404((main_interface)=>{
-
-    let name = main_interface.stateInput("name",{placeholder:"name"})
+    //creating an style input more sofisticated
+    let style_input = {
+        border:'none',
+        color:'rgb(71,78,86)',
+        'background-color':'rgb(231,231,248)'
+    }
+    
+    let name = main_interface.stateInput("name",{placeholder:"name",style:style_input})
     main_interface.br()
-    let email = main_interface.stateInput("email",{placeholder:"email",default_value:"aaaaa"})
+    let email = main_interface.stateInput("email",{placeholder:"email",style:style_input,default_value:"aaaaa"})
     main_interface.br()
-    let age = main_interface.stateInput("age",{placeholder:"age", default_value:18})
+    let age = main_interface.stateInput("age",{placeholder:"age",style:style_input, default_value:18})
     main_interface.stateDecrease("age",1,"-")
     main_interface.stateIncrease("age",1,"+")
     main_interface.br()
@@ -162,14 +171,17 @@ let element = createElement404((main_interface)=>{
     let gender = main_interface.stateSelect("gender",["Man","Woman"],{default_value:"Woman"})
     main_interface.br()
 
-    let password =main_interface.stateInput("password",{placeholder:"password",type:"password"})
+    let password =main_interface.stateInput("password",{placeholder:"password",style:style_input, type:"password"})
 
-
-    main_interface.p(`name: ${name}`)
-    main_interface.p(`email: ${email}`)
-    main_interface.p(`password: ${password}`)
-    main_interface.p(`age: ${age}`)
-    main_interface.p(`gender ${gender}`)
+    let p_style = {
+        color:'rgb(71,78,86)',
+        'font-size':'0.75em'
+    }
+    main_interface.p(`name: ${name}`,{style:p_style})
+    main_interface.p(`email: ${email}`,{style:p_style})
+    main_interface.p(`password: ${password}`, {style:p_style})
+    main_interface.p(`age: ${age}`, {style:p_style})
+    main_interface.p(`gender ${gender}`, {style:p_style})
     const pre_props = {
         style:{
             width:"30vw",
