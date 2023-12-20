@@ -5,6 +5,7 @@
  * @param {string} content
  * @param {string} tag
  * @param {object} props
+ * @returns {number}
  */
 Element404.prototype.stateDecrease = function(name, value, content,  tag='button',props=null){
 
@@ -23,5 +24,5 @@ Element404.prototype.stateDecrease = function(name, value, content,  tag='button
     }
     this.create(tag,content,formatted_props);
 
-
+    return this.stored_state[name];
 }

@@ -4,6 +4,7 @@
  * @param {string} name
  * @param {Array<string> | Object} options
  * @param {object} props
+ * @returns {string}
  */
 Element404.prototype.stateSelect = function(name,options,props=null){
 
@@ -22,12 +23,13 @@ Element404.prototype.stateSelect = function(name,options,props=null){
     for(let key in props){
         formatted_props[key] = props[key];
     }
-
     this.select(()=> {
+            let old_value =  this.stored_state[name];
+
             if (options.constructor.name === 'Object') {
 
                 for (let key in options) {
-                    if (key === this.stored_state[name]) {
+                    if (key === old_value) {
                         this.option(options[key], {"value": key, "selected": true});
                         continue;
                     }
@@ -37,7 +39,7 @@ Element404.prototype.stateSelect = function(name,options,props=null){
 
             if (options.constructor.name === 'Array') {
                 options.forEach((option) => {
-                    if (option === this.stored_state[name]) {
+                    if (option === old_value) {
                         this.option(option, {"value": option, "selected": true});
                         return;
                     }
@@ -48,5 +50,8 @@ Element404.prototype.stateSelect = function(name,options,props=null){
         }
 
         ,formatted_props);
+
+    return this.stored_state[name];
+
 }
 

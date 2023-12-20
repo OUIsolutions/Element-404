@@ -6,6 +6,7 @@
  * @param {string} content
  * @param {string} tag
  * @param {object} props
+ * @returns {number}
  */
 Element404.prototype.stateIncrease = function(name, value, content, tag='button',props=null){
 
@@ -23,5 +24,6 @@ Element404.prototype.stateIncrease = function(name, value, content, tag='button'
         formatted_props[key] = props[key];
     }
     this.create(tag,content,formatted_props);
+    return this.stored_state[name];
 
 }
