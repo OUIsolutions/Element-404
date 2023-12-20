@@ -20,9 +20,10 @@ Element404.prototype.subStateObject = function(key_or_index) {
 }
 
 
-Element.prototype.getFullState = function() {
+Element404.prototype.getFullState = function() {
     return this.stored_state;
 }
+
 
 Element404.prototype.setStateValue = function(key_or_index,value) {
     this.stored_state[key_or_index] = value;
