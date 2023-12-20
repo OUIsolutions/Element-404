@@ -1,6 +1,5 @@
 
 Element404.prototype.stateSetter = function(
-    state,
     name,
     value,
     selected_value,
@@ -8,12 +7,12 @@ Element404.prototype.stateSetter = function(
 ){
 
 
-    let old_value = state[name];
+    let old_value = this.stored_state[name];
 
     let formatted_props = {
         render_click:()=>{
 
-            state[name] = value;
+            this.stored_state[name] = value;
             this.render();
         }
     }

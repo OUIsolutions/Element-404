@@ -1,12 +1,11 @@
 
 
 /**
- * @param {object} state
  * @param {string} name
  * @param {Array<string> | Object} options
  * @param {object} props
  */
-Element404.prototype.stateSelect = function(state,name,options,props=null){
+Element404.prototype.stateSelect = function(name,options,props=null){
 
     let formatted_props = {
         "notLock_render_change":(select)=>{
@@ -14,7 +13,7 @@ Element404.prototype.stateSelect = function(state,name,options,props=null){
                 return;
             }
 
-            state[name] = select.value;
+            this.stored_state[name] = select.value;
 
         }
 
@@ -28,7 +27,7 @@ Element404.prototype.stateSelect = function(state,name,options,props=null){
             if (options.constructor.name === 'Object') {
 
                 for (let key in options) {
-                    if (key === state[name]) {
+                    if (key === this.stored_state[name]) {
                         this.option(options[key], {"value": key, "selected": true});
                         continue;
                     }
@@ -38,7 +37,7 @@ Element404.prototype.stateSelect = function(state,name,options,props=null){
 
             if (options.constructor.name === 'Array') {
                 options.forEach((option) => {
-                    if (option === state[name]) {
+                    if (option === this.stored_state[name]) {
                         this.option(option, {"value": option, "selected": true});
                         return;
                     }
