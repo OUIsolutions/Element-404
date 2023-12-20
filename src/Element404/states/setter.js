@@ -1,4 +1,18 @@
 
+/**
+ * @typedef {Object} SetterState
+ * @property {string=}tag
+ * @property {object=}props
+ * @property {function || string} content
+ * */
+
+
+/**
+ * @param {string} name
+ * @param {any} value
+ * @param {SetterState} selected_value
+ * @param {SetterState} unselected_value
+ * */
 Element404.prototype.stateSetter = function(
     name,
     value,
@@ -17,11 +31,9 @@ Element404.prototype.stateSetter = function(
         }
     }
     let is_selected = old_value === value;
-    /**@type {object}*/
     let corresponded_value= is_selected ? selected_value: unselected_value;
     let props = corresponded_value.props;
 
-    /**@type {string}*/
     let tag = corresponded_value.tag ? corresponded_value.tag: "button";
     let content = corresponded_value.content;
 
