@@ -616,7 +616,7 @@ Element404.prototype.generate_component_reference=function(domElement,content,pr
     
     if(is_a_function){
         let generated_content = content()
-        if(generated_content){
+        if(typeof (generated_content) === 'string'){
             let node = document.createTextNode(generated_content)
             domElement.appendChild(node)
         }

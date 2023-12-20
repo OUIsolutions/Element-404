@@ -147,35 +147,50 @@ element.render()
 with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 ```js
-
-var user_data = {
-    age:18
-}
-
-let target = document.body;
+      let target = document.body;
 let element = createElement404((main_interface)=>{
 
-
-    main_interface.stateInput(user_data,"name",{placeholder:"name"})
+    let name = main_interface.stateInput("name",{placeholder:"name"})
     main_interface.br()
-    main_interface.stateInput(user_data,"email",{placeholder:"email"})
+    let email = main_interface.stateInput("email",{placeholder:"email",default_value:"aaaaa"})
     main_interface.br()
-    main_interface.stateInput(user_data,"age",{placeholder:"age"})
-    main_interface.stateDecrease(user_data,"age",1,"-")
-    main_interface.stateIncrease(user_data,"age",1,"+")
-    main_interface.br()
-    main_interface.stateSelect(user_data,"gender",["Man","Woman"])
+    let age = main_interface.stateInput("age",{placeholder:"age", default_value:18})
+    main_interface.stateDecrease("age",1,"-")
+    main_interface.stateIncrease("age",1,"+")
     main_interface.br()
 
-    main_interface.stateInput(user_data,"password",{placeholder:"password",type:"password"})
-    main_interface.p(`name: ${user_data.name}`)
-    main_interface.p(`email: ${user_data.email}`)
-    main_interface.p(`password: ${user_data.password}`)
-    main_interface.p(`age: ${user_data.age}`)
-    main_interface.p(`gender ${user_data.gender}`)
+    let gender = main_interface.stateSelect("gender",["Man","Woman"],{default_value:"Woman"})
+    main_interface.br()
+
+    let password =main_interface.stateInput("password",{placeholder:"password",type:"password"})
+
+
+    main_interface.p(`name: ${name}`)
+    main_interface.p(`email: ${email}`)
+    main_interface.p(`password: ${password}`)
+    main_interface.p(`age: ${age}`)
+    main_interface.p(`gender ${gender}`)
+    const pre_props = {
+        style:{
+            width:"30vw",
+            height:"30vh",
+            color:'white',
+            "background-color":"rgb(38,42,85)",
+        }
+    }
+    main_interface.pre(
+
+        ()=> main_interface.code(
+            JSON.stringify(element.getFullState(), null, 4)
+        ),
+
+        pre_props
+    )
 
 },target)
+
 element.render()
+
 
 
 
