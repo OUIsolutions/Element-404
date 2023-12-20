@@ -5,7 +5,7 @@ targets = [
     'render.js',
     'locker.js',
     'tags.js',
-    'state.js',
+    'point_state.js',
 
 ]
 

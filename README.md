@@ -182,7 +182,7 @@ element.render()
 ```
 
 ## State Setter 
-With State Setters you can generate a button that will define a specific state 
+With State Setters you can generate a button that will define a specific point_state 
 predetermined 
 ```js
 var data = {}
