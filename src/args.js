@@ -15,6 +15,7 @@ class Element404Args{
         if(value === undefined || value === null){
             return default_value;
         }
+        return value
     }
 
 }
