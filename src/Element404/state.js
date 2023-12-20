@@ -16,15 +16,16 @@ Element404.prototype.stateInput= function(state,name,props=null) {
                 this.render();
                 return;
             }
-
+            this.last_input = new LastInput(state,name,input.selectionStart);
             state[name] = input.value
+            this.render();
         },
 
-        "focusout":()=>{
-            this.render();
+        'focusout':(input)=>{
+           // this.last_input = undefined;
         }
 
-        
+
         
     }
 
@@ -34,8 +35,16 @@ Element404.prototype.stateInput= function(state,name,props=null) {
     for(let key in props){
             formatted_props[key] = props[key];
     }
+    let created =this.input(formatted_props);
 
-    this.input(formatted_props);
+    if(this.last_input){
+        if(state === this.last_input.state && name === this.last_input.name){
+            console.log("determinou como root")
+
+            this.last_input.input = created.root;
+        }
+    }
+
 
 }
 

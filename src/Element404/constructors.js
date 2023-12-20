@@ -6,6 +6,9 @@
         this.child = false;
 
 
+        /** @type {LastInput} */
+        this.last_input = undefined;
+
         /** @type {boolean} */
         this.locked = false;
 
