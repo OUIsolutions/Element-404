@@ -10,15 +10,15 @@
 /**
  * @param {string} name
  * @param {Array<string> | Object} options
- * @param {object} props
  * @param {SelectRenderProps} render_props
+ * @param {object} props
  * @returns {string}
  */
 Element404.prototype.stateSelect = function(
     name,
     options,
+    render_props={prevent_locker:true,render_change:true},
     props=null,
-    render_props={prevent_locker:true,render_change:true}
 
 ){
 
