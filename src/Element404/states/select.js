@@ -1,22 +1,46 @@
+/**
+ @typedef {object} SelectRenderProps
+ @property {boolean=true} prevent_locker
+ @property {boolean} render_change
+ @property {string=null} default_value
+ */
+
 
 
 /**
  * @param {string} name
  * @param {Array<string> | Object} options
  * @param {object} props
+ * @param {SelectRenderProps} render_props
  * @returns {string}
  */
-Element404.prototype.stateSelect = function(name,options,props=null){
+Element404.prototype.stateSelect = function(
+    name,
+    options,
+    props=null,
+    render_props={prevent_locker:true,render_change:true}
+
+){
+
+
+    let formatted_args = new Element404Args(render_props,{});
+    let prevent_locker =formatted_args.get('prevent_locker',true);
+    let render_change =  formatted_args.get("render_change",true);
+    let default_value = formatted_args.get('default_value');
+
 
     let formatted_props = {
-        "notLock_render_change":(select)=>{
-            if(this.locked){
+        "notLock_change":(select)=>{
+            if(this.locked  && prevent_locker){
+                this.render();
                 return;
             }
-
-            this.stored_state[name] = select.value;
-
+            this.setStateValue(name,select.value);
+            if(render_change){
+                this.render();
+            }
         }
+
 
     }
 
@@ -24,7 +48,7 @@ Element404.prototype.stateSelect = function(name,options,props=null){
         formatted_props[key] = props[key];
     }
     this.select(()=> {
-            let old_value =  this.stored_state[name];
+            let old_value =  this.getStateValue(name,default_value);
 
             if (options.constructor.name === 'Object') {
 
@@ -51,7 +75,7 @@ Element404.prototype.stateSelect = function(name,options,props=null){
 
         ,formatted_props);
 
-    return this.stored_state[name];
+    return this.getStateValue(name,default_value);
 
 }
 

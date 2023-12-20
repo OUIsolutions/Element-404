@@ -1,4 +1,6 @@
 
+
+
 /**
  @typedef {object} InputRenderProps
  @property {boolean=true} render_keyup
@@ -6,6 +8,7 @@
  @property {boolean=true} prevent_locker
  @property {string  || number =null} default_value
  */
+
 
 
 /**
