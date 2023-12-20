@@ -186,7 +186,9 @@ Element404.prototype.subStateObject = function(key_or_index) {
     sub_element.stored_state = created
     return sub_element
 }
-
+Element.prototype.getFullState = function() {
+    return this.stored_state;
+}
 
 Element404.prototype.setStateValue = function(key_or_index,value) {
     this.stored_state[key_or_index] = value;
@@ -689,6 +691,25 @@ Element404.prototype.div=function(content=null,props=null){
     return this.create('div',content,props)
 }
 
+/**
+ * Creates a code block
+ * @param {function || string } content the internal content
+ * @param {object} props The object props
+ * @returns {Element404}
+ */
+Element404.prototype.code = function(content, props = null) {
+    return this.create('code', content, props);
+}
+
+/**
+ * Creates a preformatted text block
+ * @param {function || string } content the internal content
+ * @param {object} props The object props
+ * @returns {Element404}
+ */
+Element404.prototype.pre = function(content, props = null) {
+    return this.create('pre', content, props);
+}
 
 /**
  * Creates an paragraph

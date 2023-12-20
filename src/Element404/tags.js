@@ -22,6 +22,25 @@ Element404.prototype.div=function(content=null,props=null){
     return this.create('div',content,props)
 }
 
+/**
+ * Creates a code block
+ * @param {function || string } content the internal content
+ * @param {object} props The object props
+ * @returns {Element404}
+ */
+Element404.prototype.code = function(content, props = null) {
+    return this.create('code', content, props);
+}
+
+/**
+ * Creates a preformatted text block
+ * @param {function || string } content the internal content
+ * @param {object} props The object props
+ * @returns {Element404}
+ */
+Element404.prototype.pre = function(content, props = null) {
+    return this.create('pre', content, props);
+}
 
 /**
  * Creates an paragraph
