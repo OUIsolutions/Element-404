@@ -3,7 +3,6 @@
 
 /**
  @typedef {Object} InputStateProps
- @property {boolean=} render_change
  @property {string=} default_value
  */
 
@@ -22,8 +21,7 @@ Element404.prototype.stateInput= function(name,state_props) {
     let prevent_locker =formatted_args.get('prevent_locker',true);
     /**@type {string}*/
     let default_value = formatted_args.get('default_value',"");
-    /**@type {boolean}*/
-    let render_change = formatted_args.get("render_change",true);
+
     let props =formatted_args.get_no_listed();
     let old_value = this.getStateValue(name,default_value);
 
@@ -34,11 +32,8 @@ Element404.prototype.stateInput= function(name,state_props) {
                 this.render();
                 return;
             }
-            console.log(document.activeElement)
             this.setStateValue(name, input.value);
-            if(render_change){
-                this.render();
-            }
+
         },
 
     
