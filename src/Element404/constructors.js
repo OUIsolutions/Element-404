@@ -5,9 +5,7 @@
         /** @type {boolean} */
         this.child = false;
 
-
-        /** @type {LastInput} */
-        this.last_input = undefined;
+        this.state_render = false;
 
         /** @type {object} */
         this.stored_state = {};

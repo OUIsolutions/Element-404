@@ -19,11 +19,15 @@ Element404.prototype.stateSetter = function(
     value,
     selected_value,
     unselected_value,
-    render=true
+    render=undefined
 ){
 
 
     let old_value = this.getStateValue(name);
+
+    if(render === undefined){
+        render = this.state_render;
+    }
 
     let formatted_props = {
         click:()=>{

@@ -5,6 +5,7 @@
  @typedef {Object} InputStateProps
  @property {string=} default_value
  @property {boolean=}prevent_locker
+ @property {boolean=}render_change
  */
 
 
@@ -16,12 +17,13 @@
  */
 Element404.prototype.stateInput= function(name,state_props) {
 
-
     let formatted_args = new Element404Args(state_props,{});
     /**@type {boolean}*/
     let prevent_locker =formatted_args.get('prevent_locker',true);
     /**@type {string}*/
     let default_value = formatted_args.get('default_value',"");
+    let render_change = formatted_args.get('render_change',this.state_render);
+
 
     let props =formatted_args.get_no_listed();
     let old_value = this.getStateValue(name,default_value);
