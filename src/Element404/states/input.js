@@ -35,8 +35,14 @@ Element404.prototype.stateInput= function(name,state_props) {
                 this.render();
                 return;
             }
-            this.setStateValue(name, input.value);
 
+            this.setStateValue(name, input.value);
+            if(render_change){
+                //wait 0.1 seconds to render
+                setTimeout(()=>{
+                    this.render();
+                },100);
+            }
         },
 
     
