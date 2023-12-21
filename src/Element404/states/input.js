@@ -4,6 +4,7 @@
 /**
  @typedef {Object} InputStateProps
  @property {string=} default_value
+ @property {boolean=}prevent_locker
  */
 
 
