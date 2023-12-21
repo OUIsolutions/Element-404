@@ -1,6 +1,5 @@
 
 targets = [
-    "LastInput.js",
     "args.js",
     "Element404/constructors.js",
     "Element404/locker.js",
