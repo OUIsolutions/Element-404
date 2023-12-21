@@ -150,6 +150,8 @@ element.render()
 with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 ```js
+
+
 let target = document.body;
 let element = createElement404((main_interface)=>{
     //creating an style input more sofisticated
@@ -158,7 +160,7 @@ let element = createElement404((main_interface)=>{
         color:'rgb(71,78,86)',
         'background-color':'rgb(231,231,248)'
     }
-    
+
     let name = main_interface.stateInput("name",{placeholder:"name",style:style_input})
     main_interface.br()
     let email = main_interface.stateInput("email",{placeholder:"email",style:style_input,default_value:"aaaaa"})
@@ -172,11 +174,14 @@ let element = createElement404((main_interface)=>{
     main_interface.br()
 
     let password =main_interface.stateInput("password",{placeholder:"password",style:style_input, type:"password"})
+    main_interface.br();
+    main_interface.button("update",{click:()=>main_interface.render()});
 
     let p_style = {
         color:'rgb(71,78,86)',
         'font-size':'0.75em'
     }
+
     main_interface.p(`name: ${name}`,{style:p_style})
     main_interface.p(`email: ${email}`,{style:p_style})
     main_interface.p(`password: ${password}`, {style:p_style})
