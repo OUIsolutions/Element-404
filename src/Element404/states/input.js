@@ -3,9 +3,7 @@
 
 /**
  @typedef {Object} InputStateProps
- @property {boolean=true} render_keyup
- @property {boolean=false} render_focusout
- @property {boolean=true} prevent_locker
+ @property {boolean=} render_change
  @property {string=} default_value
  */
 
@@ -20,42 +18,30 @@ Element404.prototype.stateInput= function(name,state_props) {
 
 
     let formatted_args = new Element404Args(state_props,{});
+    /**@type {boolean}*/
     let prevent_locker =formatted_args.get('prevent_locker',true);
-    let render_keyup = formatted_args.get('render_keyup',true);
-    let render_focusout = formatted_args.get('render_focusout',false);
+    /**@type {string}*/
     let default_value = formatted_args.get('default_value',"");
+    /**@type {boolean}*/
+    let render_change = formatted_args.get("render_change",true);
     let props =formatted_args.get_no_listed();
     let old_value = this.getStateValue(name,default_value);
 
     let formatted_props = {
 
-        "notLock_keyup":(input)=>{
+        "notLock_change":(input,event)=>{
             if(this.locked &&prevent_locker ) {
                 this.render();
                 return;
             }
-
+            console.log(document.activeElement)
             this.setStateValue(name, input.value);
-            if(render_keyup){
-                let created_last_input =  new LastInput(this.stored_state,name,input.selectionStart);
-                if(this.child){
-                    this.father.last_input =created_last_input
-                }
-                if(!this.child){
-                    this.last_input  = created_last_input;
-                }
+            if(render_change){
                 this.render();
             }
-
-
         },
 
-        'focusout':()=>{
-            if(render_focusout){
-                this.render();
-            }
-        }
-
+    
 
 
     }
@@ -68,19 +54,8 @@ Element404.prototype.stateInput= function(name,state_props) {
         formatted_props[key] = formatted_args.element[key];
     }
 
-    let created =this.input(formatted_props);
+   this.input(formatted_props);
 
-    let last_input = this.last_input;
-
-    if(this.child){
-        last_input = this.father.last_input;
-    }
-
-    if(last_input && render_keyup){
-        if(this.stored_state === last_input.state && name === last_input.name){
-            last_input.input = created.root;
-        }
-    }
     return old_value;
 
 }

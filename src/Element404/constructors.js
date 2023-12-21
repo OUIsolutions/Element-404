@@ -56,10 +56,10 @@ Element404.prototype.sub_element = function(father,root){
 
 /**
  * @param {function} generator
- * @param {HTMLElement} target
+ * @param {HTMLElement=} target
  * @returns {Element404}
  */
-function  createElement404(generator,target){
+function  createElement404(generator,target=undefined){
      let created =  new Element404();
      created.rootConstructor(generator,target);
      return created;
