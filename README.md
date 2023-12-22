@@ -154,6 +154,8 @@ you just need to pass the container and the props you want to  pass
 
 let target = document.body;
 let element = createElement404((main_interface)=>{
+    //make sure to enable these to allow rerender on state change
+    main_interface.state_render = true;
     //creating an style input more sofisticated
     let style_input = {
         border:'none',
@@ -163,7 +165,7 @@ let element = createElement404((main_interface)=>{
 
     let name = main_interface.stateInput("name",{placeholder:"name",style:style_input})
     main_interface.br()
-    let email = main_interface.stateInput("email",{placeholder:"email",style:style_input,default_value:"aaaaa"})
+    let email = main_interface.stateInput("email",{placeholder:"email",style:style_input})
     main_interface.br()
     let age = main_interface.stateInput("age",{placeholder:"age",style:style_input, default_value:18})
     main_interface.stateDecrease("age",1,"-")
@@ -174,8 +176,7 @@ let element = createElement404((main_interface)=>{
     main_interface.br()
 
     let password =main_interface.stateInput("password",{placeholder:"password",style:style_input, type:"password"})
-    main_interface.br();
-    main_interface.button("update",{click:()=>main_interface.render()});
+
 
     let p_style = {
         color:'rgb(71,78,86)',
@@ -211,61 +212,65 @@ element.render()
 
 
 
+
 ```
 
 ## State Setter 
 With State Setters you can generate a button that will define a specific point_state 
 predetermined 
 ```js
-     let target = document.body;
-        let element = createElement404((main_interface)=>{
-            let selected_style = {
-                color:"red"
-            }
-            let unselected_style= {
-                color:"blue"
-            }
 
-            let selected_home = {
-                content:"Home Selected",
-                props:{
-                    style:selected_style
-                }
-            }
-            let unselected_home = {
-                content:"Home",
-                props:{
-                    style:unselected_style
-                }
-            }
-            main_interface.stateSetter("page","home",selected_home,unselected_home);
+let target = document.body;
+let element = createElement404((main_interface)=>{
+    main_interface.state_render = true;
 
-            let selected_about = {
-                content:"About Selected",
-                props:{
-                    style:selected_style
-                }
-            }
-            let unselected_about = {
-                content:"About",
-                props:{
-                    style:unselected_style
-                }
-            }
-             let page = main_interface.stateSetter("page","about",selected_about,unselected_about);
+    let selected_style = {
+        color:"red"
+    }
+    let unselected_style= {
+        color:"blue"
+    }
 
-            if(page === "home"){
-                main_interface.h1("you are in home page")
-            }
-            else if(page === "about"){
-                main_interface.h1("you are in about page")
-            }
+    let selected_home = {
+        content:"Home Selected",
+        props:{
+            style:selected_style
+        }
+    }
+    let unselected_home = {
+        content:"Home",
+        props:{
+            style:unselected_style
+        }
+    }
+    main_interface.stateSetter("page","home",selected_home,unselected_home);
 
-            else{
-                main_interface.h1("404")
-            }
-        },target)
-        element.render()
+    let selected_about = {
+        content:"About Selected",
+        props:{
+            style:selected_style
+        }
+    }
+    let unselected_about = {
+        content:"About",
+        props:{
+            style:unselected_style
+        }
+    }
+    let page = main_interface.stateSetter("page","about",selected_about,unselected_about);
+
+    if(page === "home"){
+        main_interface.h1("you are in home page")
+    }
+    else if(page === "about"){
+        main_interface.h1("you are in about page")
+    }
+
+    else{
+        main_interface.h1("404")
+    }
+},target)
+element.render()
 
 ```
 
@@ -273,17 +278,16 @@ predetermined
 With Lockers , you can lock the entire UI, to avoid concurrency problems 
 ```js
 
-var data = {}
 
 let target = document.body;
 let element = createElement404((main_interface)=>{
+    main_interface.state_render = true;
 
-    main_interface.stateSelect(data,"gender",["Man","Woman"]);
+    main_interface.stateSelect("gender",["Man","Woman"]);
     main_interface.br()
-
-    main_interface.stateInput(data,"num",{placeholder:"num"})
-    main_interface.stateDecrease(data,"num",1,"-")
-    main_interface.stateIncrease(data,"num",1,"+")
+    main_interface.stateInput("num",{placeholder:"num"})
+    main_interface.stateDecrease("num",1,"-")
+    main_interface.stateIncrease("num",1,"+")
     main_interface.br()
 
 
@@ -314,8 +318,5 @@ let element = createElement404((main_interface)=>{
 
 },target)
 element.render()
-
-
-
 
 ```
