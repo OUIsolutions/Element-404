@@ -37,27 +37,37 @@ Element404.prototype.stateInput= function(name,state_props) {
             }
 
             this.setStateValue(name, input.value);
-            if(render_change){
-                //wait 0.05 seconds to render
-                //these required to avoid race conditions with click event
-                let render_num = this.get_total_render();
-                let first = true;
-                let interval =setInterval(()=>{
-                    let actual_render = this.get_total_render();
-                    if(first){
-                        first = false;
-                        return;
-                    }
-                    
-                    if(actual_render > render_num){
-                        clearInterval(interval);
-                    }
-
-
-                    this.render();
-
-                },50);
+            if(!render_change){
+                return;
             }
+            //wait 0.05 seconds to render
+            //these required to avoid race conditions with click event
+            let render_num = this.get_total_render();
+            let first = true;
+            const WAIT_TIME = 50;
+            let interval =setInterval(()=>{
+                let actual_render = this.get_total_render();
+                if(first){
+                    first = false;
+                    return;
+                }
+
+                if(actual_render > render_num){
+                    clearInterval(interval);
+                    return;
+                }
+
+                let active = document.activeElement
+                //if active its an input or text area it continue
+                if(active.tagName === "INPUT" || active.tagName === "TEXTAREA"){
+                    return;
+                }
+
+
+                this.render();
+                clearInterval(interval);
+            },WAIT_TIME);
+            
         },
 
     
