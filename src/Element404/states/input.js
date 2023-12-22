@@ -44,7 +44,7 @@ Element404.prototype.stateInput= function(name,state_props) {
             //these required to avoid race conditions with click event
             let render_num = this.get_total_render();
             let first = true;
-            const WAIT_TIME = 50;
+            const WAIT_TIME = 100;
             let interval =setInterval(()=>{
                 let actual_render = this.get_total_render();
                 if(first){
