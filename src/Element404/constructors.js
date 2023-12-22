@@ -6,6 +6,8 @@
         this.child = false;
 
         this.state_render = false;
+        /** @type {number} */
+        this.total_render_times = 0;
 
         /** @type {object} */
         this.stored_state = {};
@@ -46,6 +48,7 @@ Element404.prototype.sub_element = function(father,root){
     /** @type {DocumentFragment || HTMLElement ||  Text} */
     this.root = root;
     this.child = true;
+    this.state_render = this.father.state_render;
     this.last_input = this.father.last_input;
     this.stored_state = this.father.stored_state;
      return this;
