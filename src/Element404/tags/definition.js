@@ -12,15 +12,10 @@ Element404.prototype.input=function(props=null){
 }
 
 
-/**
- * Creates a function
- * @param {function || string || null} content the internal content
- * @param {object } props The object props
- * @returns {Element404}
- */
 Element404.prototype.div=function(content=null,props=null){
     return this.create('div',content,props)
 }
+
 
 /**
  * Creates a code block
