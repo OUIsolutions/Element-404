@@ -2,7 +2,7 @@
 /**
  * @typedef {function}  Element404_generator
  * @param {Element404} main_interface
- * */
+ **/
 
 
 /**
@@ -35,11 +35,9 @@
  @property {Element404.sub_element} sub_element
  @property {rootConstructor} rootConstructor
 
-
  tags:
  Creates a function
  @property {Element404.div} div
-
  */
 
 /**
@@ -48,4 +46,5 @@
  @param {HTMLElement=} target
  @return {Element404}
  */
+
 

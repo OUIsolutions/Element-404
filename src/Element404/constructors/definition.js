@@ -1,5 +1,9 @@
+/**
+ * @module
+ * @ignore
+ */
 
- function Element404(){
+function Element404(){
 
         this.child = false;
 
@@ -33,7 +37,6 @@ Element404.prototype.sub_element = function(father,root){
     this.stored_state = this.father.stored_state;
      return this;
 }
-
 
 function  createElement404(generator,target=undefined){
      let created =  new Element404();
