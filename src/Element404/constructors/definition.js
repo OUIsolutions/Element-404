@@ -1,7 +1,3 @@
-/**
- * @module
- * @ignore
- */
 
 function Element404(){
 
@@ -17,7 +13,6 @@ function Element404(){
 
 
  }
-
 
 
 
@@ -38,7 +33,8 @@ Element404.prototype.sub_element = function(father,root){
      return this;
 }
 
-function  createElement404(generator,target=undefined){
+
+let   createElement404 = function (generator,target=undefined){
      let created =  new Element404();
      created.rootConstructor(generator,target);
      return created;

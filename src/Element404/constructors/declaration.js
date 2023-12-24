@@ -1,20 +1,20 @@
 
 /**
- * @typedef {function}  Element404_generator
+ * @typedef {function}  Element404_func_generator
  * @param {Element404} main_interface
  **/
 
 
 /**
- @typedef {function} Element404.rootConstructor
- @param {Element404_generator} generator
+ @typedef {function} Element404_func_rootConstructor
+ @param {Element404_func_generator} generator
  @param {HTMLElement=} target
  @return {Element404}
 
 
  */
 /**
- @typedef {function} Element404.sub_element
+ @typedef {function} Element404_func_sub_element
  @param {Element404} father
  @param {DocumentFragment || HTMLElement ||  Text} root
  @returns {Element404}
@@ -31,19 +31,20 @@
  @property {object} stored_state
  @property {object} locked
 
+
  methods:
- @property {Element404.sub_element} sub_element
- @property {rootConstructor} rootConstructor
+ @property {Element404_func_sub_element} sub_element
+ @property {Element404_func_rootConstructor} rootConstructor
 
  tags:
- Creates a function
- @property {Element404.div} div
+
  */
 
+
 /**
- @function createElement404
- @param {Element404_generator} generator
- @param {HTMLElement=} target
+ @typedef {function} Element404_func_createElement404
+ @param {Element404_func_generator} generator
+ @param {HTMLElement} target
  @return {Element404}
  */
 
