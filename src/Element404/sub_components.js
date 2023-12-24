@@ -1,16 +1,4 @@
 
-/**
- * @param {object} style_value
- */
-Element404.prototype.create_object_style = function(style_value){
-    let style_string = ""
-    for (const key in style_value){
-        style_string+= `${key}:${style_value[key]};`
-    }
-    return style_string
-}
-
-
 
 
 
@@ -19,8 +7,15 @@ Element404.prototype.create_object_style = function(style_value){
  * @param {string|function} value
 */
 Element404.prototype.set_prop = function(domElement,key,value){
-        
-    if(typeof(value) === 'function'){
+
+    if(key === 'style'){
+        let create_style = Element404Style.create_object_style(value);
+        domElement.setAttribute('style',create_style)
+        return
+    }
+
+
+    if(value instanceof Function){
 
         let callback = (event)=>{
 
@@ -35,38 +30,15 @@ Element404.prototype.set_prop = function(domElement,key,value){
 
         }
 
-        let tags  = ['render_','notLock_'];
+        const  TAGS  = ['render_','notLock_'];
         let formatted_key = key
-        for (let tag of tags){
+        for (let tag of TAGS){
             formatted_key = formatted_key.replace(tag,'')
         }
-
-
 
         domElement.addEventListener(formatted_key,callback)
         return
     }
-
-
-    if(key === 'style'){
-
-        let style = ''
-        if(value instanceof Object){
-            style = this.create_object_style(value)
-        }
-
-
-        if(value instanceof  Array){
-            value.forEach(v => {
-             style+=this.create_object_style(v)
-            })
-        }
-
-        domElement.setAttribute('style',style)
-
-        return
-    }
-
 
     domElement.setAttribute(key,value)
 }
@@ -101,8 +73,6 @@ Element404.prototype.set_props = function(domElement,props){
         return
     }    
 
-
-
     for (const key in props){
         this.set_prop(domElement, key,props[key])
     }
@@ -118,7 +88,7 @@ Element404.prototype.generate_component_reference=function(domElement,content,pr
     this.set_props(domElement,props)
 
 
-    let formatted_content = Element404get_func_result(content)
+    let formatted_content = Element404Extras.get_func_result(content)
 
     if(formatted_content){
         let node = document.createTextNode(formatted_content)
@@ -141,7 +111,7 @@ Element404.prototype.sub_component=function( tag,content,props){
 
     if(tag_not_exist){
 
-        let formatted_content = Element404get_func_result(content)
+        let formatted_content = Element404Extras.get_func_result(content)
         let node = document.createTextNode(formatted_content)
         this.root.appendChild(node);
         sub_element.sub_element(this,node);
