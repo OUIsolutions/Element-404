@@ -60,6 +60,8 @@ Element404.prototype.set_prop = function(domElement,key,value){
 /**
  @typedef {object} Element404Props
  @property {object || string || null} style
+ @property {function} click
+ @property {function} foccusout
  */
 
 

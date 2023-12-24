@@ -20,16 +20,25 @@ Element404.prototype.subStateObject = function(key_or_index) {
 }
 
 
+/**
+ * @returns {object || Array}
+ * */
 Element404.prototype.getFullState = function() {
     return this.stored_state;
 }
-
+/**
+ * @param {string || number} key_or_index
+ * @param {any} value
+ * */
 Element404.prototype.setStateValue = function(key_or_index,value) {
     this.stored_state[key_or_index] = value;
 }
 
-
-Element404.prototype.getStateValue = function(key_or_index,default_value) {
+/**
+ * @param {string || number} key_or_index
+ * @param {any} default_value
+ * */
+Element404.prototype.getStateValue = function(key_or_index,default_value=undefined) {
   let existent = this.stored_state[key_or_index];
   if(existent === undefined){
       this.setStateValue(key_or_index,default_value);
