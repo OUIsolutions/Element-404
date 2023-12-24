@@ -15,14 +15,11 @@ Element404.prototype.set_prop = function(key,value){
     }
 
     if(key === 'style' || key === 'responsive_style'){
-        this.style = value
         this.render_style();
         return;
     }
 
-
     if(value instanceof Function){
-
         let callback = (event)=>{
 
             if(this.locked && key.includes('notLock_') === false){
@@ -121,9 +118,9 @@ Element404.prototype.sub_component=function( tag,content,props){
     }
 
     let domElement = document.createElement(tag)
-    this.root.appendChild(domElement)
     sub_element.sub_element(this,domElement);
     sub_element.generate_component_reference(content,props)
+    this.root.appendChild(sub_element.root)
 
     return sub_element
 }
