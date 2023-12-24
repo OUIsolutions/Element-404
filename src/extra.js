@@ -11,7 +11,7 @@ let Element404Extras = {
      * */
     get_func_result(element,caster = undefined,props=undefined){
         if(typeof(element) === "function"){
-            return this.get_func_result(element(),props)
+            return this.get_func_result(element(props),caster)
         }
         if(caster){
             return caster(element)
