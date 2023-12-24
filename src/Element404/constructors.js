@@ -1,8 +1,8 @@
 
 function Element404(){
     
-        /**@type {Object || Array || Function  || undefined}*/
-        this.style = undefined;
+        /**@type {Element404Props}*/
+        this.props = undefined;
 
 
         /** @type {boolean} */

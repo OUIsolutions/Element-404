@@ -2,11 +2,11 @@
 
 
 
-/** @param {HTMLElement} domElement 
+/**
  * @param {string} key
  * @param {string | function || object} value
 */
-Element404.prototype.set_prop = function(domElement,key,value){
+Element404.prototype.set_prop = function(key,value){
 
 
     if(key === 'responsive_style'){
@@ -28,8 +28,7 @@ Element404.prototype.set_prop = function(domElement,key,value){
             if(this.locked && key.includes('notLock_') === false){
                 return;
             }
-            
-            value(domElement,event)
+            value(this.root,event)
             if(key.includes('render_')){
                 this.render()
             }
@@ -42,11 +41,11 @@ Element404.prototype.set_prop = function(domElement,key,value){
             formatted_key = formatted_key.replace(tag,'')
         }
 
-        domElement.addEventListener(formatted_key,callback)
+        this.root.addEventListener(formatted_key,callback)
         return
     }
 
-    domElement.setAttribute(key,value)
+    this.root.setAttribute(key,value)
 }
 
 
@@ -71,34 +70,33 @@ Element404.prototype.set_prop = function(domElement,key,value){
 
 
 /**
- * @param {HTMLElement} domElement
  * @param {Element404Props || undefined } props
  *  */
-Element404.prototype.set_props = function(domElement,props){
+Element404.prototype.set_props = function(props){
+    this.props = props
+
     if(props === null || props === undefined){
         return
-    }    
+    }
 
     for (const key in props){
-        this.set_prop(domElement, key,props[key])
+        this.set_prop(key,props[key])
     }
 
 }
 
 /**
- * @param {HTMLElement} domElement
  * @param {string || function } content
  * @param {Element404Props } props
  * */
-Element404.prototype.generate_component_reference=function(domElement,content,props){
-    this.set_props(domElement,props)
+Element404.prototype.generate_component_reference=function(content,props){
 
-
+    this.set_props(props)
     let formatted_content = Element404Extras.get_func_result(content)
 
     if(formatted_content){
         let node = document.createTextNode(formatted_content)
-        domElement.appendChild(node)
+        this.root.appendChild(node)
     }
 
 
@@ -111,26 +109,21 @@ Element404.prototype.generate_component_reference=function(domElement,content,pr
  * @returns {Element404}
  * */
 Element404.prototype.sub_component=function( tag,content,props){
+
     let sub_element = new Element404();
-
     let tag_not_exist = tag === undefined || tag === null
-
     if(tag_not_exist){
-
         let formatted_content = Element404Extras.get_func_result(content)
         let node = document.createTextNode(formatted_content)
         this.root.appendChild(node);
         sub_element.sub_element(this,node);
-
         return sub_element;
     }
 
-
     let domElement = document.createElement(tag)
     this.root.appendChild(domElement)
-
     sub_element.sub_element(this,domElement);
-    sub_element.generate_component_reference(domElement,content,props)
+    sub_element.generate_component_reference(content,props)
 
     return sub_element
 }
