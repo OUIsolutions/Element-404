@@ -1,14 +1,13 @@
 
 /**
- * @param {HTMLElement} domElement 
  * @param {object} style_value
  */
-Element404.prototype.create_object_style = function(domElement,style_value){
+Element404.prototype.create_object_style = function(style_value){
     let style_string = ""
     for (const key in style_value){
         style_string+= `${key}:${style_value[key]};`
     }
-    domElement.setAttribute('style',style_string)
+    return style_string
 }
 
 
@@ -49,11 +48,26 @@ Element404.prototype.set_prop = function(domElement,key,value){
     }
 
 
-    if(key === 'style' && typeof(value) == 'object'){
+    if(key === 'style'){
 
-        this.create_object_style(domElement,value)
+        let style = ''
+        if(value instanceof Object){
+            style = this.create_object_style(value)
+        }
+
+
+        if(value instanceof  Array){
+            value.forEach(v => {
+             style+=this.create_object_style(v)
+            })
+        }
+
+        domElement.setAttribute('style',style)
+
         return
     }
+
+
     domElement.setAttribute(key,value)
 }
 
