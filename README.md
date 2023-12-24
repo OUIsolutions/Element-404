@@ -278,6 +278,48 @@ element.render()
 
 
 ```
+## Responsive Styling 
+If you want to generate response styles, you can use the tag **responsive_style**
+
+```js
+
+
+        let target = document.body;
+        createElement404(element=>{
+
+            let old1 = {
+                color:"white"
+            }
+
+            let old2  = {
+                'background-color':'red'
+            }
+
+            let div_style = {
+                old1: old2,
+                old2: old1,
+                position:"absolute",
+                horizontal:{
+                    mergeIf:()=>window.innerWidth > window.innerHeight,
+                    width: '30vw',
+                    height: '15vw'
+
+                },
+                vertical:{
+                    mergeIf:()=>window.innerWidth < window.innerHeight,
+                    width: '15vw',
+                    height:"30vw"
+
+                }
+            }
+
+            element.div("value of div",{responsive_style:div_style})
+            element.div("value of div",{responsive_style:[div_style,{left:"60vw"}]})
+
+
+        }).render(target);
+
+```
 
 ## States  
 with The States system,you can generate interactive forms easily
