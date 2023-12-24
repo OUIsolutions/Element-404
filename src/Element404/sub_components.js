@@ -148,6 +148,8 @@ Element404.prototype.sub_component=function( tag,content,props){
     return sub_element
 }
 
+
+
 /**
  * 
  * @param {string || undefined} tag The tag of element
