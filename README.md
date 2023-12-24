@@ -99,7 +99,138 @@ element.render()
 
 
 ```
+### Switching Context
 
+### Switching in The Same render 
+The easiest way of switch interface context, its by adding callback modifiers
+but remember that they will be affected by the render process
+```js
+
+        let target = document.body;
+        createElement404((main_interface)=>{
+
+            let page = main_interface.div();
+
+
+            let nav_style = {
+                "width":"33vw",
+                "margin-left":"33vw",
+                "display":"grid",
+                "grid-template-columns":"33% 33% 33%"
+            }
+            let all_links = {
+                cursor:"pointer"
+            }
+
+            let selected = {
+                color:"red"
+            }
+
+            function default_page(){
+                page.clear()
+                page.nav(()=>{
+                    page.p("Default",{style:[selected,all_links]})
+                    page.p("Page 1",{style:all_links, click:page1})
+                    page.p("Page 3",{style:all_links, click:page2})
+                },{style:nav_style})
+
+                page.h1("you are in the default page")
+            }
+            default_page()
+
+            function page1(){
+                page.clear()
+                page.nav(()=>{
+                    page.nav(()=>{
+                        page.p("Default",{style:all_links,click:default_page})
+                        page.p("Page 1",{style:[selected,all_links]})
+                        page.p("Page 3",{style:all_links, click:page2})
+                    },{style:nav_style})
+                })
+                page.h1("you are in the page1")
+            }
+
+
+            function page2(){
+                page.clear()
+                page.nav(()=>{
+                    page.p("Default",{style:all_links,click:default_page})
+                    page.p("Page 1",{style:all_links, click:page1})
+                    page.p("Page 2",{style:[selected,all_links]})
+                },{style:nav_style})
+                page.h1("you are in the page 2")
+            }
+
+
+        },target).render()
+
+ 
+ 
+```
+
+### Switching in Different Renders
+
+You also can switch context by creating sub elements404, the advantage of it, its that they dont 
+affect other parts of the render
+
+```js
+
+let num = 0;
+let target = document.body;
+createElement404((main_interface)=>{
+
+    let page = main_interface.div();
+
+
+    let nav_style = {
+        "width":"33vw",
+        "margin-left":"33vw",
+        "display":"grid",
+        "grid-template-columns":"33% 33% 33%"
+    }
+    let all_links = {
+        cursor:"pointer"
+    }
+
+    let selected = {
+        color:"red"
+    }
+
+    function default_page(){
+        page.clear()
+        page.nav(()=>{
+            page.p("Default",{style:[selected,all_links]})
+            page.p("Page 1",{style:all_links, click:page1})
+        },{style:nav_style})
+
+        page.h1("you are in the default page")
+    }
+    default_page()
+
+    function page1(){
+        page.clear()
+        page.nav(()=>{
+            page.nav(()=>{
+                page.p("Default",{style:all_links,click:default_page})
+                page.p("Page 1",{style:[selected,all_links]})
+            },{style:nav_style})
+        })
+        page.h1("you are in the page1")
+    }
+
+
+    let hit_counter_div = main_interface.div();
+
+    let hit_counter =  createElement404(sub=>{
+        sub.p(`the value of num is ${num}`)
+        sub.button("Decrease num",{render_click:()=>num-=1})
+        sub.button("Increase num",{render_click:()=>num+=1})
+    }).render(hit_counter_div)
+
+},target).render()
+
+
+```
 
 
 ### Styling Elements
