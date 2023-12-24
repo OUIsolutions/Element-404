@@ -124,7 +124,8 @@ Element404.prototype.sub_component=function( tag,content,props){
     sub_element.generate_component_reference(content,props)
     this.root = old_root
     this.root.appendChild(domElement)
-    
+
+
     return sub_element
 }
 
