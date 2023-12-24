@@ -1,7 +1,10 @@
 
 function Element404(){
     
-        
+        /**@type {Object || Array || Function  || undefined}*/
+        this.style = undefined;
+
+
         /** @type {boolean} */
         this.child = false;
 

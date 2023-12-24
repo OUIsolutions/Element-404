@@ -4,29 +4,21 @@
 
 /** @param {HTMLElement} domElement 
  * @param {string} key
- * @param {string|function} value
+ * @param {string | function || object} value
 */
 Element404.prototype.set_prop = function(domElement,key,value){
 
 
-
-
     if(key === 'responsive_style'){
-
-
-        Element404Globals.resize_elements .unshift({
-            style_value:value,
-            domElement:domElement
-        })
-
+        Element404Globals.resize_elements.unshift(this)
 
     }
+
     if(key === 'style' || key === 'responsive_style'){
-        let create_style = Element404Style.create_style(value);
-        domElement.setAttribute('style',create_style)
+        this.style = value
+        this.render_style();
         return;
     }
-
 
 
     if(value instanceof Function){
@@ -136,13 +128,10 @@ Element404.prototype.sub_component=function( tag,content,props){
 
     let domElement = document.createElement(tag)
     this.root.appendChild(domElement)
-    let old_root =this.root
-    this.root = domElement
-    this.generate_component_reference(domElement,content,props)
-    this.root = old_root
-
 
     sub_element.sub_element(this,domElement);
+    sub_element.generate_component_reference(domElement,content,props)
+
     return sub_element
 }
 

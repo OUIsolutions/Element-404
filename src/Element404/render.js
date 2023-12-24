@@ -4,6 +4,21 @@ Element404.prototype.clear = function (){
     this.root.innerHTML = ''
 }
 
+
+/**
+ * @param {any} props
+ * */
+Element404.prototype.render_style = function (props=undefined){
+    if(!this.style){
+        return;
+    }
+
+    let create_style = Element404Style.create_style(this.style,props);
+    this.root.setAttribute('style',create_style);
+
+}
+
+
 /**
  * Generate the tenderization
  * @param {HTMLElement || DocumentFragment || Element404}target
