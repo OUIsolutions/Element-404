@@ -28,7 +28,7 @@ Element404.prototype.stateSetter = function(
     if(render === undefined){
         render = this.state_render;
     }
-
+    /**@type {Element404Props}*/
     let formatted_props = {
         click:()=>{
 

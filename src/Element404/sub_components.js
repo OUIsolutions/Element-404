@@ -59,9 +59,9 @@ Element404.prototype.set_prop = function(domElement,key,value){
 
 /**
  @typedef {object} Element404Props
- @property {object || string || null} style
- @property {function} click
- @property {function} foccusout
+ @property {object || string || undefined} style
+ @property {function || undefined} click
+ @property {function|| undefined} foccusout
  */
 
 
@@ -108,9 +108,9 @@ Element404.prototype.generate_component_reference=function(domElement,content,pr
 }
 
 /**
- * @param {string || null} tag
- * @param {string || function || null} content
- * @param {Element404Props || null} props
+ * @param {string || undefined} tag
+ * @param {string || function || undefined} content
+ * @param {Element404Props || undefined} props
  * @returns {Element404}
  * */
 Element404.prototype.sub_component=function( tag,content,props){
@@ -137,12 +137,12 @@ Element404.prototype.sub_component=function( tag,content,props){
 
 /**
  * 
- * @param {string || null} tag The tag of element
+ * @param {string || undefined} tag The tag of element
  * @param {function || string} content the internal content
- * @param {Element404Props || null} props The object props
+ * @param {Element404Props || undefined} props The object props
  * @returns {Element404}
  */
-Element404.prototype.create=function(tag =null,content =null,props=null){
+Element404.prototype.create=function(tag =undefined,content =undefined,props=undefined){
 
    return  this.sub_component(tag,content,props)
     
