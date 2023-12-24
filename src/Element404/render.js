@@ -9,14 +9,12 @@ Element404.prototype.clear = function (){
  * @param {any} props
  * */
 Element404.prototype.render_style = function (props=undefined){
-    if(!this.props){
-        return;
-    }
-    if(!this.props.style){
+    if(!this.style){
         return;
     }
 
-    let create_style = Element404Style.create_style(this.props.style,props);
+
+    let create_style = Element404Style.create_style(this.style,props);
     this.root.setAttribute('style',create_style);
 
 }

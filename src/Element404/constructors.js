@@ -4,6 +4,8 @@ function Element404(){
         /**@type {Element404Props}*/
         this.props = undefined;
 
+        this.style = undefined;
+
 
         /** @type {boolean} */
         this.child = false;

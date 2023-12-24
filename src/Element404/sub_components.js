@@ -8,13 +8,13 @@
 */
 Element404.prototype.set_prop = function(key,value){
 
-
     if(key === 'responsive_style'){
         Element404Globals.resize_elements.unshift(this)
 
     }
 
     if(key === 'style' || key === 'responsive_style'){
+        this.style = value
         this.render_style();
         return;
     }
