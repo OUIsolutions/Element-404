@@ -26,14 +26,25 @@ function Element404(){
 
 /**
  * @param {Element404Generator} generator
- * @param {HTMLElement} target
+ * @param {HTMLElement || DocumentFragment || Element404} target
  * @returns {Element404}
  */
 Element404.prototype.rootConstructor = function(generator,target){
-    /** @type {DocumentFragment || HTMLElement} */
-    this.root = document.createDocumentFragment();
+
     /** @type {function} */
     this.generator = ()=>{generator(this)}
+
+    /** @type {DocumentFragment || HTMLElement} */
+    this.root = document.createDocumentFragment();
+
+
+    //means its an component inside interfacce
+    if(target instanceof  Element404){
+        this.render(target.root)
+        return  this
+    }
+
+
     /** @type {HTMLElement} */
     this.target = target;
     return this;
@@ -61,8 +72,8 @@ Element404.prototype.sub_element = function(father,root){
 /**
  * Creates a new Element 404
  * @param {Element404Generator} generator
- * @param {HTMLElement=} target
- * @returns {Element404}
+ * @param {HTMLElement || DocumentFragment || Element404} target
+ ** @returns {Element404}
  */
 function  createElement404(generator,target=undefined){
      let created =  new Element404();
