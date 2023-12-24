@@ -117,21 +117,15 @@ Element404.prototype.set_props = function(domElement,props){
 Element404.prototype.generate_component_reference=function(domElement,content,props){
     this.set_props(domElement,props)
 
-    let is_a_function = typeof(content) === 'function'
-    
-    if(is_a_function){
-        let generated_content = content()
-        if(typeof (generated_content) === 'string'){
-            let node = document.createTextNode(generated_content)
-            domElement.appendChild(node)
-        }
-    }
 
-    
-    if(is_a_function === false && content){
-        let node = document.createTextNode(content)
+    let formatted_content = Element404get_func_result(content)
+
+    if(formatted_content){
+        let node = document.createTextNode(formatted_content)
         domElement.appendChild(node)
     }
+
+
 }
 
 /**
@@ -147,10 +141,7 @@ Element404.prototype.sub_component=function( tag,content,props){
 
     if(tag_not_exist){
 
-        let formatted_content = content;
-        if(typeof(content) === 'function'){
-            formatted_content =  content()
-        }
+        let formatted_content = Element404get_func_result(content)
         let node = document.createTextNode(formatted_content)
         this.root.appendChild(node);
         sub_element.sub_element(this,node);
