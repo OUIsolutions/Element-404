@@ -14,7 +14,7 @@ Element404.prototype.set_prop = function(domElement,key,value){
     if(key === 'responsive_style'){
 
 
-        resize_elements.unshift({
+        Element404Globals.resize_elements .unshift({
             style_value:value,
             domElement:domElement
         })

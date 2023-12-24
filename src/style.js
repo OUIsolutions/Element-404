@@ -7,16 +7,13 @@
  * @property {HTMLElement} domElement
  * */
 
-let resize_elements =[]
 window.onresize = function (){
 
-
-    resize_elements = resize_elements.filter(element =>{
+    Element404Globals.resize_elements = Element404Globals.resize_elements.filter(element =>{
         return document.contains(element.domElement);
     })
-    console.log(resize_elements.length)
 
-    resize_elements.forEach(element =>{
+    Element404Globals.resize_elements .forEach(element =>{
         let create_style = Element404Style.create_style(element.style_value);
         element.domElement.setAttribute('style',create_style)
     })
@@ -77,6 +74,15 @@ let Element404Style = {
             if(value.constructor.name ===  'Object'){
                 return this.create_object_style(value)
             }
+
+            if(value.constructor.name === 'Array'){
+                let style_string = ''
+                for(let element of value){
+                    style_string+=this.create_object_style(element)
+                }
+                return style_string
+            }
+
 
     }
 }
