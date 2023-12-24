@@ -26,7 +26,10 @@ let Element404Style = {
      * * */
     create_object_style(style_value,props){
 
+
+
         if(style_value['mergeIf']){
+
             let evaluation_result = Element404Extras.get_func_result(style_value['mergeIf'],undefined,props)
             if(!evaluation_result){
                 return ""
@@ -63,18 +66,22 @@ let Element404Style = {
      * */
     create_style(value,props){
 
+
             if(value instanceof  String){
                 return value
             }
-
+            let formated_props = props;
+            if(!formated_props){
+                formated_props = {}
+            }
             if(value.constructor.name ===  'Object'){
-                return this.create_object_style(value,props)
+                return this.create_object_style(value,formated_props)
             }
 
             if(value.constructor.name === 'Array'){
                 let style_string = ''
                 for(let element of value){
-                    style_string+=this.create_object_style(element,props)
+                    style_string+=this.create_object_style(element,formated_props)
                 }
                 return style_string
             }
