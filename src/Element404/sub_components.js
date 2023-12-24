@@ -118,9 +118,9 @@ Element404.prototype.sub_component=function( tag,content,props){
     }
 
     let domElement = document.createElement(tag)
-    sub_element.sub_element(this,domElement);
     this.root.appendChild(domElement)
-    
+
+    sub_element.sub_element(this,domElement);
     sub_element.generate_component_reference(content,props)
     return sub_element
 }
