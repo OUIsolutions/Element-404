@@ -1,4 +1,30 @@
 
+
+
+/**
+ * @typedef {object} Resizible
+ * @property {any} style_value
+ * @property {HTMLElement} domElement
+ * */
+
+let resize_elements =[]
+window.onresize = function (){
+
+
+    resize_elements = resize_elements.filter(element =>{
+        return document.contains(element.domElement);
+    })
+    console.log(resize_elements.length)
+
+    resize_elements.forEach(element =>{
+        let create_style = Element404Style.create_style(element.style_value);
+        element.domElement.setAttribute('style',create_style)
+    })
+
+}
+
+
+
 let Element404Style = {
 
 
@@ -35,6 +61,7 @@ let Element404Style = {
 
         return style_string
     },
+
 
 
     /**

@@ -8,11 +8,25 @@
 */
 Element404.prototype.set_prop = function(domElement,key,value){
 
-    if(key === 'style'){
+
+
+
+    if(key === 'responsive_style'){
+
+
+        resize_elements.unshift({
+            style_value:value,
+            domElement:domElement
+        })
+
+
+    }
+    if(key === 'style' || key === 'responsive_style'){
         let create_style = Element404Style.create_style(value);
         domElement.setAttribute('style',create_style)
-        return
+        return;
     }
+
 
 
     if(value instanceof Function){

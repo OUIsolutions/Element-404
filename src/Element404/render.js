@@ -40,13 +40,3 @@ Element404.prototype.get_total_render = function (){
     }
     return this.total_render_times;
 }
-/**
- * @returns {Element404}
- * */
-Element404.prototype.renderOnResize = function (){
-    //if you want to generate  when the user change dimensions
-    window.addEventListener('resize', (e) => {
-        this.render()
-    })
-    return this
-}

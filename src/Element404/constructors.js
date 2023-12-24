@@ -1,6 +1,6 @@
 
 function Element404(){
-
+    
         
         /** @type {boolean} */
         this.child = false;
@@ -31,11 +31,13 @@ function Element404(){
  */
 Element404.prototype.rootConstructor = function(generator,target){
 
+
     /** @type {function} */
     this.generator = ()=>{generator(this)}
 
     /** @type {DocumentFragment || HTMLElement} */
     this.root = document.createDocumentFragment();
+
 
 
     //means its an component inside interfacce
