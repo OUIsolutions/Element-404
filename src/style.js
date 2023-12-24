@@ -8,8 +8,9 @@ let Element404Style = {
      * * */
     create_object_style(style_value){
 
-        if(style_value['mergeif']){
-            if(!style_value['mergeif']()){
+        if(style_value['mergeIf']){
+            let evaluation_result = Element404Extras.get_func_result(style_value['mergeIf'])
+            if(!evaluation_result){
                 return ""
             }
         }
