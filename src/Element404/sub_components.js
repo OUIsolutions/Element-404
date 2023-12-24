@@ -9,7 +9,7 @@
 Element404.prototype.set_prop = function(domElement,key,value){
 
     if(key === 'style'){
-        let create_style = Element404Style.create_object_style(value);
+        let create_style = Element404Style.create_style(value);
         domElement.setAttribute('style',create_style)
         return
     }

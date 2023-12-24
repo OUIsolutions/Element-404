@@ -4,14 +4,16 @@ let Element404Style = {
 
     /**
      * @param {object} style_value
+     * @return {string}
      * * */
     create_object_style(style_value){
-        let style_string = ""
 
+
+        let style_string = ""
         for (const key in style_value){
             let value = Element404Extras.get_func_result(style_value[key])
 
-            if(key.startsWith("merge")){
+            if(value.constructor.name === 'Object'){
                 style_string+=this.create_object_style(value)
                 continue;
             }
@@ -33,8 +35,8 @@ let Element404Style = {
                 return value
             }
 
-            if(value instanceof  Object){
-                return this.create_style(value)
+            if(value.constructor.name ===  'Object'){
+                return this.create_object_style(value)
             }
 
     }
