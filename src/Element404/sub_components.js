@@ -57,11 +57,24 @@ Element404.prototype.set_prop = function(domElement,key,value){
     domElement.setAttribute(key,value)
 }
 
+
+
+
+/**
+ @typedef {function} Element404Event
+ @param {HTMLElement} Element
+ @param {UIEvent} event
+ */
+
 /**
  @typedef {object} Element404Props
  @property {object || string || undefined} style
- @property {function || undefined} click
- @property {function|| undefined} foccusout
+ @property {Element404Event || undefined} click
+ @property {Element404Event || undefined} render_click
+ @property {Element404Event || undefined} NotLock_render_click
+ @property {Element404Event|| undefined} change
+
+
  */
 
 
