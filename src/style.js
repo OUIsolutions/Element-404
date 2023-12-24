@@ -8,12 +8,23 @@ let Element404Style = {
      * * */
     create_object_style(style_value){
 
+        if(style_value['mergeif']){
+            if(!style_value['mergeif']()){
+                return ""
+            }
+        }
 
         let style_string = ""
+
         for (const key in style_value){
             let value = Element404Extras.get_func_result(style_value[key])
 
+            if(key === 'mergeif'){
+                continue;
+            }
+
             if(value.constructor.name === 'Object'){
+
                 style_string+=this.create_object_style(value)
                 continue;
             }
