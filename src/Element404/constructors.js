@@ -68,9 +68,8 @@ Element404.prototype.sub_element = function(father,root){
     this.root = root;
     this.child = true;
     this.state_render = this.father.state_render;
-    this.last_input = this.father.last_input;
     this.stored_state = this.father.stored_state;
-     return this;
+    return this;
 } 
 
 
