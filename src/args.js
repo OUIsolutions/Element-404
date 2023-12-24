@@ -1,8 +1,14 @@
 
 
 class Element404Args{
+
+    /**@type {Array<string>}*/
     used =[]
 
+    /**
+     * @param {Array || object} element
+     * @param {Array || object} default_value
+     * * */
     constructor(element,default_value) {
 
         this.element = element;
@@ -10,7 +16,11 @@ class Element404Args{
             this.element = default_value
         }
     }
-
+    /**
+     * @param {string || number} key_or_index
+     * @param {any} default_value
+     * @returns {any}
+     * * */
     get(key_or_index,default_value){
         this.used.unshift(key_or_index);
 
@@ -20,17 +30,26 @@ class Element404Args{
         }
         return value
     }
+
+    /**
+     * @param {Array<string>} not_include
+     * @returns {object}
+     */
     get_all_except(not_include){
 
-        let formated = {};
+        let formatted = {};
         for(let key in this.element){
                 if(not_include.includes(key)){
                     continue;
                 }
-                formated[key] = this.element[key]
+                formatted[key] = this.element[key]
         }
-        return formated
+        return formatted
     }
+
+    /**
+     * @returns {object}
+     */
     get_no_listed(){
         return this.get_all_except(this.used);
     }

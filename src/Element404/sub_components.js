@@ -15,8 +15,6 @@ Element404.prototype.create_object_style = function(domElement,style_value){
 
 
 
-
-
 /** @param {HTMLElement} domElement 
  * @param {string} key
  * @param {string|function} value
@@ -59,11 +57,15 @@ Element404.prototype.set_prop = function(domElement,key,value){
     domElement.setAttribute(key,value)
 }
 
+/**
+ @typedef {object} Element404Props
+ @property {object || string || null} style
+ */
 
 
 /**
  * @param {HTMLElement} domElement
- * @param {object } props
+ * @param {Element404Props } props
  *  */
 Element404.prototype.set_props = function(domElement,props){
     if(props === null || props === undefined){
@@ -81,7 +83,7 @@ Element404.prototype.set_props = function(domElement,props){
 /**
  * @param {HTMLElement} domElement
  * @param {string || function } content
- * @param {object } props
+ * @param {Element404Props } props
  * */
 Element404.prototype.generate_component_reference=function(domElement,content,props){
     this.set_props(domElement,props)
@@ -106,7 +108,7 @@ Element404.prototype.generate_component_reference=function(domElement,content,pr
 /**
  * @param {string || null} tag
  * @param {string || function || null} content
- * @param {object || null} props
+ * @param {Element404Props || null} props
  * @returns {Element404}
  * */
 Element404.prototype.sub_component=function( tag,content,props){
@@ -135,7 +137,7 @@ Element404.prototype.sub_component=function( tag,content,props){
  * 
  * @param {string || null} tag The tag of element
  * @param {function || string} content the internal content
- * @param {object} props The object props
+ * @param {Element404Props || null} props The object props
  * @returns {Element404}
  */
 Element404.prototype.create=function(tag =null,content =null,props=null){

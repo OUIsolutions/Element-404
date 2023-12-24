@@ -18,14 +18,14 @@ function Element404(){
 
  }
 /**
- * @typedef {function} Element404_generator
+ * @typedef {function} Element404Generator
  * @param {Element404} main_interfface
  * */
 
 
 
 /**
- * @param {Element404_generator} generator
+ * @param {Element404Generator} generator
  * @param {HTMLElement} target
  * @returns {Element404}
  */
@@ -42,13 +42,12 @@ Element404.prototype.rootConstructor = function(generator,target){
  /**
   * @param {Element404} father
   * @param {DocumentFragment || HTMLElement ||  Text} root
-
   * @returns {Element404}
   */
 Element404.prototype.sub_element = function(father,root){
     /** @type {Element404} */
     this.father = father;
-    /** @type {DocumentFragment || HTMLElement ||  Text} */
+    /** @type {DocumentFragment || HTMLElement ||  Text}  */
     this.root = root;
     this.child = true;
     this.state_render = this.father.state_render;
@@ -60,7 +59,8 @@ Element404.prototype.sub_element = function(father,root){
 
 
 /**
- * @param {Element404_generator} generator
+ * Creates a new Element 404
+ * @param {Element404Generator} generator
  * @param {HTMLElement=} target
  * @returns {Element404}
  */
