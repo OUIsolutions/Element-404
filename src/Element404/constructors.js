@@ -1,5 +1,6 @@
 
- function Element404(){
+
+function Element404(){
 
         
         /** @type {boolean} */
@@ -17,12 +18,15 @@
 
 
  }
-
+/**
+ * @typedef {function} Element404_generator
+ * @param {Element404} main_interfface
+ * */
 
 
 
 /**
- * @param {function} generator 
+ * @param {Element404_generator} generator
  * @param {HTMLElement} target
  * @returns {Element404}
  */
@@ -55,8 +59,9 @@ Element404.prototype.sub_element = function(father,root){
 } 
 
 
+
 /**
- * @param {function} generator
+ * @param {Element404_generator} generator
  * @param {HTMLElement=} target
  * @returns {Element404}
  */
