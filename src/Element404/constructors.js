@@ -41,6 +41,7 @@ Element404.prototype.rootConstructor = function(generator,target){
     //means its an component inside interfacce
     if(target instanceof  Element404){
         this.target = target.root
+
         return  this
     }
 

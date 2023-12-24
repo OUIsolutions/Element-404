@@ -100,6 +100,8 @@ element.render()
 
 ```
 
+
+
 ### Styling Elements
 You also can apply style to elements by using the **style** tag 
 

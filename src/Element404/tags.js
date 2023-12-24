@@ -11,13 +11,23 @@ Element404.prototype.input=function(props=null){
 
 
 /**
- * Creates a function
+ * Creates a div
  * @param {function || string || null} content the internal content
  * @param {Element404Props || null } props The object props
  * @returns {Element404}
  */
 Element404.prototype.div=function(content=null,props=null){
     return this.create('div',content,props)
+}
+
+/**
+ * Creates a nav
+ * @param {function || string || null} content the internal content
+ * @param {Element404Props || null } props The object props
+ * @returns {Element404}
+ */
+Element404.prototype.nav=function(content=null,props=null){
+    return this.create('nav',content,props)
 }
 
 /**

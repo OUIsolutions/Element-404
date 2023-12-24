@@ -7,12 +7,13 @@ Element404.prototype.clear = function (){
 /**
  * Generate the tenderization
  * @param {HTMLElement || DocumentFragment || Element404}target
+ * @returns {Element404}
  * */
 Element404.prototype.render= function(target=undefined){
 
     if(this.child){
         this.father.render();
-        return;
+        return this;
     }
 
     if(target){
@@ -26,6 +27,7 @@ Element404.prototype.render= function(target=undefined){
     this.target.innerHTML = ''
     this.generator()
     this.target.appendChild(this.root)
+    return this;
 
 }
 
