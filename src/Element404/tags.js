@@ -1,7 +1,5 @@
 
 
-
-
 /**
  * Creates a form
  * @param {Element404Props || null } props The object props

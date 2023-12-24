@@ -80,7 +80,7 @@ Element404.prototype.set_prop = function(domElement,key,value){
 
 /**
  * @param {HTMLElement} domElement
- * @param {Element404Props } props
+ * @param {Element404Props || undefined } props
  *  */
 Element404.prototype.set_props = function(domElement,props){
     if(props === null || props === undefined){
@@ -129,12 +129,21 @@ Element404.prototype.generate_component_reference=function(domElement,content,pr
 Element404.prototype.sub_component=function( tag,content,props){
     let sub_element = new Element404();
 
-    if(tag === null){
-        let node = document.createTextNode(content)
+    let tag_not_exist = tag === undefined || tag === null
+
+    if(tag_not_exist){
+
+        let formatted_content = content;
+        if(typeof(content) === 'function'){
+            formatted_content =  content()
+        }
+        let node = document.createTextNode(formatted_content)
         this.root.appendChild(node);
         sub_element.sub_element(this,node);
+
         return sub_element;
     }
+
 
     let domElement = document.createElement(tag)
     this.root.appendChild(domElement)
