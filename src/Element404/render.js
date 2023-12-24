@@ -6,7 +6,7 @@ Element404.prototype.clear = function (){
 
 /**
  * Generate the tenderization
- * @param {HTMLElement || DocumentFragment }target
+ * @param {HTMLElement || DocumentFragment || Element404}target
  * */
 Element404.prototype.render= function(target=undefined){
 
@@ -16,7 +16,10 @@ Element404.prototype.render= function(target=undefined){
     }
 
     if(target){
-       this.target = target
+        this.target = target
+       if(target instanceof  Element404){
+           this.target = target.root
+       }
     }
 
     this.total_render_times+=1;
