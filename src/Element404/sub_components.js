@@ -8,16 +8,16 @@
 */
 Element404.prototype.set_prop = function(key,value){
 
-    if(key === 'responsive_style'){
-        Element404Globals.resize_elements.unshift(this)
 
-    }
 
-    if(key === 'style' || key === 'responsive_style'){
-        this.style = value
+    if(key === 'inline_style'){
+        this.style_data = value
+        this.inline_style = true;
         this.render_style();
         return;
     }
+
+
 
     if(value instanceof Function){
         let callback = (event)=>{

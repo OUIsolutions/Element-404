@@ -20,6 +20,17 @@ Element404.prototype.div=function(content=null,props=null){
     return this.create('div',content,props)
 }
 
+
+/**
+ * Creates a style_data tag
+ * @param {function || string || null} content the internal content
+ * @param {Element404Props || null } props The object props
+ * @returns {Element404}
+ */
+Element404.prototype.style=function(content=null, props=null){
+    return this.create('style',content,props)
+}
+
 /**
  * Creates a nav
  * @param {function || string || null} content the internal content
@@ -94,6 +105,7 @@ Element404.prototype.h2=function(content,props=null){
 Element404.prototype.h3=function(content,props=null){
    return  this.create('h3',content,props)
 }
+
 /**
  * Creates an H4
  * @param {function | string} content the internal content

@@ -4,7 +4,10 @@ function Element404(){
         /**@type {Element404Props}*/
         this.props = undefined;
 
-        this.style = undefined;
+
+        this.style_data = undefined;
+        this.inline_style = false
+
 
 
         /** @type {boolean} */

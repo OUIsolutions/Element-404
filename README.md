@@ -29,7 +29,7 @@ Just download the **Element404.js** file into your project and then reference in
     let target = document.body;
     let element = createElement404((main_interface)=>{
         main_interface.div(()=>{
-            main_interface.h1("Hello World",{style:{color:'red'}})
+            main_interface.h1("Hello World",{style_data:{color:'red'}})
         })
 
     },target)
@@ -129,10 +129,10 @@ but remember that they will be affected by the render process
             function default_page(){
                 page.clear()
                 page.nav(()=>{
-                    page.p("Default",{style:[selected,all_links]})
-                    page.p("Page 1",{style:all_links, click:page1})
-                    page.p("Page 3",{style:all_links, click:page2})
-                },{style:nav_style})
+                    page.p("Default",{style_data:[selected,all_links]})
+                    page.p("Page 1",{style_data:all_links, click:page1})
+                    page.p("Page 3",{style_data:all_links, click:page2})
+                },{style_data:nav_style})
 
                 page.h1("you are in the default page")
             }
@@ -142,10 +142,10 @@ but remember that they will be affected by the render process
                 page.clear()
                 page.nav(()=>{
                     page.nav(()=>{
-                        page.p("Default",{style:all_links,click:default_page})
-                        page.p("Page 1",{style:[selected,all_links]})
-                        page.p("Page 3",{style:all_links, click:page2})
-                    },{style:nav_style})
+                        page.p("Default",{style_data:all_links,click:default_page})
+                        page.p("Page 1",{style_data:[selected,all_links]})
+                        page.p("Page 3",{style_data:all_links, click:page2})
+                    },{style_data:nav_style})
                 })
                 page.h1("you are in the page1")
             }
@@ -154,10 +154,10 @@ but remember that they will be affected by the render process
             function page2(){
                 page.clear()
                 page.nav(()=>{
-                    page.p("Default",{style:all_links,click:default_page})
-                    page.p("Page 1",{style:all_links, click:page1})
-                    page.p("Page 2",{style:[selected,all_links]})
-                },{style:nav_style})
+                    page.p("Default",{style_data:all_links,click:default_page})
+                    page.p("Page 1",{style_data:all_links, click:page1})
+                    page.p("Page 2",{style_data:[selected,all_links]})
+                },{style_data:nav_style})
                 page.h1("you are in the page 2")
             }
 
@@ -199,9 +199,9 @@ createElement404((main_interface)=>{
     function default_page(){
         page.clear()
         page.nav(()=>{
-            page.p("Default",{style:[selected,all_links]})
-            page.p("Page 1",{style:all_links, click:page1})
-        },{style:nav_style})
+            page.p("Default",{style_data:[selected,all_links]})
+            page.p("Page 1",{style_data:all_links, click:page1})
+        },{style_data:nav_style})
 
         page.h1("you are in the default page")
     }
@@ -211,9 +211,9 @@ createElement404((main_interface)=>{
         page.clear()
         page.nav(()=>{
             page.nav(()=>{
-                page.p("Default",{style:all_links,click:default_page})
-                page.p("Page 1",{style:[selected,all_links]})
-            },{style:nav_style})
+                page.p("Default",{style_data:all_links,click:default_page})
+                page.p("Page 1",{style_data:[selected,all_links]})
+            },{style_data:nav_style})
         })
         page.h1("you are in the page1")
     }
@@ -234,13 +234,13 @@ createElement404((main_interface)=>{
 
 
 ### Styling Elements
-You also can apply style to elements by using the **style** tag 
+You also can apply style_data to elements by using the **style_data** tag 
 
 ```js
     let target = document.body;
 let element = createElement404((main_interface)=>{
     let div_props = {
-        style:{
+        style_data:{
             position:"absolute",
             top:"50vh",
             left:"50vw",
@@ -251,7 +251,7 @@ let element = createElement404((main_interface)=>{
     }
     main_interface.div(()=>{
         let h1_props = {
-            style:{
+            style_data:{
                 "font-size":"10rem",
                 "font-weight":"bold",
                 color:"red"
@@ -260,7 +260,7 @@ let element = createElement404((main_interface)=>{
         main_interface.h1("404",h1_props)
 
         let h2_props = {
-            style:{
+            style_data:{
                 "font-size":"2rem",
                 "font-weight":"bold",
                 color:"red"
@@ -331,7 +331,7 @@ let target = document.body;
 let element = createElement404((main_interface)=>{
     //make sure to enable these to allow rerender on state change
     main_interface.state_render = true;
-    //creating an style input more sofisticated
+    //creating an style_data input more sofisticated
     let style_input = {
         border:'none',
         color:'rgb(71,78,86)',
@@ -358,13 +358,13 @@ let element = createElement404((main_interface)=>{
         'font-size':'0.75em'
     }
 
-    main_interface.p(`name: ${name}`,{style:p_style})
-    main_interface.p(`email: ${email}`,{style:p_style})
-    main_interface.p(`password: ${password}`, {style:p_style})
-    main_interface.p(`age: ${age}`, {style:p_style})
-    main_interface.p(`gender ${gender}`, {style:p_style})
+    main_interface.p(`name: ${name}`,{style_data:p_style})
+    main_interface.p(`email: ${email}`,{style_data:p_style})
+    main_interface.p(`password: ${password}`, {style_data:p_style})
+    main_interface.p(`age: ${age}`, {style_data:p_style})
+    main_interface.p(`gender ${gender}`, {style_data:p_style})
     const pre_props = {
-        style:{
+        style_data:{
             width:"30vw",
             height:"30vh",
             color:'white',
@@ -409,13 +409,13 @@ let element = createElement404((main_interface)=>{
     let selected_home = {
         content:"Home Selected",
         props:{
-            style:selected_style
+            style_data:selected_style
         }
     }
     let unselected_home = {
         content:"Home",
         props:{
-            style:unselected_style
+            style_data:unselected_style
         }
     }
     main_interface.stateSetter("page","home",selected_home,unselected_home);
@@ -423,13 +423,13 @@ let element = createElement404((main_interface)=>{
     let selected_about = {
         content:"About Selected",
         props:{
-            style:selected_style
+            style_data:selected_style
         }
     }
     let unselected_about = {
         content:"About",
         props:{
-            style:unselected_style
+            style_data:unselected_style
         }
     }
     let page = main_interface.stateSetter("page","about",selected_about,unselected_about);
@@ -469,7 +469,7 @@ let element = createElement404((main_interface)=>{
     if(main_interface.locked){
 
         main_interface.button("unlock",{
-            style:{color: "red"},
+            style_data:{color: "red"},
             notLock_render_click:()=>{
                 main_interface.unlock();
             }
@@ -478,7 +478,7 @@ let element = createElement404((main_interface)=>{
 
     if(!main_interface.locked){
         main_interface.button("lock",{
-            style:{color: "blue"},
+            style_data:{color: "blue"},
             render_click:()=>{
                 main_interface.lock();
                 main_interface.render()

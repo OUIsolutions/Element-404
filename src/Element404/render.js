@@ -6,15 +6,15 @@ Element404.prototype.clear = function (){
 
 
 /**
- * @param {any} props
+ * @param {any} args
  * */
-Element404.prototype.render_style = function (props=undefined){
-    if(!this.style){
+Element404.prototype.render_style = function (args=undefined){
+    if(!this.style_data){
         return;
     }
 
 
-    let create_style = Element404Style.create_style(this.style,props);
+    let create_style = Element404InlineStyle.create_style(this.style_data,args);
     this.root.setAttribute('style',create_style);
 
 }

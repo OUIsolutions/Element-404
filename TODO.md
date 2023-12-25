@@ -47,7 +47,7 @@ let element = createElement404((main_interface)=>{
 
 
     main_interface.div("Nothing",{
-        style:{
+        style_data:{
             position:"absolute",
             "left":css.pixel(19),
             "rigth":css.vh(30)

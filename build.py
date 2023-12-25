@@ -3,7 +3,7 @@ targets = [
     "globals.js",
     "args.js",
     "extra.js",
-    "style.js",
+    "style_data.js",
     "Element404/constructors.js",
     "Element404/locker.js",
     "Element404/render.js",
