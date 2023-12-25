@@ -13,9 +13,11 @@ Element404.prototype.render_style = function (args=undefined){
         return;
     }
 
+    if(this.inline_style){
+        let create_style = Element404InlineStyle.create_style(this.style_data,args);
+        this.root.setAttribute('style',create_style);
 
-    let create_style = Element404InlineStyle.create_style(this.style_data,args);
-    this.root.setAttribute('style',create_style);
+    }
 
 }
 

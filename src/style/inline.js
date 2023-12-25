@@ -6,16 +6,16 @@ let Element404InlineStyle = {
 
     /**
      * @param {object} style_value
-     * @param {any} props
+     * @param {any} args
      * @return {string}
      * * */
-    create_object_style(style_value,props){
+    create_object_style(style_value,args){
 
 
 
         if(style_value['mergeIf']){
 
-            let evaluation_result = Element404Extras.get_func_result(style_value['mergeIf'],undefined,props)
+            let evaluation_result = Element404Extras.get_func_result(style_value['mergeIf'],undefined,args)
             if(!evaluation_result){
                 return ""
             }
@@ -24,7 +24,7 @@ let Element404InlineStyle = {
         let style_string = ""
 
         for (const key in style_value){
-            let value = Element404Extras.get_func_result(style_value[key],undefined,props)
+            let value = Element404Extras.get_func_result(style_value[key],undefined,args)
 
             if(key === 'mergeif'){
                 continue;
@@ -32,7 +32,7 @@ let Element404InlineStyle = {
 
             if(value.constructor.name === 'Object'){
 
-                style_string+=this.create_object_style(value,props)
+                style_string+=this.create_object_style(value,args)
                 continue;
             }
 
@@ -46,17 +46,17 @@ let Element404InlineStyle = {
 
     /**
      * @param {string || Array || object} value
-     * @param {any} props
+     * @param {any} args
      * @returns {string}
      * */
-    create_style(value,props){
+    create_style(value,args){
 
 
             if(value instanceof  String){
                 return value
             }
 
-            let formatted_props = props;
+            let formatted_props = args;
             if(!formatted_props){
                 formatted_props = {}
             }

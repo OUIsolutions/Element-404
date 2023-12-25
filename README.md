@@ -25,18 +25,15 @@ Just download the **Element404.js** file into your project and then reference in
 </head>
 <body>
 <script>
-
     let target = document.body;
     let element = createElement404((main_interface)=>{
         main_interface.div(()=>{
-            main_interface.h1("Hello World",{style_data:{color:'red'}})
+            main_interface.h1("Hello World",{inline_style:{color:'red'}})
         })
 
     },target)
 
     element.render()
-
-
 
 </script>
 
@@ -129,10 +126,10 @@ but remember that they will be affected by the render process
             function default_page(){
                 page.clear()
                 page.nav(()=>{
-                    page.p("Default",{style_data:[selected,all_links]})
-                    page.p("Page 1",{style_data:all_links, click:page1})
-                    page.p("Page 3",{style_data:all_links, click:page2})
-                },{style_data:nav_style})
+                    page.p("Default",{inline_style:[selected,all_links]})
+                    page.p("Page 1",{inline_style:all_links, click:page1})
+                    page.p("Page 3",{inline_style:all_links, click:page2})
+                },{inline_style:nav_style})
 
                 page.h1("you are in the default page")
             }
@@ -142,10 +139,10 @@ but remember that they will be affected by the render process
                 page.clear()
                 page.nav(()=>{
                     page.nav(()=>{
-                        page.p("Default",{style_data:all_links,click:default_page})
-                        page.p("Page 1",{style_data:[selected,all_links]})
-                        page.p("Page 3",{style_data:all_links, click:page2})
-                    },{style_data:nav_style})
+                        page.p("Default",{inline_style:all_links,click:default_page})
+                        page.p("Page 1",{inline_style:[selected,all_links]})
+                        page.p("Page 3",{inline_style:all_links, click:page2})
+                    },{inline_style:nav_style})
                 })
                 page.h1("you are in the page1")
             }
@@ -154,10 +151,10 @@ but remember that they will be affected by the render process
             function page2(){
                 page.clear()
                 page.nav(()=>{
-                    page.p("Default",{style_data:all_links,click:default_page})
-                    page.p("Page 1",{style_data:all_links, click:page1})
-                    page.p("Page 2",{style_data:[selected,all_links]})
-                },{style_data:nav_style})
+                    page.p("Default",{inline_style:all_links,click:default_page})
+                    page.p("Page 1",{inline_style:all_links, click:page1})
+                    page.p("Page 2",{inline_style:[selected,all_links]})
+                },{inline_style:nav_style})
                 page.h1("you are in the page 2")
             }
 
@@ -179,7 +176,6 @@ let num = 0;
 let target = document.body;
 createElement404((main_interface)=>{
 
-    let page = main_interface.div();
 
 
     let nav_style = {
@@ -196,51 +192,52 @@ createElement404((main_interface)=>{
         color:"red"
     }
 
-    function default_page(){
-        page.clear()
-        page.nav(()=>{
-            page.p("Default",{style_data:[selected,all_links]})
-            page.p("Page 1",{style_data:all_links, click:page1})
-        },{style_data:nav_style})
+    let page = main_interface.div();
 
-        page.h1("you are in the default page")
-    }
-    default_page()
+    let default_page = createElement404((sub)=>{
+        sub.clear()
+        sub.nav(()=>{
+            sub.p("Default",{inline_style:[selected,all_links]})
+            sub.p("Page 1",{inline_style:all_links, click:()=>page1.render()})
+        },{inline_style:nav_style})
 
-    function page1(){
-        page.clear()
-        page.nav(()=>{
-            page.nav(()=>{
-                page.p("Default",{style_data:all_links,click:default_page})
-                page.p("Page 1",{style_data:[selected,all_links]})
-            },{style_data:nav_style})
+        sub.h1("you are in the default page")
+    },page)
+    default_page.render()
+
+
+    let page1 = createElement404((sub)=>{
+        sub.clear()
+        sub.nav(()=>{
+            sub.nav(()=>{
+                sub.p("Default",{inline_style:all_links,click:()=>default_page.render()})
+                sub.p("Page 1",{inline_style:[selected,all_links]})
+            },{inline_style:nav_style})
         })
-        page.h1("you are in the page1")
-    }
+        sub.h1("you are in the page1")
+    },page)
 
 
     let hit_counter_div = main_interface.div();
-
     let hit_counter =  createElement404(sub=>{
         sub.p(`the value of num is ${num}`)
         sub.button("Decrease num",{render_click:()=>num-=1})
         sub.button("Increase num",{render_click:()=>num+=1})
-    }).render(hit_counter_div)
+    },hit_counter_div).render()
 
 },target).render()
-
 
 ```
 
 
 ### Styling Elements
-You also can apply style_data to elements by using the **style_data** tag 
+You also can apply inline_style to elements by using the **inline_style** tag 
 
 ```js
     let target = document.body;
 let element = createElement404((main_interface)=>{
     let div_props = {
-        style_data:{
+        inline_style:{
             position:"absolute",
             top:"50vh",
             left:"50vw",
@@ -251,7 +248,7 @@ let element = createElement404((main_interface)=>{
     }
     main_interface.div(()=>{
         let h1_props = {
-            style_data:{
+            inline_style:{
                 "font-size":"10rem",
                 "font-weight":"bold",
                 color:"red"
@@ -260,7 +257,7 @@ let element = createElement404((main_interface)=>{
         main_interface.h1("404",h1_props)
 
         let h2_props = {
-            style_data:{
+            inline_style:{
                 "font-size":"2rem",
                 "font-weight":"bold",
                 color:"red"
@@ -331,7 +328,7 @@ let target = document.body;
 let element = createElement404((main_interface)=>{
     //make sure to enable these to allow rerender on state change
     main_interface.state_render = true;
-    //creating an style_data input more sofisticated
+    //creating an inline_style input more sofisticated
     let style_input = {
         border:'none',
         color:'rgb(71,78,86)',
@@ -358,13 +355,13 @@ let element = createElement404((main_interface)=>{
         'font-size':'0.75em'
     }
 
-    main_interface.p(`name: ${name}`,{style_data:p_style})
-    main_interface.p(`email: ${email}`,{style_data:p_style})
-    main_interface.p(`password: ${password}`, {style_data:p_style})
-    main_interface.p(`age: ${age}`, {style_data:p_style})
-    main_interface.p(`gender ${gender}`, {style_data:p_style})
+    main_interface.p(`name: ${name}`,{inline_style:p_style})
+    main_interface.p(`email: ${email}`,{inline_style:p_style})
+    main_interface.p(`password: ${password}`, {inline_style:p_style})
+    main_interface.p(`age: ${age}`, {inline_style:p_style})
+    main_interface.p(`gender ${gender}`, {inline_style:p_style})
     const pre_props = {
-        style_data:{
+        inline_style:{
             width:"30vw",
             height:"30vh",
             color:'white',
@@ -409,13 +406,13 @@ let element = createElement404((main_interface)=>{
     let selected_home = {
         content:"Home Selected",
         props:{
-            style_data:selected_style
+            inline_style:selected_style
         }
     }
     let unselected_home = {
         content:"Home",
         props:{
-            style_data:unselected_style
+            inline_style:unselected_style
         }
     }
     main_interface.stateSetter("page","home",selected_home,unselected_home);
@@ -423,13 +420,13 @@ let element = createElement404((main_interface)=>{
     let selected_about = {
         content:"About Selected",
         props:{
-            style_data:selected_style
+            inline_style:selected_style
         }
     }
     let unselected_about = {
         content:"About",
         props:{
-            style_data:unselected_style
+            inline_style:unselected_style
         }
     }
     let page = main_interface.stateSetter("page","about",selected_about,unselected_about);
@@ -469,7 +466,7 @@ let element = createElement404((main_interface)=>{
     if(main_interface.locked){
 
         main_interface.button("unlock",{
-            style_data:{color: "red"},
+            inline_style:{color: "red"},
             notLock_render_click:()=>{
                 main_interface.unlock();
             }
@@ -478,7 +475,7 @@ let element = createElement404((main_interface)=>{
 
     if(!main_interface.locked){
         main_interface.button("lock",{
-            style_data:{color: "blue"},
+            inline_style:{color: "blue"},
             render_click:()=>{
                 main_interface.lock();
                 main_interface.render()
