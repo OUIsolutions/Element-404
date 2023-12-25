@@ -172,6 +172,7 @@ affect other parts of the render
 
 ```js
 
+
 let num = 0;
 let target = document.body;
 createElement404((main_interface)=>{
@@ -194,28 +195,31 @@ createElement404((main_interface)=>{
 
     let page = main_interface.div();
 
-    let default_page = createElement404((sub)=>{
-        sub.clear()
-        sub.nav(()=>{
-            sub.p("Default",{inline_style:[selected,all_links]})
-            sub.p("Page 1",{inline_style:all_links, click:()=>page1.render()})
+
+
+    function default_page(){
+        page.clear()
+        page.nav(()=>{
+            page.p("Default",{inline_style:[selected,all_links]})
+            page.p("Page 1",{inline_style:all_links, click:page1})
         },{inline_style:nav_style})
 
-        sub.h1("you are in the default page")
-    },page)
-    default_page.render()
+        page.h1("you are in the default page")
+    }
+    default_page()
 
-
-    let page1 = createElement404((sub)=>{
-        sub.clear()
-        sub.nav(()=>{
-            sub.nav(()=>{
-                sub.p("Default",{inline_style:all_links,click:()=>default_page.render()})
-                sub.p("Page 1",{inline_style:[selected,all_links]})
+    function page1(){
+        page.clear()
+        page.nav(()=>{
+            page.nav(()=>{
+                page.p("Default",{inline_style:all_links,click:default_page})
+                page.p("Page 1",{inline_style:[selected,all_links]})
             },{inline_style:nav_style})
         })
-        sub.h1("you are in the page1")
-    },page)
+        page.h1("you are in the page1")
+    }
+
+
 
 
     let hit_counter_div = main_interface.div();
@@ -226,6 +230,7 @@ createElement404((main_interface)=>{
     },hit_counter_div).render()
 
 },target).render()
+
 
 ```
 
