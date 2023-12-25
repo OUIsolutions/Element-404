@@ -1,22 +1,7 @@
 
 
-window.onresize = function (){
 
-    Element404Globals.resize_elements = Element404Globals.resize_elements.filter(element =>{
-        return document.contains(element.root);
-    })
-
-
-
-    Element404Globals.resize_elements .forEach(element =>{
-        element.render_style()
-    })
-
-}
-
-
-
-let Element404Style = {
+let Element404InlineStyle = {
 
 
     /**
@@ -70,18 +55,19 @@ let Element404Style = {
             if(value instanceof  String){
                 return value
             }
-            let formated_props = props;
-            if(!formated_props){
-                formated_props = {}
+
+            let formatted_props = props;
+            if(!formatted_props){
+                formatted_props = {}
             }
             if(value.constructor.name ===  'Object'){
-                return this.create_object_style(value,formated_props)
+                return this.create_object_style(value,formatted_props)
             }
 
             if(value.constructor.name === 'Array'){
                 let style_string = ''
                 for(let element of value){
-                    style_string+=this.create_object_style(element,formated_props)
+                    style_string+=this.create_object_style(element,formatted_props)
                 }
                 return style_string
             }
