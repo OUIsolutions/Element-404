@@ -18,6 +18,12 @@ let Element404Extras = {
         }
 
         return  element
-    }
+    },
 
+    convert_to_list(element){
+        if(typeof (element) === "string"){
+            return[element]
+        }
+
+    }
 }
