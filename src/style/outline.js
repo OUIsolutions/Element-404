@@ -117,7 +117,14 @@ class  Element404Outline{
         state_activated=false
     ) {
 
+        if(value.constructor.name === Element404Constants.ARRAY){
+            for(let current_element of value){
+                let executed_value = Element404Extras.get_func_result(current_element,undefined,this.args);
+                this.recursive_create_style(media_name,state_name,executed_value,media_activated,state_activated);
 
+            }
+
+        }
         if(value.constructor.name === Element404Constants.OBJECT){
 
             if(value[Element404Constants.MERGE_IF]){

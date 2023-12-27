@@ -65,12 +65,11 @@ Element404.prototype.set_prop = function(key,value){
 Element404.prototype.set_props = function(props){
     this.props = props
 
+    if(!props){
+        return;
+    }
 
-
-
-
-
-    let style_args = props['style_args']
+    let style_args = props['style_args'];
     if(props['inline_style']){
         this.style_data = props['inline_style']
         this.inline_style = true;
