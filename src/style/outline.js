@@ -85,7 +85,7 @@ class  Element404Outline{
             }
 
             for(let state of media.states){
-                final_text+=`[Element404Identifier="${this.identifier}"]`
+                final_text+=`[${Element404Constants.IDENTIFIER_TAG}="${this.identifier}"]`
                 let state_name = state.state_name;
                 if(state_name){
                     state_name = state_name.replace(":","").replace(" ","")
@@ -106,39 +106,39 @@ class  Element404Outline{
      * @param {string || undefined} media_name
      * @param {string || undefined} state_name
      * @param  {string || Array || Object} value
-     * @param {boolean} media_activated
-     * @param {boolean} state_activated
+     * @param {boolean} media_activated=false
+     * @param {boolean} state_activated=false
      * */
     recursive_create_style(
         media_name,
         state_name,
         value,
-        media_activated,
-        state_activated
+        media_activated=false,
+        state_activated=false
     ) {
 
 
-        if(value.constructor.name === 'Object'){
+        if(value.constructor.name === Element404Constants.OBJECT){
 
-            if(value['mergeIf']){
+            if(value[Element404Constants.MERGE_IF]){
                 /**@type {function}*/
-                let merge_if_callback  = value['mergeIf'];
+                let merge_if_callback  = value[Element404Constants.MERGE_IF];
 
                 let evaluation_result = Element404Extras.get_func_result(merge_if_callback,undefined,this.args)
                 if(!evaluation_result){
                     return;
                 }
             }
-            if(value['media']&& !media_activated){
-                let new_media_names = Element404Extras.convert_to_list(value['media']);
+            if(value[Element404Constants.MEDIA]&& !media_activated){
+                let new_media_names = Element404Extras.convert_to_list(value[Element404Constants.MEDIA]);
                 for(let current_media of new_media_names){
                     this.recursive_create_style(current_media,state_name,value,true,state_activated);
                 }
                 return;
 
             }
-            if(value['state'] && !state_activated){
-                let new_state_names = Element404Extras.convert_to_list(value['state']);
+            if(value[Element404Constants.STATE] && !state_activated){
+                let new_state_names = Element404Extras.convert_to_list(value[Element404Constants.STATE]);
 
 
 
@@ -148,16 +148,16 @@ class  Element404Outline{
                 return;
             }
 
-            const KEYS_TO_IGNORE = ['mergeIf','media','state'];
+
 
             for(let key in value){
-                if (KEYS_TO_IGNORE.includes(key)){
+                if (Element404Constants.STYLE_KEYS_TO_IGNORE.includes(key)){
                     continue;
                 }
 
                 let current_value = value[key];
                 let executed_value = Element404Extras.get_func_result(current_value,undefined,this.args);
-                if(executed_value.constructor.name === 'String'){
+                if(executed_value.constructor.name === Element404Constants.STRING){
                     let formatted_text = `${key}:${executed_value};`
                     this.set_text(media_name,state_name,formatted_text);
                     continue;
@@ -178,7 +178,7 @@ class  Element404Outline{
     create_style(){
 
         let executed_value = Element404Extras.get_func_result(this.start_value,undefined,this.args);
-        if (executed_value.name === 'String') {
+        if (executed_value.name === Element404Constants.STRING) {
            this.set_text(undefined,undefined,executed_value);
            return this.render();
         }
