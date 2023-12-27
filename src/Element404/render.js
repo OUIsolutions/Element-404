@@ -21,7 +21,6 @@ Element404.prototype.render_style = function (args=undefined){
     if(outline){
         let style_obj = new Element404Outline(this.identifier,args,this.style_data);
         let generated_style = style_obj.create_style();
-        this.root.setAttribute('style',generated_style);
         if(!this.child_style){
             this.child_style =document.createElement('style');
             this.root.appendChild(this.child_style);

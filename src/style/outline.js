@@ -85,10 +85,10 @@ class  Element404Outline{
             }
 
             for(let state of media.states){
-                final_text+=`[Element404Identifier="${this.identifier}"] `
+                final_text+=`[Element404Identifier="${this.identifier}"]`
                 let state_name = state.state_name;
                 if(state_name){
-                    state_name = state_name.replace(":","");
+                    state_name = state_name.replace(":","").replace(" ","")
                     final_text+=`:${state_name}`
                 }
                 final_text+=`{${state.css_value}}`
