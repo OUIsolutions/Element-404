@@ -19,9 +19,15 @@ Element404.prototype.render_style = function (args=undefined){
     }
     let outline = !this.inline_style;
     if(outline){
-        let style_obj = new Element404Outline("aaa",args,this.style_data);
-        let generated_tyle = style_obj.create_style();
-        this.root.setAttribute('style',generated_tyle);
+        let style_obj = new Element404Outline(this.identifier,args,this.style_data);
+        let generated_style = style_obj.create_style();
+        this.root.setAttribute('style',generated_style);
+        if(!this.child_style){
+            this.child_style =document.createElement('style');
+            this.root.appendChild(this.child_style);
+        }
+        this.child_style.innerHTML = generated_style;
+        this.root.setAttribute('Element404Identifier',this.identifier)
     }
 
 }

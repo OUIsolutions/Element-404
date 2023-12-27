@@ -8,7 +8,8 @@ function Element404(){
         this.style_data = undefined;
         this.inline_style = false
 
-
+        this.identifier = Math.random().toString();
+        this.child_style = undefined;
 
         /** @type {boolean} */
         this.child = false;
