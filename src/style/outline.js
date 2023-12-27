@@ -60,6 +60,7 @@ class  Element404Outline{
         media.css_value+= value
 
     }
+
     /**
      * @param {number} identifier
      * @return {string}
@@ -89,6 +90,18 @@ class  Element404Outline{
 
             }
         }
+        return  final_text;
+    }
+
+    internal_create_style(element,args){
+        
+    }
+    /**
+     * @param {Array || Object || String} element
+     * @param {any} args
+     * */
+    create_style(element,args){
+
     }
 
 }

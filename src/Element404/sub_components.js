@@ -10,13 +10,6 @@ Element404.prototype.set_prop = function(key,value){
 
 
 
-    if(key === 'inline_style'){
-        this.style_data = value
-        this.inline_style = true;
-        this.render_style();
-        return;
-    }
-
 
 
     if(value instanceof Function){
@@ -72,11 +65,29 @@ Element404.prototype.set_prop = function(key,value){
 Element404.prototype.set_props = function(props){
     this.props = props
 
+
+
+
+
+
+    let style_args = props['style_args']
+    if(props['inline_style']){
+        this.style_data = props['inline_style']
+        this.inline_style = true;
+        this.render_style(style_args);
+    }
+
+
+
     if(props === null || props === undefined){
         return
     }
-
+    const TAGS_TO_IGNORE = ['inline_style']
     for (const key in props){
+        if(TAGS_TO_IGNORE.includes(key)){
+            continue;
+        }
+
         this.set_prop(key,props[key])
     }
 
