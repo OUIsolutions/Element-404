@@ -15,9 +15,20 @@ class  Element404Outline{
     /**@type {Array<Element404Media>}*/
     medias = [];
 
+    /**
+     * @param {number} identifier
+     * @param {Array || Object || String} element
+     * @param {any} args
+     * */
+    constructor(identifier,element,args) {
+        this.identifier = identifier;
+        this.element = element;
+        this.args = args;
+    }
+
 
     /**
-    * @param {string || undefined} media_name
+     * @param {string || undefined} media_name
      * @param {string || undefined} state_name
     *@return {ComponentStyleState}
     * */
@@ -62,10 +73,9 @@ class  Element404Outline{
     }
 
     /**
-     * @param {number} identifier
      * @return {string}
      * */
-    render(identifier){
+    render(){
         let final_text = ''
         for(let media of this.medias){
 
@@ -75,7 +85,7 @@ class  Element404Outline{
             }
 
             for(let state of media.states){
-                final_text+=`[Element404Identifier="${identifier}"] `
+                final_text+=`[Element404Identifier="${this.identifier}"] `
                 let state_name = state.state_name;
                 if(state_name){
                     state_name = state_name.replace(":","");
@@ -93,15 +103,19 @@ class  Element404Outline{
         return  final_text;
     }
 
-    internal_create_style(element,args){
-        
-    }
-    /**
-     * @param {Array || Object || String} element
-     * @param {any} args
-     * */
-    create_style(element,args){
 
+    /**
+
+     * @param {string || undefined} media_name
+     * @param {string || undefined} state_name
+     * @returns {string}
+     * */
+    create_style(media_name,state_name){
+
+        if(element instanceof  String){
+            return this.render();
+        }
+        
     }
 
 }

@@ -8,7 +8,7 @@ let Element404InlineStyle = {
      * @param {object} style_value
      * @param {any} args
      * @return {string}
-     * * */
+     **/
     create_object_style(style_value,args){
 
 
