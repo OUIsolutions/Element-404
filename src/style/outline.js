@@ -123,8 +123,8 @@ class  Element404Outline{
                 this.recursive_create_style(media_name,state_name,executed_value,media_activated,state_activated);
 
             }
-
         }
+
         if(value.constructor.name === Element404Constants.OBJECT){
 
             if(value[Element404Constants.MERGE_IF]){

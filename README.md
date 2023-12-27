@@ -103,63 +103,68 @@ The easiest way of switch interface context, its by adding callback modifiers
 but remember that they will be affected by the render process
 ```js
 
-        let target = document.body;
-        createElement404((main_interface)=>{
 
-            let page = main_interface.div();
+let target = document.body;
+createElement404((main_interface)=>{
 
-
-            let nav_style = {
-                "width":"33vw",
-                "margin-left":"33vw",
-                "display":"grid",
-                "grid-template-columns":"33% 33% 33%"
-            }
-            let all_links = {
-                cursor:"pointer"
-            }
-
-            let selected = {
-                color:"red"
-            }
-
-            function default_page(){
-                page.clear()
-                page.nav(()=>{
-                    page.p("Default",{inline_style:[selected,all_links]})
-                    page.p("Page 1",{inline_style:all_links, click:page1})
-                    page.p("Page 3",{inline_style:all_links, click:page2})
-                },{inline_style:nav_style})
-
-                page.h1("you are in the default page")
-            }
-            default_page()
-
-            function page1(){
-                page.clear()
-                page.nav(()=>{
-                    page.nav(()=>{
-                        page.p("Default",{inline_style:all_links,click:default_page})
-                        page.p("Page 1",{inline_style:[selected,all_links]})
-                        page.p("Page 3",{inline_style:all_links, click:page2})
-                    },{inline_style:nav_style})
-                })
-                page.h1("you are in the page1")
-            }
+    let page = main_interface.div();
 
 
-            function page2(){
-                page.clear()
-                page.nav(()=>{
-                    page.p("Default",{inline_style:all_links,click:default_page})
-                    page.p("Page 1",{inline_style:all_links, click:page1})
-                    page.p("Page 2",{inline_style:[selected,all_links]})
-                },{inline_style:nav_style})
-                page.h1("you are in the page 2")
-            }
+    let nav_style = {
+        "width":"33vw",
+        "margin-left":"33vw",
+        "display":"grid",
+        "grid-template-columns":"33% 33% 33%"
+    }
+    let all_links = {
+        cursor:"pointer",
+        hover_state:{
+            state:"hover",
+            color:"red"
+        }
+    }
+
+    let selected = {
+        color:"red"
+    }
+
+    function default_page(){
+        page.clear()
+        page.nav(()=>{
+            page.p("Default",{outline_style:[selected,all_links]})
+            page.p("Page 1",{outline_style:all_links, click:page1})
+            page.p("Page 3",{outline_style:all_links, click:page2})
+        },{outline_style:nav_style})
+
+        page.h1("you are in the default page")
+    }
+    default_page()
+
+    function page1(){
+        page.clear()
+        page.nav(()=>{
+            page.nav(()=>{
+                page.p("Default",{outline_style:all_links,click:default_page})
+                page.p("Page 1",{outline_style:[selected,all_links]})
+                page.p("Page 3",{outline_style:all_links, click:page2})
+            },{outline_style:nav_style})
+        })
+        page.h1("you are in the page1")
+    }
 
 
-        },target).render()
+    function page2(){
+        page.clear()
+        page.nav(()=>{
+            page.p("Default",{outline_style:all_links,click:default_page})
+            page.p("Page 1",{outline_style:all_links, click:page1})
+            page.p("Page 2",{outline_style:[selected,all_links]})
+        },{outline_style:nav_style})
+        page.h1("you are in the page 2")
+    }
+
+
+},target).render()
 
  
  
