@@ -24,6 +24,7 @@ let Element404Extras = {
         if(typeof (element) === "string"){
             return[element]
         }
+        return  element
 
     }
 }

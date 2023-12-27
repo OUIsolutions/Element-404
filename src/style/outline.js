@@ -106,8 +106,16 @@ class  Element404Outline{
      * @param {string || undefined} media_name
      * @param {string || undefined} state_name
      * @param  {string || Array || Object} value
+     * @param {boolean} media_activated
+     * @param {boolean} state_activated
      * */
-    recursive_create_style(media_name,state_name,value) {
+    recursive_create_style(
+        media_name,
+        state_name,
+        value,
+        media_activated,
+        state_activated
+    ) {
 
 
         if(value.constructor.name === 'Object'){
@@ -121,11 +129,23 @@ class  Element404Outline{
                     return;
                 }
             }
-            if(value['media']){
-                media_name = value['media']
+            if(value['media']&& !media_activated){
+                let new_media_names = Element404Extras.convert_to_list(value['media']);
+                for(let current_media of new_media_names){
+                    this.recursive_create_style(current_media,state_name,value,true,state_activated);
+                }
+                return;
+
             }
-            if(value['state']){
-                state_name = value['state']
+            if(value['state'] && !state_activated){
+                let new_state_names = Element404Extras.convert_to_list(value['state']);
+
+
+
+                for(let current_statee of new_state_names){
+                    this.recursive_create_style(media_name,current_statee,value,media_activated,true);
+                }
+                return;
             }
 
             const KEYS_TO_IGNORE = ['mergeIf','media','state'];
