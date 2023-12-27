@@ -1,9 +1,12 @@
 
 targets = [
+    "constants.js",
+
     "globals.js",
     "args.js",
     "extra.js",
     "style/inline.js",
+    "style/outline.js",
     "Element404/constructors.js",
     "Element404/locker.js",
     "Element404/render.js",
