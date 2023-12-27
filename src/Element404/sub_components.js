@@ -77,12 +77,18 @@ Element404.prototype.set_props = function(props){
         this.render_style(style_args);
     }
 
+    if(props['outline_style']){
+        this.style_data = props['outline_style']
+        this.inline_style = false;
+        this.render_style(style_args);
+    }
+
 
 
     if(props === null || props === undefined){
         return
     }
-    const TAGS_TO_IGNORE = ['inline_style']
+    const TAGS_TO_IGNORE = ['inline_style','outline_style','style_args']
     for (const key in props){
         if(TAGS_TO_IGNORE.includes(key)){
             continue;

@@ -17,7 +17,12 @@ Element404.prototype.render_style = function (args=undefined){
         let create_style = Element404InlineStyle.create_style(this.style_data,args);
         this.root.setAttribute('style',create_style);
     }
-
+    let outline = !this.inline_style;
+    if(outline){
+        let style_obj = new Element404Outline("aaa",args,this.style_data);
+        let generated_tyle = style_obj.create_style();
+        this.root.setAttribute('style',generated_tyle);
+    }
 
 }
 

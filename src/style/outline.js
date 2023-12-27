@@ -17,12 +17,12 @@ class  Element404Outline{
 
     /**
      * @param {number} identifier
-     * @param {Array || Object || String} element
      * @param {any} args
+     * @param {object || array || function || string} start_value
      * */
-    constructor(identifier,element,args) {
+    constructor(identifier,args,start_value) {
+        this.start_value = start_value
         this.identifier = identifier;
-        this.element = element;
         this.args = args;
     }
 
@@ -102,20 +102,72 @@ class  Element404Outline{
         }
         return  final_text;
     }
-
-
     /**
-
      * @param {string || undefined} media_name
      * @param {string || undefined} state_name
+     * @param  {string || Array || Object} value
+     * */
+    recursive_create_style(media_name,state_name,value) {
+
+
+        if(value.constructor.name === 'Object'){
+
+            if(value['mergeIf']){
+                /**@type {function}*/
+                let merge_if_callback  = value['mergeIf'];
+
+                let evaluation_result = Element404Extras.get_func_result(merge_if_callback,undefined,this.args)
+                if(!evaluation_result){
+                    return;
+                }
+            }
+            if(value['media']){
+                media_name = value['media']
+            }
+            if(value['state']){
+                state_name = value['state']
+            }
+
+            const KEYS_TO_IGNORE = ['mergeIf','media','state'];
+
+            for(let key in value){
+                if (KEYS_TO_IGNORE.includes(key)){
+                    continue;
+                }
+
+                let current_value = value[key];
+                let executed_value = Element404Extras.get_func_result(current_value,undefined,this.args);
+                if(executed_value.constructor.name === 'String'){
+                    let formatted_text = `${key}:${executed_value};`
+                    this.set_text(media_name,state_name,formatted_text);
+                    continue;
+                }
+                this.recursive_create_style(media_name,state_name,executed_value);
+            }
+        }
+
+
+
+
+    }
+
+        /**
+
      * @returns {string}
      * */
-    create_style(media_name,state_name){
+    create_style(){
 
-        if(element instanceof  String){
-            return this.render();
+        let executed_value = Element404Extras.get_func_result(this.start_value,undefined,this.args);
+        if (executed_value.name === 'String') {
+           this.set_text(undefined,undefined,executed_value);
+           return this.render();
         }
-        
+
+
+        this.recursive_create_style(undefined,undefined,executed_value);
+        return this.render();
+
+
     }
 
 }
