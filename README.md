@@ -291,40 +291,41 @@ If you want to generate response styles, or use props like hover or active you c
 ```js
 
 
-        let target = document.body;
-        createElement404(element=>{
+let target = document.body;
+createElement404(element=>{
+    const  NORMAL = {
+        color:"white",
+        position:"absolute"
+    }
 
-            let old1 = {
-                color:"white"
-            }
-
-            let old2  = {
-                'background-color':'red'
-            }
-
-            let div_style = {
-                old1: old2,
-                old2: old1,
-                position:"absolute",
-                horizontal:{
-                    mergeIf:()=>window.innerWidth > window.innerHeight,
-                    width: '30vw',
-                    height: '15vw'
-
-                },
-                vertical:{
-                    mergeIf:()=>window.innerWidth < window.innerHeight,
-                    width: '15vw',
-                    height:"30vw"
-
-                }
-            }
-
-            element.div("value of div",{responsive_style:div_style})
-            element.div("value of div",{responsive_style:[div_style,{left:"60vw"}]})
+    const HORIZONTAL = {
+        media:'screen and (orientation: landscape)',
+        'background-color':'green',
+        width: '30vw',
+        height: '15vw'
+    };
+    const VERTICAL = {
+        media:'screen and (orientation: portrait)',
+        width: '15vw',
+        height:"30vw",
+        'background-color':'blue'
+    };
 
 
-        }).render(target);
+    const  MOUSE_PROPS = {
+        state:['hover','active'],
+        'background-color':'yellow'
+    }
+
+
+    let div_style = [NORMAL,MOUSE_PROPS,HORIZONTAL,VERTICAL]
+    let right_div = [div_style,{left:"60vw"}];
+
+    element.div("value of div",{outline_style:div_style})
+    element.div("value of div",{outline_style:right_div})
+
+
+}).render(target);
 
 ```
 
@@ -332,9 +333,7 @@ If you want to generate response styles, or use props like hover or active you c
 with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 ```js
-
-
-let target = document.body;
+    let target = document.body;
 let element = createElement404((main_interface)=>{
     //make sure to enable these to allow rerender on state change
     main_interface.state_render = true;
@@ -380,9 +379,11 @@ let element = createElement404((main_interface)=>{
     }
     main_interface.pre(
 
-        ()=> main_interface.code(
-            JSON.stringify(element.getFullState(), null, 4)
-        ),
+        ()=> {
+            main_interface.code(
+                JSON.stringify(element.getFullState(), null, 4)
+            )
+        },
 
         pre_props
     )
@@ -390,8 +391,6 @@ let element = createElement404((main_interface)=>{
 },target)
 
 element.render()
-
-
 
 
 
