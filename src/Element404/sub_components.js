@@ -10,12 +10,10 @@ Element404.prototype.set_prop = function(key,value){
 
 
 
-
-
     if(value instanceof Function){
         let callback = (event)=>{
 
-            if(this.locked && key.includes('notLock_') === false){
+            if(this.is_locked() && key.includes('notLock_') === false){
                 return;
             }
             value(this.root,event)
@@ -82,11 +80,10 @@ Element404.prototype.set_props = function(props){
         this.render_style(style_args);
     }
 
-
-
     if(props === null || props === undefined){
         return
     }
+
     const TAGS_TO_IGNORE = ['inline_style','outline_style','style_args']
     for (const key in props){
         if(TAGS_TO_IGNORE.includes(key)){

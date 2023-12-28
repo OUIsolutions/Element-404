@@ -29,7 +29,7 @@ Element404.prototype.stateSelect = function(
 
     let formatted_props = {
         "notLock_change":(select)=>{
-            if(this.locked  && prevent_locker){
+            if(this.is_locked()  && prevent_locker){
                 this.render();
                 return;
             }

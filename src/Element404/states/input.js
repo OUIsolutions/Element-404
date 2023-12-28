@@ -31,7 +31,7 @@ Element404.prototype.stateInput= function(name,state_props) {
     let formatted_props = {
 
         "notLock_change":(input,event)=>{
-            if(this.locked &&prevent_locker ) {
+            if(this.is_locked() &&prevent_locker ) {
                 this.render();
                 return;
             }
