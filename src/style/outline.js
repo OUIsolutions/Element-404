@@ -76,12 +76,14 @@ class  Element404Outline{
      * @return {string}
      * */
     render(){
+
         let final_text = ''
         for(let media of this.medias){
 
             let media_name = media.media_name;
             if(media_name){
-                    final_text+=`${media_name} {`
+                    media_name = media_name.replace('@media',' ');
+                    final_text+=`@media ${media_name} {`
             }
 
             for(let state of media.states){
@@ -136,21 +138,20 @@ class  Element404Outline{
                     return;
                 }
             }
+
             if(value[Element404Constants.MEDIA]&& !media_activated){
                 let new_media_names = Element404Extras.convert_to_list(value[Element404Constants.MEDIA]);
                 for(let current_media of new_media_names){
                     this.recursive_create_style(current_media,state_name,value,true,state_activated);
                 }
                 return;
-
             }
+
             if(value[Element404Constants.STATE] && !state_activated){
                 let new_state_names = Element404Extras.convert_to_list(value[Element404Constants.STATE]);
 
-
-
-                for(let current_statee of new_state_names){
-                    this.recursive_create_style(media_name,current_statee,value,media_activated,true);
+                for(let current_state of new_state_names){
+                    this.recursive_create_style(media_name,current_state,value,media_activated,true);
                 }
                 return;
             }
@@ -183,7 +184,7 @@ class  Element404Outline{
      * @returns {string}
      * */
     create_style(){
-
+        console.log(this.medias)
         let executed_value = Element404Extras.get_func_result(this.start_value,undefined,this.args);
         if (executed_value.name === Element404Constants.STRING) {
            this.set_text(undefined,undefined,executed_value);

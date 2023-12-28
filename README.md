@@ -285,8 +285,8 @@ element.render()
 
 
 ```
-## Responsive Styling 
-If you want to generate response styles, you can use the tag **responsive_style**
+## Outline Styling 
+If you want to generate response styles, or use props like hover or active you can use the tag **outline_style**
 
 ```js
 

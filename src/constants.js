@@ -1,17 +1,20 @@
 
-let Element404Constants = {
-    RENDER_CHANGES :"render_change",
+let Element404Constants = {}
 
-    //typing names
-
-    STRING:"String",
-    ARRAY:"Array",
-    OBJECT:"Object",
+Element404Constants.RENDER_CHANGES ="render_change";
+Element404Constants.STRING="String";
+Element404Constants.ARRAY="Array";
+Element404Constants.OBJECT="Object";
 
     //style render
-    STATE:"state",
-    MERGE_IF:"mergeIf",
-    MEDIA:"media",
-    IDENTIFIER_TAG:"Element404Identifier",
-    STYLE_KEYS_TO_IGNORE:[this.MERGE_IF,this.MEDIA,this.IDENTIFIER_TAG]
-}
+Element404Constants.STATE="state";
+Element404Constants.MERGE_IF="mergeIf";
+Element404Constants.MEDIA="media";
+Element404Constants.IDENTIFIER_TAG="Element404Identifier";
+
+Element404Constants.STYLE_KEYS_TO_IGNORE=[
+    Element404Constants.MERGE_IF,
+    Element404Constants.MEDIA,
+    Element404Constants.IDENTIFIER_TAG
+];
+
