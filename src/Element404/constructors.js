@@ -4,9 +4,9 @@ function Element404(){
         /**@type {Element404Props}*/
         this.props = undefined;
 
-
+        /**@type {Array<Object> || {Object}} */
         this.style_data = undefined;
-        this.inline_style = false
+        this.is_inline_style = false
         /**@type {Array<Element404>}*/
         this.stored_sub_elements = [];
 

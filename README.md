@@ -241,13 +241,13 @@ createElement404((main_interface)=>{
 
 
 ### Styling Elements
-You also can apply inline_style to elements by using the **inline_style** tag 
+You also can apply is_inline_style to elements by using the **is_inline_style** tag 
 
 ```js
     let target = document.body;
 let element = createElement404((main_interface)=>{
     let div_props = {
-        inline_style:{
+        is_inline_style:{
             position:"absolute",
             top:"50vh",
             left:"50vw",
@@ -258,7 +258,7 @@ let element = createElement404((main_interface)=>{
     }
     main_interface.div(()=>{
         let h1_props = {
-            inline_style:{
+            is_inline_style:{
                 "font-size":"10rem",
                 "font-weight":"bold",
                 color:"red"
@@ -267,7 +267,7 @@ let element = createElement404((main_interface)=>{
         main_interface.h1("404",h1_props)
 
         let h2_props = {
-            inline_style:{
+            is_inline_style:{
                 "font-size":"2rem",
                 "font-weight":"bold",
                 color:"red"
@@ -337,7 +337,7 @@ you just need to pass the container and the props you want to  pass
 let element = createElement404((main_interface)=>{
     //make sure to enable these to allow rerender on state change
     main_interface.state_render = true;
-    //creating an inline_style input more sofisticated
+    //creating an is_inline_style input more sofisticated
     let style_input = {
         border:'none',
         color:'rgb(71,78,86)',
@@ -370,7 +370,7 @@ let element = createElement404((main_interface)=>{
     main_interface.p(`age: ${age}`, {inline_style:p_style})
     main_interface.p(`gender ${gender}`, {inline_style:p_style})
     const pre_props = {
-        inline_style:{
+        is_inline_style:{
             width:"30vw",
             height:"30vh",
             color:'white',
@@ -416,13 +416,13 @@ let element = createElement404((main_interface)=>{
     let selected_home = {
         content:"Home Selected",
         props:{
-            inline_style:selected_style
+            is_inline_style:selected_style
         }
     }
     let unselected_home = {
         content:"Home",
         props:{
-            inline_style:unselected_style
+            is_inline_style:unselected_style
         }
     }
     main_interface.clickableStateSetter("page","home",selected_home,unselected_home);
@@ -430,13 +430,13 @@ let element = createElement404((main_interface)=>{
     let selected_about = {
         content:"About Selected",
         props:{
-            inline_style:selected_style
+            is_inline_style:selected_style
         }
     }
     let unselected_about = {
         content:"About",
         props:{
-            inline_style:unselected_style
+            is_inline_style:unselected_style
         }
     }
     let page = main_interface.clickableStateSetter("page","about",selected_about,unselected_about);

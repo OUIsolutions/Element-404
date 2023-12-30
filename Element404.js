@@ -391,9 +391,9 @@ function Element404(){
         /**@type {Element404Props}*/
         this.props = undefined;
 
-
+        /**@type {Array<Object> || {Object}} */
         this.style_data = undefined;
-        this.inline_style = false
+        this.is_inline_style = false
         /**@type {Array<Element404>}*/
         this.stored_sub_elements = [];
 
@@ -500,7 +500,8 @@ Element404.prototype.unlock=function(){
 
 
 Element404.prototype.clear = function (){
-    this.domElement.innerHTML = ''
+    this.domElement.innerHTML = '';
+    this.stored_sub_elements = [];
 }
 
 
@@ -512,11 +513,11 @@ Element404.prototype.render_style = function (args=undefined){
         return;
     }
 
-    if(this.inline_style){
+    if(this.is_inline_style){
         let create_style = Element404InlineStyle.create_style(this.style_data,args);
         this.domElement.setAttribute('style',create_style);
     }
-    let outline = !this.inline_style;
+    let outline = !this.is_inline_style;
     if(outline){
         let style_obj = new Element404Outline(this.identifier,args,this.style_data);
         let generated_style = style_obj.create_style();
@@ -529,7 +530,25 @@ Element404.prototype.render_style = function (args=undefined){
     }
 
 }
+/**
+ * @param {Array<Object> || {Object}}style
+ * @param {any} style_args
+ * */
+Element404.prototype.inline_style = function (style,style_args=undefined){
+    this.style_data = style;
+    this.inline_style = true;
+    this.render_style(style_args);
+}
 
+/**
+ * @param {Array<Object> || {Object}}style
+ * @param {any} style_args
+ * */
+Element404.prototype.outline_style = function (style,style_args=undefined){
+    this.style_data = style;
+    this.inline_style = false;
+    this.render_style(style_args);
+}
 
 /**
  * Generate the tenderization
@@ -561,6 +580,7 @@ Element404.prototype.render= function(args={}){
     if(target){
         this.target = target
        if(target instanceof  Element404){
+           //target.clear();
            if(!this.included_in_father_dom){
                target.stored_sub_elements.unshift(this);
            }
@@ -1099,13 +1119,13 @@ Element404.prototype.set_props = function(props){
 
     if(props['inline_style']){
         this.style_data = props['inline_style']
-        this.inline_style = true;
+        this.is_inline_style = true;
         this.render_style(style_args);
     }
 
     if(props['outline_style']){
         this.style_data = props['outline_style']
-        this.inline_style = false;
+        this.is_inline_style = false;
         this.render_style(style_args);
     }
 

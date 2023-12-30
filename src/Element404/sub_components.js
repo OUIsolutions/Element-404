@@ -74,13 +74,13 @@ Element404.prototype.set_props = function(props){
 
     if(props['inline_style']){
         this.style_data = props['inline_style']
-        this.inline_style = true;
+        this.is_inline_style = true;
         this.render_style(style_args);
     }
 
     if(props['outline_style']){
         this.style_data = props['outline_style']
-        this.inline_style = false;
+        this.is_inline_style = false;
         this.render_style(style_args);
     }
 

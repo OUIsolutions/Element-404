@@ -14,11 +14,11 @@ Element404.prototype.render_style = function (args=undefined){
         return;
     }
 
-    if(this.inline_style){
+    if(this.is_inline_style){
         let create_style = Element404InlineStyle.create_style(this.style_data,args);
         this.domElement.setAttribute('style',create_style);
     }
-    let outline = !this.inline_style;
+    let outline = !this.is_inline_style;
     if(outline){
         let style_obj = new Element404Outline(this.identifier,args,this.style_data);
         let generated_style = style_obj.create_style();
@@ -31,7 +31,25 @@ Element404.prototype.render_style = function (args=undefined){
     }
 
 }
+/**
+ * @param {Array<Object> || {Object}}style
+ * @param {any} style_args
+ * */
+Element404.prototype.inline_style = function (style,style_args=undefined){
+    this.style_data = style;
+    this.inline_style = true;
+    this.render_style(style_args);
+}
 
+/**
+ * @param {Array<Object> || {Object}}style
+ * @param {any} style_args
+ * */
+Element404.prototype.outline_style = function (style,style_args=undefined){
+    this.style_data = style;
+    this.inline_style = false;
+    this.render_style(style_args);
+}
 
 /**
  * Generate the tenderization
