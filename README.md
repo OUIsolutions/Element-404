@@ -91,11 +91,71 @@ let element = createElement404((main_interface)=>{
 element.render()
 
 
+```
+### Mini Dom Operations
+With MiniDom you can find, and modify parts of elements individually 
+#### Finding a Value
+in these Example we find a value of an input , then we alert it
+```js
 
+        let target = document.body;
+        createElement404(element=>{
 
+             element.div(()=>{
+                 element.div(()=>{
+                     let created_input = element.input({placeholder:"type something"})
+                     created_input.input_name = 'test';
+                 })
+             })
+
+            let button =element.button("visualize");
+             button.set_prop('click',()=>{
+                 let founded_input = element.findOne(value => value.input_name === 'test');
+                 alert("you typed: "+ founded_input.domElement.value);
+             })
+
+        },target).render();
 
 
 ```
+### Render Match 
+with render match system you can render specif parts of the code
+```js
+
+
+let target = document.body;
+let value1 = 0;
+let value2 = 0;
+createElement404(element=>{
+
+    element.div((current)=>{
+        current.div_name = 'div1';
+        element.p("the value1 is " + value1);
+    })
+
+    element.div((current)=>{
+         current.div_name = 'div2';
+        element.p("the value2 is " + value2);
+     })
+
+
+    let button1 =element.button("update div1");
+
+    button1.set_prop('click',()=>{
+          value1+=1;
+          element.renderMatch(value => value.div_name === 'div1');
+     })
+
+    let button2 =element.button("update div2");
+    button2.set_prop('click',()=>{
+        value2+=1;
+        element.renderMatch(value => value.div_name === 'div2');
+    });
+
+},target).render();
+
+```
+
 ### Switching Context
 
 ### Switching in The Same render 
