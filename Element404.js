@@ -632,6 +632,12 @@ Element404.prototype.findOne = function (test_callback){
     }
     return null;
 }
+
+/**
+ * @param {Element404Testage} test_callback
+ * @param {any} args
+ * @return {Element404}
+ */
 Element404.prototype.renderMatch = function (test_callback,args){
     let result = this.find(test_callback);
     for(let item of result){
