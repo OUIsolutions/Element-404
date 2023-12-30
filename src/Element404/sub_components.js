@@ -8,8 +8,6 @@
 */
 Element404.prototype.set_prop = function(key,value){
 
-
-
     if(value instanceof Function){
         let callback = (event)=>{
 
@@ -19,7 +17,7 @@ Element404.prototype.set_prop = function(key,value){
             value(this.root,event)
             if(key.includes('render_')){
 
-                this.render()
+                this.render({root_render:true})
             }
 
         }

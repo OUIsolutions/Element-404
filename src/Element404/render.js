@@ -40,12 +40,25 @@ Element404.prototype.render_style = function (args=undefined){
 Element404.prototype.render= function(args={}){
     let formatted_ars =  new Element404Args(args,{});
     let target = formatted_ars.get('target',undefined);
-    let render_args = formatted_ars.get('args',{});
+    let render_args = formatted_ars.get('args',undefined);
+    let root_render = formatted_ars.get('root_render',false);
 
-    if(this.child){
+    if(this.child && root_render){
+        this.father.render(args);
+        return  this;
+    }
+
+    if(!render_args ){
+        render_args = this.render_args;
+    }
+    this.render_args = render_args;
+
+    if(this.child && !root_render){
         this.generator(args);
         return this;
     }
+
+
 
     if(target){
         this.target = target

@@ -20,6 +20,7 @@ function Element404(){
 
         /** @type {object} */
         this.stored_state = {};
+        this.render_args = {}
 
         /** @type {boolean} */
         this.locked = false;
