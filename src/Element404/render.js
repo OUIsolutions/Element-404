@@ -43,7 +43,7 @@ Element404.prototype.render= function(args={}){
     let render_args = formatted_ars.get('args',{});
 
     if(this.child){
-        this.father.render(args);
+        this.generator(args);
         return this;
     }
 

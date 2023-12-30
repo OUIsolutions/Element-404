@@ -18,6 +18,7 @@ Element404.prototype.set_prop = function(key,value){
             }
             value(this.root,event)
             if(key.includes('render_')){
+
                 this.render()
             }
 
@@ -68,6 +69,11 @@ Element404.prototype.set_props = function(props){
     }
 
     let style_args = props['style_args'];
+
+    if(!style_args){
+        style_args = {};
+    }
+
     if(props['inline_style']){
         this.style_data = props['inline_style']
         this.inline_style = true;
@@ -80,9 +86,6 @@ Element404.prototype.set_props = function(props){
         this.render_style(style_args);
     }
 
-    if(props === null || props === undefined){
-        return
-    }
 
     const TAGS_TO_IGNORE = ['inline_style','outline_style','style_args']
     for (const key in props){
@@ -101,14 +104,31 @@ Element404.prototype.set_props = function(props){
  * */
 Element404.prototype.generate_component_reference=function(content,props){
 
-    this.set_props(props)
-    let formatted_content = Element404Extras.get_func_result(content)
+    this.generator = (args)=>{
+        this.root.innerHTML = "";
+        let old_root = this.father.root;
+        this.father.root = this.root;
+        this.set_props(props)
 
-    if(formatted_content){
-        let node = document.createTextNode(formatted_content)
-        this.root.appendChild(node)
+        let formatted_content =  content;
+
+        if(formatted_content instanceof  Function){
+            formatted_content = content(this,args);
+        }
+
+        if(formatted_content !== undefined){
+            formatted_content = String(formatted_content);
+        }
+
+        if(formatted_content){
+            let node = document.createTextNode(formatted_content)
+            this.root.appendChild(node)
+        }
+
+        this.father.root = old_root;
     }
 
+    this.generator({});
 
 }
 
@@ -132,10 +152,7 @@ Element404.prototype.sub_component=function( tag,content,props){
 
     let domElement = document.createElement(tag)
     sub_element.sub_element(this,domElement);
-    let old_root =this.root
-    this.root = domElement
     sub_element.generate_component_reference(content,props)
-    this.root = old_root
     this.root.appendChild(domElement)
 
 
