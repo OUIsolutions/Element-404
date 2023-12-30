@@ -7,6 +7,8 @@ function Element404(){
 
         this.style_data = undefined;
         this.inline_style = false
+        /**@type {Array<Element404>}*/
+        this.stored_sub_elements = [];
 
         this.identifier = Math.random().toString();
         this.child_style = undefined;
@@ -63,6 +65,7 @@ Element404.prototype.rootConstructor = function(generator,target){
 
     /** @type {HTMLElement} */
     this.target = target;
+    this.stored_sub_elements.unshift(this);
     return this;
 }
 

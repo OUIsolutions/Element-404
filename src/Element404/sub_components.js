@@ -172,6 +172,7 @@ Element404.prototype.sub_component=function( tag,content,props){
     sub_element.create_generator(content,props)
     sub_element.generator({});
 
+    this.stored_sub_elements.unshift(sub_element);
     this.root.appendChild(domElement)
 
 

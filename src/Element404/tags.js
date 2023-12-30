@@ -191,16 +191,16 @@ Element404.prototype.th=function(content,props=null){
 
 /**
  * Creates an H3
- * @param {string} message The object props
+ * @param {string || number} message The object props
  * @returns {Element404}
  */
 Element404.prototype.text=function(message){
-   return  this.create('text',message)
+   return  this.create(undefined,message)
 }
 
 /**
  * Creates a button
- * @param {Element404Generator | string} content the internal content
+ * @param {Element404Generator | string || number} content the internal content
  * @param {Element404Props || null  } props The object props
  * @returns {Element404}
  */
