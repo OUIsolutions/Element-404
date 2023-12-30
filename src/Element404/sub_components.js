@@ -5,6 +5,7 @@
 /**
  * @param {string} key
  * @param {string | function || object} value
+ * @return {Element404}
 */
 Element404.prototype.set_prop = function(key,value){
 
@@ -29,10 +30,11 @@ Element404.prototype.set_prop = function(key,value){
         }
 
         this.domElement.addEventListener(formatted_key,callback)
-        return
+        return this;
     }
 
     this.domElement.setAttribute(key,value)
+    return  this;
 }
 
 

@@ -34,21 +34,25 @@ Element404.prototype.render_style = function (args=undefined){
 /**
  * @param {Array<Object> || {Object}}style
  * @param {any} style_args
+ * @return {Element404}
  * */
 Element404.prototype.inline_style = function (style,style_args=undefined){
     this.style_data = style;
-    this.inline_style = true;
+    this.is_inline_style = true;
     this.render_style(style_args);
+    return  this;
 }
 
 /**
  * @param {Array<Object> || {Object}}style
  * @param {any} style_args
+ * @return {Element404}
  * */
 Element404.prototype.outline_style = function (style,style_args=undefined){
     this.style_data = style;
-    this.inline_style = false;
+    this.is_inline_style = false;
     this.render_style(style_args);
+    return  this;
 }
 
 /**
@@ -81,7 +85,7 @@ Element404.prototype.render= function(args={}){
     if(target){
         this.target = target
        if(target instanceof  Element404){
-           //target.clear();
+           target.clear();
            if(!this.included_in_father_dom){
                target.stored_sub_elements.unshift(this);
            }

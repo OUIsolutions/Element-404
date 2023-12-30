@@ -333,7 +333,7 @@ createElement404(element=>{
 with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 ```js
-    let target = document.body;
+       let target = document.body;
 let element = createElement404((main_interface)=>{
     //make sure to enable these to allow rerender on state change
     main_interface.state_render = true;
@@ -344,11 +344,11 @@ let element = createElement404((main_interface)=>{
         'background-color':'rgb(231,231,248)'
     }
 
-    let name = main_interface.stateInput("name",{placeholder:"name",style:style_input})
+    let name = main_interface.stateInput("name",{placeholder:"name",inline_style:style_input})
     main_interface.br()
-    let email = main_interface.stateInput("email",{placeholder:"email",style:style_input})
+    let email = main_interface.stateInput("email",{placeholder:"email",inline_style:style_input})
     main_interface.br()
-    let age = main_interface.stateInput("age",{placeholder:"age",style:style_input, default_value:18})
+    let age = main_interface.stateInput("age",{placeholder:"age",inline_style:style_input, default_value:18})
     main_interface.stateDecrease("age",1,"-")
     main_interface.stateIncrease("age",1,"+")
     main_interface.br()
@@ -356,7 +356,7 @@ let element = createElement404((main_interface)=>{
     let gender = main_interface.stateSelect("gender",["Man","Woman"],{default_value:"Woman"})
     main_interface.br()
 
-    let password =main_interface.stateInput("password",{placeholder:"password",style:style_input, type:"password"})
+    let password =main_interface.stateInput("password",{placeholder:"password",inline_style:style_input, type:"password"})
 
 
     let p_style = {
@@ -364,34 +364,28 @@ let element = createElement404((main_interface)=>{
         'font-size':'0.75em'
     }
 
-    main_interface.p(`name: ${name}`,{inline_style:p_style})
-    main_interface.p(`email: ${email}`,{inline_style:p_style})
-    main_interface.p(`password: ${password}`, {inline_style:p_style})
-    main_interface.p(`age: ${age}`, {inline_style:p_style})
-    main_interface.p(`gender ${gender}`, {inline_style:p_style})
-    const pre_props = {
-        is_inline_style:{
-            width:"30vw",
-            height:"30vh",
-            color:'white',
-            "background-color":"rgb(38,42,85)",
-        }
-    }
-    main_interface.pre(
+    main_interface.p(`name: ${name}`).inline_style(p_style);
+    main_interface.p(`email: ${email}`).inline_style(p_style);
+    main_interface.p(`password: ${password}`).inline_style(p_style);
+    main_interface.p(`age: ${age}`).inline_style(p_style);
+    main_interface.p(`gender ${gender}`).inline_style(p_style);
 
-        ()=> {
-            main_interface.code(
-                JSON.stringify(element.getFullState(), null, 4)
-            )
-        },
 
-        pre_props
-    )
+
+    main_interface.pre(()=> {
+        main_interface.code(
+            JSON.stringify(element.getFullState(), null, 4)
+        )
+    }).inline_style({
+        width:"30vw",
+        height:"30vh",
+        color:'white',
+        "background-color":"rgb(38,42,85)",
+    })
 
 },target)
 
 element.render()
-
 
 
 ```
