@@ -27,13 +27,18 @@ Element404.prototype.find = function (test_callback){
  * @param {Element404Testage} test_callback
  * @return {Element404}
  */
-Element404.prototype.find_one = function (test_callback){
+Element404.prototype.findOne = function (test_callback){
 
     for(let item of this.stored_sub_elements){
         let test_result = test_callback(item);
         if(test_result){
             return item;
         }
+        let recursive_result = item.findOne(test_callback);
+        if(recursive_result){
+            return recursive_result;
+        }
+        
 
     }
     return null;

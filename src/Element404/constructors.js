@@ -10,6 +10,9 @@ function Element404(){
         /**@type {Array<Element404>}*/
         this.stored_sub_elements = [];
 
+
+        this.included_in_father_dom = false;
+
         this.identifier = Math.random().toString();
         this.child_style = undefined;
 
@@ -57,7 +60,9 @@ Element404.prototype.rootConstructor = function(generator,target){
 
     //means its an component inside interfacce
     if(target instanceof  Element404){
+        this.included_in_father_dom = true;
         this.target = target.root
+        target.stored_sub_elements.unshift(this);
 
         return  this
     }

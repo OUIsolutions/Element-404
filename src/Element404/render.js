@@ -62,6 +62,10 @@ Element404.prototype.render= function(args={}){
     if(target){
         this.target = target
        if(target instanceof  Element404){
+           if(!this.included_in_father_dom){
+               target.stored_sub_elements.unshift(this);
+           }
+
            this.target = target.root
        }
     }

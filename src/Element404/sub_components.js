@@ -120,7 +120,7 @@ Element404.prototype.create_generator=function(content, props){
             formatted_content = content(this,execution_args);
         }
 
-        if(formatted_content !== undefined){
+        if(formatted_content !== undefined && formatted_content !== null){
             formatted_content = String(formatted_content);
         }
 
