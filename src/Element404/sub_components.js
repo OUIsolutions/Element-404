@@ -105,7 +105,9 @@ Element404.prototype.create_generator=function(content, props){
     this.generator = (args)=>{
         this.root.innerHTML = "";
         let old_root = this.father.root;
+        let old_stored_sub_elements = this.father.stored_sub_elements;
         this.father.root = this.root;
+        this.father.stored_sub_elements = this.stored_sub_elements;
         this.set_props(props)
 
         let formatted_content =  content;
@@ -126,7 +128,7 @@ Element404.prototype.create_generator=function(content, props){
             let node = document.createTextNode(formatted_content)
             this.root.appendChild(node)
         }
-
+        this.father.stored_sub_elements = old_stored_sub_elements;
         this.father.root = old_root;
     }
 
@@ -167,6 +169,7 @@ Element404.prototype.sub_component=function( tag,content,props){
     }
 
     let sub_element = new Element404();
+
     let domElement = document.createElement(tag)
     sub_element.sub_element(this,domElement);
     sub_element.create_generator(content,props)

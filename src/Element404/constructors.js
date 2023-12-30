@@ -65,7 +65,6 @@ Element404.prototype.rootConstructor = function(generator,target){
 
     /** @type {HTMLElement} */
     this.target = target;
-    this.stored_sub_elements.unshift(this);
     return this;
 }
 
