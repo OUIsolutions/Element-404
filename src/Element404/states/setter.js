@@ -14,7 +14,7 @@
  * @param {SetterState} unselected_value
  * @param {boolean} render
  * */
-Element404.prototype.stateSetter = function(
+Element404.prototype.clickableStateSetter = function(
     name,
     value,
     selected_value,

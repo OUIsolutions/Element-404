@@ -48,12 +48,13 @@ Element404.prototype.render= function(args={}){
         return  this;
     }
 
-    if(!render_args ){
+    if(!render_args){
         render_args = this.render_args;
     }
     this.render_args = render_args;
 
-    if(this.child && !root_render){
+
+    if(this.child){
         this.generator(args);
         return this;
     }

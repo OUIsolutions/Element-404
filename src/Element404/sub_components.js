@@ -111,7 +111,11 @@ Element404.prototype.create_generator=function(content, props){
         let formatted_content =  content;
 
         if(formatted_content instanceof  Function){
-            formatted_content = content(this,args);
+            let execution_args = args.args;
+            if(!execution_args){
+                execution_args = {};
+            }
+            formatted_content = content(this,execution_args);
         }
 
         if(formatted_content !== undefined){
@@ -148,22 +152,21 @@ Element404.prototype.sub_element = function(father,root){
 
 /**
  * @param {string || undefined} tag
- * @param {string || function || undefined} content
+ * @param {string || Element404Generator || undefined} content
  * @param {Element404Props || undefined} props
- * @returns {Element404}
+ * @returns {Element404 || undefined}
  * */
 Element404.prototype.sub_component=function( tag,content,props){
 
-    let sub_element = new Element404();
     let tag_not_exist = tag === undefined || tag === null
     if(tag_not_exist){
         let formatted_content = Element404Extras.get_func_result(content)
         let node = document.createTextNode(formatted_content)
         this.root.appendChild(node);
-        sub_element.sub_element(this,node);
-        return sub_element;
+        return;
     }
 
+    let sub_element = new Element404();
     let domElement = document.createElement(tag)
     sub_element.sub_element(this,domElement);
     sub_element.create_generator(content,props)
@@ -180,7 +183,7 @@ Element404.prototype.sub_component=function( tag,content,props){
 /**
  * 
  * @param {string || undefined} tag The tag of element
- * @param {function || string} content the internal content
+ * @param {Element404Generator || string} content the internal content
  * @param {Element404Props || undefined} props The object props
  * @returns {Element404}
  */
