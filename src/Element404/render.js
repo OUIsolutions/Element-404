@@ -1,7 +1,8 @@
 
 
 Element404.prototype.clear = function (){
-    this.domElement.innerHTML = ''
+    this.domElement.innerHTML = '';
+    this.stored_sub_elements = [];
 }
 
 
@@ -62,6 +63,7 @@ Element404.prototype.render= function(args={}){
     if(target){
         this.target = target
        if(target instanceof  Element404){
+           //target.clear();
            if(!this.included_in_father_dom){
                target.stored_sub_elements.unshift(this);
            }
