@@ -29,6 +29,7 @@ function Element404(){
 /**
  * @typedef {function} Element404Generator
  * @param {Element404} main_interfface
+ * @param {any}args
  * */
 
 
@@ -42,7 +43,9 @@ Element404.prototype.rootConstructor = function(generator,target){
 
 
     /** @type {function} */
-    this.generator = ()=>{generator(this)}
+    this.generator = (args)=>{
+        generator(this,args)
+    }
 
     /** @type {DocumentFragment || HTMLElement} */
     this.root = document.createDocumentFragment();

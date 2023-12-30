@@ -34,13 +34,16 @@ Element404.prototype.render_style = function (args=undefined){
 
 /**
  * Generate the tenderization
- * @param {HTMLElement || DocumentFragment || Element404}target
+ * @param {object} args
  * @returns {Element404}
  * */
-Element404.prototype.render= function(target=undefined){
+Element404.prototype.render= function(args={}){
+    let formatted_ars =  new Element404Args(args,{});
+    let target = formatted_ars.get('target',undefined);
+    let render_args = formatted_ars.get('args',{});
 
     if(this.child){
-        this.father.render();
+        this.father.render(args);
         return this;
     }
 
@@ -53,7 +56,7 @@ Element404.prototype.render= function(target=undefined){
 
     this.total_render_times+=1;
     this.target.innerHTML = ''
-    this.generator()
+    this.generator(render_args)
     this.target.appendChild(this.root)
     return this;
 
