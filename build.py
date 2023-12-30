@@ -10,6 +10,8 @@ targets = [
     "Element404/constructors.js",
     "Element404/locker.js",
     "Element404/render.js",
+    "Element404/minidom.js",
+
     "Element404/states/state.js",
     "Element404/states/input.js",
     "Element404/states/increase.js",
