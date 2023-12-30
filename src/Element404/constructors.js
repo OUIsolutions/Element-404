@@ -54,14 +54,14 @@ Element404.prototype.rootConstructor = function(generator,target){
     }
 
     /** @type {DocumentFragment || HTMLElement} */
-    this.root = document.createDocumentFragment();
+    this.domElement = document.createDocumentFragment();
 
 
 
     //means its an component inside interfacce
     if(target instanceof  Element404){
         this.included_in_father_dom = true;
-        this.target = target.root
+        this.target = target.domElement
         target.stored_sub_elements.unshift(this);
 
         return  this

@@ -14,7 +14,7 @@ Element404.prototype.set_prop = function(key,value){
             if(this.is_locked() && key.includes('notLock_') === false){
                 return;
             }
-            value(this.root,event)
+            value(this.domElement,event)
             if(key.includes('render_')){
 
                 this.render({root_render:true})
@@ -28,11 +28,11 @@ Element404.prototype.set_prop = function(key,value){
             formatted_key = formatted_key.replace(tag,'')
         }
 
-        this.root.addEventListener(formatted_key,callback)
+        this.domElement.addEventListener(formatted_key,callback)
         return
     }
 
-    this.root.setAttribute(key,value)
+    this.domElement.setAttribute(key,value)
 }
 
 
@@ -103,10 +103,10 @@ Element404.prototype.set_props = function(props){
 Element404.prototype.create_generator=function(content, props){
 
     this.generator = (args)=>{
-        this.root.innerHTML = "";
-        let old_root = this.father.root;
+        this.domElement.innerHTML = "";
+        let old_root = this.father.domElement;
         let old_stored_sub_elements = this.father.stored_sub_elements;
-        this.father.root = this.root;
+        this.father.domElement = this.domElement;
         this.father.stored_sub_elements = this.stored_sub_elements;
         this.set_props(props)
 
@@ -126,10 +126,10 @@ Element404.prototype.create_generator=function(content, props){
 
         if(formatted_content){
             let node = document.createTextNode(formatted_content)
-            this.root.appendChild(node)
+            this.domElement.appendChild(node)
         }
         this.father.stored_sub_elements = old_stored_sub_elements;
-        this.father.root = old_root;
+        this.father.domElement = old_root;
     }
 
 
@@ -144,7 +144,7 @@ Element404.prototype.sub_element = function(father,root){
     /** @type {Element404} */
     this.father = father;
     /** @type {DocumentFragment || HTMLElement ||  Text}  */
-    this.root = root;
+    this.domElement = root;
     this.child = true;
     this.state_render = this.father.state_render;
     this.stored_state = this.father.stored_state;
@@ -164,7 +164,7 @@ Element404.prototype.sub_component=function( tag,content,props){
     if(tag_not_exist){
         let formatted_content = Element404Extras.get_func_result(content)
         let node = document.createTextNode(formatted_content)
-        this.root.appendChild(node);
+        this.domElement.appendChild(node);
         return;
     }
 
@@ -176,7 +176,7 @@ Element404.prototype.sub_component=function( tag,content,props){
     sub_element.generator({});
 
     this.stored_sub_elements.unshift(sub_element);
-    this.root.appendChild(domElement)
+    this.domElement.appendChild(domElement)
 
 
     return sub_element

@@ -1,7 +1,7 @@
 
 
 Element404.prototype.clear = function (){
-    this.root.innerHTML = ''
+    this.domElement.innerHTML = ''
 }
 
 
@@ -15,7 +15,7 @@ Element404.prototype.render_style = function (args=undefined){
 
     if(this.inline_style){
         let create_style = Element404InlineStyle.create_style(this.style_data,args);
-        this.root.setAttribute('style',create_style);
+        this.domElement.setAttribute('style',create_style);
     }
     let outline = !this.inline_style;
     if(outline){
@@ -23,10 +23,10 @@ Element404.prototype.render_style = function (args=undefined){
         let generated_style = style_obj.create_style();
         if(!this.child_style){
             this.child_style =document.createElement('style');
-            this.root.appendChild(this.child_style);
+            this.domElement.appendChild(this.child_style);
         }
         this.child_style.innerHTML = generated_style;
-        this.root.setAttribute('Element404Identifier',this.identifier)
+        this.domElement.setAttribute('Element404Identifier',this.identifier)
     }
 
 }
@@ -66,14 +66,14 @@ Element404.prototype.render= function(args={}){
                target.stored_sub_elements.unshift(this);
            }
 
-           this.target = target.root
+           this.target = target.domElement
        }
     }
 
     this.total_render_times+=1;
     this.target.innerHTML = ''
     this.generator(render_args)
-    this.target.appendChild(this.root)
+    this.target.appendChild(this.domElement)
     return this;
 
 }
