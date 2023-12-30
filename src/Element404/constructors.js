@@ -66,23 +66,6 @@ Element404.prototype.rootConstructor = function(generator,target){
     return this;
 }
 
- /**
-  * @param {Element404} father
-  * @param {DocumentFragment || HTMLElement ||  Text} root
-  * @returns {Element404}
-  */
-Element404.prototype.sub_element = function(father,root){
-    /** @type {Element404} */
-    this.father = father;
-    /** @type {DocumentFragment || HTMLElement ||  Text}  */
-    this.root = root;
-    this.child = true;
-    this.state_render = this.father.state_render;
-    this.stored_state = this.father.stored_state;
-
-    return this;
-} 
-
 
 
 /**

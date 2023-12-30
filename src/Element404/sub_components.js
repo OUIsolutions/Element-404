@@ -100,7 +100,7 @@ Element404.prototype.set_props = function(props){
  * @param {string || function } content
  * @param {Element404Props } props
  * */
-Element404.prototype.generate_component_reference=function(content,props){
+Element404.prototype.create_generator=function(content, props){
 
     this.generator = (args)=>{
         this.root.innerHTML = "";
@@ -126,9 +126,25 @@ Element404.prototype.generate_component_reference=function(content,props){
         this.father.root = old_root;
     }
 
-    this.generator({});
 
 }
+
+/**
+ * @param {Element404} father
+ * @param {DocumentFragment || HTMLElement ||  Text} root
+ * @returns {Element404}
+ */
+Element404.prototype.sub_element = function(father,root){
+    /** @type {Element404} */
+    this.father = father;
+    /** @type {DocumentFragment || HTMLElement ||  Text}  */
+    this.root = root;
+    this.child = true;
+    this.state_render = this.father.state_render;
+    this.stored_state = this.father.stored_state;
+    return this;
+}
+
 
 /**
  * @param {string || undefined} tag
@@ -150,7 +166,9 @@ Element404.prototype.sub_component=function( tag,content,props){
 
     let domElement = document.createElement(tag)
     sub_element.sub_element(this,domElement);
-    sub_element.generate_component_reference(content,props)
+    sub_element.create_generator(content,props)
+    sub_element.generator({});
+
     this.root.appendChild(domElement)
 
 
