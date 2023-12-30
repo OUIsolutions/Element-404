@@ -184,7 +184,6 @@ class  Element404Outline{
      * @returns {string}
      * */
     create_style(){
-        console.log(this.medias)
         let executed_value = Element404Extras.get_func_result(this.start_value,undefined,this.args);
         if (executed_value.name === Element404Constants.STRING) {
            this.set_text(undefined,undefined,executed_value);

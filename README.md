@@ -290,7 +290,6 @@ If you want to generate response styles, or use props like hover or active you c
 
 ```js
 
-
 let target = document.body;
 createElement404(element=>{
     const  NORMAL = {
@@ -325,7 +324,8 @@ createElement404(element=>{
     element.div("value of div",{outline_style:right_div})
 
 
-}).render(target);
+},target).render();
+
 
 ```
 
@@ -401,6 +401,7 @@ With State Setters you can generate a button that will define a specific point_s
 predetermined 
 ```js
 
+
 let target = document.body;
 let element = createElement404((main_interface)=>{
     main_interface.state_render = true;
@@ -424,7 +425,7 @@ let element = createElement404((main_interface)=>{
             inline_style:unselected_style
         }
     }
-    main_interface.stateSetter("page","home",selected_home,unselected_home);
+    main_interface.clickableStateSetter("page","home",selected_home,unselected_home);
 
     let selected_about = {
         content:"About Selected",
@@ -438,7 +439,7 @@ let element = createElement404((main_interface)=>{
             inline_style:unselected_style
         }
     }
-    let page = main_interface.stateSetter("page","about",selected_about,unselected_about);
+    let page = main_interface.clickableStateSetter("page","about",selected_about,unselected_about);
 
     if(page === "home"){
         main_interface.h1("you are in home page")
@@ -452,6 +453,7 @@ let element = createElement404((main_interface)=>{
     }
 },target)
 element.render()
+
 
 ```
 

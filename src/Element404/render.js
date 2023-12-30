@@ -59,8 +59,6 @@ Element404.prototype.render= function(args={}){
         return this;
     }
 
-
-
     if(target){
         this.target = target
        if(target instanceof  Element404){
