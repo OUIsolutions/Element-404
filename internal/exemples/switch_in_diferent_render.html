@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+let num = 0;
+
+function main(){
+        let target = document.body;
+            createElement404((main_interface)=>{
+
+        let nav_style = {
+            "width":"33vw",
+            "margin-left":"33vw",
+            "display":"grid",
+            "grid-template-columns":"33% 33% 33%"
+        }
+        let all_links = {
+            cursor:"pointer"
+        }
+
+        let selected = {
+            color:"red"
+        }
+
+        let page = main_interface.div();
+
+
+
+        function default_page(){
+            page.clear()
+            page.nav(()=>{
+                page.p("Default",{inline_style:[selected,all_links]})
+                page.p("Page 1",{inline_style:all_links, click:page1})
+            },{inline_style:nav_style})
+
+            page.h1("you are in the default page")
+        }
+        default_page()
+
+        function page1(){
+            page.clear()
+            page.nav(()=>{
+                page.nav(()=>{
+                    page.p("Default",{inline_style:all_links,click:default_page})
+                    page.p("Page 1",{inline_style:[selected,all_links]})
+                },{inline_style:nav_style})
+            })
+            page.h1("you are in the page1")
+        }
+
+
+
+
+        let hit_counter_div = main_interface.div();
+        let hit_counter =  createElement404(sub=>{
+            sub.p(`the value of num is ${num}`)
+            sub.button("Decrease num",{render_click:()=>num-=1})
+            sub.button("Increase num",{render_click:()=>num+=1})
+        },hit_counter_div).render()
+
+    },target).render()
+
+}
+
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>

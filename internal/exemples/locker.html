@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+function main(){
+
+    let target = document.body;
+let element = createElement404((main_interface)=>{
+    main_interface.state_render = true;
+
+    main_interface.stateSelect("gender",["Man","Woman"]);
+    main_interface.br()
+    main_interface.stateInput("num",{placeholder:"num"})
+    main_interface.stateDecrease("num",1,"-")
+    main_interface.stateIncrease("num",1,"+")
+    main_interface.br()
+
+
+    if(main_interface.locked){
+
+        main_interface.button("unlock",{
+            inline_style:{color: "red"},
+            notLock_render_click:()=>{
+                main_interface.unlock();
+            }
+        })
+    }
+
+    if(!main_interface.locked){
+        main_interface.button("lock",{
+            inline_style:{color: "blue"},
+            render_click:()=>{
+                main_interface.lock();
+                main_interface.render()
+            }
+
+        })
+    }
+
+
+
+
+
+},target)
+element.render()
+}
+
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>

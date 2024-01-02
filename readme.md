@@ -11,8 +11,8 @@ If you want to contribute, just read the TODO.md and then, implement the require
 ## Runable Example to start 
 https://codesandbox.io/p/sandbox/element404-2w7clv
 
-## Install
-Just download the **Element404.js** file into your project and then reference into your html
+## Run
+For Running , you just need to 
 
 ```html
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ Just download the **Element404.js** file into your project and then reference in
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
 </head>
 <body>
 <script>
@@ -44,64 +44,99 @@ Just download the **Element404.js** file into your project and then reference in
 </html>
 ```
 
+
 ## Triggers
 for defining a trigger, you just need to pass, the trigger with the prefix "render_" if you want to update the ui
 otherwise just pass the trigger,but the ui will not be updated.
-```js
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+    function main(){
+        var num =0;
 
-var num =0;
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+            main_interface.div(()=>{
+                main_interface.h1(`the value of num is ${num}`)
+                main_interface.button(`remove 1 from num`,{render_click:()=> num--},)
+                main_interface.button(`add 1 to num`,{render_click:()=> num++})
 
-let target = document.body;
-let element = createElement404((main_interface)=>{
-    main_interface.div(()=>{
-        main_interface.h1(`the value of num is ${num}`)
-        main_interface.button(`remove 1 from num`,{render_click:()=> num--},)
-        main_interface.button(`add 1 to num`,{render_click:()=> num++})
+            })
 
-    })
+        },target)
 
-},target)
+        element.render()
 
-element.render()
+    }
 
-    
+    window.addEventListener('load',main);
+</script>
 
+</body>
+</html>
 ```
-
 
 ## Dealing with Inputs 
 If you don't want to use States, you can handle inputs, by using the normal input implementation
-```js
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+    function main(){
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+            main_interface.div(()=>{
+                main_interface.h1("Hello World",{inline_style:{color:'red'}})
+            })
 
-let input_text =  ''
+        },target)
 
-let target = document.body;
-let element = createElement404((main_interface)=>{
+        element.render()
+    }
 
-    main_interface.input({
-        placeholder:'Type something',
-        value:input_text,
-        render_focusout:(input)=>{
-            input_text = input.value
-        }
-    })
+    window.addEventListener('load',main);
+</script>
 
-    main_interface.p(`You typed: ${input_text}`)
-
-},target)
-
-element.render()
-
-
+</body>
+</html>
 ```
+
 ### Mini Dom Operations
 With MiniDom you can find, and modify parts of elements individually 
+
 #### Finding a Value
 in these Example we find a value of an input , then we alert it
-```js
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+    function main(){
+  
         let target = document.body;
         createElement404(element=>{
 
@@ -120,44 +155,70 @@ in these Example we find a value of an input , then we alert it
 
         },target).render();
 
+    }
 
+    window.addEventListener('load',main);
+</script>
+
+</body>
+</html>
 ```
+
 ### Render Match 
 with render match system you can render specif parts of the code
-```js
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+    
+    let value1 = 0;
+    let value2 = 0;
+    
+    function main(){
+  
+        let target = document.body;
+        createElement404(element=>{
+
+            element.div((current)=>{
+                current.div_name = 'div1';
+                element.p("the value1 is " + value1);
+            })
+
+            element.div((current)=>{
+                current.div_name = 'div2';
+                element.p("the value2 is " + value2);
+            })
 
 
-let target = document.body;
-let value1 = 0;
-let value2 = 0;
-createElement404(element=>{
+            let button1 =element.button("update div1");
 
-    element.div((current)=>{
-        current.div_name = 'div1';
-        element.p("the value1 is " + value1);
-    })
+            button1.set_prop('click',()=>{
+                value1+=1;
+                element.renderMatch(value => value.div_name === 'div1');
+            })
 
-    element.div((current)=>{
-         current.div_name = 'div2';
-        element.p("the value2 is " + value2);
-     })
+            let button2 =element.button("update div2");
+            button2.set_prop('click',()=>{
+                value2+=1;
+                element.renderMatch(value => value.div_name === 'div2');
+            });
 
+        },target).render();
+    }
 
-    let button1 =element.button("update div1");
+    window.addEventListener('load',main);
+</script>
 
-    button1.set_prop('click',()=>{
-          value1+=1;
-          element.renderMatch(value => value.div_name === 'div1');
-     })
-
-    let button2 =element.button("update div2");
-    button2.set_prop('click',()=>{
-        value2+=1;
-        element.renderMatch(value => value.div_name === 'div2');
-    });
-
-},target).render();
-
+</body>
+</html>
 ```
 
 ### Switching Context
@@ -165,151 +226,123 @@ createElement404(element=>{
 ### Switching in The Same render 
 The easiest way of switch interface context, its by adding callback modifiers
 but remember that they will be affected by the render process
-```js
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+    function main(){
+     
+        let target = document.body;
+        createElement404((main_interface)=>{
+
+            let page = main_interface.div();
 
 
-let target = document.body;
-createElement404((main_interface)=>{
+            let nav_style = {
+                "width":"33vw",
+                "margin-left":"33vw",
+                "display":"grid",
+                "grid-template-columns":"33% 33% 33%"
+            }
+            let all_links = {
+                cursor:"pointer",
+                hover_state:{
+                    state:"hover",
+                    color:"red"
+                }
+            }
 
-    let page = main_interface.div();
+            let selected = {
+                color:"red"
+            }
+
+            function default_page(){
+                page.clear()
+                page.nav(()=>{
+                    page.p("Default",{outline_style:[selected,all_links]})
+                    page.p("Page 1",{outline_style:all_links, click:page1})
+                    page.p("Page 3",{outline_style:all_links, click:page2})
+                },{outline_style:nav_style})
+
+                page.h1("you are in the default page")
+            }
+            default_page()
+
+            function page1(){
+                page.clear()
+                page.nav(()=>{
+                    page.nav(()=>{
+                        page.p("Default",{outline_style:all_links,click:default_page})
+                        page.p("Page 1",{outline_style:[selected,all_links]})
+                        page.p("Page 3",{outline_style:all_links, click:page2})
+                    },{outline_style:nav_style})
+                })
+                page.h1("you are in the page1")
+            }
 
 
-    let nav_style = {
-        "width":"33vw",
-        "margin-left":"33vw",
-        "display":"grid",
-        "grid-template-columns":"33% 33% 33%"
+            function page2(){
+                page.clear()
+                page.nav(()=>{
+                    page.p("Default",{outline_style:all_links,click:default_page})
+                    page.p("Page 1",{outline_style:all_links, click:page1})
+                    page.p("Page 2",{outline_style:[selected,all_links]})
+                },{outline_style:nav_style})
+                page.h1("you are in the page 2")
+            }
+
+
+            },target).render()
+
     }
-    let all_links = {
-        cursor:"pointer",
-        hover_state:{
-            state:"hover",
-            color:"red"
-        }
-    }
 
-    let selected = {
-        color:"red"
-    }
+    window.addEventListener('load',main);
+</script>
 
-    function default_page(){
-        page.clear()
-        page.nav(()=>{
-            page.p("Default",{outline_style:[selected,all_links]})
-            page.p("Page 1",{outline_style:all_links, click:page1})
-            page.p("Page 3",{outline_style:all_links, click:page2})
-        },{outline_style:nav_style})
-
-        page.h1("you are in the default page")
-    }
-    default_page()
-
-    function page1(){
-        page.clear()
-        page.nav(()=>{
-            page.nav(()=>{
-                page.p("Default",{outline_style:all_links,click:default_page})
-                page.p("Page 1",{outline_style:[selected,all_links]})
-                page.p("Page 3",{outline_style:all_links, click:page2})
-            },{outline_style:nav_style})
-        })
-        page.h1("you are in the page1")
-    }
-
-
-    function page2(){
-        page.clear()
-        page.nav(()=>{
-            page.p("Default",{outline_style:all_links,click:default_page})
-            page.p("Page 1",{outline_style:all_links, click:page1})
-            page.p("Page 2",{outline_style:[selected,all_links]})
-        },{outline_style:nav_style})
-        page.h1("you are in the page 2")
-    }
-
-
-},target).render()
-
- 
- 
+</body>
+</html>
 ```
+
+
 
 ### Switching in Different Renders
 
 You also can switch context by creating sub elements404, the advantage of it, its that they dont 
 affect other parts of the render
 
-```js
-
-
-let num = 0;
-let target = document.body;
-createElement404((main_interface)=>{
-
-
-
-    let nav_style = {
-        "width":"33vw",
-        "margin-left":"33vw",
-        "display":"grid",
-        "grid-template-columns":"33% 33% 33%"
-    }
-    let all_links = {
-        cursor:"pointer"
-    }
-
-    let selected = {
-        color:"red"
-    }
-
-    let page = main_interface.div();
-
-
-
-    function default_page(){
-        page.clear()
-        page.nav(()=>{
-            page.p("Default",{inline_style:[selected,all_links]})
-            page.p("Page 1",{inline_style:all_links, click:page1})
-        },{inline_style:nav_style})
-
-        page.h1("you are in the default page")
-    }
-    default_page()
-
-    function page1(){
-        page.clear()
-        page.nav(()=>{
-            page.nav(()=>{
-                page.p("Default",{inline_style:all_links,click:default_page})
-                page.p("Page 1",{inline_style:[selected,all_links]})
-            },{inline_style:nav_style})
-        })
-        page.h1("you are in the page1")
-    }
-
-
-
-
-    let hit_counter_div = main_interface.div();
-    let hit_counter =  createElement404(sub=>{
-        sub.p(`the value of num is ${num}`)
-        sub.button("Decrease num",{render_click:()=>num-=1})
-        sub.button("Increase num",{render_click:()=>num+=1})
-    },hit_counter_div).render()
-
-},target).render()
-
-
-```
+ref:switch_in_diferente_render.html
 
 
 ### Styling Elements
 You also can apply is_inline_style to elements by using the **is_inline_style** tag 
 
-```js
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+
+    
+function main(){
+
+
     let target = document.body;
-let element = createElement404((main_interface)=>{
+    let element = createElement404((main_interface)=>{
+    
     let div_props = {
         is_inline_style:{
             position:"absolute",
@@ -320,6 +353,7 @@ let element = createElement404((main_interface)=>{
             "text-align":"center"
         }
     }
+    
     main_interface.div(()=>{
         let h1_props = {
             is_inline_style:{
@@ -341,20 +375,36 @@ let element = createElement404((main_interface)=>{
     },div_props)
 
 
-},target)
+    },target)
 
-element.render()
+    element.render()
 
+}
 
+    window.addEventListener('load',main);
+</script>
 
-
+</body>
+</html>
 ```
+
+
 ## Outline Styling 
 If you want to generate response styles, or use props like hover or active you can use the tag **outline_style**
 
-```js
-
-let target = document.body;
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+function main(){
+    let target = document.body;
 createElement404(element=>{
     const  NORMAL = {
         color:"white",
@@ -391,14 +441,34 @@ createElement404(element=>{
 },target).render();
 
 
+}
+
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>
 ```
+
 
 ## States  
 with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
-```js
-       let target = document.body;
-let element = createElement404((main_interface)=>{
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+function main(){
+    let target = document.body;
+    let element = createElement404((main_interface)=>{
     //make sure to enable these to allow rerender on state change
     main_interface.state_render = true;
     //creating an is_inline_style input more sofisticated
@@ -451,16 +521,34 @@ let element = createElement404((main_interface)=>{
 
 element.render()
 
+}
 
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>
 ```
 
 ## State Setter 
 With State Setters you can generate a button that will define a specific point_state 
 predetermined 
-```js
+`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+function main(){
 
 
-let target = document.body;
+    let target = document.body;
 let element = createElement404((main_interface)=>{
     main_interface.state_render = true;
 
@@ -512,15 +600,32 @@ let element = createElement404((main_interface)=>{
 },target)
 element.render()
 
+}
 
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>
 ```
 
 ## Locker 
 With Lockers , you can lock the entire UI, to avoid concurrency problems 
-```js
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+function main(){
 
-let target = document.body;
+    let target = document.body;
 let element = createElement404((main_interface)=>{
     main_interface.state_render = true;
 
@@ -559,5 +664,11 @@ let element = createElement404((main_interface)=>{
 
 },target)
 element.render()
+}
 
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>
 ```

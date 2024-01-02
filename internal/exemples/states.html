@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+function main(){
+    let target = document.body;
+    let element = createElement404((main_interface)=>{
+    //make sure to enable these to allow rerender on state change
+    main_interface.state_render = true;
+    //creating an is_inline_style input more sofisticated
+    let style_input = {
+        border:'none',
+        color:'rgb(71,78,86)',
+        'background-color':'rgb(231,231,248)'
+    }
+
+    let name = main_interface.stateInput("name",{placeholder:"name",inline_style:style_input})
+    main_interface.br()
+    let email = main_interface.stateInput("email",{placeholder:"email",inline_style:style_input})
+    main_interface.br()
+    let age = main_interface.stateInput("age",{placeholder:"age",inline_style:style_input, default_value:18})
+    main_interface.stateDecrease("age",1,"-")
+    main_interface.stateIncrease("age",1,"+")
+    main_interface.br()
+
+    let gender = main_interface.stateSelect("gender",["Man","Woman"],{default_value:"Woman"})
+    main_interface.br()
+
+    let password =main_interface.stateInput("password",{placeholder:"password",inline_style:style_input, type:"password"})
+
+
+    let p_style = {
+        color:'rgb(71,78,86)',
+        'font-size':'0.75em'
+    }
+
+    main_interface.p(`name: ${name}`).inline_style(p_style);
+    main_interface.p(`email: ${email}`).inline_style(p_style);
+    main_interface.p(`password: ${password}`).inline_style(p_style);
+    main_interface.p(`age: ${age}`).inline_style(p_style);
+    main_interface.p(`gender ${gender}`).inline_style(p_style);
+
+
+
+    main_interface.pre(()=> {
+        main_interface.code(
+            JSON.stringify(element.getFullState(), null, 4)
+        )
+    }).inline_style({
+        width:"30vw",
+        height:"30vh",
+        color:'white',
+        "background-color":"rgb(38,42,85)",
+    })
+
+},target)
+
+element.render()
+
+}
+
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>

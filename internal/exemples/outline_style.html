@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+function main(){
+    let target = document.body;
+createElement404(element=>{
+    const  NORMAL = {
+        color:"white",
+        position:"absolute"
+    }
+
+    const HORIZONTAL = {
+        media:'screen and (orientation: landscape)',
+        'background-color':'green',
+        width: '30vw',
+        height: '15vw'
+    };
+    const VERTICAL = {
+        media:'screen and (orientation: portrait)',
+        width: '15vw',
+        height:"30vw",
+        'background-color':'blue'
+    };
+
+
+    const  MOUSE_PROPS = {
+        state:['hover','active'],
+        'background-color':'yellow'
+    }
+
+
+    let div_style = [NORMAL,MOUSE_PROPS,HORIZONTAL,VERTICAL]
+    let right_div = [div_style,{left:"60vw"}];
+
+    element.div("value of div",{outline_style:div_style})
+    element.div("value of div",{outline_style:right_div})
+
+
+},target).render();
+
+
+}
+
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>

@@ -34,7 +34,7 @@ With MiniDom you can find, and modify parts of elements individually
 #### Finding a Value
 in these Example we find a value of an input , then we alert it
 
-#ref:finding_iinput_value.html
+#ref:finding_input_value.html
 
 ### Render Match 
 with render match system you can render specif parts of the code

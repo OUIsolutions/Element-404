@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.57.js"></script>
+</head>
+<body>
+<script>
+    
+    let value1 = 0;
+    let value2 = 0;
+    
+    function main(){
+  
+        let target = document.body;
+        createElement404(element=>{
+
+            element.div((current)=>{
+                current.div_name = 'div1';
+                element.p("the value1 is " + value1);
+            })
+
+            element.div((current)=>{
+                current.div_name = 'div2';
+                element.p("the value2 is " + value2);
+            })
+
+
+            let button1 =element.button("update div1");
+
+            button1.set_prop('click',()=>{
+                value1+=1;
+                element.renderMatch(value => value.div_name === 'div1');
+            })
+
+            let button2 =element.button("update div2");
+            button2.set_prop('click',()=>{
+                value2+=1;
+                element.renderMatch(value => value.div_name === 'div2');
+            });
+
+        },target).render();
+    }
+
+    window.addEventListener('load',main);
+</script>
+
+</body>
+</html>
