@@ -70,9 +70,21 @@ with open('internal/readme.md', 'r') as f:
 for e in exemples:
     with open(f'internal/exemples/{e}', 'r') as f:
         output = f.read()
-        readme_code = readme_code.replace(f"#ref:{e}", f'```html\n{output}\n```')
+        output_data =''
+        output_data+= '[Runable exemple]'
+        output_data+=f'(https://oui.solutions/Element-404/internal/exemples/{e})'
+        output_data+=f'\n```html\n{output}\n```'
+        readme_code = readme_code.replace(f"#page_ref:{e}", output_data)
 
-if "#ref" in readme_code:
+
+for e in exemples:
+    with open(f'internal/exemples/{e}', 'r') as f:
+        output = f.read()
+        output_data=f'\n```html\n{output}\n```'
+        readme_code = readme_code.replace(f"#ref:{e}", output_data)
+
+
+if "#page_ref" in readme_code or '#ref' in readme_code:
     raise Exception(f"Missing reference {readme_code.split('#ref')[1]}")
 with open('readme.md', 'w') as f:
     f.write(readme_code)
