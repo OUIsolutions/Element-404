@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script #lib#></script>
+</head>
+<body>
+<script>
+    function main(){
+        var num =0;
+
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+            main_interface.div(()=>{
+                main_interface.h1(`the value of num is ${num}`)
+                main_interface.button(`remove 1 from num`,{render_click:()=> num--},)
+                main_interface.button(`add 1 to num`,{render_click:()=> num++})
+
+            })
+
+        },target)
+
+        element.render()
+
+    }
+
+    window.addEventListener('load',main);
+</script>
+
+</body>
+</html>

@@ -25,16 +25,19 @@ Just download the **Element404.js** file into your project and then reference in
 </head>
 <body>
 <script>
-    let target = document.body;
-    let element = createElement404((main_interface)=>{
-        main_interface.div(()=>{
-            main_interface.h1("Hello World",{inline_style:{color:'red'}})
-        })
+    function main(){
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+            main_interface.div(()=>{
+                main_interface.h1("Hello World",{inline_style:{color:'red'}})
+            })
 
-    },target)
+        },target)
 
-    element.render()
+        element.render()
+    }
 
+    window.addEventListener('load',main);
 </script>
 
 </body>

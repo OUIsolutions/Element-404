@@ -11,126 +11,34 @@ If you want to contribute, just read the TODO.md and then, implement the require
 ## Runable Example to start 
 https://codesandbox.io/p/sandbox/element404-2w7clv
 
-## Install
-Just download the **Element404.js** file into your project and then reference into your html
+## Run
+For Running , you just need to 
 
 #ref:start.html
+
 
 ## Triggers
 for defining a trigger, you just need to pass, the trigger with the prefix "render_" if you want to update the ui
 otherwise just pass the trigger,but the ui will not be updated.
-```js
 
-
-var num =0;
-
-let target = document.body;
-let element = createElement404((main_interface)=>{
-    main_interface.div(()=>{
-        main_interface.h1(`the value of num is ${num}`)
-        main_interface.button(`remove 1 from num`,{render_click:()=> num--},)
-        main_interface.button(`add 1 to num`,{render_click:()=> num++})
-
-    })
-
-},target)
-
-element.render()
-
-    
-
-```
-
+#ref:triggers.html
 
 ## Dealing with Inputs 
 If you don't want to use States, you can handle inputs, by using the normal input implementation
-```js
 
+#ref:input.html
 
-let input_text =  ''
-
-let target = document.body;
-let element = createElement404((main_interface)=>{
-
-    main_interface.input({
-        placeholder:'Type something',
-        value:input_text,
-        render_focusout:(input)=>{
-            input_text = input.value
-        }
-    })
-
-    main_interface.p(`You typed: ${input_text}`)
-
-},target)
-
-element.render()
-
-
-```
 ### Mini Dom Operations
 With MiniDom you can find, and modify parts of elements individually 
 #### Finding a Value
 in these Example we find a value of an input , then we alert it
-```js
 
-        let target = document.body;
-        createElement404(element=>{
+#ref:finding_iinput_value.html
 
-             element.div(()=>{
-                 element.div(()=>{
-                     let created_input = element.input({placeholder:"type something"})
-                     created_input.input_name = 'test';
-                 })
-             })
-
-            let button =element.button("visualize");
-             button.set_prop('click',()=>{
-                 let founded_input = element.findOne(value => value.input_name === 'test');
-                 alert("you typed: "+ founded_input.domElement.value);
-             })
-
-        },target).render();
-
-
-```
 ### Render Match 
 with render match system you can render specif parts of the code
-```js
 
-
-let target = document.body;
-let value1 = 0;
-let value2 = 0;
-createElement404(element=>{
-
-    element.div((current)=>{
-        current.div_name = 'div1';
-        element.p("the value1 is " + value1);
-    })
-
-    element.div((current)=>{
-         current.div_name = 'div2';
-        element.p("the value2 is " + value2);
-     })
-
-
-    let button1 =element.button("update div1");
-
-    button1.set_prop('click',()=>{
-          value1+=1;
-          element.renderMatch(value => value.div_name === 'div1');
-     })
-
-    let button2 =element.button("update div2");
-    button2.set_prop('click',()=>{
-        value2+=1;
-        element.renderMatch(value => value.div_name === 'div2');
-    });
-
-},target).render();
-
-```
+#ref:render_match.html
 
 ### Switching Context
 
