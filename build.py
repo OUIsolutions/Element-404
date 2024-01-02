@@ -1,36 +1,78 @@
+from os import listdir
+import hashlib
+from shutil import rmtree
+from os import makedirs
 
-targets = [
-    "constants.js",
-
-    "globals.js",
-    "args.js",
-    "extra.js",
-    "style/inline.js",
-    "style/outline.js",
-    "Element404/constructors.js",
-    "Element404/locker.js",
-    "Element404/render.js",
-    "Element404/minidom.js",
-
-    "Element404/states/state.js",
-    "Element404/states/input.js",
-    "Element404/states/increase.js",
-    "Element404/states/decrease.js",
-    "Element404/states/select.js",
-    "Element404/states/setter.js",
-    "Element404/sub_components.js",
-    "Element404/tags.js"
+SOURCES = [
+    "src/constants.js",
+    "src/globals.js",
+    "src/args.js",
+    "src/extra.js",
+    "src/style/inline.js",
+    "src/style/outline.js",
+    "src/Element404/constructors.js",
+    "src/Element404/locker.js",
+    "src/Element404/render.js",
+    "src/Element404/minidom.js",
+    "src/Element404/states/state.js",
+    "src/Element404/states/input.js",
+    "src/Element404/states/increase.js",
+    "src/Element404/states/decrease.js",
+    "src/Element404/states/select.js",
+    "src/Element404/states/setter.js",
+    "src/Element404/sub_components.js",
+    "src/Element404/tags.js"
 ]
 
+LIB_NAME = 'Element404'
+REPO_NAME = 'OUIsolutions/Element-404'
 
 
-output = 'Element404.js'
+def create_output():
+    output = ''
+    for e in SOURCES:
+        with open(e, 'r') as f:
+            output += f.read() + '\n'
+    version = input('version: ')
 
-final_string = ''
-for i in targets:
-    with open(f'src/{i}' ,'r') as arq:
-        final_string+= arq.read() + '\n'
+    makedirs('versions', exist_ok=True)
 
-with open(output,'w') as arq:
-    arq.write(final_string)
-    
+    output_name = f'versions/{LIB_NAME}_v{version}.js'
+
+    with open(output_name, 'w') as f:
+        f.write(output)
+    return output_name
+
+
+output_name = create_output()
+#replacing html links 
+link = f'https://cdn.jsdelivr.net/gh/{REPO_NAME}@main/{output_name}'
+div = f'src="{link}"'
+
+
+rmtree('internal/exemples',ignore_errors=True)
+makedirs('internal/exemples')
+
+for e in listdir('internal/exemples_not_linked'):
+    with open(f'internal/exemples_not_linked/{e}', 'r') as f:
+        output = f.read()
+        output = output.replace('#lib#', div)
+        with open(f'internal/exemples/{e}', 'w') as f:
+            f.write(output)
+
+
+exemples = listdir('internal/exemples')
+
+with open('internal/readme.md', 'r') as f:
+    readme_code = f.read()
+
+
+for e in exemples:
+    with open(f'internal/exemples/{e}', 'r') as f:
+        output = f.read()
+        readme_code = readme_code.replace(f"#ref:{e}", f'```html\n{output}\n```')
+
+if "#ref" in readme_code:
+    raise Exception(f"Missing reference {readme_code.split('#ref')[1]}")
+with open('readme.md', 'w') as f:
+    f.write(readme_code)

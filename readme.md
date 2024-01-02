@@ -21,7 +21,7 @@ Just download the **Element404.js** file into your project and then reference in
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="Element404.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
 </head>
 <body>
 <script>
@@ -40,6 +40,7 @@ Just download the **Element404.js** file into your project and then reference in
 </body>
 </html>
 ```
+
 ## Triggers
 for defining a trigger, you just need to pass, the trigger with the prefix "render_" if you want to update the ui
 otherwise just pass the trigger,but the ui will not be updated.
