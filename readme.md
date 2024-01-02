@@ -23,7 +23,7 @@ For Running , you just need to copy the script tag into your code
 ## Hello World
 
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/start.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/start.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +60,7 @@ for defining a trigger, you just need to pass, the trigger with the prefix "rend
 otherwise just pass the trigger,but the ui will not be updated.
 
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/triggers.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/triggers.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -101,7 +101,7 @@ otherwise just pass the trigger,but the ui will not be updated.
 If you don't want to use States, you can handle inputs, by using the normal input implementation
 
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/input.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/input.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +140,7 @@ in these Example we find a value of an input , then we alert it
 
 
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/finding_input_value.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/finding_input_value.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -186,7 +186,7 @@ with render match system you can render specif parts of the code
 
 
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/render_match.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/render_match.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -247,7 +247,7 @@ with render match system you can render specif parts of the code
 The easiest way of switch interface context, its by adding callback modifiers
 but remember that they will be affected by the render process
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/switch_in_the_same_render.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/switch_in_the_same_render.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -339,7 +339,7 @@ but remember that they will be affected by the render process
 You also can switch context by creating sub elements404, the advantage of it, its that they dont 
 affect other parts of the render
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/switch_in_diferent_render.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/switch_in_diferent_render.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -422,7 +422,7 @@ window.addEventListener('load',main);
 ### Styling Elements
 You also can apply is_inline_style to elements by using the **is_inline_style** tag 
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/styling_elements.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/styling_elements.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -491,7 +491,7 @@ function main(){
 ## Outline Styling 
 If you want to generate response styles, or use props like hover or active you can use the tag **outline_style**
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/outline_style.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/outline_style.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -555,7 +555,7 @@ window.addEventListener('load',main);
 with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/states.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/states.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -635,7 +635,7 @@ window.addEventListener('load',main);
 With State Setters you can generate a button that will define a specific point_state 
 predetermined 
 `
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/state_setter.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/state_setter.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -714,7 +714,7 @@ window.addEventListener('load',main);
 ## Locker 
 With Lockers , you can lock the entire UI, to avoid concurrency problems 
 
-[Runable exemple](https://oui.solutions/Element-404/internal/exemples/locker.html)
+[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/locker.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">

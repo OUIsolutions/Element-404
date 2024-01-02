@@ -72,7 +72,7 @@ for e in exemples:
         output = f.read()
         output_data =''
         output_data+= '[Runable exemple]'
-        output_data+=f'(https://oui.solutions/Element-404/internal/exemples/{e})'
+        output_data+=f'(https://ouisolutions.github.io/Element-404/internal/exemples/{e})'
         output_data+=f'\n```html\n{output}\n```'
         readme_code = readme_code.replace(f"#page_ref:{e}", output_data)
 
