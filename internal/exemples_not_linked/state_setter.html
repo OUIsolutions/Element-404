@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script #lib#></script>
+</head>
+<body>
+<script>
+function main(){
+
+
+    let target = document.body;
+let element = createElement404((main_interface)=>{
+    main_interface.state_render = true;
+
+    let selected_style = {
+        color:"red"
+    }
+    let unselected_style= {
+        color:"blue"
+    }
+
+    let selected_home = {
+        content:"Home Selected",
+        props:{
+            is_inline_style:selected_style
+        }
+    }
+    let unselected_home = {
+        content:"Home",
+        props:{
+            is_inline_style:unselected_style
+        }
+    }
+    main_interface.clickableStateSetter("page","home",selected_home,unselected_home);
+
+    let selected_about = {
+        content:"About Selected",
+        props:{
+            is_inline_style:selected_style
+        }
+    }
+    let unselected_about = {
+        content:"About",
+        props:{
+            is_inline_style:unselected_style
+        }
+    }
+    let page = main_interface.clickableStateSetter("page","about",selected_about,unselected_about);
+
+    if(page === "home"){
+        main_interface.h1("you are in home page")
+    }
+    else if(page === "about"){
+        main_interface.h1("you are in about page")
+    }
+
+    else{
+        main_interface.h1("404")
+    }
+},target)
+element.render()
+
+}
+
+window.addEventListener('load',main);
+</script>
+
+</body>
+</html>

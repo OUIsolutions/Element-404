@@ -30,6 +30,7 @@ If you don't want to use States, you can handle inputs, by using the normal inpu
 
 ### Mini Dom Operations
 With MiniDom you can find, and modify parts of elements individually 
+
 #### Finding a Value
 in these Example we find a value of an input , then we alert it
 
@@ -45,399 +46,44 @@ with render match system you can render specif parts of the code
 ### Switching in The Same render 
 The easiest way of switch interface context, its by adding callback modifiers
 but remember that they will be affected by the render process
-```js
+
+#ref:switch_in_the_same_render.html
 
 
-let target = document.body;
-createElement404((main_interface)=>{
-
-    let page = main_interface.div();
-
-
-    let nav_style = {
-        "width":"33vw",
-        "margin-left":"33vw",
-        "display":"grid",
-        "grid-template-columns":"33% 33% 33%"
-    }
-    let all_links = {
-        cursor:"pointer",
-        hover_state:{
-            state:"hover",
-            color:"red"
-        }
-    }
-
-    let selected = {
-        color:"red"
-    }
-
-    function default_page(){
-        page.clear()
-        page.nav(()=>{
-            page.p("Default",{outline_style:[selected,all_links]})
-            page.p("Page 1",{outline_style:all_links, click:page1})
-            page.p("Page 3",{outline_style:all_links, click:page2})
-        },{outline_style:nav_style})
-
-        page.h1("you are in the default page")
-    }
-    default_page()
-
-    function page1(){
-        page.clear()
-        page.nav(()=>{
-            page.nav(()=>{
-                page.p("Default",{outline_style:all_links,click:default_page})
-                page.p("Page 1",{outline_style:[selected,all_links]})
-                page.p("Page 3",{outline_style:all_links, click:page2})
-            },{outline_style:nav_style})
-        })
-        page.h1("you are in the page1")
-    }
-
-
-    function page2(){
-        page.clear()
-        page.nav(()=>{
-            page.p("Default",{outline_style:all_links,click:default_page})
-            page.p("Page 1",{outline_style:all_links, click:page1})
-            page.p("Page 2",{outline_style:[selected,all_links]})
-        },{outline_style:nav_style})
-        page.h1("you are in the page 2")
-    }
-
-
-},target).render()
-
- 
- 
-```
 
 ### Switching in Different Renders
 
 You also can switch context by creating sub elements404, the advantage of it, its that they dont 
 affect other parts of the render
 
-```js
-
-
-let num = 0;
-let target = document.body;
-createElement404((main_interface)=>{
-
-
-
-    let nav_style = {
-        "width":"33vw",
-        "margin-left":"33vw",
-        "display":"grid",
-        "grid-template-columns":"33% 33% 33%"
-    }
-    let all_links = {
-        cursor:"pointer"
-    }
-
-    let selected = {
-        color:"red"
-    }
-
-    let page = main_interface.div();
-
-
-
-    function default_page(){
-        page.clear()
-        page.nav(()=>{
-            page.p("Default",{inline_style:[selected,all_links]})
-            page.p("Page 1",{inline_style:all_links, click:page1})
-        },{inline_style:nav_style})
-
-        page.h1("you are in the default page")
-    }
-    default_page()
-
-    function page1(){
-        page.clear()
-        page.nav(()=>{
-            page.nav(()=>{
-                page.p("Default",{inline_style:all_links,click:default_page})
-                page.p("Page 1",{inline_style:[selected,all_links]})
-            },{inline_style:nav_style})
-        })
-        page.h1("you are in the page1")
-    }
-
-
-
-
-    let hit_counter_div = main_interface.div();
-    let hit_counter =  createElement404(sub=>{
-        sub.p(`the value of num is ${num}`)
-        sub.button("Decrease num",{render_click:()=>num-=1})
-        sub.button("Increase num",{render_click:()=>num+=1})
-    },hit_counter_div).render()
-
-},target).render()
-
-
-```
+ref:switch_in_diferente_render.html
 
 
 ### Styling Elements
 You also can apply is_inline_style to elements by using the **is_inline_style** tag 
 
-```js
-    let target = document.body;
-let element = createElement404((main_interface)=>{
-    let div_props = {
-        is_inline_style:{
-            position:"absolute",
-            top:"50vh",
-            left:"50vw",
-            transform:"translate(-50%,-50%)",
-            width:"100%",
-            "text-align":"center"
-        }
-    }
-    main_interface.div(()=>{
-        let h1_props = {
-            is_inline_style:{
-                "font-size":"10rem",
-                "font-weight":"bold",
-                color:"red"
-            }
-        }
-        main_interface.h1("404",h1_props)
-
-        let h2_props = {
-            is_inline_style:{
-                "font-size":"2rem",
-                "font-weight":"bold",
-                color:"red"
-            }
-        }
-        main_interface.h2("Page Not Found",h2_props)
-    },div_props)
+#ref:styling_elements.html
 
 
-},target)
-
-element.render()
-
-
-
-
-```
 ## Outline Styling 
 If you want to generate response styles, or use props like hover or active you can use the tag **outline_style**
 
-```js
+#ref:outline_style.html
 
-let target = document.body;
-createElement404(element=>{
-    const  NORMAL = {
-        color:"white",
-        position:"absolute"
-    }
-
-    const HORIZONTAL = {
-        media:'screen and (orientation: landscape)',
-        'background-color':'green',
-        width: '30vw',
-        height: '15vw'
-    };
-    const VERTICAL = {
-        media:'screen and (orientation: portrait)',
-        width: '15vw',
-        height:"30vw",
-        'background-color':'blue'
-    };
-
-
-    const  MOUSE_PROPS = {
-        state:['hover','active'],
-        'background-color':'yellow'
-    }
-
-
-    let div_style = [NORMAL,MOUSE_PROPS,HORIZONTAL,VERTICAL]
-    let right_div = [div_style,{left:"60vw"}];
-
-    element.div("value of div",{outline_style:div_style})
-    element.div("value of div",{outline_style:right_div})
-
-
-},target).render();
-
-
-```
 
 ## States  
 with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
-```js
-       let target = document.body;
-let element = createElement404((main_interface)=>{
-    //make sure to enable these to allow rerender on state change
-    main_interface.state_render = true;
-    //creating an is_inline_style input more sofisticated
-    let style_input = {
-        border:'none',
-        color:'rgb(71,78,86)',
-        'background-color':'rgb(231,231,248)'
-    }
 
-    let name = main_interface.stateInput("name",{placeholder:"name",inline_style:style_input})
-    main_interface.br()
-    let email = main_interface.stateInput("email",{placeholder:"email",inline_style:style_input})
-    main_interface.br()
-    let age = main_interface.stateInput("age",{placeholder:"age",inline_style:style_input, default_value:18})
-    main_interface.stateDecrease("age",1,"-")
-    main_interface.stateIncrease("age",1,"+")
-    main_interface.br()
-
-    let gender = main_interface.stateSelect("gender",["Man","Woman"],{default_value:"Woman"})
-    main_interface.br()
-
-    let password =main_interface.stateInput("password",{placeholder:"password",inline_style:style_input, type:"password"})
-
-
-    let p_style = {
-        color:'rgb(71,78,86)',
-        'font-size':'0.75em'
-    }
-
-    main_interface.p(`name: ${name}`).inline_style(p_style);
-    main_interface.p(`email: ${email}`).inline_style(p_style);
-    main_interface.p(`password: ${password}`).inline_style(p_style);
-    main_interface.p(`age: ${age}`).inline_style(p_style);
-    main_interface.p(`gender ${gender}`).inline_style(p_style);
-
-
-
-    main_interface.pre(()=> {
-        main_interface.code(
-            JSON.stringify(element.getFullState(), null, 4)
-        )
-    }).inline_style({
-        width:"30vw",
-        height:"30vh",
-        color:'white',
-        "background-color":"rgb(38,42,85)",
-    })
-
-},target)
-
-element.render()
-
-
-```
+#ref:states.html
 
 ## State Setter 
 With State Setters you can generate a button that will define a specific point_state 
 predetermined 
-```js
-
-
-let target = document.body;
-let element = createElement404((main_interface)=>{
-    main_interface.state_render = true;
-
-    let selected_style = {
-        color:"red"
-    }
-    let unselected_style= {
-        color:"blue"
-    }
-
-    let selected_home = {
-        content:"Home Selected",
-        props:{
-            is_inline_style:selected_style
-        }
-    }
-    let unselected_home = {
-        content:"Home",
-        props:{
-            is_inline_style:unselected_style
-        }
-    }
-    main_interface.clickableStateSetter("page","home",selected_home,unselected_home);
-
-    let selected_about = {
-        content:"About Selected",
-        props:{
-            is_inline_style:selected_style
-        }
-    }
-    let unselected_about = {
-        content:"About",
-        props:{
-            is_inline_style:unselected_style
-        }
-    }
-    let page = main_interface.clickableStateSetter("page","about",selected_about,unselected_about);
-
-    if(page === "home"){
-        main_interface.h1("you are in home page")
-    }
-    else if(page === "about"){
-        main_interface.h1("you are in about page")
-    }
-
-    else{
-        main_interface.h1("404")
-    }
-},target)
-element.render()
-
-
-```
+`
+#ref:state_setter.html
 
 ## Locker 
 With Lockers , you can lock the entire UI, to avoid concurrency problems 
-```js
 
-
-let target = document.body;
-let element = createElement404((main_interface)=>{
-    main_interface.state_render = true;
-
-    main_interface.stateSelect("gender",["Man","Woman"]);
-    main_interface.br()
-    main_interface.stateInput("num",{placeholder:"num"})
-    main_interface.stateDecrease("num",1,"-")
-    main_interface.stateIncrease("num",1,"+")
-    main_interface.br()
-
-
-    if(main_interface.locked){
-
-        main_interface.button("unlock",{
-            inline_style:{color: "red"},
-            notLock_render_click:()=>{
-                main_interface.unlock();
-            }
-        })
-    }
-
-    if(!main_interface.locked){
-        main_interface.button("lock",{
-            inline_style:{color: "blue"},
-            render_click:()=>{
-                main_interface.lock();
-                main_interface.render()
-            }
-
-        })
-    }
-
-
-
-
-
-},target)
-element.render()
-
-```
+#ref:locker.html
