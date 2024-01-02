@@ -8,12 +8,18 @@ make sure to save the current release, and be ready for bugs.
 ## Contributions
 If you want to contribute, just read the TODO.md and then, implement the required feature.
 
-## Runable Example to start 
-https://codesandbox.io/p/sandbox/element404-2w7clv
 
 ## Run
-For Running , you just need to 
+For Running , you just need to copy the script tag into your code 
 
+```html
+
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+
+```
+
+
+## Hello World
 ```html
 <!DOCTYPE html>
 <html lang="en">
