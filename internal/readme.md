@@ -18,6 +18,7 @@ For Running , you just need to copy the script tag into your code
 ## Hello World
 #ref:start.html
 
+[Runable Example] (https://ouisolutions.github.io/Element-404/internal/exemples/start.html)
 
 ## Triggers
 for defining a trigger, you just need to pass, the trigger with the prefix "render_" if you want to update the ui
