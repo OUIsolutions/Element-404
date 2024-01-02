@@ -58,7 +58,7 @@ but remember that they will be affected by the render process
 You also can switch context by creating sub elements404, the advantage of it, its that they dont 
 affect other parts of the render
 
-ref:switch_in_diferente_render.html
+#ref:switch_in_diferent_render.html
 
 
 ### Styling Elements
