@@ -1,6 +1,6 @@
 
 
-Element404.prototype.on_change_div=function(callback) {
+Element404.prototype.smart_div=function(callback) {
     return this.div((element, args) => {
         if(args.exec_callback){
 
@@ -10,7 +10,39 @@ Element404.prototype.on_change_div=function(callback) {
 
 }
 
-Element404.prototype.test = function (test){
+Element404.prototype.render_if = function (test){
+
+    if(test()){
+        this.render({args:{exec_callback:true}});
+    }
+
+    this.smart_state_test = ()=>{
+
+        if( test()){
+            this.render({args:{exec_callback:true}});
+        }
+
+
+    }
+
+}
+
+Element404.prototype.always_render = function (test){
+
+
+    this.render({args:{exec_callback:true}});
+
+
+    this.smart_state_test = ()=>{
+
+        this.render({args:{exec_callback:true}});
+
+    }
+
+}
+
+
+Element404.prototype.render_if_once = function (test){
 
     if(test()){
         this.smart_state_active = true;
