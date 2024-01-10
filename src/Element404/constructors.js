@@ -9,10 +9,7 @@ function Element404(){
         this.is_inline_style = false;
 
         this.smart_state_active = false;
-        /**@type {function}*/
         this.smart_state_test = undefined;
-        this.smart_test_callback = undefined;
-
 
 
         /**@type {Array<Element404>}*/
