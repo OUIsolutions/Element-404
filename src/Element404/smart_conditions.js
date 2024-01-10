@@ -17,10 +17,15 @@ Element404.prototype.render_if = function (test){
     }
 
     this.smart_state_test = ()=>{
+        let test_result = test();
 
-        if( test()){
+        if(test_result){
             this.render({args:{exec_callback:true}});
         }
+        if(!test_result){
+            this.clear();
+        }
+
 
 
     }
@@ -61,6 +66,7 @@ Element404.prototype.render_if_once = function (test){
             this.render({args:{exec_callback:true}});
         }
         if(!test_result){
+            this.clear();
             this.smart_state_active = false;
         }
 
