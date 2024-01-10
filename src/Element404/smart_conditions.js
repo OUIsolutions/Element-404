@@ -22,10 +22,10 @@ Element404.prototype.render_if = function (test){
         if(test_result){
             this.render({args:{exec_callback:true}});
         }
+
         if(!test_result){
             this.clear();
         }
-
 
 
     }
