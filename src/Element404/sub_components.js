@@ -20,6 +20,9 @@ Element404.prototype.set_prop = function(key,value){
 
                 this.render({root_render:true})
             }
+            if(key.includes(ELEMENT_404_SMART_RENDER)){
+                this.smart_render();
+            }
 
         }
 
@@ -146,6 +149,7 @@ Element404.prototype.sub_element = function(father,root){
     /** @type {DocumentFragment || HTMLElement ||  Text}  */
     this.domElement = root;
     this.child = true;
+    this.state_full_render = this.father.state_full_render;
     this.state_smart_render = this.father.state_smart_render;
     this.stored_state = this.father.stored_state;
     return this;

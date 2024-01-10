@@ -10,7 +10,7 @@ Element404.prototype.smart_div=function(callback) {
 
 }
 
-Element404.prototype.render_if = function (test){
+Element404.prototype.render_if_always = function (test){
 
     if(test()){
         this.render({args:{exec_callback:true}});
@@ -32,7 +32,7 @@ Element404.prototype.render_if = function (test){
 
 }
 
-Element404.prototype.always_render = function (test){
+Element404.prototype.always_render = function (){
 
 
     this.render({args:{exec_callback:true}});
@@ -77,6 +77,7 @@ Element404.prototype.render_if_once = function (test){
 
 
 Element404.prototype.smart_render=function() {
+
 
     this.stored_sub_elements.forEach(element =>{
         if(element.smart_state_test){

@@ -11,6 +11,8 @@ function Element404(){
         this.smart_state_active = false;
         this.smart_state_test = undefined;
 
+        this.state_smart_render = false;
+        this.state_full_render = false;
 
         /**@type {Array<Element404>}*/
         this.stored_sub_elements = [];
@@ -34,8 +36,7 @@ function Element404(){
         this.child = false;
 
 
-        this.state_smart_render = false;
-        this.state_full_render = false;
+
         /** @type {number} */
         this.total_render_times = 0;
 
