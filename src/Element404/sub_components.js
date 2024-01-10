@@ -12,21 +12,20 @@ Element404.prototype.set_prop = function(key,value){
     if(value instanceof Function){
         let callback = (event)=>{
 
-            if(this.is_locked() && key.includes('notLock_') === false){
+            if(this.is_locked() && key.includes(ELEMENT_404_NOT_LOCK) === false){
                 return;
             }
             value(this.domElement,event)
-            if(key.includes('render_')){
+            if(key.includes(ELEMENT_404_FULL_RENDER)){
 
                 this.render({root_render:true})
             }
 
         }
 
-        const  TAGS  = ['render_','notLock_'];
         let formatted_key = key
-        for (let tag of TAGS){
-            formatted_key = formatted_key.replace(tag,'')
+        for (let tag of ELEMENT_404_RENDER_TAGS){
+            formatted_key = formatted_key.replace(tag,ELEMENT_404_EMPTY)
         }
 
         this.domElement.addEventListener(formatted_key,callback)
@@ -68,28 +67,27 @@ Element404.prototype.set_props = function(props){
         return;
     }
 
-    let style_args = props['style_args'];
+    let style_args = props[ELEMENT_404_STYLE_ARGS];
 
     if(!style_args){
         style_args = {};
     }
 
-    if(props['inline_style']){
-        this.style_data = props['inline_style']
+    if(props[ELEMENT_404_INLINE_STYLE]){
+        this.style_data = props[ELEMENT_404_INLINE_STYLE]
         this.is_inline_style = true;
         this.render_style(style_args);
     }
 
-    if(props['outline_style']){
-        this.style_data = props['outline_style']
+    if(props[ELEMENT_404_OUTLINE_STYLE]){
+        this.style_data = props[ELEMENT_404_OUTLINE_STYLE]
         this.is_inline_style = false;
         this.render_style(style_args);
     }
 
 
-    const TAGS_TO_IGNORE = ['inline_style','outline_style','style_args']
     for (const key in props){
-        if(TAGS_TO_IGNORE.includes(key)){
+        if(ELEMENT_404_STYLE_TAGS.includes(key)){
             continue;
         }
 
@@ -105,7 +103,7 @@ Element404.prototype.set_props = function(props){
 Element404.prototype.create_generator=function(content, props){
 
     this.generator = (args)=>{
-        this.domElement.innerHTML = "";
+        this.domElement.innerHTML = ELEMENT_404_EMPTY;
         let old_root = this.father.domElement;
         let old_stored_sub_elements = this.father.stored_sub_elements;
         this.father.domElement = this.domElement;
@@ -148,7 +146,7 @@ Element404.prototype.sub_element = function(father,root){
     /** @type {DocumentFragment || HTMLElement ||  Text}  */
     this.domElement = root;
     this.child = true;
-    this.state_render = this.father.state_render;
+    this.state_smart_render = this.father.state_smart_render;
     this.stored_state = this.father.stored_state;
     return this;
 }

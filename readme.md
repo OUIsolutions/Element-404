@@ -563,6 +563,7 @@ with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 
 [Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/states.html)
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -574,64 +575,71 @@ you just need to pass the container and the props you want to  pass
 </head>
 <body>
 <script>
-function main(){
-    let target = document.body;
-    let element = createElement404((main_interface)=>{
-    //make sure to enable these to allow rerender on state change
-    main_interface.state_render = true;
-    //creating an is_inline_style input more sofisticated
-    let style_input = {
-        border:'none',
-        color:'rgb(71,78,86)',
-        'background-color':'rgb(231,231,248)'
+    function main() {
+        let target = document.body;
+        let element = createElement404((main_interface) => {
+            //make sure to enable these to allow rerender on state change
+            main_interface.state_smart_render = true;
+            //creating an is_inline_style input more sofisticated
+            let style_input = {
+                border: 'none',
+                color: 'rgb(71,78,86)',
+                'background-color': 'rgb(231,231,248)'
+            }
+
+            let name = main_interface.stateInput("name", {placeholder: "name", inline_style: style_input})
+            main_interface.br()
+            let email = main_interface.stateInput("email", {placeholder: "email", inline_style: style_input})
+            main_interface.br()
+            let age = main_interface.stateInput("age", {
+                placeholder: "age",
+                inline_style: style_input,
+                default_value: 18
+            })
+            main_interface.stateDecrease("age", 1, "-")
+            main_interface.stateIncrease("age", 1, "+")
+            main_interface.br()
+
+            let gender = main_interface.stateSelect("gender", ["Man", "Woman"], {default_value: "Woman"})
+            main_interface.br()
+
+            let password = main_interface.stateInput("password", {
+                placeholder: "password",
+                inline_style: style_input,
+                type: "password"
+            })
+
+
+            let p_style = {
+                color: 'rgb(71,78,86)',
+                'font-size': '0.75em'
+            }
+
+            main_interface.p(`name: ${name}`).inline_style(p_style);
+            main_interface.p(`email: ${email}`).inline_style(p_style);
+            main_interface.p(`password: ${password}`).inline_style(p_style);
+            main_interface.p(`age: ${age}`).inline_style(p_style);
+            main_interface.p(`gender ${gender}`).inline_style(p_style);
+
+
+            main_interface.pre(() => {
+                main_interface.code(
+                        JSON.stringify(element.getFullState(), null, 4)
+                )
+            }).inline_style({
+                width: "30vw",
+                height: "30vh",
+                color: 'white',
+                "background-color": "rgb(38,42,85)",
+            })
+
+        }, target)
+
+        element.render()
+
     }
 
-    let name = main_interface.stateInput("name",{placeholder:"name",inline_style:style_input})
-    main_interface.br()
-    let email = main_interface.stateInput("email",{placeholder:"email",inline_style:style_input})
-    main_interface.br()
-    let age = main_interface.stateInput("age",{placeholder:"age",inline_style:style_input, default_value:18})
-    main_interface.stateDecrease("age",1,"-")
-    main_interface.stateIncrease("age",1,"+")
-    main_interface.br()
-
-    let gender = main_interface.stateSelect("gender",["Man","Woman"],{default_value:"Woman"})
-    main_interface.br()
-
-    let password =main_interface.stateInput("password",{placeholder:"password",inline_style:style_input, type:"password"})
-
-
-    let p_style = {
-        color:'rgb(71,78,86)',
-        'font-size':'0.75em'
-    }
-
-    main_interface.p(`name: ${name}`).inline_style(p_style);
-    main_interface.p(`email: ${email}`).inline_style(p_style);
-    main_interface.p(`password: ${password}`).inline_style(p_style);
-    main_interface.p(`age: ${age}`).inline_style(p_style);
-    main_interface.p(`gender ${gender}`).inline_style(p_style);
-
-
-
-    main_interface.pre(()=> {
-        main_interface.code(
-            JSON.stringify(element.getFullState(), null, 4)
-        )
-    }).inline_style({
-        width:"30vw",
-        height:"30vh",
-        color:'white',
-        "background-color":"rgb(38,42,85)",
-    })
-
-},target)
-
-element.render()
-
-}
-
-window.addEventListener('load',main);
+    window.addEventListener('load', main);
 </script>
 
 </body>
@@ -643,6 +651,7 @@ With State Setters you can generate a button that will define a specific point_s
 predetermined 
 `
 [Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/state_setter.html)
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -654,64 +663,61 @@ predetermined
 </head>
 <body>
 <script>
-function main(){
+    function main() {
 
 
-    let target = document.body;
-let element = createElement404((main_interface)=>{
-    main_interface.state_render = true;
+        let target = document.body;
+        let element = createElement404((main_interface) => {
+            main_interface.state_smart_render = true;
 
-    let selected_style = {
-        color:"red"
-    }
-    let unselected_style= {
-        color:"blue"
+            let selected_style = {
+                color: "red"
+            }
+            let unselected_style = {
+                color: "blue"
+            }
+
+            let selected_home = {
+                content: "Home Selected",
+                props: {
+                    is_inline_style: selected_style
+                }
+            }
+            let unselected_home = {
+                content: "Home",
+                props: {
+                    is_inline_style: unselected_style
+                }
+            }
+            main_interface.clickableStateSetter("page", "home", selected_home, unselected_home);
+
+            let selected_about = {
+                content: "About Selected",
+                props: {
+                    is_inline_style: selected_style
+                }
+            }
+            let unselected_about = {
+                content: "About",
+                props: {
+                    is_inline_style: unselected_style
+                }
+            }
+            let page = main_interface.clickableStateSetter("page", "about", selected_about, unselected_about);
+
+            if (page === "home") {
+                main_interface.h1("you are in home page")
+            } else if (page === "about") {
+                main_interface.h1("you are in about page")
+            } else {
+                main_interface.h1("404")
+            }
+        }, target)
+        element.render()
+
     }
 
-    let selected_home = {
-        content:"Home Selected",
-        props:{
-            is_inline_style:selected_style
-        }
-    }
-    let unselected_home = {
-        content:"Home",
-        props:{
-            is_inline_style:unselected_style
-        }
-    }
-    main_interface.clickableStateSetter("page","home",selected_home,unselected_home);
-
-    let selected_about = {
-        content:"About Selected",
-        props:{
-            is_inline_style:selected_style
-        }
-    }
-    let unselected_about = {
-        content:"About",
-        props:{
-            is_inline_style:unselected_style
-        }
-    }
-    let page = main_interface.clickableStateSetter("page","about",selected_about,unselected_about);
-
-    if(page === "home"){
-        main_interface.h1("you are in home page")
-    }
-    else if(page === "about"){
-        main_interface.h1("you are in about page")
-    }
-
-    else{
-        main_interface.h1("404")
-    }
-},target)
-element.render()
-
-}
-
-window.addEventListener('load',main);
+    window.addEventListener('load', main);
 </script>
 
 </body>
@@ -722,6 +728,7 @@ window.addEventListener('load',main);
 With Lockers , you can lock the entire UI, to avoid concurrency problems 
 
 [Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/locker.html)
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -733,50 +740,47 @@ With Lockers , you can lock the entire UI, to avoid concurrency problems
 </head>
 <body>
 <script>
-function main(){
+    function main() {
 
-    let target = document.body;
-let element = createElement404((main_interface)=>{
-    main_interface.state_render = true;
+        let target = document.body;
+        let element = createElement404((main_interface) => {
+            main_interface.state_smart_render = true;
 
-    main_interface.stateSelect("gender",["Man","Woman"]);
-    main_interface.br()
-    main_interface.stateInput("num",{placeholder:"num"})
-    main_interface.stateDecrease("num",1,"-")
-    main_interface.stateIncrease("num",1,"+")
-    main_interface.br()
+            main_interface.stateSelect("gender", ["Man", "Woman"]);
+            main_interface.br()
+            main_interface.stateInput("num", {placeholder: "num"})
+            main_interface.stateDecrease("num", 1, "-")
+            main_interface.stateIncrease("num", 1, "+")
+            main_interface.br()
 
 
-    if(main_interface.locked){
+            if (main_interface.locked) {
 
-        main_interface.button("unlock",{
-            inline_style:{color: "red"},
-            notLock_render_click:()=>{
-                main_interface.unlock();
-            }
-        })
-    }
-
-    if(!main_interface.locked){
-        main_interface.button("lock",{
-            inline_style:{color: "blue"},
-            render_click:()=>{
-                main_interface.lock();
-                main_interface.render()
+                main_interface.button("unlock", {
+                    inline_style: {color: "red"},
+                    notLock_render_click: () => {
+                        main_interface.unlock();
+                    }
+                })
             }
 
-        })
+            if (!main_interface.locked) {
+                main_interface.button("lock", {
+                    inline_style: {color: "blue"},
+                    render_click: () => {
+                        main_interface.lock();
+                        main_interface.render()
+                    }
+
+                })
+            }
+
+
+        }, target)
+        element.render()
     }
 
-
-
-
-
-},target)
-element.render()
-}
-
-window.addEventListener('load',main);
+    window.addEventListener('load', main);
 </script>
 
 </body>

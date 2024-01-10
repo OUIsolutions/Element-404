@@ -31,7 +31,20 @@ Element404.prototype.getFullState = function() {
  * @param {any} value
  * */
 Element404.prototype.setStateValue = function(key_or_index,value) {
+
     this.stored_state[key_or_index] = value;
+
+
+    if(this.state_smart_render){
+        this.smart_render();
+        return;
+    }
+
+
+    if(this.state_full_render){
+        this.render();
+    }
+
 }
 
 /**

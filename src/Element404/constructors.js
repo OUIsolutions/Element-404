@@ -34,7 +34,8 @@ function Element404(){
         this.child = false;
 
 
-        this.state_render = false;
+        this.state_smart_render = false;
+        this.state_full_render = false;
         /** @type {number} */
         this.total_render_times = 0;
 

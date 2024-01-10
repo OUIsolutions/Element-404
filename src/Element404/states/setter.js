@@ -26,7 +26,7 @@ Element404.prototype.clickableStateSetter = function(
     let old_value = this.getStateValue(name);
 
     if(render === undefined){
-        render = this.state_render;
+        render = this.state_smart_render;
     }
     /**@type {Element404Props}*/
     let formatted_props = {

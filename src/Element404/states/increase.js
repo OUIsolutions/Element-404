@@ -26,7 +26,7 @@ Element404.prototype.stateIncrease = function(
     ){
 
     let formatted_args = new Element404Args(state_props,{});
-    let render_change =  formatted_args.get("render_change",this.state_render);
+    let render_change =  formatted_args.get("render_change",this.state_smart_render);
     let default_value = formatted_args.get('default_value',0);
     let tag = formatted_args.get("tag","button");
     let props = formatted_args.get_no_listed();
