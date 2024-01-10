@@ -73,9 +73,11 @@ Element404.prototype.render= function(args={}){
     }
 
     if(this.child){
+        this.clear();
         this.generator(args);
         return this;
     }
+
 
     if(!render_args){
         render_args = this.render_args;

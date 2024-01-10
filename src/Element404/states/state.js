@@ -35,7 +35,7 @@ Element404.prototype.setStateValue = function(key_or_index,value) {
     this.stored_state[key_or_index] = value;
 
 
-    if(this.state_smart_render){
+    if(this.allow_state_smart_render){
         this.smart_render();
         return;
     }
@@ -54,7 +54,7 @@ Element404.prototype.setStateValue = function(key_or_index,value) {
 Element404.prototype.getStateValue = function(key_or_index,default_value=undefined) {
   let existent = this.stored_state[key_or_index];
   if(existent === undefined){
-      this.setStateValue(key_or_index,default_value);
+      this.stored_state[key_or_index] = default_value;
       return default_value;
   }
   return existent;

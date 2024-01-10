@@ -24,6 +24,7 @@ Element404.prototype.stateInput= function(name,state_props) {
 
 
     formatted_props[ELEMENT_404_CHANGE] =(input)=>{
+
             this.setStateValue(name,input.value);
     }
 

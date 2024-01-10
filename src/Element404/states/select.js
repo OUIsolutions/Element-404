@@ -23,7 +23,7 @@ Element404.prototype.stateSelect = function(
 
     let formatted_args = new Element404Args(state_props,{});
     let prevent_locker =formatted_args.get('prevent_locker',true);
-    let render_change =  formatted_args.get("render_change",this.state_smart_render);
+    let render_change =  formatted_args.get("render_change",this.allow_state_smart_render);
     let default_value = formatted_args.get('default_value');
     let props = formatted_args.get_no_listed();
 

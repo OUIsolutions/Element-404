@@ -150,7 +150,7 @@ Element404.prototype.sub_element = function(father,root){
     this.domElement = root;
     this.child = true;
     this.state_full_render = this.father.state_full_render;
-    this.state_smart_render = this.father.state_smart_render;
+    this.allow_state_smart_render = this.father.allow_state_smart_render;
     this.stored_state = this.father.stored_state;
     return this;
 }

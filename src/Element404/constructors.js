@@ -11,7 +11,7 @@ function Element404(){
         this.smart_state_active = false;
         this.smart_state_test = undefined;
 
-        this.state_smart_render = false;
+        this.allow_state_smart_render = false;
         this.state_full_render = false;
 
         /**@type {Array<Element404>}*/
