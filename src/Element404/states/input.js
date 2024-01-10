@@ -23,7 +23,7 @@ Element404.prototype.stateInput= function(name,state_props) {
     formatted_props.value = this.getStateValue(name, default_value)
 
 
-    formatted_props["keydown"] =(input,event)=>{
+    formatted_props["keyup"] =(input)=>{
             this.setStateValue(name,input.value);
     }
 
