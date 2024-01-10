@@ -22,3 +22,21 @@ const  ELEMENT_404_EMPTY = ''
 
 const ELEMENT_404_CHANGE = 'change'
 const  ELEMENT_404_VALUE = 'value'
+
+const  ELEMENT_404_RENDER_CHANGES ="render_change";
+const ELEMENT_404_STRING="String";
+const ELEMENT_404_ARRAY="Array";
+const ELEMENT_404_OBJECT="Object";
+
+    //style render
+const ELEMENT_404_STATE="state";
+const ELEMENT_404_MERGE_IF="mergeIf";
+const  ELEMENT_404_MEDIA="media";
+const ELEMENT_404_IDENTIFIER_TAG="Element404Identifier";
+
+const  ELEMENT_404_STYLE_KEYS_TO_IGNORE=[
+    ELEMENT_404_MERGE_IF,
+    ELEMENT_404_MEDIA,
+    ELEMENT_404_IDENTIFIER_TAG
+];
+
