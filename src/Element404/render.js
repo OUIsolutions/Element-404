@@ -31,6 +31,7 @@ Element404.prototype.render_style = function (args=undefined){
     }
 
 }
+
 /**
  * @param {Array<Object> || {Object}}style
  * @param {any} style_args

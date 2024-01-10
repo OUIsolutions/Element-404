@@ -6,9 +6,19 @@ function Element404(){
 
         /**@type {Array<Object> || {Object}} */
         this.style_data = undefined;
-        this.is_inline_style = false
+        this.is_inline_style = false;
+        
         /**@type {Array<Element404>}*/
         this.stored_sub_elements = [];
+
+        /**@type {function}*/
+        this.generator = undefined;
+
+        /** @type {DocumentFragment || HTMLElement} */
+        this.domElement = undefined;
+
+        /** @type {HTMLElement} */
+        this.target = undefined;
 
 
         this.included_in_father_dom = false;
@@ -18,6 +28,7 @@ function Element404(){
 
         /** @type {boolean} */
         this.child = false;
+
 
         this.state_render = false;
         /** @type {number} */
@@ -48,12 +59,10 @@ function Element404(){
 Element404.prototype.rootConstructor = function(generator,target){
 
 
-    /** @type {function} */
     this.generator = (args)=>{
         generator(this,args)
     }
 
-    /** @type {DocumentFragment || HTMLElement} */
     this.domElement = document.createDocumentFragment();
 
 
@@ -67,8 +76,6 @@ Element404.prototype.rootConstructor = function(generator,target){
         return  this
     }
 
-
-    /** @type {HTMLElement} */
     this.target = target;
     return this;
 }
