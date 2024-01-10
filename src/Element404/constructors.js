@@ -7,7 +7,14 @@ function Element404(){
         /**@type {Array<Object> || {Object}} */
         this.style_data = undefined;
         this.is_inline_style = false;
-        
+
+        this.smart_state_active = false;
+        /**@type {function}*/
+        this.smart_state_test = undefined;
+        this.smart_test_callback = undefined;
+
+
+
         /**@type {Array<Element404>}*/
         this.stored_sub_elements = [];
 
