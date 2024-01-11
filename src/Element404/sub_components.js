@@ -107,8 +107,8 @@ Element404.prototype.create_generator=function(content, props){
 
     this.generator = (args)=>{
         this.domElement.innerHTML = ELEMENT_404_EMPTY;
-        let old_root = this.father.domElement;
-        let old_stored_sub_elements = this.father.stored_sub_elements;
+        let father_domElement = this.father.domElement;
+        let father_storedSubElements = this.father.stored_sub_elements;
         this.father.domElement = this.domElement;
         this.father.stored_sub_elements = this.stored_sub_elements;
         this.set_props(props)
@@ -134,8 +134,8 @@ Element404.prototype.create_generator=function(content, props){
             this.domElement.appendChild(node)
         }
 
-        this.father.stored_sub_elements = old_stored_sub_elements;
-        this.father.domElement = old_root;
+        this.father.stored_sub_elements = father_storedSubElements;
+        this.father.domElement = father_domElement;
     }
 
 
