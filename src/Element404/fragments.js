@@ -11,8 +11,6 @@ Element404.prototype.fragment=function( content){
     let sub_element = new Element404();
 
 
-
-
     if(this.child){
         sub_element.sub_element(this.root_element,this,this.domElement);
     }
@@ -26,7 +24,6 @@ Element404.prototype.fragment=function( content){
 
 
     this.stored_sub_elements.push(sub_element);
-
     return sub_element
 }
 
