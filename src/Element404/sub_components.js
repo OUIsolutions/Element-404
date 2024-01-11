@@ -128,9 +128,12 @@ Element404.prototype.create_generator=function(content, props){
         }
 
         if(formatted_content){
+
             let node = document.createTextNode(formatted_content)
+
             this.domElement.appendChild(node)
         }
+
         this.father.stored_sub_elements = old_stored_sub_elements;
         this.father.domElement = old_root;
     }
@@ -179,7 +182,7 @@ Element404.prototype.sub_component=function( tag,content,props){
     sub_element.create_generator(content,props)
     sub_element.generator({});
 
-    this.stored_sub_elements.unshift(sub_element);
+    this.stored_sub_elements.push(sub_element);
     this.domElement.appendChild(domElement)
 
 

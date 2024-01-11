@@ -21,6 +21,7 @@ Element404.prototype.stateInput= function(name,state_props) {
     let prevent_locker =formatted_args.get(ELEMENT_404_PREVENT_LOCKER,ELEMENT_404_PREVENT_LOCK);
     let default_value = formatted_args.get(ELEMENT_404_VALUE,ELEMENT_404_EMPTY);
     let props = formatted_args.get_no_listed();
+
     props.value = this.getStateValue(name, default_value)
 
     props[ELEMENT_404_NOT_LOCK_CHANGE] =(input)=>{
@@ -30,10 +31,9 @@ Element404.prototype.stateInput= function(name,state_props) {
                 input.value =old;
                 return;
             }
-
-
             this.setStateValue(name,input.value);
     }
+
 
     return this.input(props);
 
