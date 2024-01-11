@@ -21,7 +21,10 @@ function Element404(){
         this.generator = undefined;
 
         /** @type {DocumentFragment || HTMLElement || HTMLInputElement || HTMLSelectElement} */
-        this.domElement = undefined;
+        this.mutable_domElement = undefined;
+
+        /** @type {DocumentFragment || HTMLElement || HTMLInputElement || HTMLSelectElement} */
+        this.absolute_DomElement = undefined;
 
         /** @type {HTMLElement} */
         this.target = undefined;
@@ -69,14 +72,14 @@ Element404.prototype.rootConstructor = function(generator,target){
         generator(this,args)
     }
 
-    this.domElement = document.createDocumentFragment();
+    this.mutable_domElement = document.createDocumentFragment();
 
 
 
     //means its an component inside interfacce
     if(target instanceof  Element404){
         this.included_in_father_dom = true;
-        this.target = target.domElement
+        this.target = target.mutable_domElement
         target.stored_sub_elements.unshift(this);
 
         return  this

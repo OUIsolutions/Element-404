@@ -15,7 +15,7 @@ Element404.prototype.set_prop = function(key,value){
             if(this.is_locked() && key.includes(ELEMENT_404_NOT_LOCK) === false){
                 return;
             }
-            value(this.domElement,event)
+            value(this.mutable_domElement,event)
             if(key.includes(ELEMENT_404_FULL_RENDER)){
 
                 this.render({root_render:true})
@@ -31,11 +31,11 @@ Element404.prototype.set_prop = function(key,value){
             formatted_key = formatted_key.replace(tag,ELEMENT_404_EMPTY)
         }
 
-        this.domElement.addEventListener(formatted_key,callback)
+        this.mutable_domElement.addEventListener(formatted_key,callback)
         return this;
     }
 
-    this.domElement.setAttribute(key,value)
+    this.mutable_domElement.setAttribute(key,value)
     return  this;
 }
 
@@ -103,15 +103,18 @@ Element404.prototype.set_props = function(props){
  * @param {string || function } content
  * @param {Element404Props } props
  * */
-Element404.prototype.create_generator=function(content, props){
+Element404.prototype.create_generator=function(content, props=undefined){
 
     this.generator = (args)=>{
-        this.domElement.innerHTML = ELEMENT_404_EMPTY;
-        let father_domElement = this.father.domElement;
+        this.mutable_domElement.innerHTML = ELEMENT_404_EMPTY;
+        let father_domElement = this.father.mutable_domElement;
         let father_storedSubElements = this.father.stored_sub_elements;
-        this.father.domElement = this.domElement;
+        this.father.mutable_domElement = this.mutable_domElement;
         this.father.stored_sub_elements = this.stored_sub_elements;
-        this.set_props(props)
+
+        if(props){
+            this.set_props(props)
+        }
 
         let formatted_content =  content;
 
@@ -131,11 +134,11 @@ Element404.prototype.create_generator=function(content, props){
 
             let node = document.createTextNode(formatted_content)
 
-            this.domElement.appendChild(node)
+            this.mutable_domElement.appendChild(node)
         }
 
         this.father.stored_sub_elements = father_storedSubElements;
-        this.father.domElement = father_domElement;
+        this.father.mutable_domElement = father_domElement;
     }
 
 
@@ -150,7 +153,8 @@ Element404.prototype.sub_element = function(father,root){
     /** @type {Element404} */
     this.father = father;
     /** @type {DocumentFragment || HTMLElement ||  Text}  */
-    this.domElement = root;
+    this.mutable_domElement = root;
+    this.absolute_DomElement = root;
     this.child = true;
     this.state_full_render = this.father.state_full_render;
     this.allow_state_smart_render = this.father.allow_state_smart_render;
@@ -171,7 +175,7 @@ Element404.prototype.sub_component=function( tag,content,props){
     if(tag_not_exist){
         let formatted_content = Element404Extras.get_func_result(content)
         let node = document.createTextNode(formatted_content)
-        this.domElement.appendChild(node);
+        this.mutable_domElement.appendChild(node);
         return;
     }
 
@@ -183,7 +187,7 @@ Element404.prototype.sub_component=function( tag,content,props){
     sub_element.generator({});
 
     this.stored_sub_elements.push(sub_element);
-    this.domElement.appendChild(domElement)
+    this.mutable_domElement.appendChild(domElement)
 
 
     return sub_element

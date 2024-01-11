@@ -148,6 +148,7 @@ in these Example we find a value of an input , then we alert it
 
 
 [Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/finding_input_value.html)
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -159,29 +160,29 @@ in these Example we find a value of an input , then we alert it
 </head>
 <body>
 <script>
-    function main(){
-  
+    function main() {
+
         let target = document.body;
-        createElement404(element=>{
+        createElement404(element => {
 
-             element.div(()=>{
-                 element.div(()=>{
-                     let created_input = element.input({placeholder:"type something"})
-                     created_input.input_name = 'test';
-                 })
-             })
+            element.div(() => {
+                element.div(() => {
+                    let created_input = element.input({placeholder: "type something"})
+                    created_input.input_name = 'test';
+                })
+            })
 
-            let button =element.button("visualize");
-             button.set_prop('click',()=>{
-                 let founded_input = element.findOne(value => value.input_name === 'test');
-                 alert("you typed: "+ founded_input.domElement.value);
-             })
+            let button = element.button("visualize");
+            button.set_prop('click', () => {
+                let founded_input = element.findOne(value => value.input_name === 'test');
+                alert("you typed: " + founded_input.mutable_domElement.value);
+            })
 
-        },target).render();
+        }, target).render();
 
     }
 
-    window.addEventListener('load',main);
+    window.addEventListener('load', main);
 </script>
 
 </body>
