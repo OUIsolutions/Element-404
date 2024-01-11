@@ -17,17 +17,24 @@
  */
 Element404.prototype.stateInput= function(name,state_props) {
 
-    let formatted_props = new Element404Args(state_props,{});
+    let formatted_args = new Element404Args(state_props,{});
+    let prevent_locker =formatted_args.get('prevent_locker',true);
+    let default_value = formatted_args.get(ELEMENT_404_VALUE,ELEMENT_404_EMPTY);
+    let props = formatted_args.get_no_listed();
+    props.value = this.getStateValue(name, default_value)
 
-    let default_value = formatted_props.get(ELEMENT_404_VALUE,ELEMENT_404_EMPTY);
-    formatted_props.value = this.getStateValue(name, default_value)
+    props[ELEMENT_404_NOT_LOCK_CHANGE] =(input)=>{
+            let old = this.getStateValue(name,ELEMENT_404_EMPTY);
 
+            if(this.is_locked()  && prevent_locker){
+                input.value =old;
+                return;
+            }
 
-    formatted_props[ELEMENT_404_CHANGE] =(input)=>{
 
             this.setStateValue(name,input.value);
     }
 
-    return this.input(formatted_props);
+    return this.input(props);
 
 }
