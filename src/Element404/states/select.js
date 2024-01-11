@@ -22,29 +22,21 @@ Element404.prototype.stateSelect = function(
 
 
     let formatted_args = new Element404Args(state_props,{});
-    let prevent_locker =formatted_args.get('prevent_locker',true);
-    let render_change =  formatted_args.get("render_change",this.allow_state_smart_render);
-    let default_value = formatted_args.get('default_value');
+    let prevent_locker =formatted_args.get(ELEMENT_404_PREVENT_LOCKER,true);
+    let default_value = formatted_args.get(ELEMENT_404_VALUE,options[0]);
     let props = formatted_args.get_no_listed();
 
-    let formatted_props = {
-        "notLock_change":(select)=>{
+    props[ELEMENT_404_NOT_LOCK_CHANGE] = (select)=>{
             if(this.is_locked()  && prevent_locker){
                 this.render();
                 return;
             }
+
             this.setStateValue(name,select.value);
-            if(render_change){
-                this.render();
-            }
-        }
-
 
     }
 
-    for(let key in props){
-        formatted_props[key] = props[key];
-    }
+
     this.select(()=> {
             let old_value =  this.getStateValue(name,default_value);
 
@@ -66,12 +58,10 @@ Element404.prototype.stateSelect = function(
                         return;
                     }
                     this.option(option, {"value": option});
-                }, formatted_props);
-
+                });
             }
-        }
+        },props);
 
-        ,formatted_props);
 
     return this.getStateValue(name,default_value);
 
