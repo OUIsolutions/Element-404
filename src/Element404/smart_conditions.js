@@ -1,18 +1,27 @@
 
 
-Element404.prototype.smart_div=function(callback) {
+Element404.prototype.superposition= function(content) {
 
-    return this.div((element, args) => {
-        if(args.exec_callback){
 
-           callback()
-        }
-    });
+    let sub_element = new Element404();
+
+
+    if(this.child){
+        sub_element.sub_element(this.root_element,this,this.domElement);
+    }
+    if(!this.child){
+        sub_element.sub_element(this,this,this.domElement);
+    }
+
+
+    sub_element.create_generator(content)
+    this.stored_sub_elements.push(sub_element);
+    return sub_element
 
 
 }
 
-Element404.prototype.always_render = function (){
+Element404.prototype.always_colapse = function (){
 
 
     this.render({args:{exec_callback:true}});
@@ -24,23 +33,18 @@ Element404.prototype.always_render = function (){
 }
 
 
-Element404.prototype.render_if_always = function (test){
+Element404.prototype.colapse_always_if = function (test){
 
     if(test()){
-        this.render({args:{exec_callback:true}});
+        this.render();
     }
 
     this.smart_state_test = ()=>{
         let test_result = test();
 
         if(test_result){
-            this.render({args:{exec_callback:true}});
+            this.render();
         }
-
-        if(!test_result){
-            this.clear();
-        }
-
 
     }
     return this;
@@ -48,11 +52,12 @@ Element404.prototype.render_if_always = function (test){
 }
 
 
-Element404.prototype.render_if_once = function (test){
+Element404.prototype.colapse_once_if = function (test){
+
 
     if(test()){
         this.smart_state_active = true;
-        this.render({args:{exec_callback:true}});
+        this.render();
     }
 
     this.smart_state_test = ()=>{
@@ -63,14 +68,10 @@ Element404.prototype.render_if_once = function (test){
 
         if(test_result && !this.smart_state_active){
             this.smart_state_active = true;
-            this.render({args:{exec_callback:true}});
+            this.render();
         }
 
 
-        if(!test_result){
-            this.clear();
-            this.smart_state_active = false;
-        }
 
     }
     return this;
@@ -78,7 +79,7 @@ Element404.prototype.render_if_once = function (test){
 }
 
 
-Element404.prototype.smart_render=function() {
+Element404.prototype.quantum_render=function() {
 
     //console.log(this);
 
@@ -88,7 +89,7 @@ Element404.prototype.smart_render=function() {
             element.smart_state_test();
         }
 
-        element.smart_render();
+        element.quantum_render();
 
     })
     return this;

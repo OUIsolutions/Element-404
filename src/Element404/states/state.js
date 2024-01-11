@@ -36,7 +36,7 @@ Element404.prototype.setStateValue = function(key_or_index,value) {
 
 
     if(this.allow_state_smart_render){
-        this.smart_render();
+        this.quantum_render();
         return;
     }
 
