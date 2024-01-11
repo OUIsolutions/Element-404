@@ -52,7 +52,13 @@ Element404.prototype.fragment=function( content,props=undefined){
 
     let sub_element = new Element404();
     sub_element.sub_element(this, this.domElement);
-    sub_element.create_fragment_generator(content,props)
+    if(this.child){
+        sub_element.create_fragment_generator(content,props)
+    }
+    if(!this.child){
+        sub_element.create_generator(content,props);
+    }
+
     sub_element.generator({});
     this.stored_sub_elements.push(sub_element);
 
