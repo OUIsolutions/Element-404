@@ -175,7 +175,7 @@ in these Example we find a value of an input , then we alert it
             let button = element.button("visualize");
             button.set_prop('click', () => {
                 let founded_input = element.findOne(value => value.input_name === 'test');
-                alert("you typed: " + founded_input.mutable_domElement.value);
+                alert("you typed: " + founded_input.domElement.value);
             })
 
         }, target).render();

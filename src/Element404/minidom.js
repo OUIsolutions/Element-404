@@ -24,7 +24,7 @@ Element404.prototype.find = function (test_callback){
 }
 
 Element404.prototype.get_value = function (){
-    return this.mutable_domElement.value;
+    return this.absolute_DomElement.value;
 }
 
 

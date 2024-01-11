@@ -14,7 +14,7 @@ Element404.prototype.subStateObject = function(key_or_index) {
         this.stored_state[key_or_index] =created
     }
     let sub_element = new Element404();
-    sub_element.sub_element(this,this.mutable_domElement);
+    sub_element.sub_element(this,this.domElement);
     sub_element.stored_state = created
     return sub_element
 }

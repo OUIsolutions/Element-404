@@ -4,6 +4,9 @@ function Element404(){
         /**@type {Element404Props}*/
         this.props = undefined;
 
+        /**@type {Element404}*/
+        this.root_element = undefined;
+
         /**@type {Array<Object> || {Object}} */
         this.style_data = undefined;
         this.is_inline_style = false;
@@ -21,10 +24,8 @@ function Element404(){
         this.generator = undefined;
 
         /** @type {DocumentFragment || HTMLElement || HTMLInputElement || HTMLSelectElement} */
-        this.mutable_domElement = undefined;
+        this.domElement = undefined;
 
-        /** @type {DocumentFragment || HTMLElement || HTMLInputElement || HTMLSelectElement} */
-        this.absolute_DomElement = undefined;
 
         /** @type {HTMLElement} */
         this.target = undefined;
@@ -72,14 +73,14 @@ Element404.prototype.rootConstructor = function(generator,target){
         generator(this,args)
     }
 
-    this.mutable_domElement = document.createDocumentFragment();
+    this.domElement = document.createDocumentFragment();
 
 
 
     //means its an component inside interfacce
     if(target instanceof  Element404){
         this.included_in_father_dom = true;
-        this.target = target.mutable_domElement
+        this.target = target.domElement
         target.stored_sub_elements.unshift(this);
 
         return  this
