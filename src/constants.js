@@ -20,10 +20,14 @@ const  ELEMENT_404_RENDER_TAGS = [
 ]
 const  ELEMENT_404_EMPTY = ''
 
-const ELEMENT_404_CHANGE = 'change'
+const ELEMENT_404_CHANGE = 'change';
 const ELEMENT_404_NOT_LOCK_CHANGE = ELEMENT_404_NOT_LOCK + ELEMENT_404_CHANGE;
-const  ELEMENT_404_VALUE = 'value'
-
+const  ELEMENT_404_VALUE = 'value';
+const  ELEMENT_404_START_VALUE = 'start_value';
+const ELEMENT_404_PREVENT_LOCKER  = 'prevent_locker';
+const  ELEMENT_404_TAG = 'tag';
+const  ELEMENT_404_BUTTON = 'button';
+const ELEMENT_404_PREVENT_LOCK = true;
 const  ELEMENT_404_RENDER_CHANGES ="render_change";
 const ELEMENT_404_STRING="String";
 const ELEMENT_404_ARRAY="Array";
