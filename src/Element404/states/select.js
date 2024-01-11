@@ -40,26 +40,34 @@ Element404.prototype.stateSelect = function(
     this.select(()=> {
             let old_value =  this.getStateValue(name,default_value);
 
-            if (options.constructor.name === 'Object') {
+            if (options.constructor.name === ELEMENT_404_OBJECT) {
 
                 for (let key in options) {
+
+                    let option  = this.option(options[key]);
+                    option.set_prop(ELEMENT_404_VALUE,key);
+
                     if (key === old_value) {
-                        this.option(options[key], {"value": key, "selected": true});
-                        continue;
+                        option.set_prop(ELEMENT_404_SELECTED,true);
                     }
-                    this.option(options[key], {"value": key});
+
                 }
             }
 
-            if (options.constructor.name === 'Array') {
+
+            if (options.constructor.name ===ELEMENT_404_ARRAY) {
+
                 options.forEach((option) => {
+
+                    let option_element =this.option(option);
                     if (option === old_value) {
-                        this.option(option, {"value": option, "selected": true});
-                        return;
+                        option_element.set_prop(ELEMENT_404_SELECTED,true);
                     }
-                    this.option(option, {"value": option});
+
                 });
+
             }
+
         },props);
 
 

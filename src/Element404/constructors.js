@@ -20,7 +20,7 @@ function Element404(){
         /**@type {function}*/
         this.generator = undefined;
 
-        /** @type {DocumentFragment || HTMLElement} */
+        /** @type {DocumentFragment || HTMLElement || HTMLInputElement || HTMLSelectElement} */
         this.domElement = undefined;
 
         /** @type {HTMLElement} */

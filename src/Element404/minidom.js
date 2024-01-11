@@ -23,6 +23,11 @@ Element404.prototype.find = function (test_callback){
     return result;
 }
 
+Element404.prototype.get_value = function (){
+    return this.domElement.value;
+}
+
+
 /**
  * @param {Element404Testage} test_callback
  * @return {Element404}

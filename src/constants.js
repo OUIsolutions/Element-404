@@ -32,7 +32,7 @@ const  ELEMENT_404_RENDER_CHANGES ="render_change";
 const ELEMENT_404_STRING="String";
 const ELEMENT_404_ARRAY="Array";
 const ELEMENT_404_OBJECT="Object";
-
+const  ELEMENT_404_SELECTED = 'selected'
     //style render
 const ELEMENT_404_STATE="state";
 const ELEMENT_404_MERGE_IF="mergeIf";
