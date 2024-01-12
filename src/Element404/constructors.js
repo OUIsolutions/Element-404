@@ -11,7 +11,6 @@ function Element404(){
         this.style_data = undefined;
         this.is_inline_style = false;
 
-        this.colapsed = false;
 
         this.smart_state_active = false;
         this.smart_state_test = undefined;
@@ -68,12 +67,15 @@ function Element404(){
  * @param {HTMLElement || DocumentFragment || Element404} target
  * @returns {Element404}
  */
-Element404.prototype.rootConstructor = function(generator,target){
-
+Element404.prototype.rootConstructor = function(generator=undefined,target=undefined){
 
     this.generator = (args)=>{
-        generator(this,args)
+        if(generator){
+            generator(this,args)
+
+        }
     }
+
 
     this.domElement = document.createDocumentFragment();
 
@@ -100,7 +102,7 @@ Element404.prototype.rootConstructor = function(generator,target){
  * @param {HTMLElement || DocumentFragment || Element404} target
  ** @returns {Element404}
  */
-function  createElement404(generator,target=undefined){
+function  createElement404(generator=undefined,target=undefined){
      let created =  new Element404();
      created.rootConstructor(generator,target);
      return created;

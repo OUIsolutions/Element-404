@@ -31,6 +31,7 @@ Element404.prototype.style=function(content=null, props=null){
     return this.create('style',content,props)
 }
 
+
 /**
  * Creates a nav
  * @param {Element404Generator || string || null} content the internal content

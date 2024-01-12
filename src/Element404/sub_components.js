@@ -15,6 +15,7 @@ Element404.prototype.set_prop = function(key,value){
             if(this.is_locked() && key.includes(ELEMENT_404_NOT_LOCK) === false){
                 return;
             }
+
             value(this.domElement,event)
             if(key.includes(ELEMENT_404_FULL_RENDER)){
 
