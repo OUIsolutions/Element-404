@@ -20,8 +20,8 @@ Element404.prototype.set_prop = function(key,value){
 
                 this.render({root_render:true})
             }
-            if(key.includes(ELEMENT_404_SMART_RENDER)){
-                this.quantum_render();
+            if(key.includes(ELEMENT_404_QUANTUM_RENDER)){
+                this.quantum_render(true);
             }
 
         }
