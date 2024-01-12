@@ -11,6 +11,8 @@ function Element404(){
         this.style_data = undefined;
         this.is_inline_style = false;
 
+        this.colapsed = false;
+
         this.smart_state_active = false;
         this.smart_state_test = undefined;
 
