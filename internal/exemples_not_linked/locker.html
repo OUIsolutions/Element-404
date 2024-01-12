@@ -8,50 +8,53 @@
 </head>
 <body>
 <script>
-function main(){
+    function main(){
 
-    let target = document.body;
-let element = createElement404((main_interface)=>{
-    main_interface.state_render = true;
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+            main_interface.state_full_render = true;
+            main_interface.stateSelect("gender",["Man","Woman"]);
+            main_interface.br()
 
-    main_interface.stateSelect("gender",["Man","Woman"]);
-    main_interface.br()
-    main_interface.stateInput("num",{placeholder:"num"})
-    main_interface.stateDecrease("num",1,"-")
-    main_interface.stateIncrease("num",1,"+")
-    main_interface.br()
+            main_interface.stateInput("num",{placeholder:"num"})
+            main_interface.stateDecrease("num",1,"-")
+            main_interface.stateIncrease("num",1,"+")
+            main_interface.br()
 
 
-    if(main_interface.locked){
+            if(main_interface.locked){
 
-        main_interface.button("unlock",{
-            inline_style:{color: "red"},
-            notLock_render_click:()=>{
-                main_interface.unlock();
-            }
-        })
-    }
-
-    if(!main_interface.locked){
-        main_interface.button("lock",{
-            inline_style:{color: "blue"},
-            render_click:()=>{
-                main_interface.lock();
-                main_interface.render()
+                main_interface.button("unlock",{
+                    inline_style:{color: "red"},
+                    not_lock_full_render_click:()=>{
+                        main_interface.unlock();
+                    }
+                })
             }
 
-        })
+            if(!main_interface.locked){
+                main_interface.button("lock",{
+                    inline_style:{color: "blue"},
+                    full_render_click:()=>{
+                        main_interface.lock();
+                        main_interface.render()
+                    }
+
+                })
+            }
+
+
+
+
+
+        },target)
+        element.render()
     }
 
+    window.addEventListener('load',main);
 
 
 
-
-},target)
-element.render()
-}
-
-window.addEventListener('load',main);
 </script>
 
 </body>

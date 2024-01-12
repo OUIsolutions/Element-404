@@ -9,22 +9,22 @@
 <body>
 <script>
     function main(){
-  
+
         let target = document.body;
         createElement404(element=>{
 
-             element.div(()=>{
-                 element.div(()=>{
-                     let created_input = element.input({placeholder:"type something"})
-                     created_input.input_name = 'test';
-                 })
-             })
+            element.div(()=>{
+                element.div(()=>{
+                    let created_input = element.input({placeholder:"type something"})
+                    created_input.input_name = 'test';
+                })
+            })
 
             let button =element.button("visualize");
-             button.set_prop('click',()=>{
-                 let founded_input = element.findOne(value => value.input_name === 'test');
-                 alert("you typed: "+ founded_input.domElement.value);
-             })
+            button.set_prop('click',()=>{
+                let founded_input = element.findOne(value => value.input_name === 'test');
+                alert("you typed: "+ founded_input.get_value());
+            })
 
         },target).render();
 

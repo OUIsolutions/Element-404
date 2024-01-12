@@ -46,9 +46,34 @@ Element404.prototype.quantum_clear = function (){
 Element404.prototype.always_colapse = function (){
 
 
-    this.render();
+    this.private_colapse();
     this.smart_state_test = ()=>{
         this.private_colapse();
+    }
+    return this;
+
+}
+Element404.prototype.re_colapse_always_if = function (test){
+
+
+    this.private_colapse();
+
+
+    this.smart_state_test = ()=>{
+
+        if(!this.smart_state_active){
+            this.private_colapse();
+            return;
+        }
+
+
+        let test_result = test();
+
+        if(test_result){
+            this.private_colapse();
+        }
+
+
     }
     return this;
 
