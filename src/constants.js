@@ -12,7 +12,7 @@ const ELEMENT_404_STYLE_TAGS = [
 const ELEMENT_404_NOT_LOCK = "not_lock_"
 const  ELEMENT_404_FULL_RENDER = 'full_render_'
 const ELEMENT_404_QUANTUM_RENDER = 'quantum_render_'
-
+const ELEMENT_404_NUMBER = 'number'
 const  ELEMENT_404_RENDER_TAGS = [
     ELEMENT_404_NOT_LOCK,
     ELEMENT_404_FULL_RENDER,

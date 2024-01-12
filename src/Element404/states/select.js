@@ -32,7 +32,21 @@ Element404.prototype.stateSelect = function(
                 return;
             }
 
-            this.setStateValue(name,select.value);
+            let its_boolean = select.value  === 'true' || select.value === 'false';
+
+            if(its_boolean){
+                if(select.value === 'true'){
+                    this.setStateValue(name,true);
+                }
+
+                if(select.value === 'false'){
+                    this.setStateValue(name,false);
+                }
+
+            }
+            if(!its_boolean){
+                this.setStateValue(name,select.value);
+            }
 
     }
 

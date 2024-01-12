@@ -109,10 +109,11 @@ Element404.prototype.colapse_once_if = function (test){
 
 Element404.prototype.quantum_render=function(root=false) {
 
-    if(root){
+    if(root && this.child){
         this.root_element.quantum_render();
     }
     //console.log(this);
+
 
     this.stored_sub_elements.forEach(element =>{
 

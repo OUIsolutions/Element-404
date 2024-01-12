@@ -161,7 +161,7 @@ Element404.prototype.sub_element = function(root_element,father,domElement){
 
     this.child = true;
     this.state_full_render = this.father.state_full_render;
-    this.allow_state_smart_render = this.father.allow_state_smart_render;
+    this.allow_state_quantum_render = this.father.allow_state_quantum_render;
     this.stored_state = this.father.stored_state;
     return this;
 }

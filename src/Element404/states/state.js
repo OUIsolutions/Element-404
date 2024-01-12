@@ -35,14 +35,14 @@ Element404.prototype.setStateValue = function(key_or_index,value) {
     this.stored_state[key_or_index] = value;
 
 
-    if(this.allow_state_smart_render){
-        this.quantum_render();
+    if(this.allow_state_quantum_render){
+        this.quantum_render(true);
         return;
     }
 
 
     if(this.state_full_render){
-        this.render();
+        this.render({root_render:true})
     }
 
 }

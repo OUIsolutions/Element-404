@@ -580,7 +580,7 @@ you just need to pass the container and the props you want to  pass
         let target = document.body;
         let element = createElement404((main_interface) => {
             //make sure to enable these to allow rerender on state change
-            main_interface.allow_state_smart_render = true;
+            main_interface.allow_state_quantum_render = true;
             //creating an is_inline_style input more sofisticated
             let style_input = {
                 border: 'none',
@@ -669,7 +669,7 @@ predetermined
 
         let target = document.body;
         let element = createElement404((main_interface) => {
-            main_interface.allow_state_smart_render = true;
+            main_interface.allow_state_quantum_render = true;
 
             let selected_style = {
                 color: "red"
@@ -745,7 +745,7 @@ With Lockers , you can lock the entire UI, to avoid concurrency problems
 
         let target = document.body;
         let element = createElement404((main_interface) => {
-            main_interface.allow_state_smart_render = true;
+            main_interface.allow_state_quantum_render = true;
 
             main_interface.stateSelect("gender", ["Man", "Woman"]);
             main_interface.br()

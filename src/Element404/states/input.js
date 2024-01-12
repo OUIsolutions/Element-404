@@ -31,7 +31,12 @@ Element404.prototype.stateInput= function(name,state_props) {
                 input.value =old;
                 return;
             }
-            this.setStateValue(name,input.value);
+            if(props.type === ELEMENT_404_NUMBER){
+                this.setStateValue(name,parseInt(input.value));
+            }
+            if(props.type !== ELEMENT_404_NUMBER){
+                this.setStateValue(name,input.value);
+            }
     }
 
 
