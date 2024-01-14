@@ -94,11 +94,6 @@ you just need to pass the container and the props you want to  pass
 
 #page_ref:states.html
 
-## State Setter 
-With State Setters you can generate a button that will define a specific point_state 
-predetermined 
-`
-#page_ref:state_setter.html
 
 ## Locker 
 With Lockers , you can lock the entire UI, to avoid concurrency problems 

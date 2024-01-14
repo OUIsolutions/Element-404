@@ -15,7 +15,7 @@ For Running , you just need to copy the script tag into your code
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 
 ```
 
@@ -38,7 +38,7 @@ if you want to edit the source code:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
@@ -75,10 +75,11 @@ otherwise just pass the trigger,but the ui will not be updated.
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
+
     function main(){
         var num =0;
 
@@ -86,8 +87,8 @@ otherwise just pass the trigger,but the ui will not be updated.
         let element = createElement404((main_interface)=>{
             main_interface.div(()=>{
                 main_interface.h1(`the value of num is ${num}`)
-                main_interface.button(`remove 1 from num`,{render_click:()=> num--},)
-                main_interface.button(`add 1 to num`,{render_click:()=> num++})
+                main_interface.button(`remove 1 from num`,{full_render_click:()=> num--},)
+                main_interface.button(`add 1 to num`,{full_render_click:()=> num++})
 
             })
 
@@ -116,7 +117,7 @@ If you don't want to use States, you can handle inputs, by using the normal inpu
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
@@ -148,7 +149,6 @@ in these Example we find a value of an input , then we alert it
 
 
 [Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/finding_input_value.html)
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -156,33 +156,33 @@ in these Example we find a value of an input , then we alert it
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
-    function main() {
+    function main(){
 
         let target = document.body;
-        createElement404(element => {
+        createElement404(element=>{
 
-            element.div(() => {
-                element.div(() => {
-                    let created_input = element.input({placeholder: "type something"})
+            element.div(()=>{
+                element.div(()=>{
+                    let created_input = element.input({placeholder:"type something"})
                     created_input.input_name = 'test';
                 })
             })
 
-            let button = element.button("visualize");
-            button.set_prop('click', () => {
+            let button =element.button("visualize");
+            button.set_prop('click',()=>{
                 let founded_input = element.findOne(value => value.input_name === 'test');
-                alert("you typed: " + founded_input.domElement.value);
+                alert("you typed: "+ founded_input.get_value());
             })
 
-        }, target).render();
+        },target).render();
 
     }
 
-    window.addEventListener('load', main);
+    window.addEventListener('load',main);
 </script>
 
 </body>
@@ -202,7 +202,7 @@ with render match system you can render specif parts of the code
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
@@ -263,7 +263,7 @@ but remember that they will be affected by the render process
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
@@ -355,71 +355,71 @@ affect other parts of the render
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
-let num = 0;
+    let num = 0;
 
-function main(){
+    function main(){
         let target = document.body;
-            createElement404((main_interface)=>{
+        createElement404((main_interface)=>{
 
-        let nav_style = {
-            "width":"33vw",
-            "margin-left":"33vw",
-            "display":"grid",
-            "grid-template-columns":"33% 33% 33%"
-        }
-        let all_links = {
-            cursor:"pointer"
-        }
+            let nav_style = {
+                "width":"33vw",
+                "margin-left":"33vw",
+                "display":"grid",
+                "grid-template-columns":"33% 33% 33%"
+            }
+            let all_links = {
+                cursor:"pointer"
+            }
 
-        let selected = {
-            color:"red"
-        }
+            let selected = {
+                color:"red"
+            }
 
-        let page = main_interface.div();
+            let page = main_interface.div();
 
 
 
-        function default_page(){
-            page.clear()
-            page.nav(()=>{
-                page.p("Default",{inline_style:[selected,all_links]})
-                page.p("Page 1",{inline_style:all_links, click:page1})
-            },{inline_style:nav_style})
-
-            page.h1("you are in the default page")
-        }
-        default_page()
-
-        function page1(){
-            page.clear()
-            page.nav(()=>{
+            function default_page(){
+                page.clear()
                 page.nav(()=>{
-                    page.p("Default",{inline_style:all_links,click:default_page})
-                    page.p("Page 1",{inline_style:[selected,all_links]})
+                    page.p("Default",{inline_style:[selected,all_links]})
+                    page.p("Page 1",{inline_style:all_links, click:page1})
                 },{inline_style:nav_style})
-            })
-            page.h1("you are in the page1")
-        }
+
+                page.h1("you are in the default page")
+            }
+            default_page()
+
+            function page1(){
+                page.clear()
+                page.nav(()=>{
+                    page.nav(()=>{
+                        page.p("Default",{inline_style:all_links,click:default_page})
+                        page.p("Page 1",{inline_style:[selected,all_links]})
+                    },{inline_style:nav_style})
+                })
+                page.h1("you are in the page1")
+            }
 
 
 
 
-        let hit_counter_div = main_interface.div();
-        let hit_counter =  createElement404(sub=>{
-            sub.p(`the value of num is ${num}`)
-            sub.button("Decrease num",{render_click:()=>num-=1})
-            sub.button("Increase num",{render_click:()=>num+=1})
-        },hit_counter_div).render()
+            let hit_counter_div = main_interface.div();
+            let hit_counter =  createElement404(sub=>{
+                sub.p(`the value of num is ${num}`)
+                sub.button("Decrease num",{full_render_click:()=>num-=1})
+                sub.button("Increase num",{full_render_click:()=>num+=1})
+            },hit_counter_div).render()
 
-    },target).render()
+        },target).render()
 
-}
+    }
 
-window.addEventListener('load',main);
+    window.addEventListener('load',main);
 </script>
 
 </body>
@@ -438,55 +438,55 @@ You also can apply is_inline_style to elements by using the **is_inline_style** 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
 
-    
-function main(){
+
+    function main(){
 
 
-    let target = document.body;
-    let element = createElement404((main_interface)=>{
-    
-    let div_props = {
-        is_inline_style:{
-            position:"absolute",
-            top:"50vh",
-            left:"50vw",
-            transform:"translate(-50%,-50%)",
-            width:"100%",
-            "text-align":"center"
-        }
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+
+            let div_props = {
+                inline_style:{
+                    position:"absolute",
+                    top:"50vh",
+                    left:"50vw",
+                    transform:"translate(-50%,-50%)",
+                    width:"100%",
+                    "text-align":"center"
+                }
+            }
+
+            main_interface.div(()=>{
+                let h1_props = {
+                    inline_style:{
+                        "font-size":"10rem",
+                        "font-weight":"bold",
+                        color:"red"
+                    }
+                }
+                main_interface.h1("404",h1_props)
+
+                let h2_props = {
+                    inline_style:{
+                        "font-size":"2rem",
+                        "font-weight":"bold",
+                        color:"red"
+                    }
+                }
+                main_interface.h2("Page Not Found",h2_props)
+            },div_props)
+
+
+        },target)
+
+        element.render()
+
     }
-    
-    main_interface.div(()=>{
-        let h1_props = {
-            is_inline_style:{
-                "font-size":"10rem",
-                "font-weight":"bold",
-                color:"red"
-            }
-        }
-        main_interface.h1("404",h1_props)
-
-        let h2_props = {
-            is_inline_style:{
-                "font-size":"2rem",
-                "font-weight":"bold",
-                color:"red"
-            }
-        }
-        main_interface.h2("Page Not Found",h2_props)
-    },div_props)
-
-
-    },target)
-
-    element.render()
-
-}
 
     window.addEventListener('load',main);
 </script>
@@ -507,7 +507,7 @@ If you want to generate response styles, or use props like hover or active you c
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
@@ -564,7 +564,6 @@ with The States system,you can generate interactive forms easily
 you just need to pass the container and the props you want to  pass 
 
 [Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/states.html)
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -572,164 +571,106 @@ you just need to pass the container and the props you want to  pass
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
-    function main() {
+    function main(){
         let target = document.body;
-        let element = createElement404((main_interface) => {
+        let element = createElement404((main_interface)=>{
             //make sure to enable these to allow rerender on state change
             main_interface.allow_state_quantum_render = true;
             //creating an is_inline_style input more sofisticated
             let style_input = {
-                border: 'none',
-                color: 'rgb(71,78,86)',
-                'background-color': 'rgb(231,231,248)'
+                border:'none',
+                color:'rgb(71,78,86)',
+                'background-color':'rgb(231,231,248)'
             }
 
-            let name = main_interface.stateInput("name", {placeholder: "name", inline_style: style_input})
+            main_interface.stateInput("name",{placeholder:"name",inline_style:style_input})
             main_interface.br()
-            let email = main_interface.stateInput("email", {placeholder: "email", inline_style: style_input})
+            main_interface.stateInput("email",{placeholder:"email",inline_style:style_input})
             main_interface.br()
-            let age = main_interface.stateInput("age", {
-                placeholder: "age",
-                inline_style: style_input,
-                default_value: 18
+
+            let age_input = undefined;
+            main_interface.div().superposition(()=>{
+
+                age_input = main_interface.stateInput("age",{
+                    placeholder:"age",
+                    inline_style:style_input,
+                    value:18,
+                    type:'number'
+                })
+                main_interface.stateDecrease("age",1,"-")
+                main_interface.stateIncrease("age",1,"+")
+
+
+            }).re_colapse_always_if(()=>{
+                let input_value = age_input.get_value()
+                let age_value = main_interface.getStateValue('age');
+                return parseInt(input_value) !== age_value;
             })
-            main_interface.stateDecrease("age", 1, "-")
-            main_interface.stateIncrease("age", 1, "+")
+
+
+
+
+            main_interface.stateSelect("gender",["Man","Woman"],{default_value:"Woman"})
             main_interface.br()
-
-            let gender = main_interface.stateSelect("gender", ["Man", "Woman"], {default_value: "Woman"})
-            main_interface.br()
-
-            let password = main_interface.stateInput("password", {
-                placeholder: "password",
-                inline_style: style_input,
-                type: "password"
-            })
+            main_interface.stateInput("password",{placeholder:"password",inline_style:style_input, type:"password"})
 
 
-            let p_style = {
-                color: 'rgb(71,78,86)',
-                'font-size': '0.75em'
-            }
 
-            main_interface.p(`name: ${name}`).inline_style(p_style);
-            main_interface.p(`email: ${email}`).inline_style(p_style);
-            main_interface.p(`password: ${password}`).inline_style(p_style);
-            main_interface.p(`age: ${age}`).inline_style(p_style);
-            main_interface.p(`gender ${gender}`).inline_style(p_style);
+            main_interface.div().superposition(()=>{
+
+                let p_style = {
+                    color:'rgb(71,78,86)',
+                    'font-size':'0.75em'
+                }
+                let name = main_interface.getStateValue('name');
+                let email = main_interface.getStateValue('email');
+                let password = main_interface.getStateValue('password');
+                let age =main_interface.getStateValue('age');
+                let gender  = main_interface.getStateValue('gender');
+                main_interface.p(`name: ${name}`).inline_style(p_style);
+                main_interface.p(`email: ${email}`).inline_style(p_style);
+                main_interface.p(`password: ${password}`).inline_style(p_style);
+                main_interface.p(`age: ${age}`).inline_style(p_style);
+                main_interface.p(`gender ${gender}`).inline_style(p_style);
 
 
-            main_interface.pre(() => {
-                main_interface.code(
+                main_interface.pre(()=>{
+                    main_interface.code(
                         JSON.stringify(element.getFullState(), null, 4)
-                )
-            }).inline_style({
-                width: "30vw",
-                height: "30vh",
-                color: 'white',
-                "background-color": "rgb(38,42,85)",
-            })
+                    )
+                }).inline_style({
+                    width:"30vw",
+                    height:"30vh",
+                    color:'white',
+                    "background-color":"rgb(38,42,85)",
+                })
 
-        }, target)
+
+            }).always_colapse();
+
+
+        },target)
 
         element.render()
 
     }
 
-    window.addEventListener('load', main);
+    window.addEventListener('load',main);
 </script>
 
 </body>
 </html>
 ```
 
-## State Setter 
-With State Setters you can generate a button that will define a specific point_state 
-predetermined 
-`
-[Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/state_setter.html)
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
-</head>
-<body>
-<script>
-    function main() {
-
-
-        let target = document.body;
-        let element = createElement404((main_interface) => {
-            main_interface.allow_state_quantum_render = true;
-
-            let selected_style = {
-                color: "red"
-            }
-            let unselected_style = {
-                color: "blue"
-            }
-
-            let selected_home = {
-                content: "Home Selected",
-                props: {
-                    is_inline_style: selected_style
-                }
-            }
-            let unselected_home = {
-                content: "Home",
-                props: {
-                    is_inline_style: unselected_style
-                }
-            }
-            main_interface.clickableStateSetter("page", "home", selected_home, unselected_home);
-
-            let selected_about = {
-                content: "About Selected",
-                props: {
-                    is_inline_style: selected_style
-                }
-            }
-            let unselected_about = {
-                content: "About",
-                props: {
-                    is_inline_style: unselected_style
-                }
-            }
-            let page = main_interface.clickableStateSetter("page", "about", selected_about, unselected_about);
-
-            if (page === "home") {
-                main_interface.h1("you are in home page")
-            } else if (page === "about") {
-                main_interface.h1("you are in about page")
-            } else {
-                main_interface.h1("404")
-            }
-        }, target)
-        element.render()
-
-    }
-
-    window.addEventListener('load', main);
-</script>
-
-</body>
-</html>
-```
 
 ## Locker 
 With Lockers , you can lock the entire UI, to avoid concurrency problems 
 
 [Runable exemple](https://ouisolutions.github.io/Element-404/internal/exemples/locker.html)
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -737,38 +678,38 @@ With Lockers , you can lock the entire UI, to avoid concurrency problems
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
-    function main() {
+    function main(){
 
         let target = document.body;
-        let element = createElement404((main_interface) => {
-            main_interface.allow_state_quantum_render = true;
-
-            main_interface.stateSelect("gender", ["Man", "Woman"]);
-            main_interface.br()
-            main_interface.stateInput("num", {placeholder: "num"})
-            main_interface.stateDecrease("num", 1, "-")
-            main_interface.stateIncrease("num", 1, "+")
+        let element = createElement404((main_interface)=>{
+            main_interface.state_full_render = true;
+            main_interface.stateSelect("gender",["Man","Woman"]);
             main_interface.br()
 
+            main_interface.stateInput("num",{placeholder:"num"})
+            main_interface.stateDecrease("num",1,"-")
+            main_interface.stateIncrease("num",1,"+")
+            main_interface.br()
 
-            if (main_interface.locked) {
 
-                main_interface.button("unlock", {
-                    inline_style: {color: "red"},
-                    notLock_render_click: () => {
+            if(main_interface.locked){
+
+                main_interface.button("unlock",{
+                    inline_style:{color: "red"},
+                    not_lock_full_render_click:()=>{
                         main_interface.unlock();
                     }
                 })
             }
 
-            if (!main_interface.locked) {
-                main_interface.button("lock", {
-                    inline_style: {color: "blue"},
-                    render_click: () => {
+            if(!main_interface.locked){
+                main_interface.button("lock",{
+                    inline_style:{color: "blue"},
+                    full_render_click:()=>{
                         main_interface.lock();
                         main_interface.render()
                     }
@@ -777,11 +718,17 @@ With Lockers , you can lock the entire UI, to avoid concurrency problems
             }
 
 
-        }, target)
+
+
+
+        },target)
         element.render()
     }
 
-    window.addEventListener('load', main);
+    window.addEventListener('load',main);
+
+
+
 </script>
 
 </body>

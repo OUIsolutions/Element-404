@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
     function main(){
-  
+
         let target = document.body;
         createElement404(element=>{
 
-             element.div(()=>{
-                 element.div(()=>{
-                     let created_input = element.input({placeholder:"type something"})
-                     created_input.input_name = 'test';
-                 })
-             })
+            element.div(()=>{
+                element.div(()=>{
+                    let created_input = element.input({placeholder:"type something"})
+                    created_input.input_name = 'test';
+                })
+            })
 
             let button =element.button("visualize");
-             button.set_prop('click',()=>{
-                 let founded_input = element.findOne(value => value.input_name === 'test');
-                 alert("you typed: "+ founded_input.domElement.value);
-             })
+            button.set_prop('click',()=>{
+                let founded_input = element.findOne(value => value.input_name === 'test');
+                alert("you typed: "+ founded_input.get_value());
+            })
 
         },target).render();
 

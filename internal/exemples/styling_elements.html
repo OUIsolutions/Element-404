@@ -4,55 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Element-404@main/versions/Element404_v0.51.js"></script>
 </head>
 <body>
 <script>
 
-    
-function main(){
+
+    function main(){
 
 
-    let target = document.body;
-    let element = createElement404((main_interface)=>{
-    
-    let div_props = {
-        is_inline_style:{
-            position:"absolute",
-            top:"50vh",
-            left:"50vw",
-            transform:"translate(-50%,-50%)",
-            width:"100%",
-            "text-align":"center"
-        }
+        let target = document.body;
+        let element = createElement404((main_interface)=>{
+
+            let div_props = {
+                inline_style:{
+                    position:"absolute",
+                    top:"50vh",
+                    left:"50vw",
+                    transform:"translate(-50%,-50%)",
+                    width:"100%",
+                    "text-align":"center"
+                }
+            }
+
+            main_interface.div(()=>{
+                let h1_props = {
+                    inline_style:{
+                        "font-size":"10rem",
+                        "font-weight":"bold",
+                        color:"red"
+                    }
+                }
+                main_interface.h1("404",h1_props)
+
+                let h2_props = {
+                    inline_style:{
+                        "font-size":"2rem",
+                        "font-weight":"bold",
+                        color:"red"
+                    }
+                }
+                main_interface.h2("Page Not Found",h2_props)
+            },div_props)
+
+
+        },target)
+
+        element.render()
+
     }
-    
-    main_interface.div(()=>{
-        let h1_props = {
-            is_inline_style:{
-                "font-size":"10rem",
-                "font-weight":"bold",
-                color:"red"
-            }
-        }
-        main_interface.h1("404",h1_props)
-
-        let h2_props = {
-            is_inline_style:{
-                "font-size":"2rem",
-                "font-weight":"bold",
-                color:"red"
-            }
-        }
-        main_interface.h2("Page Not Found",h2_props)
-    },div_props)
-
-
-    },target)
-
-    element.render()
-
-}
 
     window.addEventListener('load',main);
 </script>

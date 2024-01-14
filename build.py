@@ -14,12 +14,12 @@ SOURCES = [
     "src/Element404/locker.js",
     "src/Element404/render.js",
     "src/Element404/minidom.js",
+    "src/Element404/quantum_conditions.js",
     "src/Element404/states/state.js",
     "src/Element404/states/input.js",
     "src/Element404/states/increase.js",
     "src/Element404/states/decrease.js",
     "src/Element404/states/select.js",
-    "src/Element404/states/setter.js",
     "src/Element404/sub_components.js",
     "src/Element404/tags.js"
 ]
@@ -84,7 +84,16 @@ for e in exemples:
         readme_code = readme_code.replace(f"#ref:{e}", output_data)
 
 
-if "#page_ref" in readme_code or '#ref' in readme_code:
-    raise Exception(f"Missing reference {readme_code.split('#ref')[1]}")
+if "#page_ref" in readme_code:
+    index = readme_code.find("#page_ref")
+    reference = readme_code[index: readme_code.find("\n", index)]
+    raise Exception(f"Missing reference {reference}")
+
+if "#ref" in readme_code:
+    
+    index = readme_code.find("#ref")
+    reference = readme_code[index: readme_code.find("\n", index)]
+    raise Exception(f"Missing reference {reference}")
+
 with open('readme.md', 'w') as f:
     f.write(readme_code)
